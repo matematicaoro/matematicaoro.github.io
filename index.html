@@ -19,6 +19,10 @@
       --bg:        #f7f8fc;
       --bianco:    #ffffff;
       --bordo:     #dde3ed;
+      --evidenza:       #1f7ae0;
+      --evidenza-dark:  #145bab;
+      --evidenza-light: #e4f1ff;
+      --evidenza-bordo: #b8d8f7;
       --raggio:    10px;
       --ombra:     0 2px 12px rgba(26,58,92,0.09);
     }
@@ -75,6 +79,12 @@
       background: rgba(255,255,255,.15);
       color: #fff;
     }
+    nav a.nav-featured {
+      background: var(--evidenza);
+      color: #fff;
+      font-weight: 600;
+    }
+    nav a.nav-featured:hover { background: var(--evidenza-dark); }
 
     /* ── PULSANTE CERCA (icona separata, sempre visibile) ── */
     .btn-search {
@@ -148,6 +158,53 @@
       font-weight: 600;
     }
 
+    /* ── SEZIONE IN EVIDENZA (Lezioni) ── */
+    .section-featured {
+      background: linear-gradient(160deg, var(--evidenza-light) 0%, #fbfdff 100%);
+      border: 1px solid var(--evidenza-bordo);
+      border-radius: 18px;
+      padding: 32px 28px 36px;
+      box-shadow: 0 6px 28px rgba(31,122,224,0.14);
+      position: relative;
+    }
+    .featured-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--evidenza);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .section-featured .section-header {
+      border-bottom: 2px solid var(--evidenza-bordo);
+    }
+    .section-featured .section-icon {
+      background: var(--evidenza);
+      color: #fff;
+      box-shadow: 0 3px 10px rgba(31,122,224,0.35);
+    }
+    .section-featured .section-header h2 {
+      color: var(--evidenza-dark);
+    }
+    .section-featured details {
+      border-color: var(--evidenza-bordo);
+    }
+    .section-featured summary {
+      color: var(--evidenza-dark);
+    }
+    .section-featured summary:hover { background: var(--evidenza-light); }
+    .section-featured summary::after { color: var(--evidenza); }
+    .section-featured .badge {
+      background: var(--evidenza-light);
+      color: var(--evidenza-dark);
+    }
+
     /* ── ACCORDION (Teoria / Esercizi / Schemi) ── */
     .accordion { display: flex; flex-direction: column; gap: 8px; }
 
@@ -217,7 +274,7 @@
     }
     .file-list a span.icon { font-size: 1rem; }
 
-    /* ── LEZIONI INTERATTIVE ── */
+    /* ── LEZIONI ── */
     .lezione-row {
       display: flex;
       align-items: center;
@@ -364,10 +421,10 @@
   <div class="header-inner">
     <a class="logo" href="#">Matematica<span>Viva</span></a>
     <nav>
+      <a class="nav-featured" href="#lezioni">💡 Lezioni</a>
       <a href="#teoria">Teoria</a>
       <a href="#esercizi">Esercizi</a>
       <a href="#schemi">Schemi</a>
-      <a href="#interattive">Lezioni interattive</a>
     </nav>
     <a class="btn-search" href="matematicaviva-app.html" title="Cerca" aria-label="Cerca">🔍</a>
   </div>
@@ -376,156 +433,17 @@
 <!-- HERO -->
 <div class="hero">
   <h1>Matematica<span style="color:#f0c06e">Viva</span></h1>
-  <p>Teoria, Esercizi, Schemi e Lezioni interattive per la scuola secondaria</p>
+  <p>Teoria, Esercizi, Schemi e Lezioni per la scuola secondaria</p>
 </div>
 
 <main>
 
-  <!-- TEORIA -->
-  <section id="teoria">
-    <div class="section-header">
-      <div class="section-icon">📖</div>
-      <h2>Teoria</h2>
-    </div>
-    <div class="accordion">
-      <details>
-        <summary>Classe prima <span class="badge">6 file</span></summary>
-        <div class="file-list">
-          <a href="viewer.html?file=teoria/classe1/rette_parallele_perpendicolari.pdf"><span class="icon">📄</span> Geometria: rette perpendicolari e parallele</a>
-          <a href="viewer.html?file=teoria/classe1/quadrilateri.pdf"><span class="icon">📄</span> Geometria: quadrilateri</a>
-          <a href="viewer.html?file=teoria/classe1/monomi.pdf"><span class="icon">📄</span> Algebra: Monomi</a>
-          <a href="viewer.html?file=teoria/classe1/polinomi.pdf"><span class="icon">📄</span> Algebra: Polinomi</a>
-          <a href="viewer.html?file=teoria/classe1/scomposizione_polinomi.pdf"><span class="icon">📄</span> Algebra: scomposizione di polinomi</a>
-          <a href="viewer.html?file=teoria/classe1/equazioni_lineari.pdf"><span class="icon">📄</span> Algebra: equazioni lineari intere e fratte</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe seconda <span class="badge">4 file</span></summary>
-        <div class="file-list">
-          <a href="viewer.html?file=teoria/classe2/talete_similitudini.pdf"><span class="icon">📄</span> Geometria: Teorema di Talete e similitudini</a>
-          <a href="viewer.html?file=teoria/classe2/sezione_aurea.pdf"><span class="icon">📄</span> Geometria: Sezione aurea</a>
-          <a href="viewer.html?file=teoria/classe2/disequazioni_secondo_grado.pdf"><span class="icon">📄</span> Algebra: disequazioni di II grado</a>
-          <a href="viewer.html?file=teoria/classe2/disequazioni_parabola_v.pdf"><span class="icon">📄</span> Algebra: disequazioni di II grado con metodo algebrico e grafico</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe terza <span class="badge">1 file</span></summary>
-        <div class="file-list">
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe quarta <span class="badge">1 file</span></summary>
-        <div class="file-list">
-          <a href="viewer.html?file=teoria/classe4/goniometria.pdf"><span class="icon">📄</span> Goniometria: introduzione</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe quinta <span class="badge">1 file</span></summary>
-        <div class="file-list">
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- ESERCIZI -->
-  <section id="esercizi">
-    <div class="section-header">
-      <div class="section-icon">📝</div>
-      <h2>Esercizi</h2>
-    </div>
-    <div class="accordion">
-      <details>
-        <summary>Classe prima <span class="badge">2 file</span></summary>
-        <div class="file-list">
-          <a href="viewer.html?file=esercizi/classe1/Scheda_Esercizi_Parallele_Perpendicolari.pdf"><span class="icon">📄</span> Geometria: esercizi su rette parallele e perpendicolari</a>
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe seconda <span class="badge">2 file</span></summary>
-        <div class="file-list">
-          <a href="viewer.html?file=esercizi/classe2/esercizi_euclide_pitagora_.pdf"><span class="icon">📄</span> Geometria: esercizi teoremi di Pitagora ed Euclide</a>
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe terza <span class="badge">2 file</span></summary>
-        <div class="file-list">
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe quarta <span class="badge">2 file</span></summary>
-        <div class="file-list">
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe quinta <span class="badge">2 file</span></summary>
-        <div class="file-list">
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- SCHEMI -->
-  <section id="schemi">
-    <div class="section-header">
-      <div class="section-icon">🗂️</div>
-      <h2>Schemi</h2>
-    </div>
-    <div class="accordion">
-      <details>
-        <summary>Classe prima <span class="badge">4 file</span></summary>
-        <div class="file-list">
-          <a href="viewer.html?file=schemi/classe1/formulario_quadrilateri.pdf"><span class="icon">📄</span> Geometria: sintesi quadrilateri</a>
-          <a href="viewer.html?file=schemi/classe1/formulario_parallele_perpendicolari.pdf"><span class="icon">📄</span> Geometria: sintesi rette parallele e perpendicolari</a>
-          <a href="viewer.html?file=schemi/classe1/formulario_polinomi.pdf"><span class="icon">📄</span> Algebra: sintesi scomposizione di polinomi</a>
-          <a href="viewer.html?file=schemi/classe1/sintesi_equazioni_lineari.pdf"><span class="icon">📄</span> Algebra: sintesi equazioni lineari intere e fratte</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe seconda <span class="badge">2 file</span></summary>
-        <div class="file-list">
-          <a href="viewer.html?file=schemi/classe2/sintesi_disequazioni_sec.pdf"><span class="icon">📄</span> Algebra: sintesi disequazioni di secondo grado</a>
-          <a href="viewer.html?file=schemi/classe2/formulario_sezione_aurea.pdf"><span class="icon">📄</span> Geometria: sintesi sezione aurea</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe terza <span class="badge">2 file</span></summary>
-        <div class="file-list">
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe quarta <span class="badge">2 file</span></summary>
-        <div class="file-list">
-          <a href="viewer.html?file=schemi/classe4/sintesi_goniometria.pdf"><span class="icon">📄</span> Goniometria: sintesi relazioni introduttive</a>
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-        </div>
-      </details>
-      <details>
-        <summary>Classe quinta <span class="badge">2 file</span></summary>
-        <div class="file-list">
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-          <a href="#"><span class="icon">📄</span> Argomento</a>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- LEZIONI INTERATTIVE -->
-  <section id="interattive">
+  <!-- LEZIONI (in evidenza) -->
+  <section id="lezioni" class="section-featured">
+    <span class="featured-tag">✨ Consigliate</span>
     <div class="section-header">
       <div class="section-icon">💡</div>
-      <h2>Lezioni interattive</h2>
+      <h2>Lezioni</h2>
     </div>
     <div class="accordion">
 
@@ -673,6 +591,147 @@
 
     </div>
   </section>
+
+  <!-- TEORIA -->
+  <section id="teoria">
+    <div class="section-header">
+      <div class="section-icon">📖</div>
+      <h2>Teoria</h2>
+    </div>
+    <div class="accordion">
+      <details>
+        <summary>Classe prima <span class="badge">6 file</span></summary>
+        <div class="file-list">
+          <a href="viewer.html?file=teoria/classe1/rette_parallele_perpendicolari.pdf"><span class="icon">📄</span> Geometria: rette perpendicolari e parallele</a>
+          <a href="viewer.html?file=teoria/classe1/quadrilateri.pdf"><span class="icon">📄</span> Geometria: quadrilateri</a>
+          <a href="viewer.html?file=teoria/classe1/monomi.pdf"><span class="icon">📄</span> Algebra: Monomi</a>
+          <a href="viewer.html?file=teoria/classe1/polinomi.pdf"><span class="icon">📄</span> Algebra: Polinomi</a>
+          <a href="viewer.html?file=teoria/classe1/scomposizione_polinomi.pdf"><span class="icon">📄</span> Algebra: scomposizione di polinomi</a>
+          <a href="viewer.html?file=teoria/classe1/equazioni_lineari.pdf"><span class="icon">📄</span> Algebra: equazioni lineari intere e fratte</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe seconda <span class="badge">4 file</span></summary>
+        <div class="file-list">
+          <a href="viewer.html?file=teoria/classe2/talete_similitudini.pdf"><span class="icon">📄</span> Geometria: Teorema di Talete e similitudini</a>
+          <a href="viewer.html?file=teoria/classe2/sezione_aurea.pdf"><span class="icon">📄</span> Geometria: Sezione aurea</a>
+          <a href="viewer.html?file=teoria/classe2/disequazioni_secondo_grado.pdf"><span class="icon">📄</span> Algebra: disequazioni di II grado</a>
+          <a href="viewer.html?file=teoria/classe2/disequazioni_parabola_v.pdf"><span class="icon">📄</span> Algebra: disequazioni di II grado con metodo algebrico e grafico</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe terza <span class="badge">1 file</span></summary>
+        <div class="file-list">
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe quarta <span class="badge">1 file</span></summary>
+        <div class="file-list">
+          <a href="viewer.html?file=teoria/classe4/goniometria.pdf"><span class="icon">📄</span> Goniometria: introduzione</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe quinta <span class="badge">1 file</span></summary>
+        <div class="file-list">
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ESERCIZI -->
+  <section id="esercizi">
+    <div class="section-header">
+      <div class="section-icon">📝</div>
+      <h2>Esercizi</h2>
+    </div>
+    <div class="accordion">
+      <details>
+        <summary>Classe prima <span class="badge">2 file</span></summary>
+        <div class="file-list">
+          <a href="viewer.html?file=esercizi/classe1/Scheda_Esercizi_Parallele_Perpendicolari.pdf"><span class="icon">📄</span> Geometria: esercizi su rette parallele e perpendicolari</a>
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe seconda <span class="badge">2 file</span></summary>
+        <div class="file-list">
+          <a href="viewer.html?file=esercizi/classe2/esercizi_euclide_pitagora_.pdf"><span class="icon">📄</span> Geometria: esercizi teoremi di Pitagora ed Euclide</a>
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe terza <span class="badge">2 file</span></summary>
+        <div class="file-list">
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe quarta <span class="badge">2 file</span></summary>
+        <div class="file-list">
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe quinta <span class="badge">2 file</span></summary>
+        <div class="file-list">
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- SCHEMI -->
+  <section id="schemi">
+    <div class="section-header">
+      <div class="section-icon">🗂️</div>
+      <h2>Schemi</h2>
+    </div>
+    <div class="accordion">
+      <details>
+        <summary>Classe prima <span class="badge">4 file</span></summary>
+        <div class="file-list">
+          <a href="viewer.html?file=schemi/classe1/formulario_quadrilateri.pdf"><span class="icon">📄</span> Geometria: sintesi quadrilateri</a>
+          <a href="viewer.html?file=schemi/classe1/formulario_parallele_perpendicolari.pdf"><span class="icon">📄</span> Geometria: sintesi rette parallele e perpendicolari</a>
+          <a href="viewer.html?file=schemi/classe1/formulario_polinomi.pdf"><span class="icon">📄</span> Algebra: sintesi scomposizione di polinomi</a>
+          <a href="viewer.html?file=schemi/classe1/sintesi_equazioni_lineari.pdf"><span class="icon">📄</span> Algebra: sintesi equazioni lineari intere e fratte</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe seconda <span class="badge">2 file</span></summary>
+        <div class="file-list">
+          <a href="viewer.html?file=schemi/classe2/sintesi_disequazioni_sec.pdf"><span class="icon">📄</span> Algebra: sintesi disequazioni di secondo grado</a>
+          <a href="viewer.html?file=schemi/classe2/formulario_sezione_aurea.pdf"><span class="icon">📄</span> Geometria: sintesi sezione aurea</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe terza <span class="badge">2 file</span></summary>
+        <div class="file-list">
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe quarta <span class="badge">2 file</span></summary>
+        <div class="file-list">
+          <a href="viewer.html?file=schemi/classe4/sintesi_goniometria.pdf"><span class="icon">📄</span> Goniometria: sintesi relazioni introduttive</a>
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+        </div>
+      </details>
+      <details>
+        <summary>Classe quinta <span class="badge">2 file</span></summary>
+        <div class="file-list">
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+          <a href="#"><span class="icon">📄</span> Argomento</a>
+        </div>
+      </details>
+    </div>
+  </section>
+
 
 </main>
 
