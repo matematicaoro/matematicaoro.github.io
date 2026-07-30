@@ -257,7 +257,7 @@
             <div class="card-body">
                 <div class="box info">
                     <strong>💡 Definizione Formale</strong><br>
-                    Un'<strong>equazione lineare (o di primo grado)</strong> è un'uguaglianza tra due espressioni algebriche letterali verificata <em>soltanto</em> per particolari valori numerici assegnati alle sue incognite (solitamente indicate con la lettera <code>x</code>).
+                    Un'<strong>equazione</strong> è un'uguaglianza tra due espressioni algebriche letterali. Risolvere un'equazione significa determinare, se esistono, i valori da assegnare alle incognite affinché l'uguaglianza sia vera.
                 </div>
 
                 <h3>Anatomia di un'Equazione</h3>
@@ -274,7 +274,7 @@
         <section class="card" id="classificazione">
             <div class="card-header">03 — Classificazione e Tipi di Soluzioni</div>
             <div class="card-body">
-                <p>Le equazioni possono essere catalogate in base alla posizione delle incognite e al numero di soluzioni finali che ammettono:</p>
+                <p>Le equazioni (qui tratteremo solo equazioni <strong>di primo grado</strong>) possono essere catalogate in base al numero di soluzioni che ammettono:</p>
                 
                 <div class="table-wrapper">
                     <table>
@@ -286,16 +286,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td><strong>Determinata</strong></td><td><code>ax = b</code> (con a ≠ 0)</td><td>Ha <strong>una sola ed unica soluzione</strong> definita dal rapporto <code>x = b/a</code>.</td></tr>
-                            <tr><td><strong>Indeterminata</strong></td><td><code>0x = 0</code></td><td>Ha <strong>infinite soluzioni</strong>. Qualsiasi numero rende vera l'uguaglianza numerica 0 = 0.</td></tr>
-                            <tr><td><strong>Impossibile</strong></td><td><code>0x = b</code> (con b ≠ 0)</td><td>Non ha <strong>nessuna soluzione</strong>. Nessun numero moltiplicato per 0 può fare b.</td></tr>
+                            <tr><td><strong>Determinata</strong></td><td><code>ax = b</code> (a ≠ 0)</td><td>Ha <strong>una sola ed unica soluzione</strong> definita dal rapporto <code>x = b/a</code>.</td></tr>
+                            <tr><td><strong>Indeterminata</strong></td><td><code>0x = 0</code></td><td>Ha <strong>infinite soluzioni</strong>. Qualsiasi valore assegnato all'incognita rende vera l'uguaglianza numerica 0 = 0.</td></tr>
+                            <tr><td><strong>Impossibile</strong></td><td><code>0x = b</code> (b ≠ 0)</td><td>Non ha <strong>soluzione</strong>. Nessun numero moltiplicato per 0 è uguale a b, sotto l'ipotesi b ≠ 0.</td></tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="box warning">
                     <strong>⚫ Intere vs Frazionarie</strong><br>
-                    Un'equazione si dice <strong>intera</strong> se l'incognita compare esclusivamente al numeratore dei termini (es. <code>x/2 + 3 = 5</code>). Si dice <strong>frazionaria</strong> se l'incognita compare al denominatore di almeno una frazione algebrica (es. <code>2/(x-1) = 4</code>).
+                    Un'equazione si dice <strong>intera</strong> se l'incognita compare esclusivamente al numeratore dei termini (es. <code>x/2 + 3 = 5</code>). Si dice <strong>frazionaria</strong> se l'incognita compare al denominatore di almeno una frazione (es. <code>2/(x-1) = 4</code>).
                 </div>
             </div>
         </section>
@@ -303,17 +303,17 @@
         <section class="card" id="principi">
             <div class="card-header">04 — I Principi di Equivalenza</div>
             <div class="card-body">
-                <p>Per risolvere un'equazione dobbiamo trasformarla in equazioni via via più semplici (ma equivalenti, cioè con le stesse soluzioni) fino a isolare la <code>x</code>. Questo avviene tramite due regole matematiche pilastro:</p>
+                <p>Per risolvere un'equazione dobbiamo "trasformarla" in equazioni via via più semplici (ma equivalenti, cioè con lo stesso insieme di soluzioni) fino a isolare la <code>x</code>. Questo avviene tramite due regole matematiche pilastro:</p>
 
                 <div class="box example">
                     <strong>⚖️ Primo Principio di Equivalenza (Addizione e Sottrazione)</strong><br>
-                    Aggiungendo o sottraendo ai due membri di un'equazione uno stesso numero o una stessa espressione algebrica, si ottiene un'equazione equivalente.<br>
+                    Aggiungendo o sottraendo ai due membri di un'equazione uno stesso numero o una stessa espressione algebrica, definita per tutti i valori reali delle variabili che vi compaiono, si ottiene un'equazione equivalente a quella data.<br>
                     <em>Utilità:</em> Permette di spostare termini da un lato all'altro della bilancia algebrica.
                 </div>
 
                 <div class="box example">
                     <strong>⚖️ Secondo Principio di Equivalenza (Moltiplicazione e Divisione)</strong><br>
-                    Moltiplicando o dividendo entrambi i membri di un'equazione per uno stesso numero o espressione diversi da zero, si ottiene un'equazione equivalente.<br>
+                    Moltiplicando o dividendo entrambi i membri di un'equazione per uno stesso numero diverso da zero o per un'espressione algebrica, definita e non nulla per tutti i valori reali delle variabili che vi compaiono, si ottiene un'equazione equivalente a quella data.<br>
                     <em>Utilità:</em> Permette di eliminare i denominatori o di isolare la <code>x</code> quando ha un coefficiente diverso da 1 (es. dividere tutto per 3).
                 </div>
             </div>
@@ -350,7 +350,7 @@
         <section class="card" data-type="graph" id="laboratorio">
             <div class="card-header">06 — Laboratorio Algebrico Interattivo</div>
             <div class="card-body">
-                <p>Usa i selettori per impostare un'equazione nella forma generale <code>ax + b = c</code>. Osserva l'applicazione immediata e dinamica dei principi algebrici per l'isolamento dell'incognita.</p>
+                <p>Usa i selettori per impostare un'equazione nella forma generale <code>ax + b = c</code>. Osserva l'applicazione immediata e dinamica dei princìpi algebrici per l'isolamento dell'incognita.</p>
                 
                 <div class="lab-controls">
                     <div class="control-group">
@@ -372,7 +372,7 @@
                 <h3>Passaggi Risolutivi Automatici:</h3>
                 <div class="math-step"><span class="step-num">Step 1</span> <span id="labStep1">2x = 10 - 4</span> <span class="step-comment">Trasporto di b a destra cambiando segno</span></div>
                 <div class="math-step"><span class="step-num">Step 2</span> <span id="labStep2">2x = 6</span> <span class="step-comment">Calcolo aritmetico del secondo membro</span></div>
-                <div class="math-step"><span class="step-num">Step 3</span> <span id="labStep3">x = 6 / 2  ➔  x = 3</span> <span class="step-comment">Isolamento finale tramite divisione (2° principio)</span></div>
+                <div class="math-step"><span class="step-num">Step 3</span> <span id="labStep3">x = 6 / 2  ➔  x = 3</span> <span class="step-comment">Isolamento finale tramite eventuale divisione (2° principio)</span></div>
             </div>
         </section>
 
@@ -403,7 +403,7 @@ EQUAZIONE LINEARE (1° GRADO)
         <section class="card" data-type="exercise" id="esercizi">
             <div class="card-header">08 — Esercizi Guidati e Svolti</div>
             <div class="card-body">
-                <p>Esercitati con questi tre casi reali a difficoltà crescente. Fai clic sulla freccia per esaminare lo svolgimento analitico.</p>
+                <p>Esercitati con questi tre casi reali. Fai clic sulla freccia per esaminare lo svolgimento analitico.</p>
                 
                 <div class="exercise">
                     <h3>1. Livello Base: Risolvi l'equazione intera <code>5x - 3 = 2x + 6</code></h3>
@@ -419,13 +419,13 @@ EQUAZIONE LINEARE (1° GRADO)
                 </div>
 
                 <div class="exercise">
-                    <h3>2. Livello Intermedio: Risolvi l'equazione con frazioni <code>(x - 1)/2 + 1 = x/3</code></h3>
+                    <h3>2. Livello Base: Risolvi l'equazione con frazioni <code>(x - 1)/2 + 1 = x/3</code></h3>
                     <details>
                         <summary>💡 Svolgimento</summary>
                         <div>
                             <div class="math-step"><span class="step-num">1.</span> <span>Troviamo il minimo comune multiplo tra i denominatori (2 e 3): <code>mcm = 6</code></span></div>
                             <div class="math-step"><span class="step-num">2.</span> <span>Moltiplichiamo ogni termine per 6 (2° principio) per eliminare le frazioni: <code>3(x - 1) + 6 = 2x</code></span></div>
-                            <div class="math-step"><span class="step-num">3.</span> <span>Sviluppiamo le parentesi: <code>3x - 3 + 6 = 2x</code> &rarr; <code>3x + 3 = 2x</code></span></div>
+                            <div class="math-step"><span class="step-num">3.</span> <span>Eseguiamo le operazioni: <code>3x - 3 + 6 = 2x</code> &rarr; <code>3x + 3 = 2x</code></span></div>
                             <div class="math-step"><span class="step-num">4.</span> <span>Applichiamo la regola del trasporto: <code>3x - 2x = -3</code></span></div>
                             <strong>✅ Risultato: <code>x = -3</code> (Determinata)</strong>
                         </div>
@@ -433,13 +433,13 @@ EQUAZIONE LINEARE (1° GRADO)
                 </div>
 
                 <div class="exercise">
-                    <h3>3. Livello Avanzato: Discuti l'equazione <code>2(x - 2) + 4 = 2x</code></h3>
+                    <h3>3. Livello Base: Discuti l'equazione <code>2(x - 2) + 4 = 2x</code></h3>
                     <details>
                         <summary>💡 Svolgimento</summary>
                         <div>
-                            <div class="math-step"><span class="step-num">1.</span> <span>Svolgiamo la moltiplicazione distributiva a sinistra: <code>2x - 4 + 4 = 2x</code></span></div>
+                            <div class="math-step"><span class="step-num">1.</span> <span>Eseguiamo la moltiplicazione: <code>2x - 4 + 4 = 2x</code></span></div>
                             <div class="math-step"><span class="step-num">2.</span> <span>Semplifichiamo i termini noti opposti (<code>-4 + 4 = 0</code>): <code>2x = 2x</code></span></div>
-                            <div class="math-step"><span class="step-num">3.</span> <span>Spostiamo la <code>x</code> a sinistra invertendo il segno: <code>2x - 2x = 0</code></span></div>
+                            <div class="math-step"><span class="step-num">3.</span> <span>Applichiamo la regola del <code>trasporto</code>: <code>2x - 2x = 0</code></span></div>
                             <div class="math-step"><span class="step-num">4.</span> <span>Riduciamo i coefficienti: <code>0x = 0</code></span></div>
                             <strong>✅ Risultato: L'equazione è <code>Indeterminata</code> (Infinite Soluzioni)</strong>
                         </div>
@@ -500,102 +500,108 @@ EQUAZIONE LINEARE (1° GRADO)
     </button>
 
     <script>
-var _0x8ba4=['CiAgICAgICAgY29uc3QgcHJvZ3Jlc3NCYXIgPSBkb2N1bWVudC5nZXRFbGVtZW50'+
-'QnlJZCgncHJvZ3Jlc3NCYXInKTsKICAgICAgICBjb25zdCBuYXZMaW5rcyA9IGRv'+
-'Y3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJ25hdiBhJyk7CiAgICAgICAgY29uc3Qg'+
-'c2VjdGlvbnMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCdzZWN0aW9uJyk7'+
-'CiAgICAgICAgCiAgICAgICAgLy8gU2luY3Jvbml6emF6aW9uZSBkZWxsYSBiYXJy'+
-'YSBkaSBhdmFuemFtZW50byBlIGRlaSBsaW5rIGF0dGl2aSBkdXJhbnRlIGxvIHNj'+
-'b3JyaW1lbnRvCiAgICAgICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ3Njcm9s'+
-'bCcsICgpID0+IHsKICAgICAgICAgIGNvbnN0IGggPSBkb2N1bWVudC5kb2N1bWVu'+
-'dEVsZW1lbnQuc2Nyb2xsSGVpZ2h0IC0gd2luZG93LmlubmVySGVpZ2h0OwogICAg'+
-'ICAgICAgcHJvZ3Jlc3NCYXIuc3R5bGUud2lkdGggPSBgJHsod2luZG93LnNjcm9s'+
-'bFkgLyBoKSAqIDEwMH0lYDsKICAgICAgICAgIGxldCBjdXJyZW50ID0gJyc7CiAg'+
-'ICAgICAgICBzZWN0aW9ucy5mb3JFYWNoKHNlYyA9PiB7IGlmICh3aW5kb3cuc2Ny'+
-'b2xsWSA+PSBzZWMub2Zmc2V0VG9wIC0gMTAwKSBjdXJyZW50ID0gc2VjLmlkOyB9'+
-'KTsKICAgICAgICAgIG5hdkxpbmtzLmZvckVhY2gobGluayA9PiB7IGxpbmsuY2xh'+
-'c3NMaXN0LnRvZ2dsZSgnYWN0aXZlJywgbGluay5nZXRBdHRyaWJ1dGUoJ2hyZWYn'+
-'KSA9PT0gJyMnICsgY3VycmVudCk7IH0pOwogICAgICAgIH0pOwoKICAgICAgICAv'+
-'LyBBbmltYXppb25lIGFkIGVudHJhdGEgcHJvZ3Jlc3NpdmEgKEZhZGUtSW4tVXAp'+
-'IGFsbCdhcHBhcmlyZSBkZWxsZSBzY2hlZGUKICAgICAgICBjb25zdCBvYnNlcnZl'+
-'ciA9IG5ldyBJbnRlcnNlY3Rpb25PYnNlcnZlcigoZW50cmllcykgPT4gewogICAg'+
-'ICAgICAgZW50cmllcy5mb3JFYWNoKGVudHJ5ID0+IHsgaWYgKGVudHJ5LmlzSW50'+
-'ZXJzZWN0aW5nKSB7IGVudHJ5LnRhcmdldC5jbGFzc0xpc3QuYWRkKCd2aXNpYmxl'+
-'Jyk7IG9ic2VydmVyLnVub2JzZXJ2ZShlbnRyeS50YXJnZXQpOyB9IH0pOwogICAg'+
-'ICAgIH0sIHsgdGhyZXNob2xkOiAwLjEgfSk7CiAgICAgICAgZG9jdW1lbnQucXVl'+
-'cnlTZWxlY3RvckFsbCgnLmNhcmQnKS5mb3JFYWNoKGNhcmQgPT4gb2JzZXJ2ZXIu'+
-'b2JzZXJ2ZShjYXJkKSk7CgogICAgICAgIC8vIEdlc3Rpb25lIFNjaGVybW8gSW50'+
-'ZXJvIChOYXRpdm8pCiAgICAgICAgZnVuY3Rpb24gdG9nZ2xlRnVsbHNjcmVlbigp'+
-'IHsKICAgICAgICAgIGlmICghZG9jdW1lbnQuZnVsbHNjcmVlbkVsZW1lbnQpIHsK'+
-'ICAgICAgICAgICAgZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50LnJlcXVlc3RGdWxs'+
-'c2NyZWVuKCkuY2F0Y2goZXJyID0+IGNvbnNvbGUud2FybihgRXJyb3JlIEZ1bGxz'+
-'Y3JlZW46ICR7ZXJyfWApKTsKICAgICAgICAgIH0gZWxzZSB7CiAgICAgICAgICAg'+
-'IGRvY3VtZW50LmV4aXRGdWxsc2NyZWVuKCk7CiAgICAgICAgICB9CiAgICAgICAg'+
-'fQogICAgICAgIGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ2Z1bGxzY3JlZW5j'+
-'aGFuZ2UnLCAoKSA9PiB7CiAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJ'+
-'ZCgnZnNCdG4nKS50ZXh0Q29udGVudCA9IGRvY3VtZW50LmZ1bGxzY3JlZW5FbGVt'+
-'ZW50ID8gJ/CflqXvuI8gRXNjaSBTY2hlcm1vIEludGVybycgOiAn8J+Wpe+4jyBT'+
-'Y2hlcm1vIEludGVybyc7CiAgICAgICAgfSk7CgogICAgICAgIC8vIFNjcmlwdCBk'+
-'ZWwgU2ltdWxhdG9yZSBJbnRlcmF0dGl2bwogICAgICAgIGZ1bmN0aW9uIHVwZGF0'+
-'ZUxhYigpIHsKICAgICAgICAgICAgY29uc3QgYSA9IHBhcnNlSW50KGRvY3VtZW50'+
-'LmdldEVsZW1lbnRCeUlkKCdpbnB1dEEnKS52YWx1ZSk7CiAgICAgICAgICAgIGNv'+
-'bnN0IGIgPSBwYXJzZUludChkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnaW5wdXRC'+
-'JykudmFsdWUpOwogICAgICAgICAgICBjb25zdCBjID0gcGFyc2VJbnQoZG9jdW1l'+
-'bnQuZ2V0RWxlbWVudEJ5SWQoJ2lucHV0QycpLnZhbHVlKTsKCiAgICAgICAgICAg'+
-'IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd2YWxBJykudGV4dENvbnRlbnQgPSBh'+
-'OwogICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgndmFsQicpLnRl'+
-'eHRDb250ZW50ID0gYjsKICAgICAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5'+
-'SWQoJ3ZhbEMnKS50ZXh0Q29udGVudCA9IGM7CgogICAgICAgICAgICBsZXQgc2ln'+
-'bkIgPSBiID49IDAgPyBgKyAke2J9YCA6IGAtICR7TWF0aC5hYnMoYil9YDsKICAg'+
-'ICAgICAgICAgaWYgKGIgPT09IDApIHNpZ25CID0gJyc7CiAgICAgICAgICAgIAog'+
-'ICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbGFiRXF1YXppb25l'+
-'JykudGV4dENvbnRlbnQgPSBgJHthfXggJHtzaWduQn0gPSAke2N9YDsKCiAgICAg'+
-'ICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdsYWJTdGVwMScpLnRleHRD'+
-'b250ZW50ID0gYCR7YX14ID0gJHtjfSAke2IgPj0gMCA/ICctJyA6ICcrJ30gJHtN'+
-'YXRoLmFicyhiKX1gOwogICAgICAgICAgICAKICAgICAgICAgICAgY29uc3QgY29t'+
-'cHV0ZWRSaWdodCA9IGMgLSBiOwogICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVt'+
-'ZW50QnlJZCgnbGFiU3RlcDInKS50ZXh0Q29udGVudCA9IGAke2F9eCA9ICR7Y29t'+
-'cHV0ZWRSaWdodH1gOwoKICAgICAgICAgICAgaWYgKGEgPT09IDApIHsKICAgICAg'+
-'ICAgICAgICAgIGlmIChjb21wdXRlZFJpZ2h0ID09PSAwKSB7CiAgICAgICAgICAg'+
-'ICAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2xhYlN0ZXAzJykuaW5u'+
-'ZXJIVE1MID0gYDB4ID0gMCAg4p6UICA8c3BhbiBzdHlsZT0iY29sb3I6dmFyKC0t'+
-'d2FybmluZyk7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij5FcXVhemlvbmUgSW5kZXRlcm1p'+
-'bmF0YSAoSW5maW5pdGUgU29sdXppb25pKTwvc3Bhbj5gOwogICAgICAgICAgICAg'+
-'ICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVt'+
-'ZW50QnlJZCgnbGFiU3RlcDMnKS5pbm5lckhUTUwgPSBgMHggPSAke2NvbXB1dGVk'+
-'UmlnaHR9ICDinpQgIDxzcGFuIHN0eWxlPSJjb2xvcjp2YXIoLS1kYW5nZXIpOyBm'+
-'b250LXdlaWdodDpib2xkOyI+RXF1YXppb25lIEltcG9zc2liaWxlIChOZXNzdW5h'+
-'IFNvbHV6aW9uZSk8L3NwYW4+YDsKICAgICAgICAgICAgICAgIH0KICAgICAgICAg'+
-'ICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgIGNvbnN0IHNvbHV0aW9uID0gKGNv'+
-'bXB1dGVkUmlnaHQgLyBhKS50b0ZpeGVkKDIpLnJlcGxhY2UoJy4wMCcsICcnKTsK'+
-'ICAgICAgICAgICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdsYWJTdGVw'+
-'MycpLmlubmVySFRNTCA9IGB4ID0gJHtjb21wdXRlZFJpZ2h0fSAvICR7YX0gIOKe'+
-'lCAgPHNwYW4gc3R5bGU9ImNvbG9yOnZhcigtLXN1Y2Nlc3MpOyBmb250LXdlaWdo'+
-'dDpib2xkOyI+eCA9ICR7c29sdXRpb259PC9zcGFuPmA7CiAgICAgICAgICAgIH0K'+
-'ICAgICAgICB9CgogICAgICAgIC8vIFNjcmlwdCBkaSBWYWx1dGF6aW9uZSBkZWxs'+
-'ZSBSaXNwb3N0ZSBkZWwgUXVpegogICAgICAgIGZ1bmN0aW9uIGNoZWNrUXVpekFu'+
-'c3dlcihxdWVzdGlvbklkLCBvcHRpb25JZHgsIGlzQ29ycmVjdCkgewogICAgICAg'+
-'ICAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChg'+
-'cSR7cXVlc3Rpb25JZH1gKTsKICAgICAgICAgICAgY29uc3QgZmVlZGJhY2sgPSBk'+
-'b2N1bWVudC5nZXRFbGVtZW50QnlJZChgZmVlZGJhY2stcSR7cXVlc3Rpb25JZH1g'+
-'KTsKICAgICAgICAgICAgY29uc3Qgb3B0aW9ucyA9IGNvbnRhaW5lci5xdWVyeVNl'+
-'bGVjdG9yQWxsKCcucXVpei1vcHRpb24nKTsKCiAgICAgICAgICAgIG9wdGlvbnMu'+
-'Zm9yRWFjaCgoYnRuLCBpZHgpID0+IHsKICAgICAgICAgICAgICAgIGJ0bi5kaXNh'+
-'YmxlZCA9IHRydWU7CiAgICAgICAgICAgICAgICBpZiAoaWR4ID09PSBvcHRpb25J'+
-'ZHgpIHsKICAgICAgICAgICAgICAgICAgICBidG4uY2xhc3NMaXN0LmFkZChpc0Nv'+
-'cnJlY3QgPyAnY29ycmVjdCcgOiAnd3JvbmcnKTsKICAgICAgICAgICAgICAgIH0K'+
-'ICAgICAgICAgICAgfSk7CgogICAgICAgICAgICBmZWVkYmFjay5zdHlsZS5kaXNw'+
-'bGF5ID0gJ2Jsb2NrJzsKICAgICAgICAgICAgaWYgKGlzQ29ycmVjdCkgewogICAg'+
-'ICAgICAgICAgICAgZmVlZGJhY2suaW5uZXJIVE1MID0gYDxzcGFuIHN0eWxlPSJj'+
-'b2xvcjogdmFyKC0tc3VjY2Vzcyk7Ij7wn46JIFJpc3Bvc3RhIEVzYXR0YSEgT3R0'+
-'aW1vIGxhdm9yby48L3NwYW4+YDsKICAgICAgICAgICAgfSBlbHNlIHsKICAgICAg'+
-'ICAgICAgICAgIGZlZWRiYWNrLmlubmVySFRNTCA9IGA8c3BhbiBzdHlsZT0iY29s'+
-'b3I6IHZhcigtLWRhbmdlcik7Ij7inYwgUmlzcG9zdGEgTm9uIENvcnJldHRhLiBS'+
-'aXByb3ZhIGFuYWxpenphbmRvIGxhIHNwaWVnYXppb25lIHNvdHRvc3RhbnRlLjwv'+
-'c3Bhbj5gOwogICAgICAgICAgICB9CiAgICAgICAgfQoKICAgICAgICAvLyBJbml6'+
-'aWFsaXp6YXppb25lIGRlbCBsYWJvcmF0b3JpbyBhbGwnYXZ2aW8gZGVsbGEgcGFn'+
-'aW5hCiAgICAgICAgd2luZG93Lm9ubG9hZCA9ICgpID0+IHsKICAgICAgICAgICAg'+
-'dXBkYXRlTGFiKCk7CiAgICAgICAgfTsKICAgIA=='].join('');var _0xdbc4=Uint8Array.from(atob(_0x8ba4),function(c){return c.charCodeAt(0);});eval(new TextDecoder('utf-8').decode(_0xdbc4));
+var _0x8ba4=['CiAgICAgICAgY29uc3QgcHJvZ3Jlc3NCYXIgPSBkb2N1bWVudC5nZXRFbGVt'+
+'ZW50QnlJZCgncHJvZ3Jlc3NCYXInKTsKICAgICAgICBjb25zdCBuYXZMaW5r'+
+'cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJ25hdiBhJyk7CiAgICAg'+
+'ICAgY29uc3Qgc2VjdGlvbnMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxs'+
+'KCdzZWN0aW9uJyk7CiAgICAgICAgCiAgICAgICAgLy8gU2luY3Jvbml6emF6'+
+'aW9uZSBkZWxsYSBiYXJyYSBkaSBhdmFuemFtZW50byBlIGRlaSBsaW5rIGF0'+
+'dGl2aSBkdXJhbnRlIGxvIHNjb3JyaW1lbnRvCiAgICAgICAgd2luZG93LmFk'+
+'ZEV2ZW50TGlzdGVuZXIoJ3Njcm9sbCcsICgpID0+IHsKICAgICAgICAgIGNv'+
+'bnN0IGggPSBkb2N1bWVudC5kb2N1bWVudEVsZW1lbnQuc2Nyb2xsSGVpZ2h0'+
+'IC0gd2luZG93LmlubmVySGVpZ2h0OwogICAgICAgICAgcHJvZ3Jlc3NCYXIu'+
+'c3R5bGUud2lkdGggPSBgJHsod2luZG93LnNjcm9sbFkgLyBoKSAqIDEwMH0l'+
+'YDsKICAgICAgICAgIGxldCBjdXJyZW50ID0gJyc7CiAgICAgICAgICBzZWN0'+
+'aW9ucy5mb3JFYWNoKHNlYyA9PiB7IGlmICh3aW5kb3cuc2Nyb2xsWSA+PSBz'+
+'ZWMub2Zmc2V0VG9wIC0gMTAwKSBjdXJyZW50ID0gc2VjLmlkOyB9KTsKICAg'+
+'ICAgICAgIG5hdkxpbmtzLmZvckVhY2gobGluayA9PiB7IGxpbmsuY2xhc3NM'+
+'aXN0LnRvZ2dsZSgnYWN0aXZlJywgbGluay5nZXRBdHRyaWJ1dGUoJ2hyZWYn'+
+'KSA9PT0gJyMnICsgY3VycmVudCk7IH0pOwogICAgICAgIH0pOwoKICAgICAg'+
+'ICAvLyBBbmltYXppb25lIGFkIGVudHJhdGEgcHJvZ3Jlc3NpdmEgKEZhZGUt'+
+'SW4tVXApIGFsbCdhcHBhcmlyZSBkZWxsZSBzY2hlZGUKICAgICAgICBjb25z'+
+'dCBvYnNlcnZlciA9IG5ldyBJbnRlcnNlY3Rpb25PYnNlcnZlcigoZW50cmll'+
+'cykgPT4gewogICAgICAgICAgZW50cmllcy5mb3JFYWNoKGVudHJ5ID0+IHsg'+
+'aWYgKGVudHJ5LmlzSW50ZXJzZWN0aW5nKSB7IGVudHJ5LnRhcmdldC5jbGFz'+
+'c0xpc3QuYWRkKCd2aXNpYmxlJyk7IG9ic2VydmVyLnVub2JzZXJ2ZShlbnRy'+
+'eS50YXJnZXQpOyB9IH0pOwogICAgICAgIH0sIHsgdGhyZXNob2xkOiAwLjEg'+
+'fSk7CiAgICAgICAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnLmNhcmQn'+
+'KS5mb3JFYWNoKGNhcmQgPT4gb2JzZXJ2ZXIub2JzZXJ2ZShjYXJkKSk7Cgog'+
+'ICAgICAgIC8vIEdlc3Rpb25lIFNjaGVybW8gSW50ZXJvIChOYXRpdm8pCiAg'+
+'ICAgICAgZnVuY3Rpb24gdG9nZ2xlRnVsbHNjcmVlbigpIHsKICAgICAgICAg'+
+'IGlmICghZG9jdW1lbnQuZnVsbHNjcmVlbkVsZW1lbnQpIHsKICAgICAgICAg'+
+'ICAgZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50LnJlcXVlc3RGdWxsc2NyZWVu'+
+'KCkuY2F0Y2goZXJyID0+IGNvbnNvbGUud2FybihgRXJyb3JlIEZ1bGxzY3Jl'+
+'ZW46ICR7ZXJyfWApKTsKICAgICAgICAgIH0gZWxzZSB7CiAgICAgICAgICAg'+
+'IGRvY3VtZW50LmV4aXRGdWxsc2NyZWVuKCk7CiAgICAgICAgICB9CiAgICAg'+
+'ICAgfQogICAgICAgIGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ2Z1bGxz'+
+'Y3JlZW5jaGFuZ2UnLCAoKSA9PiB7CiAgICAgICAgICBkb2N1bWVudC5nZXRF'+
+'bGVtZW50QnlJZCgnZnNCdG4nKS50ZXh0Q29udGVudCA9IGRvY3VtZW50LmZ1'+
+'bGxzY3JlZW5FbGVtZW50ID8gJ/CflqXvuI8gRXNjaSBTY2hlcm1vIEludGVy'+
+'bycgOiAn8J+Wpe+4jyBTY2hlcm1vIEludGVybyc7CiAgICAgICAgfSk7Cgog'+
+'ICAgICAgIC8vIFNjcmlwdCBkZWwgU2ltdWxhdG9yZSBJbnRlcmF0dGl2bwog'+
+'ICAgICAgIGZ1bmN0aW9uIHVwZGF0ZUxhYigpIHsKICAgICAgICAgICAgY29u'+
+'c3QgYSA9IHBhcnNlSW50KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdpbnB1'+
+'dEEnKS52YWx1ZSk7CiAgICAgICAgICAgIGNvbnN0IGIgPSBwYXJzZUludChk'+
+'b2N1bWVudC5nZXRFbGVtZW50QnlJZCgnaW5wdXRCJykudmFsdWUpOwogICAg'+
+'ICAgICAgICBjb25zdCBjID0gcGFyc2VJbnQoZG9jdW1lbnQuZ2V0RWxlbWVu'+
+'dEJ5SWQoJ2lucHV0QycpLnZhbHVlKTsKCiAgICAgICAgICAgIGRvY3VtZW50'+
+'LmdldEVsZW1lbnRCeUlkKCd2YWxBJykudGV4dENvbnRlbnQgPSBhOwogICAg'+
+'ICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgndmFsQicpLnRleHRD'+
+'b250ZW50ID0gYjsKICAgICAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5'+
+'SWQoJ3ZhbEMnKS50ZXh0Q29udGVudCA9IGM7CgogICAgICAgICAgICBsZXQg'+
+'c2lnbkIgPSBiID49IDAgPyBgKyAke2J9YCA6IGAtICR7TWF0aC5hYnMoYil9'+
+'YDsKICAgICAgICAgICAgaWYgKGIgPT09IDApIHNpZ25CID0gJyc7CiAgICAg'+
+'ICAgICAgIAogICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgn'+
+'bGFiRXF1YXppb25lJykudGV4dENvbnRlbnQgPSBgJHthfXggJHtzaWduQn0g'+
+'PSAke2N9YDsKCiAgICAgICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlk'+
+'KCdsYWJTdGVwMScpLnRleHRDb250ZW50ID0gYCR7YX14ID0gJHtjfSAke2Ig'+
+'Pj0gMCA/ICctJyA6ICcrJ30gJHtNYXRoLmFicyhiKX1gOwogICAgICAgICAg'+
+'ICAKICAgICAgICAgICAgY29uc3QgY29tcHV0ZWRSaWdodCA9IGMgLSBiOwog'+
+'ICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbGFiU3RlcDIn'+
+'KS50ZXh0Q29udGVudCA9IGAke2F9eCA9ICR7Y29tcHV0ZWRSaWdodH1gOwoK'+
+'ICAgICAgICAgICAgaWYgKGEgPT09IDApIHsKICAgICAgICAgICAgICAgIGlm'+
+'IChjb21wdXRlZFJpZ2h0ID09PSAwKSB7CiAgICAgICAgICAgICAgICAgICAg'+
+'ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2xhYlN0ZXAzJykuaW5uZXJIVE1M'+
+'ID0gYDB4ID0gMCAg4p6UICA8c3BhbiBzdHlsZT0iY29sb3I6dmFyKC0td2Fy'+
+'bmluZyk7IGZvbnQtd2VpZ2h0OmJvbGQ7Ij5FcXVhemlvbmUgSW5kZXRlcm1p'+
+'bmF0YSAoSW5maW5pdGUgU29sdXppb25pKTwvc3Bhbj5gOwogICAgICAgICAg'+
+'ICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgICAgICBkb2N1bWVudC5n'+
+'ZXRFbGVtZW50QnlJZCgnbGFiU3RlcDMnKS5pbm5lckhUTUwgPSBgMHggPSAk'+
+'e2NvbXB1dGVkUmlnaHR9ICDinpQgIDxzcGFuIHN0eWxlPSJjb2xvcjp2YXIo'+
+'LS1kYW5nZXIpOyBmb250LXdlaWdodDpib2xkOyI+RXF1YXppb25lIEltcG9z'+
+'c2liaWxlIChOZXNzdW5hIFNvbHV6aW9uZSk8L3NwYW4+YDsKICAgICAgICAg'+
+'ICAgICAgIH0KICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAg'+
+'IGNvbnN0IHNvbHV0aW9uID0gKGNvbXB1dGVkUmlnaHQgLyBhKS50b0ZpeGVk'+
+'KDIpLnJlcGxhY2UoJy4wMCcsICcnKTsKICAgICAgICAgICAgICAgIGRvY3Vt'+
+'ZW50LmdldEVsZW1lbnRCeUlkKCdsYWJTdGVwMycpLmlubmVySFRNTCA9IGB4'+
+'ID0gJHtjb21wdXRlZFJpZ2h0fSAvICR7YX0gIOKelCAgPHNwYW4gc3R5bGU9'+
+'ImNvbG9yOnZhcigtLXN1Y2Nlc3MpOyBmb250LXdlaWdodDpib2xkOyI+eCA9'+
+'ICR7c29sdXRpb259PC9zcGFuPmA7CiAgICAgICAgICAgIH0KICAgICAgICB9'+
+'CgogICAgICAgIC8vIFNjcmlwdCBkaSBWYWx1dGF6aW9uZSBkZWxsZSBSaXNw'+
+'b3N0ZSBkZWwgUXVpegogICAgICAgIGZ1bmN0aW9uIGNoZWNrUXVpekFuc3dl'+
+'cihxdWVzdGlvbklkLCBvcHRpb25JZHgsIGlzQ29ycmVjdCkgewogICAgICAg'+
+'ICAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJ'+
+'ZChgcSR7cXVlc3Rpb25JZH1gKTsKICAgICAgICAgICAgY29uc3QgZmVlZGJh'+
+'Y2sgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChgZmVlZGJhY2stcSR7cXVl'+
+'c3Rpb25JZH1gKTsKICAgICAgICAgICAgY29uc3Qgb3B0aW9ucyA9IGNvbnRh'+
+'aW5lci5xdWVyeVNlbGVjdG9yQWxsKCcucXVpei1vcHRpb24nKTsKCiAgICAg'+
+'ICAgICAgIG9wdGlvbnMuZm9yRWFjaCgoYnRuLCBpZHgpID0+IHsKICAgICAg'+
+'ICAgICAgICAgIGJ0bi5kaXNhYmxlZCA9IHRydWU7CiAgICAgICAgICAgICAg'+
+'ICBpZiAoaWR4ID09PSBvcHRpb25JZHgpIHsKICAgICAgICAgICAgICAgICAg'+
+'ICBidG4uY2xhc3NMaXN0LmFkZChpc0NvcnJlY3QgPyAnY29ycmVjdCcgOiAn'+
+'d3JvbmcnKTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfSk7Cgog'+
+'ICAgICAgICAgICBmZWVkYmFjay5zdHlsZS5kaXNwbGF5ID0gJ2Jsb2NrJzsK'+
+'ICAgICAgICAgICAgaWYgKGlzQ29ycmVjdCkgewogICAgICAgICAgICAgICAg'+
+'ZmVlZGJhY2suaW5uZXJIVE1MID0gYDxzcGFuIHN0eWxlPSJjb2xvcjogdmFy'+
+'KC0tc3VjY2Vzcyk7Ij7wn46JIFJpc3Bvc3RhIEVzYXR0YSEgT3R0aW1vIGxh'+
+'dm9yby48L3NwYW4+YDsKICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAg'+
+'ICAgICAgIGZlZWRiYWNrLmlubmVySFRNTCA9IGA8c3BhbiBzdHlsZT0iY29s'+
+'b3I6IHZhcigtLWRhbmdlcik7Ij7inYwgUmlzcG9zdGEgTm9uIENvcnJldHRh'+
+'LiBSaXByb3ZhIGFuYWxpenphbmRvIGxhIHNwaWVnYXppb25lIHNvdHRvc3Rh'+
+'bnRlLjwvc3Bhbj5gOwogICAgICAgICAgICB9CiAgICAgICAgfQoKICAgICAg'+
+'ICAvLyBJbml6aWFsaXp6YXppb25lIGRlbCBsYWJvcmF0b3JpbyBhbGwnYXZ2'+
+'aW8gZGVsbGEgcGFnaW5hCiAgICAgICAgd2luZG93Lm9ubG9hZCA9ICgpID0+'+
+'IHsKICAgICAgICAgICAgdXBkYXRlTGFiKCk7CiAgICAgICAgfTsKICAgIAo='].join('');var _0xdbc4=Uint8Array.from(atob(_0x8ba4),function(c){return c.charCodeAt(0);});eval(new TextDecoder('utf-8').decode(_0xdbc4));
 </script>
 </body>
 </html>
