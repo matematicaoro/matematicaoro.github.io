@@ -6,8 +6,7 @@
   <title>MatematicaViva</title>
   <link rel="manifest" href="manifest-site.json">
   <link rel="apple-touch-icon" href="MV_logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
+<style>
     :root {
       --blu:       #1a3a5c;
       --blu-mid:   #2d5f8a;
@@ -30,7 +29,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--testo);
       line-height: 1.6;
@@ -55,7 +54,7 @@
       gap: 20px;
     }
     .logo {
-      font-family: 'Lora', serif;
+      font-family: Georgia, 'Times New Roman', serif;
       font-size: 1.3rem;
       font-weight: 600;
       letter-spacing: .02em;
@@ -86,22 +85,6 @@
     }
     nav a.nav-featured:hover { background: var(--evidenza-dark); }
 
-    /* ── PULSANTE CERCA (icona separata, sempre visibile) ── */
-    .btn-search {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--accento);
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.05rem;
-      transition: background .18s, transform .15s;
-    }
-    .btn-search:hover { background: #b8711f; transform: scale(1.06); }
 
     /* ── HERO ── */
     .hero {
@@ -111,7 +94,7 @@
       text-align: center;
     }
     .hero h1 {
-      font-family: 'Lora', serif;
+      font-family: Georgia, 'Times New Roman', serif;
       font-size: clamp(2rem, 5vw, 2.9rem);
       color: var(--blu);
       font-weight: 600;
@@ -152,10 +135,135 @@
       flex-shrink: 0;
     }
     .section-header h2 {
-      font-family: 'Lora', serif;
+      font-family: Georgia, 'Times New Roman', serif;
       font-size: 1.6rem;
       color: var(--blu);
       font-weight: 600;
+    }
+
+
+    /* ── FUMETTI: sezione principale ── */
+    .section-comics {
+      background: linear-gradient(160deg, #f7f1ed 0%, #fdfbf9 100%);
+      border: 1px solid #dfd0c7;
+      border-radius: 18px;
+      padding: 32px 28px 36px;
+      box-shadow: 0 6px 26px rgba(120,88,70,0.10);
+      position: relative;
+    }
+    .section-comics .featured-tag {
+      background: #a8755b;
+    }
+    .section-comics .section-header {
+      border-bottom: 2px solid #dfd0c7;
+    }
+    .section-comics .section-icon {
+      background: #a8755b;
+      color: #fff;
+      box-shadow: 0 3px 10px rgba(120,88,70,0.18);
+    }
+    .section-comics .section-header h2 {
+      color: #725143;
+    }
+    .section-comics details {
+      border-color: #dfd0c7;
+    }
+    .section-comics summary {
+      color: #725143;
+    }
+    .section-comics summary:hover {
+      background: #f7f1ed;
+    }
+    .section-comics summary::after {
+      color: #a8755b;
+    }
+    .section-comics .badge {
+      background: #f3e9e3;
+      color: #725143;
+    }
+    .fumetti-empty {
+      padding: 14px 20px 18px;
+      color: var(--testo-soft);
+      font-size: .9rem;
+      font-style: italic;
+    }
+
+
+    .fumetti-intro {
+      color: var(--testo-soft);
+      font-size: .96rem;
+      margin: -4px 2px 22px;
+      max-width: 760px;
+    }
+
+    .collane-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .collana-card {
+      background: rgba(255,255,255,.82);
+      border: 1px solid #dfd0c7;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(80,60,50,.06);
+    }
+
+    .collana-card h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: #725143;
+      font-size: 1.22rem;
+      margin: 3px 0 7px;
+    }
+
+    .collana-card p {
+      color: var(--testo-soft);
+      font-size: .9rem;
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .collana-kicker {
+      color: #8d6b5a;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      font-size: .68rem;
+      font-weight: 700;
+    }
+
+    .collana-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .collana-meta span {
+      background: #f3e9e3;
+      color: #725143;
+      border-radius: 20px;
+      padding: 3px 9px;
+      font-size: .72rem;
+      font-weight: 600;
+    }
+
+    .collana-soon {
+      display: inline-block;
+      color: #8d6b5a;
+      font-size: .78rem;
+      font-weight: 600;
+    }
+
+    .collana-placeholder {
+      grid-column: 1 / -1;
+      background: rgba(255,255,255,.48);
+      border-style: dashed;
+    }
+
+    @media (max-width: 700px) {
+      .collane-grid { grid-template-columns: 1fr; }
+      .collana-placeholder { grid-column: auto; }
     }
 
     /* ── SEZIONE IN EVIDENZA (Lezioni) ── */
@@ -333,7 +441,7 @@
       align-items: center;
     }
     .footer-logo {
-      font-family: 'Lora', serif;
+      font-family: Georgia, 'Times New Roman', serif;
       font-size: 1.1rem;
       color: var(--blu);
       font-weight: 600;
@@ -375,8 +483,6 @@
       }
       nav::-webkit-scrollbar { display: none; }
       nav a { flex-shrink: 0; font-size: .8rem; padding: 6px 10px; }
-
-      .btn-search { width: 34px; height: 34px; font-size: .95rem; }
 
       .hero { padding: 32px 20px 28px; }
       .hero h1 { font-size: clamp(1.7rem, 8vw, 2.2rem); }
@@ -421,12 +527,12 @@
   <div class="header-inner">
     <a class="logo" href="#">Matematica<span>Viva</span></a>
     <nav>
-      <a class="nav-featured" href="#lezioni">💡 Lezioni</a>
+      <a class="nav-featured" href="#fumetti">📖 Fumetti</a>
+      <a href="#lezioni">💡 Lezioni</a>
       <a href="#teoria">Teoria</a>
       <a href="#esercizi">Esercizi</a>
       <a href="#schemi">Schemi</a>
     </nav>
-    <a class="btn-search" href="matematicaviva-app.html" title="Cerca" aria-label="Cerca">🔍</a>
   </div>
 </header>
 
@@ -437,6 +543,52 @@
 </div>
 
 <main>
+
+
+  <!-- FUMETTI (sezione principale) -->
+  <section id="fumetti" class="section-comics">
+    <span class="featured-tag">✨ Impara con le storie</span>
+    <div class="section-header">
+      <div class="section-icon">📖</div>
+      <h2>Fumetti didattici</h2>
+    </div>
+
+    <p class="fumetti-intro">
+      Storie illustrate in cui matematica, emozioni e relazioni accompagnano l'apprendimento.
+    </p>
+
+    <div class="collane-grid">
+      <article class="collana-card">
+        <div class="collana-kicker">Collana</div>
+        <h3>Chiara e Luca</h3>
+        <p>Matematica, scuola, amicizia e vita quotidiana.</p>
+        <div class="collana-meta">
+          <span>Livelli 1–5</span>
+          <span>Argomenti</span>
+          <span>💛 Storie di amicizia</span>
+        </div>
+        <span class="collana-soon">In arrivo</span>
+      </article>
+
+      <article class="collana-card">
+        <div class="collana-kicker">Collana</div>
+        <h3>Misteri da risolvere</h3>
+        <p>Indagini, logica e matematica si incontrano in storie da decifrare.</p>
+        <div class="collana-meta">
+          <span>Livelli</span>
+          <span>Logica e matematica</span>
+        </div>
+        <span class="collana-soon">In arrivo</span>
+      </article>
+
+      <article class="collana-card collana-placeholder">
+        <div class="collana-kicker">Nuove storie</div>
+        <h3>Altre collane</h3>
+        <p>Uno spazio già predisposto per le prossime serie di MatematicaViva.</p>
+        <span class="collana-soon">Prossimamente</span>
+      </article>
+    </div>
+  </section>
 
   <!-- LEZIONI (in evidenza) -->
   <section id="lezioni" class="section-featured">
@@ -455,97 +607,90 @@
               <strong>Geometria: rette parallele e perpendicolari</strong>
               <span>Criterio generale di parallelismo e sue conseguenze.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe1/rette_parallele_perpendicolari.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/rette-parallele-perpendicolari/">▶ Inizia</a>
           </div>
           <div class="lezione-row">
             <div class="lezione-info">
               <strong>Geometria: esercizi rette</strong>
               <span>Esercizi rette parallele e perpendicolari</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe1/Scheda_Esercizi_Parallele_Perpendicolari_def.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/esercizi-parallele-perpendicolari/">▶ Inizia</a>
           </div>
           <div class="lezione-row">
             <div class="lezione-info">
               <strong>Geometria: quadrilateri</strong>
               <span>I quadrilateri e le loro proprietà.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe1/quadrilateri_def.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/quadrilateri/">▶ Inizia</a>
           </div>
           <div class="lezione-row">
             <div class="lezione-info">
               <strong>Algebra: i monomi</strong>
               <span>Monomi Lab: i mattoni fondamentali dell'algebra.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe1/monomi_def.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/monomi/">▶ Inizia</a>
           </div>
           <div class="lezione-row">
             <div class="lezione-info">
               <strong>Algebra: i polinomi</strong>
               <span>L'Architettura del Segno: Costruire Mondi con i polinomi.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe1/polinomi_def.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/polinomi/">▶ Inizia</a>
           </div>
           <div class="lezione-row">
             <div class="lezione-info">
               <strong>Algebra: scomposizione di polinomi</strong>
               <span>Introduzione alla scomposizione di polinomi.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe1/scomposizioni_polinomi_def.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/scomposizione-polinomi/">▶ Inizia</a>
           </div>
           <div class="lezione-row">
             <div class="lezione-info">
               <strong>Algebra: equazioni</strong>
               <span>L'Arte dell'Equilibrio: alla ricerca della X perduta.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe1/equazioni_lineari_def.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/equazioni-lineari/">▶ Inizia</a>
           </div>
            <div class="lezione-row">
             <div class="lezione-info">
               <strong>Algebra: frazioni algebriche</strong>
               <span>Frazioni algebriche: dal polinomio al quoziente</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe1/frazioni_algebriche_def.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/frazioni-algebriche/">▶ Inizia</a>
           </div>
         </div>
       </details>
 
       <details>
-        <summary>Classe seconda <span class="badge">5 lezioni</span></summary>
+        <summary>Classe seconda <span class="badge">4 lezioni</span></summary>
         <div class="file-list">
           <div class="lezione-row">
             <div class="lezione-info">
               <strong>Geometria: Coniche</strong>
               <span>Le sezioni piane di un cono, degeneri e non degeneri.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe2/coniche.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/coniche/">▶ Inizia</a>
           </div>
           <div class="lezione-row">
             <div class="lezione-info">
               <strong>Geometria: Talete e le similitudini</strong>
               <span>Il teorema di Talete e le similitudini fra triangoli.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe2/Talete_similitudini.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/talete-similitudine/">▶ Inizia</a>
           </div>
           <div class="lezione-row">
             <div class="lezione-info">
               <strong>Geometria: Sezione aurea</strong>
               <span>La matematica incontra la bellezza: la sezione aurea.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe2/Sezione_aurea_def.html">▶ Inizia</a>
-          </div>
-          <div class="lezione-row">
-            <div class="lezione-info">
-              <strong>Algebra: disequazioni di secondo grado</strong>
-              <span>Relazione fra le disequazioni di secondo grado e la parabola.</span>
-            </div>
-            <a class="btn-inizia" href="lezioni/classe2/Disequazioni_secondo_grado_def.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/sezione-aurea/">▶ Inizia</a>
           </div>
           <div class="lezione-row">
             <div class="lezione-info">
               <strong>Algebra: disequazioni di secondo grado e parabola</strong>
               <span>Risoluzione di disequazioni di secondo grado con metodo algebrico e metodo grafico.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe2/disequazioni_parabola_v.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/disequazioni-secondo-grado/">▶ Inizia</a>
           </div>
         </div>
       </details>
@@ -558,7 +703,7 @@
               <strong>Circonferenza</strong>
               <span>L'equazione della circonferenza nel piano cartesiano.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe3/circonferenza.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/circonferenza/">▶ Inizia</a>
           </div>
         </div>
       </details>
@@ -571,7 +716,7 @@
               <strong>Goniometria: introduzione</strong>
               <span>Goniometria: introduzione.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe4/goniometria_def.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/goniometria/">▶ Inizia</a>
           </div>
         </div>
       </details>
@@ -584,7 +729,7 @@
               <strong>Coordinate sferiche</strong>
               <span>Coordinate cartesiane e coordinate polari sferiche.</span>
             </div>
-            <a class="btn-inizia" href="lezioni/classe5/Coordinate_sferiche_def.html">▶ Inizia</a>
+            <a class="btn-inizia" href="https://matematicaviva.netlify.app/lezioni/coordinate-sferiche/">▶ Inizia</a>
           </div>
         </div>
       </details>
@@ -740,14 +885,10 @@
   <div class="footer-inner">
     <div class="footer-logo">🎓 Matematica<span style="color:#f0c06e">Viva</span></div>
     <p style="font-size:.9rem">M. Prandelli - Docente di matematica, Laurea in matematica, PhD in Matematica pura e applicata.</p>
-    <div class="footer-bio">
-      <span>PhD in Matematica</span>
-      <span>Scuola Superiore</span>
-      <span>Università</span>
-    </div>
     <p class="footer-copy">© 2026 — MatematicaViva · Licenza Creative Commons Attribuzione-NonCommerciale-NonOpereDerivate 4.0 Internazionale</p>
   </div>
 </footer>
 
 </body>
 </html>
+
