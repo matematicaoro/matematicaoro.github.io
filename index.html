@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MatematicaOro</title>
   <link rel="manifest" href="manifest-site.json">
-
 <style>
     :root {
       --blu:       #1a3a5c;
@@ -650,13 +649,29 @@
   }
 </style>
 
+
+<style>
+  .header-logo-link img{
+    width:260px !important;
+    max-width:28vw !important;
+    height:auto !important;
+    display:block !important;
+  }
+  @media(max-width:700px){
+    .header-logo-link img{
+      width:185px !important;
+      max-width:42vw !important;
+    }
+  }
+</style>
+
 </head>
 <body>
 
 <!-- HEADER -->
 <header>
   <div class="header-inner">
-    <a class="logo header-logo-link" href="#" aria-label="MatematicaOro"><img src="assets/Logo/Logo_sfondo_blu.png">
+    <a class="logo header-logo-link" href="#" aria-label="MatematicaOro"><img src="assets/Logo/Logo_sfondo_blu.png" alt="MatematicaOro"></a>
     <nav>
       <a class="nav-featured" href="#fumetti">📖 Fumetti</a>
       <a href="#lezioni">💡 Lezioni</a>
