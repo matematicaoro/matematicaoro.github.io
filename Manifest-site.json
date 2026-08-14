@@ -1,9 +1,9 @@
 {
   "short_name": "MV Sito",
-  "name": "MatematicaViva",
+  "name": "MatematicaOro",
   "icons": [
     {
-      "src": "MV_logo.png",
+      "src": "MO_logo.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
