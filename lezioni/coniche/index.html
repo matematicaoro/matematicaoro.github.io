@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Le Sezioni Coniche – MatematicaOro</title>
+
+
+
+<style>:root{--bg:#f8fafc;--surface:#ffffff;--surface2:#f1f5f9;--border:#cbd5e1;--text:#1e293b;--muted:#64748b;--pri:#1e40af;--pri-glow:rgba(30,64,175,0.08);--sec:#0f766e;--sec-glow:rgba(15,118,110,0.08);--amber:#b45309;--red:#b91c1c;--radius:8px}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;line-height:1.5}header{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:2px solid var(--pri);box-shadow:0 2px 4px rgba(0,0,0,0.05)}.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.5rem;background:#f8fafc;border-bottom:1px solid var(--border)}.brand{display:flex;align-items:center;gap:0.75rem}.brand-icon{font-size:24px;flex-shrink:0}.brand-text{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:1.2rem;color:var(--pri)}.brand-sub{font-size:0.75rem;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:0.02em}.fs-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:0.4rem 0.8rem;border-radius:var(--radius);font-size:0.8rem;cursor:pointer;font-weight:500;transition:all 0.2s}.fs-btn:hover{background:var(--surface2);border-color:var(--muted)}.tab-nav{display:flex;gap:0.25rem;overflow-x:auto;padding:0.5rem 1.5rem 0;background:var(--surface);scrollbar-width:none}.tab-nav::-webkit-scrollbar{display:none}.tab{display:flex;align-items:center;gap:0.4rem;padding:0.6rem 1rem;white-space:nowrap;border-radius:var(--radius) var(--radius) 0 0;border:1px solid transparent;border-bottom:none;background:transparent;color:var(--muted);font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.15s}.tab:hover{background:var(--surface2);color:var(--text)}.tab.active{background:var(--surface);border-color:var(--pri) var(--pri) transparent var(--pri);color:var(--pri);font-weight:700;box-shadow:inset 0 3px 0 var(--pri)}main{position:relative;z-index:1;padding:2rem 1.5rem;max-width:1000px;margin:0 auto}section{display:none;background:var(--surface);padding:2rem;border-radius:var(--radius);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.05)}section.active{display:block}.sec-num{display:inline-block;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.5rem}.sec-title{font-family:Georgia,'Times New Roman',serif;font-size:1.8rem;font-weight:700;color:var(--text);margin-bottom:1rem;border-bottom:2px solid var(--surface2);padding-bottom:0.5rem}.sec-title span{color:var(--pri)}.sub-h{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:1.3rem;color:var(--text);margin:2rem 0 1rem;padding-left:0.5rem;border-left:4px solid var(--pri)}.def-box{border-radius:var(--radius);padding:1.25rem;margin:1.2rem 0;border:1px solid var(--border);background:var(--bg)}.def-box p{margin-bottom:0}.def-box.pri{background-color:var(--pri-glow);border-left:4px solid var(--pri)}.def-box.sec{background-color:var(--sec-glow);border-left:4px solid var(--sec)}.def-box.amber{background-color:rgba(180,83,9,0.05);border-left:4px solid var(--amber)}.def-box.red{background-color:rgba(185,28,28,0.05);border-left:4px solid var(--red)}.def-box.gold{background-color:rgba(180,83,9,0.05);border-left:4px solid var(--amber)}.def-label{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.25rem}.def-label.pri{color:var(--pri)}.def-label.sec{color:var(--sec)}.def-label.amber{color:var(--amber)}.def-label.red{color:var(--red)}.def-label.gold{color:var(--amber)}p{color:var(--text);margin-bottom:1rem;font-size:1rem;line-height:1.6}p:last-child{margin-bottom:0}strong{color:#000000;font-weight:700}.formula{font-family:'Courier New',Consolas,monospace;font-size:0.95rem;color:var(--sec);background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:0.75rem 1.2rem;margin:1rem 0;display:block;overflow-x:auto;white-space:pre;font-weight:500}.formula.gold{color:var(--amber)}.formula-inline{font-family:'Courier New',Consolas,monospace;font-size:1.15rem;color:var(--pri);background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:0.5rem 1.5rem;display:inline-block;margin:0.5rem 0;font-weight:700}.table-wrap{overflow-x:auto;margin:1.5rem 0;border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 2px rgba(0,0,0,0.02)}table{width:100%;border-collapse:collapse;font-size:0.9rem;text-align:left}th{background:var(--surface2);color:var(--text);padding:0.75rem 1rem;font-weight:700;font-size:0.85rem;border-bottom:2px solid var(--border);text-transform:uppercase;letter-spacing:0.02em}td{padding:0.75rem 1rem;border-bottom:1px solid var(--border);color:var(--text);background:var(--surface)}tr:last-child td{border-bottom:none}tr:nth-child(even) td{background:var(--bg)}tr:hover td{background:rgba(30,64,175,0.03)}.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:1rem;margin:1.2rem 0}.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;transition:transform 0.15s,box-shadow 0.15s}.card:hover{transform:translateY(-1px);box-shadow:0 2px 4px rgba(0,0,0,0.05)}.card-title{font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.02em}.card-title.gold{color:var(--amber)}.card-title.pri{color:var(--pri)}.card-title.sec{color:var(--sec)}.card-title.red{color:var(--red)}.card-body{font-size:0.9rem;color:var(--text);line-height:1.5}.stat-pill{font-family:'Courier New',Consolas,monospace;font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:4px;margin:0.1rem;display:inline-block}.stat-pri{background:rgba(30,64,175,0.1);color:var(--pri)}.stat-sec{background:rgba(15,118,110,0.1);color:var(--sec)}.stat-gold{background:rgba(180,83,9,0.1);color:var(--amber)}.stat-red{background:rgba(185,28,28,0.1);color:var(--red)}.canvas-row{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;margin:1.5rem 0}.canvas-block{display:flex;flex-direction:column;align-items:center;gap:0.5rem;background:var(--bg);padding:1rem;border-radius:var(--radius);border:1px solid var(--border)}canvas{display:block;touch-action:none;background:#ffffff !important;border:1px solid var(--border) !important;border-radius:4px}.canvas-hint{font-size:0.8rem;color:var(--muted);font-style:italic;margin-top:0.25rem;text-align:center}.canvas-info{min-width:0}.slider-wrap{margin:1rem 0;background:var(--bg);padding:1rem;border-radius:var(--radius);border:1px solid var(--border)}.slider-label{font-weight:500;font-size:0.9rem;color:var(--text);margin-bottom:0.5rem;display:block}.slider-track{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:var(--border);outline:none}.slider-track::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;background:var(--pri);cursor:pointer;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3)}.slider-track::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--pri);cursor:pointer;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3)}.slider-vals{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted);margin-top:0.4rem;font-weight:500}.slider-val-cur{color:var(--pri);font-weight:700}.pause-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:0.4rem 1rem;border-radius:var(--radius);font-size:0.8rem;cursor:pointer;transition:all 0.2s;font-weight:500}.pause-btn:hover{background:var(--surface2)}.pause-btn.paused{background:#fee2e2;border-color:var(--red);color:var(--red);font-weight:bold}.table-row{opacity:0;animation:frameApparizione 0.4s ease forwards}@keyframes frameApparizione{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}footer{border-top:2px solid var(--border);margin-top:3rem;padding:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;font-size:0.8rem;background:var(--surface)}footer .footer-brand{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:var(--pri)}footer .footer-center{color:var(--muted);text-align:center;flex:1}footer .footer-center small{display:block;font-size:0.75rem;color:var(--muted);margin-top:0.25rem}footer .footer-copy{color:var(--muted);text-align:right;font-weight:500}@media(max-width:768px){.canvas-row{grid-template-columns:1fr;gap:1rem}.cards-grid{grid-template-columns:1fr 1fr}footer{flex-direction:column;text-align:center;padding:1.5rem 1rem}footer .footer-copy{text-align:center}section{padding:1.25rem}}@media(max-width:480px){.cards-grid{grid-template-columns:1fr}}</style>
+<style>:root{--primary:#2563eb;--primary-light:#3b82f6;--gold:#D4AF37;--success:#16a34a;--warning:#d97706;--danger:#dc2626;--info:#0891b2;--bg-page:#e0e7ff;--bg-card:#fff;--text:#0f172a;--text-muted:#475569;--border:#e2e8f0;--shadow:0 12px 32px rgba(0,0,0,.15);--radius:16px;--pri:var(--primary);--sec:var(--success);--amber:var(--warning);--red:var(--danger);--bg:#f4f9ff;--surface:#fff;--surface2:#f1f5f9;--muted:var(--text-muted)}body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;color:var(--text);padding-top:0}header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);box-shadow:0 4px 12px rgba(0,0,0,.05)}.coniche-brand-header{text-align:center;padding:1.15rem 1rem .8rem}.coniche-brand-header .brand-logo{margin-bottom:.55rem!important}.coniche-brand-header .brand-logo img{display:block;width:min(290px,62vw)!important;height:auto;margin:0 auto}.coniche-brand-header p{margin:0;color:var(--text-muted);font-size:clamp(.95rem,1.7vw,1.12rem);font-weight:600}.tab-nav{padding:.55rem 1rem;justify-content:center;gap:.5rem;background:transparent}.tab{border:0;border-radius:8px!important;padding:.45rem .8rem;color:var(--text-muted);font-weight:600;background:transparent}.tab:hover{color:var(--primary);background:#eff6ff;transform:translateY(-1px)}.tab.active{color:#fff;background:var(--primary);box-shadow:0 2px 6px rgba(37,99,235,.2);border:0;font-weight:700}main{max-width:980px;margin:0 auto;padding:2rem 1rem 4rem}section{background:var(--bg-card);border-radius:var(--radius);padding:2rem;margin-bottom:2.5rem;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.5)}section.active{display:block}.sec-title{font-family:inherit;color:var(--text);border-bottom:2px solid var(--border);padding-bottom:.55rem}.sec-title span{color:var(--primary)}.canvas-block{background:#f8fafc;border:1px solid var(--border);border-radius:10px}canvas{border:1px solid var(--border)!important;border-radius:8px;background:#fff!important}footer{border-top:1px solid var(--border);margin-top:3rem;padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:.72rem;position:relative;z-index:1;background:transparent}footer .footer-brand{font-family:inherit;font-weight:700;white-space:nowrap}footer .footer-brand .brand-mat{color:#1e3a8a}footer .footer-brand .brand-viva{color:#C8972A}footer .footer-center{color:var(--text-muted);text-align:center;flex:1}footer .footer-center small{display:block;font-size:.67rem;color:var(--text-muted);margin-top:.15rem}footer .footer-copy{color:var(--text-muted);white-space:nowrap;text-align:right}@media(max-width:768px){.coniche-brand-header{padding:.9rem .7rem .6rem}.tab-nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start}.tab{flex-shrink:0;font-size:.8rem}.canvas-row{grid-template-columns:1fr}.cards-grid{grid-template-columns:1fr 1fr}section{padding:1.2rem;margin-bottom:1.5rem}}@media(max-width:650px){footer{flex-direction:column;text-align:center;padding:1rem}.footer-copy{text-align:center!important}}@media(max-width:480px){.cards-grid{grid-template-columns:1fr}}</style><style>.graph-only-row{display:flex!important;justify-content:center!important;align-items:center!important;grid-template-columns:none!important}.graph-only-row .canvas-block{width:min(100%,520px);margin:0 auto}.graph-only-row canvas{margin:0 auto;max-width:100%;height:auto}</style>
+<style>.mv-fullscreen-wrap{position:absolute;top:1rem;right:1rem;z-index:3}.mv-fullscreen-btn{appearance:none;border:1px solid var(--border);background:#fff;color:var(--text);padding:.48rem .8rem;border-radius:8px;font:600 .82rem system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.06);transition:all .2s ease}.mv-fullscreen-btn:hover{color:var(--primary);background:#eff6ff;border-color:#bfdbfe}@media(max-width:650px){.mv-fullscreen-wrap{position:static;text-align:center;margin:.15rem 0 .45rem}}</style>
+
+
+<style>html{scroll-behavior:smooth;scroll-padding-top:0}body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:clamp(16px,1.8vw,19px);line-height:1.7;color:var(--text);background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;min-height:100vh;padding-top:0}header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);box-shadow:0 4px 12px rgba(0,0,0,0.05)}.coniche-title-wrap{text-align:center;width:100%;padding:1.15rem 1rem 0.25rem}.coniche-title-wrap h1{text-align:center;margin-left:auto;margin-right:auto}.logo-text{font-weight:800;letter-spacing:-0.5px}.coniche-brand-header{text-align:center;padding:0 1rem 0.7rem}.coniche-brand-header p{margin:0;color:var(--text);font-size:1.25rem;font-weight:700}.tab-nav{display:flex;gap:0.5rem;overflow-x:auto;padding:0.7rem 1rem;justify-content:center;background:transparent}.tab{border:0;border-radius:8px !important;padding:0.45rem 0.8rem;color:var(--text-muted);font-weight:600;background:transparent}.tab:hover{color:var(--primary);background:#eff6ff;transform:translateY(-1px)}.tab.active{color:#fff;background:var(--primary);box-shadow:0 2px 6px rgba(37,99,235,0.2);border:0;font-weight:700}main{max-width:980px;margin:0 auto;padding:2rem 1rem 4rem}section{background:var(--bg-card);border-radius:16px;padding:2rem;margin-bottom:2.5rem;box-shadow:0 12px 32px rgba(0,0,0,0.15);border:1px solid rgba(255,255,255,0.5)}footer{border-top:1px solid var(--border);margin-top:3rem;padding:0.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:0.72rem;background:transparent}@media (max-width:768px){.coniche-title-wrap{padding:0.9rem 0.7rem 0.2rem}.tab-nav{justify-content:flex-start}.tab{flex-shrink:0;font-size:0.8rem}section{padding:1.2rem;margin-bottom:1.5rem}}@media (max-width:650px){footer{flex-direction:column;text-align:center;padding:1rem}}</style>
+<style id="mo-site-tools">.mo-tools{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 3px 14px rgba(20,50,90,.16);font-family:Arial,sans-serif}.mo-tools a{font:700 12px Arial,sans-serif;text-decoration:none;color:#173f78;background:#fff;border:1px solid #d6e0ea;border-radius:7px;padding:7px 9px}@media print{.mo-tools{display:none!important}}</style>
+</head>
+<body>
+<header>
+<div class="coniche-title-wrap">
+<h1 style="font-size: 2.6rem; margin-bottom: 0.3rem;">
+    <span class="logo-text" style="color: #1e3a8a">Matematica</span><span class="logo-text" style="color: var(--gold)">Oro</span>
+</h1>
+</div>
+<div class="mv-fullscreen-wrap">
+  <button class="mv-fullscreen-btn" id="mvFullscreenBtn" type="button" onclick="toggleFullscreen()">⛶ Schermo intero</button>
+</div>
+<div class="coniche-brand-header"><p>Le Sezioni Coniche nella Geometria Analitica</p></div><nav class="tab-nav">
+<button class="tab active" data-section="cono">🔺 Il Cono Solido</button>
+<button class="tab" data-section="circonferenza">⭕ Circonferenza</button>
+<button class="tab" data-section="ellisse">🥚 Ellisse</button>
+<button class="tab" data-section="parabola">🏹 Parabola</button>
+<button class="tab" data-section="iperbole">♾️ Iperbole</button>
+<button class="tab" data-section="degeneri">✕ Casi Degeneri</button>
+<button class="tab" data-section="confronto">📊 Tavola di Sintesi</button>
+</nav></header>
+<main>
+
+
+<section class="active" id="cono">
+<div class="sec-num">Capitolo 1 — Geometria dello Spazio</div>
+<h2 class="sec-title">Generazione geometrica del <span>Cono</span></h2>
+<p>Consideriamo nello spazio un <strong>asse verticale</strong> fisso e una <strong>retta incidente</strong> (chiamata retta generatrice) che ruota uniformemente attorno ad esso: la traccia di questa rotazione definisce la superficie conica indefinita a due falde.</p>
+<div class="def-box pri">
+<div class="def-label pri">📖 Definizione Teorica</div>
+<p>La <strong>superficie conica a due falde</strong> è il luogo geometrico dei punti dello spazio generati dalle infinite posizioni assunte da una retta (generatrice) che ruota attorno ad un asse fisso con il quale ha un punto in comune, mantenendo costante l'angolo di inclinazione. Il punto di intersezione si definisce <strong>vertice</strong> della superficie.</p>
+</div>
+<div class="canvas-row" style="display:grid;grid-template-columns: 1fr 1fr;gap:1.5rem;margin:1.5rem 0; flex-wrap: wrap;">
+<div id="cone-formation-container" style="width:100%;height:320px;position:relative;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;"></div>
+<div style="display:flex;flex-direction:column;gap:0.75rem;">
+<div class="def-box sec" style="margin:0;">
+<div class="def-label sec">Componenti del Sistema</div>
+<p style="margin:0;font-size:0.9rem;">📍 <strong>Asse centrale</strong> — Retta fissa verticale di simmetria.<br/>📐 <strong>Retta Generatrice</strong> — Retta obliqua che ruota nello spazio.<br/>🔴 <strong>Vertice (V)</strong> — Punto fisso d'incontro e di simmetria centrale.<br/>🔄 <strong>Falde Coniche</strong> — Le due porzioni speculari esterne generate.</p>
+</div>
+<div class="def-box amber" style="margin:0;">
+<div class="def-label amber">💡 Nota Didattica</div>
+<p style="margin:0;font-size:0.9rem;">Intersecando questa duplice struttura solida con un piano geometrico a diverse inclinazioni si ottengono le curve piane note come <strong>sezioni coniche</strong>.</p>
+</div>
+</div>
+</div>
+<p class="canvas-hint">Rappresentazione tridimensionale: la linea di colore ambra (generatrice) ruota intorno alla retta blu (asse).</p>
+<h3 class="sub-h">Laboratorio Interattivo del Doppio Cono</h3>
+<div class="canvas-row">
+<div class="canvas-block">
+<canvas height="340" id="cone3d-interactive" style="cursor:grab;max-width:100%;" width="360"></canvas>
+<p class="canvas-hint">Usa il mouse o il tocco per ruotare la vista 3D solida · Varia il cursore laterale per tagliare il solido</p>
+</div>
+<div class="canvas-info">
+<div class="slider-wrap">
+<span class="slider-label">Inclinazione del piano di taglio (α):</span>
+<input class="slider-track" id="plane-angle-slider" max="90" min="0" type="range" value="0"/>
+<div class="slider-vals">
+<span>0° (Orizzontale)</span>
+<span class="slider-val-cur" id="angle-value">0°</span>
+<span>90° (Verticale)</span>
+</div>
+</div>
+<div class="def-box gold" style="margin-top:1rem;">
+<div class="def-label gold">Curva risultante sul piano:</div>
+<p id="section-label" style="margin:0;font-size:1.2rem;font-weight:700;color:var(--pri);">Circonferenza</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="circonferenza"><div class="sec-num">Capitolo 2 — Curve Piane</div><h2 class="sec-title">La <span>Circonferenza</span></h2><div class="canvas-row graph-only-row"><div class="canvas-block">
+<canvas height="320" id="circle-canvas" style="max-width:100%;" width="320"></canvas>
+</div></div></section>
+
+<section id="ellisse"><div class="sec-num">Capitolo 3 — Curve Piane</div><h2 class="sec-title">L'<span>Ellisse</span></h2><div class="canvas-row graph-only-row"><div class="canvas-block">
+<canvas height="300" id="ellipse-canvas" style="max-width:100%;" width="340"></canvas>
+<div class="slider-wrap" style="width:100%;max-width:340px; margin-top:0.5rem;">
+<span class="slider-label">Regolazione dell'Eccentricità (e)</span>
+<input class="slider-track" id="eccentricity-slider" max="95" min="0" type="range" value="50"/>
+<div class="slider-vals"><span>0 (Circonferenza)</span><span class="slider-val-cur" id="ecc-value">0.50</span><span>1 (Limite)</span></div>
+</div>
+</div></div></section>
+
+<section id="parabola"><div class="sec-num">Capitolo 4 — Curve Piane</div><h2 class="sec-title">La <span>Parabola</span></h2><div class="canvas-row graph-only-row"><div class="canvas-block">
+<canvas height="320" id="parabola-canvas" style="max-width:100%;" width="340"></canvas>
+</div></div></section>
+
+<section id="iperbole"><div class="sec-num">Capitolo 5 — Curve Piane</div><h2 class="sec-title">L'<span>Iperbole</span></h2><div class="canvas-row graph-only-row"><div class="canvas-block">
+<canvas height="320" id="hyperbola-canvas" style="max-width:100%;" width="340"></canvas>
+<div class="slider-wrap" style="width:100%;max-width:340px; margin-top:0.5rem;">
+<span class="slider-label">Apertura degli Asintoti di Riferimento</span>
+<input class="slider-track" id="hyperbola-slider" max="80" min="20" type="range" value="45"/>
+<div class="slider-vals"><span>Apertura Minima</span><span class="slider-val-cur" id="hyp-value">45°</span><span>Apertura Massima</span></div>
+</div>
+</div></div></section>
+
+<section id="degeneri">
+<div class="sec-num">Capitolo 6 — Casi Particolari Geometrici</div>
+<h2 class="sec-title">Le Coniche <span>Degeneri</span></h2>
+<p>Una conica viene definita analiticamente <strong>degenere</strong> quando il piano secante passa esattamente per il <strong>vertice (V)</strong> del cono. La figura geometrica bidimensionale risultante degenera in forme lineari semplificate.</p>
+<div class="cards-grid" style="grid-template-columns:1fr 1fr 1fr;">
+<div class="card" style="text-align:center;"><div style="font-size:2rem;color:var(--amber);margin-bottom:0.25rem;">•</div><div class="card-title gold">Singolo Punto</div><div class="card-body">Il piano passa per il solo vertice mantenendo un'inclinazione inferiore alle rette generatrici.</div></div>
+<div class="card" style="text-align:center;"><div style="font-size:2rem;color:var(--amber);margin-bottom:0.25rem;">╱</div><div class="card-title gold">Una Singola Retta</div><div class="card-body">Il piano risulta perfettamente tangente alla superficie esterna lungo tutta una generatrice.</div></div>
+<div class="card" style="text-align:center;"><div style="font-size:2rem;color:var(--amber);margin-bottom:0.25rem;">✕</div><div class="card-title gold">Due Rette Incidenti</div><div class="card-body">Il piano taglia internamente ed in modo simmetrico entrambe le falde geometriche.</div></div>
+</div>
+<h3 class="sub-h">Caso Algebrico 1: Il Punto Geometrico</h3>
+<div class="canvas-row">
+<div class="canvas-block">
+<div style="position:relative; width: 100%;">
+<canvas id="canvas-deg-point" style="width:300px;height:300px; max-width: 100%;"></canvas>
+<button class="pause-btn" id="pauseBtn-deg-point" onclick="togglePause('deg-point')" style="position:absolute;bottom:10px;right:10px;">⏸ Sospendi Animazione</button>
+</div>
+</div>
+<div class="canvas-info">
+<div class="def-box gold">
+<div class="def-label gold">Condizioni Geometriche Analitiche</div>
+<p>Il piano interseca il solido solo nel vertice.</p>
+<p>L'equazione algebrica reale ammette come unica soluzione il vertice: <strong>V</strong>.</p>
+</div>
+<div class="def-box pri">
+<div class="def-label pri">Grafico Cartesiano 2D Associato</div>
+<canvas height="180" id="degenerate-point-canvas" style="max-width:100%;" width="240"></canvas>
+</div>
+</div>
+</div>
+<h3 class="sub-h">Caso Algebrico 2: Coppia di Rette Coincidenti</h3>
+<div class="canvas-row">
+<div class="canvas-block">
+<div style="position:relative; width: 100%;">
+<canvas id="canvas-deg-line" style="width:300px;height:300px; max-width: 100%;"></canvas>
+<button class="pause-btn" id="pauseBtn-deg-line" onclick="togglePause('deg-line')" style="position:absolute;bottom:10px;right:10px;">⏸ Sospendi Animazione</button>
+</div>
+</div>
+<div class="canvas-info">
+<div class="def-box gold">
+<div class="def-label gold">Condizioni Geometriche Analitiche</div>
+<p>Il piano è tangente al cono, toccando l'intera linea di una generatrice.</p>
+</div>
+<div class="def-box pri">
+<div class="def-label pri">Grafico Cartesiano 2D Associato</div>
+<canvas height="180" id="degenerate-line-canvas" style="max-width:100%;" width="240"></canvas>
+</div>
+</div>
+</div>
+<h3 class="sub-h">Caso Algebrico 3: Coppia di Rette Incidenti</h3>
+<div class="canvas-row">
+<div class="canvas-block">
+<div style="position:relative; width: 100%;">
+<canvas id="canvas-deg-lines" style="width:300px;height:300px; max-width: 100%;"></canvas>
+<button class="pause-btn" id="pauseBtn-deg-lines" onclick="togglePause('deg-lines')" style="position:absolute;bottom:10px;right:10px;">⏸ Sospendi Animazione</button>
+</div>
+</div>
+<div class="canvas-info">
+<div class="def-box gold">
+<div class="def-label gold">Condizioni Geometriche Analitiche</div>
+<p>Il piano seziona centralmente il cono dividendolo in due parti. L'intersezione è formata da due rette distinte e incidenti.</p>
+</div>
+<div class="def-box pri">
+<div class="def-label pri">Grafico Cartesiano 2D Associato</div>
+<canvas height="180" id="degenerate-lines-canvas" style="max-width:100%;" width="240"></canvas>
+</div>
+</div>
+</div>
+</section>
+
+<section id="confronto">
+<div class="sec-num">Capitolo 7 — Quadro Sinottico Finale</div>
+<h2 class="sec-title">Tavola di <span>Confronto e Sintesi</span></h2>
+<p>Schema riassuntivo per l'analisi comparativa veloce delle differenti equazioni cartesiane studiate e delle rispettive caratteristiche geometriche invarianti.</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Sezione Conica</th>
+<th>Inclinazione Piano Secante</th>
+<th>Stato della Conica</th>
+
+
+</tr>
+</thead>
+<tbody id="comparison-tbody"></tbody>
+</table>
+</div>
+<div class="def-box pri" style="margin-top:1.5rem;">
+<div class="def-label pri">📌 Ruolo Unificatore del Valore di Eccentricità</div>
+<p>L'<strong>eccentricità (e)</strong> è il parametro numerico adimensionale che unifica l'intera teoria delle coniche, descrivendo quantitativamente lo schiacciamento geometrico della retta curva.</p>
+<code class="formula">e = 0                 →  Curva Circonferenza Perfetta
+0 &lt; e &lt; 1            →  Curva Chiusa Ellittica
+e = 1                 →  Curva Aperta Parabolica
+e &gt; 1                 →  Curva Doppia Iperbolica</code>
+</div>
+</section>
+</main>
+<footer>
+<span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+<span class="footer-center">
+                    Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+                    <small>Prof.ssa M. Prandelli</small>
+</span>
+<span class="footer-copy">© 2026 MatematicaOro</span>
+</footer>
+<script>document.querySelectorAll('.tab').forEach(tab => {
+ tab.addEventListener('click', () => {
+ document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+ document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
+ tab.classList.add('active');
+ const sec = document.getElementById(tab.dataset.section);
+ sec.classList.add('active');
+ window.scrollTo(0, 0);
+ const id = tab.dataset.section;
+ if (id === 'cono') { initConeFormation(); initConeInteractive(); }
+ if (id === 'circonferenza') { startCircleAnimation(); }
+ if (id === 'ellisse') { startEllipseAnimation(); }
+ if (id === 'parabola') { startParabolaAnimation(); }
+ if (id === 'iperbole') { startHyperbolaAnimation(); }
+ if (id === 'degeneri') { startAllDegeneri(); }
+ if (id === 'confronto') { populateTable(); }
+ });
+});
+function toggleFullscreen() {
+ if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+ else document.exitFullscreen();
+}
+let animationIds = {};
+const pauseStates = { 'deg-point': false, 'deg-line': false, 'deg-lines': false };
+let activeTab = 'cono';
+let coneFormationScene = null;
+let interactiveCone = null;
+function stopAnim(key) {
+ if (animationIds[key]) { cancelAnimationFrame(animationIds[key]); animationIds[key] = null; }
+}
+function currentSection() {
+ const el = document.querySelector('main section.active');
+ return el ? el.id : '';
+}
+function initConeFormation() {
+ const container = document.getElementById('cone-formation-container');
+ if (!container) return;
+ container.innerHTML = '<canvas id="cone-formation-canvas" style="width:100%;height:100%;display:block;background:#fff"></canvas>';
+ const canvas = document.getElementById('cone-formation-canvas');
+ const ctx = canvas.getContext('2d');
+ let phase = 0;
+ function resize(){ const r=container.getBoundingClientRect(); canvas.width=Math.max(1,Math.round(r.width*devicePixelRatio)); canvas.height=Math.max(1,Math.round(r.height*devicePixelRatio)); ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+ function draw(){
+ const W=container.clientWidth,H=container.clientHeight,cx=W/2,cy=H/2; ctx.clearRect(0,0,W,H);
+ const h=H*0.39, rx=Math.min(W*0.28,110), squash=0.28+0.08*Math.sin(phase);
+ ctx.strokeStyle='#94a3b8';ctx.lineWidth=1;
+ for(let i=0;i<18;i++){ const a=i*Math.PI/18; const x=rx*Math.cos(a); ctx.globalAlpha=.22; ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+x,cy-h);ctx.stroke();ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx-x,cy+h);ctx.stroke(); }
+ ctx.globalAlpha=.55; ctx.beginPath();ctx.ellipse(cx,cy-h,rx,rx*squash,0,0,Math.PI*2);ctx.stroke(); ctx.beginPath();ctx.ellipse(cx,cy+h,rx,rx*squash,0,0,Math.PI*2);ctx.stroke();
+ ctx.globalAlpha=1;ctx.strokeStyle='#1e40af';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(cx,18);ctx.lineTo(cx,H-18);ctx.stroke();
+ const gx=rx*Math.cos(phase); ctx.strokeStyle='#b45309';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(cx+gx,cy-h);ctx.lineTo(cx-gx,cy+h);ctx.stroke();
+ ctx.fillStyle='#b91c1c';ctx.beginPath();ctx.arc(cx,cy,5,0,Math.PI*2);ctx.fill();
+ }
+ function loop(){ if(currentSection()!=='cono') return; phase+=0.018; draw(); animationIds['coneFormation']=requestAnimationFrame(loop); }
+ resize(); draw(); if(window.ResizeObserver) new ResizeObserver(()=>{resize();draw();}).observe(container); stopAnim('coneFormation'); loop();
+}
+function animateConeFormation(){ initConeFormation(); }
+function create3DCone(canvasId, options = {}) {
+ const canvas = document.getElementById(canvasId);
+ if (!canvas) return null;
+ const ctx = canvas.getContext('2d');
+ const W = canvas.width, H = canvas.height;
+ let rotX = -0.3, rotY = 0.5, dragging = false, lastX = 0, lastY = 0;
+ const showPlane = options.showPlane || false;
+ let planeAngle = options.planeAngle || 0;
+ const coneH = 110, coneR = 55, coneHalfAngle = Math.atan2(coneR, coneH);
+ let running = true;
+ canvas.addEventListener('mousedown', e => { dragging=true; lastX=e.clientX; lastY=e.clientY; canvas.style.cursor='grabbing'; });
+ canvas.addEventListener('mousemove', e => { if(!dragging)return; rotY+=(e.clientX-lastX)*0.008; rotX+=(e.clientY-lastY)*0.008; rotX=Math.max(-1.2,Math.min(0.2,rotX)); lastX=e.clientX; lastY=e.clientY; });
+ canvas.addEventListener('mouseup', () => { dragging=false; canvas.style.cursor='grab'; });
+ canvas.addEventListener('mouseleave', () => { dragging=false; canvas.style.cursor='grab'; });
+ canvas.addEventListener('touchstart', e => { e.preventDefault(); dragging=true; lastX=e.touches[0].clientX; lastY=e.touches[0].clientY; }, {passive:false});
+ canvas.addEventListener('touchmove', e => { e.preventDefault(); if(!dragging)return; rotY+=(e.touches[0].clientX-lastX)*0.008; rotX+=(e.touches[0].clientY-lastY)*0.008; rotX=Math.max(-1.2,Math.min(0.2,rotX)); lastX=e.touches[0].clientX; lastY=e.touches[0].clientY; }, {passive:false});
+ canvas.addEventListener('touchend', () => dragging=false);
+ function project(x,y,z){ const cY=Math.cos(rotY),sY=Math.sin(rotY),cX=Math.cos(rotX),sX=Math.sin(rotX); let x1=x*cY-z*sY,z1=x*sY+z*cY,y1=y*cX-z1*sX,z2=y*sX+z1*cX; const sc=280/(280+z2); return{x:W/2+x1*sc,y:H/2+y1*sc,z:z2}; }
+ function drawCone() {
+ ctx.clearRect(0,0,W,H);
+ const seg=48;
+ ctx.strokeStyle='rgba(100, 116, 139, 0.25)'; ctx.lineWidth=1;
+ for(let i=0;i<seg;i++){
+ const a=(i/seg)*Math.PI*2,bx=Math.cos(a)*coneR,bz=Math.sin(a)*coneR;
+ const p1=project(0,0,0),p2=project(bx,-coneH,bz);
+ ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();
+ const p3=project(bx,coneH,bz);ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(p3.x,p3.y);ctx.stroke();
+ }
+ ctx.strokeStyle='rgba(71, 85, 105, 0.5)'; ctx.lineWidth=1.5;
+ for(const yy of [-coneH,coneH]){
+ ctx.beginPath();
+ for(let i=0;i<=seg;i++){const a=(i/seg)*Math.PI*2;const p=project(Math.cos(a)*coneR,yy,Math.sin(a)*coneR);if(i===0)ctx.moveTo(p.x,p.y);else ctx.lineTo(p.x,p.y);}
+ ctx.stroke();
+ }
+ const apex=project(0,0,0);
+ ctx.fillStyle='rgba(185, 28, 28, 0.8)';
+ ctx.beginPath();ctx.arc(apex.x,apex.y,6,0,Math.PI*2);ctx.fill();
+ if(showPlane){
+ const par=planeAngle*Math.PI/180,ps=100,py=-30;
+ const corners=[{x:-ps,z:-ps},{x:ps,z:-ps},{x:ps,z:ps},{x:-ps,z:ps}];
+ corners.forEach(c=>c.y=py+c.z*Math.tan(par));
+ const pc=corners.map(c=>project(c.x,c.y,c.z));
+ ctx.fillStyle='rgba(30, 64, 175, 0.06)';ctx.strokeStyle='rgba(30, 64, 175, 0.4)';ctx.lineWidth=1.2;
+ ctx.beginPath();ctx.moveTo(pc[0].x,pc[0].y);for(let i=1;i<4;i++)ctx.lineTo(pc[i].x,pc[i].y);ctx.closePath();ctx.fill();ctx.stroke();
+ if(planeAngle>0&&planeAngle<90){
+ let cc='rgba(15, 118, 110, 1)'; if(planeAngle>=57)cc='rgba(30, 64, 175, 1)';
+ ctx.strokeStyle=cc;ctx.lineWidth=2;
+ const segs=360,tol=6;
+ const drawBranch=(yStart,yEnd)=>{ctx.beginPath();let fp=true;for(let i=0;i<=segs;i++){const theta=(i/segs)*Math.PI*2;let bd=null,bDist=Infinity;for(let ys=yStart;ys<=yEnd;ys+=2){const r=Math.abs(ys)*Math.tan(coneHalfAngle),cx2=r*Math.cos(theta),cz2=r*Math.sin(theta),yop=py+cz2*Math.tan(par),dp=Math.abs(ys-yop);if(dp<bDist){bDist=dp;bd={x:cx2,y:ys,z:cz2};}}if(bd&&bDist<tol){const p=project(bd.x,bd.y,bd.z);if(fp){ctx.moveTo(p.x,p.y);fp=false;}else ctx.lineTo(p.x,p.y);}}if(!fp)ctx.stroke();};
+ if(planeAngle>67){drawBranch(-coneH,0);drawBranch(0,coneH);}else drawBranch(-coneH,coneH);
+ }
+ }
+ }
+ let autoRot=!showPlane;
+ function animate(){if(!dragging&&autoRot)rotY+=0.005;drawCone();if(running)animationIds[canvasId]=requestAnimationFrame(animate);}
+ animate();
+ return { setPlaneAngle:(a)=>{planeAngle=a;}, stop:()=>{running=false;stopAnim(canvasId);}, start:()=>{running=true;animate();} };
+}
+function initConeInteractive() {
+ if (!interactiveCone) interactiveCone = create3DCone('cone3d-interactive', {showPlane:true, planeAngle:0});
+ else interactiveCone.start();
+}
+function drawCartesianGrid(ctx, W, H, cx, cy) {
+ ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=1;
+ for(let i=-200;i<=200;i+=40){
+ ctx.beginPath();ctx.moveTo(cx+i,0);ctx.lineTo(cx+i,H);ctx.stroke();
+ ctx.beginPath();ctx.moveTo(0,cy+i);ctx.lineTo(W,cy+i);ctx.stroke();
+ }
+ ctx.strokeStyle='#94a3b8'; ctx.lineWidth=1.5;
+ ctx.beginPath();ctx.moveTo(0,cy);ctx.lineTo(W,cy);ctx.stroke();
+ ctx.beginPath();ctx.moveTo(cx,0);ctx.lineTo(cx,H);ctx.stroke();
+}
+function startCircleAnimation() {
+ const canvas=document.getElementById('circle-canvas'); if(!canvas)return;
+ const ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height,cx=W/2,cy=H/2,r=110;
+ stopAnim('circle');
+ function draw(){
+ ctx.clearRect(0,0,W,H);
+ drawCartesianGrid(ctx, W, H, cx, cy);
+ ctx.fillStyle='rgba(30, 64, 175, 0.03)';ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fill();
+ ctx.strokeStyle='var(--sec)';ctx.lineWidth=2.5;
+ ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
+ const angle=Date.now()*0.0008,rx=cx+Math.cos(angle)*r,ry=cy+Math.sin(angle)*r;
+ ctx.strokeStyle='var(--muted)';ctx.lineWidth=1.5;ctx.setLineDash([4,4]);
+ ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(rx,ry);ctx.stroke();ctx.setLineDash([]);
+ ctx.fillStyle='var(--text)';ctx.font='14px Arial';ctx.fillText('r',(cx+rx)/2+8,(cy+ry)/2-8);
+ ctx.fillStyle='var(--red)';ctx.beginPath();ctx.arc(cx,cy,4,0,Math.PI*2);ctx.fill();
+ ctx.fillStyle='var(--pri)';ctx.beginPath();ctx.arc(rx,ry,4,0,Math.PI*2);ctx.fill();
+ ctx.fillStyle='var(--muted)';ctx.font='12px monospace';ctx.fillText('x',W-15,cy-6);ctx.fillText('y',cx+6,15);
+ if(currentSection()==='circonferenza') animationIds['circle']=requestAnimationFrame(draw);
+ }
+ draw();
+}
+function startEllipseAnimation() {
+ const canvas=document.getElementById('ellipse-canvas');if(!canvas)return;
+ const ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
+ stopAnim('ellipse');
+ function draw(){
+ const ecc=parseFloat(document.getElementById('eccentricity-slider').value)/100;
+ const a=130,b=a*Math.sqrt(1-ecc*ecc),c=a*ecc;
+ ctx.clearRect(0,0,W,H);
+ drawCartesianGrid(ctx, W, H, cx, cy);
+ ctx.fillStyle='rgba(30, 64, 175, 0.03)';ctx.beginPath();ctx.ellipse(cx,cy,a,b,0,0,Math.PI*2);ctx.fill();
+ ctx.strokeStyle='var(--sec)';ctx.lineWidth=2.5;
+ ctx.beginPath();ctx.ellipse(cx,cy,a,b,0,0,Math.PI*2);ctx.stroke();
+ ctx.fillStyle='var(--red)';ctx.beginPath();ctx.arc(cx-c,cy,5,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(cx+c,cy,5,0,Math.PI*2);ctx.fill();
+ ctx.font='bold 11px Arial';ctx.fillText('F₁',cx-c-6,cy+18);ctx.fillText('F₂',cx+c-6,cy+18);
+ const t=Date.now()*0.0005,px=cx+a*Math.cos(t),py=cy+b*Math.sin(t);
+ ctx.strokeStyle='rgba(185, 28, 28, 0.3)';ctx.lineWidth=1.2;ctx.setLineDash([3,3]);
+ ctx.beginPath();ctx.moveTo(cx-c,cy);ctx.lineTo(px,py);ctx.stroke();ctx.beginPath();ctx.moveTo(cx+c,cy);ctx.lineTo(px,py);ctx.stroke();ctx.setLineDash([]);
+ ctx.fillStyle='var(--pri)';ctx.beginPath();ctx.arc(px,py,4,0,Math.PI*2);ctx.fill();
+ if(currentSection()==='ellisse') animationIds['ellipse']=requestAnimationFrame(draw);
+ }
+ draw();
+}
+function startParabolaAnimation() {
+ const canvas=document.getElementById('parabola-canvas');if(!canvas)return;
+ const ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height,cx=W/2,cy=H*0.7;
+ const aCoeff=0.007,focusY=cy-1/(4*aCoeff),directrixY=cy+1/(4*aCoeff);
+ stopAnim('parabola');
+ function draw(){
+ ctx.clearRect(0,0,W,H);
+ drawCartesianGrid(ctx, W, H, cx, cy);
+ ctx.strokeStyle='var(--pri)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+ ctx.beginPath();ctx.moveTo(0,directrixY);ctx.lineTo(W,directrixY);ctx.stroke();ctx.setLineDash([]);
+ ctx.fillStyle='var(--pri)';ctx.font='11px Arial';ctx.fillText('Retta direttrice (d)',10,directrixY-6);
+ ctx.strokeStyle='var(--sec)';ctx.lineWidth=2.5;
+ ctx.beginPath();for(let px=-190;px<=190;px++){const py=cy-aCoeff*px*px;if(px===-190)ctx.moveTo(cx+px,py);else ctx.lineTo(cx+px,py);}ctx.stroke();
+ ctx.fillStyle='var(--red)';ctx.beginPath();ctx.arc(cx,focusY,5,0,Math.PI*2);ctx.fill();
+ ctx.font='bold 11px Arial';ctx.fillText('Fuoco F',cx+10,focusY+4);
+ const animT=Date.now()*0.0005,animX=Math.sin(animT)*135,animPy=cy-aCoeff*animX*animX;
+ ctx.strokeStyle='rgba(185, 28, 28, 0.4)';ctx.lineWidth=1.2;ctx.setLineDash([3,3]);
+ ctx.beginPath();ctx.moveTo(cx+animX,animPy);ctx.lineTo(cx,focusY);ctx.stroke();
+ ctx.strokeStyle='rgba(30, 64, 175, 0.4)';ctx.beginPath();ctx.moveTo(cx+animX,animPy);ctx.lineTo(cx+animX,directrixY);ctx.stroke();ctx.setLineDash([]);
+ ctx.fillStyle='var(--text)';ctx.beginPath();ctx.arc(cx+animX,animPy,4,0,Math.PI*2);ctx.fill();
+ if(currentSection()==='parabola') animationIds['parabola']=requestAnimationFrame(draw);
+ }
+ draw();
+}
+function startHyperbolaAnimation() {
+ const canvas=document.getElementById('hyperbola-canvas');if(!canvas)return;
+ const ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
+ stopAnim('hyperbola');
+ function draw(){
+ const openVal=parseFloat(document.getElementById('hyperbola-slider').value);
+ const a=45+(openVal/80)*35,b=35+(openVal/80)*45,c=Math.sqrt(a*a+b*b);
+ ctx.clearRect(0,0,W,H);
+ drawCartesianGrid(ctx, W, H, cx, cy);
+ const sl=b/a;ctx.strokeStyle='rgba(100, 116, 139, 0.4)';ctx.lineWidth=1.2;ctx.setLineDash([5,4]);
+ ctx.beginPath();ctx.moveTo(cx-190,cy-190*sl);ctx.lineTo(cx+190,cy+190*sl);ctx.stroke();
+ ctx.beginPath();ctx.moveTo(cx-190,cy+190*sl);ctx.lineTo(cx+190,cy-190*sl);ctx.stroke();ctx.setLineDash([]);
+ ctx.strokeStyle='var(--sec)';ctx.lineWidth=2.5;
+ for(const sign of [1,-1]){ctx.beginPath();for(let t=-2.5;t<=2.5;t+=0.05){const hx=sign*a*Math.cosh(t),hy=b*Math.sinh(t),px2=cx+hx,py2=cy-hy;if(Math.abs(px2-cx)>190||Math.abs(py2-cy)>H)continue;if(t===-2.5)ctx.moveTo(px2,py2);else ctx.lineTo(px2,py2);}ctx.stroke();}
+ ctx.fillStyle='var(--red)';ctx.beginPath();ctx.arc(cx-c,cy,5,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(cx+c,cy,5,0,Math.PI*2);ctx.fill();
+ ctx.fillStyle='var(--text)';ctx.font='bold 11px Arial';ctx.fillText('F₁',cx-c-6,cy+18);ctx.fillText('F₂',cx+c-6,cy+18);
+ if(currentSection()==='iperbole') animationIds['hyperbola']=requestAnimationFrame(draw);
+ }
+ draw();
+}
+document.getElementById('plane-angle-slider').addEventListener('input', function() {
+ const angle=parseInt(this.value);
+ document.getElementById('angle-value').textContent=angle+'°';
+ if(interactiveCone) interactiveCone.setPlaneAngle(angle);
+ let name='Circonferenza';
+ if(angle>0&&angle<57) name='Ellisse';
+ else if(angle>=57&&angle<=67) name='Parabola';
+ else if(angle>67) name='Iperbole';
+ document.getElementById('section-label').textContent=name;
+});
+document.getElementById('eccentricity-slider').addEventListener('input', function() {
+ document.getElementById('ecc-value').textContent=(this.value/100).toFixed(2);
+});
+document.getElementById('hyperbola-slider').addEventListener('input', function() {
+ document.getElementById('hyp-value').textContent=this.value+'°';
+});
+class Vec3 {
+ constructor(x,y,z){this.x=x;this.y=y;this.z=z;}
+ rotateX(a){const c=Math.cos(a),s=Math.sin(a);return new Vec3(this.x,this.y*c-this.z*s,this.y*s+this.z*c);}
+ rotateY(a){const c=Math.cos(a),s=Math.sin(a);return new Vec3(this.x*c+this.z*s,this.y,-this.x*s+this.z*c);}
+ project(w,h,fov){const dist=Math.max(0.1,fov/(fov+this.z));return{x:w/2+this.x*dist*1.5,y:h/2-this.y*dist*1.5,d:this.z};}
+}
+function drawCone3D_deg(ctx,w,h,rotX,rotY){
+ const H=85,R=H*0.5,fov=180;
+ ctx.strokeStyle='#cbd5e1';ctx.lineWidth=1;
+ for(let i=0;i<16;i++){
+ const a=(i/16)*Math.PI*2,x=R*Math.cos(a),z=R*Math.sin(a);
+ const p1=new Vec3(0,0,0).rotateX(rotX).rotateY(rotY).project(w,h,fov);
+ const p2=new Vec3(x,H,z).rotateX(rotX).rotateY(rotY).project(w,h,fov);
+ ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();
+ }
+ ctx.beginPath();
+ for(let i=0;i<=32;i++){const a=(i/32)*Math.PI*2;const p=new Vec3(R*Math.cos(a),H,R*Math.sin(a)).rotateX(rotX).rotateY(rotY).project(w,h,fov);if(i===0)ctx.moveTo(p.x,p.y);else ctx.lineTo(p.x,p.y);}ctx.stroke();
+ ctx.strokeStyle='#e2e8f0';
+ for(let i=0;i<16;i++){
+ const a=(i/16)*Math.PI*2,x=R*Math.cos(a),z=R*Math.sin(a);
+ const p1=new Vec3(0,0,0).rotateX(rotX).rotateY(rotY).project(w,h,fov);
+ const p2=new Vec3(x,-H,z).rotateX(rotX).rotateY(rotY).project(w,h,fov);
+ ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();
+ }
+ return{H,R,fov};
+}
+function drawPlaneQuad(ctx,p1,p2,p3,p4){
+ ctx.fillStyle='rgba(30, 64, 175, 0.05)';ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(p2.x,p2.y);ctx.lineTo(p3.x,p3.y);ctx.lineTo(p4.x,p4.y);ctx.closePath();ctx.fill();
+ ctx.strokeStyle='rgba(30, 64, 175, 0.4)';ctx.lineWidth=1.2;ctx.stroke();
+}
+const deg3DState={'deg-point':{rot:{x:-0.4,y:0.3},t:0},'deg-line':{rot:{x:-0.4,y:0.3},t:0},'deg-lines':{rot:{x:-0.4,y:0.3},t:0}};
+function togglePause(key){
+ pauseStates[key]=!pauseStates[key];
+ const btn=document.getElementById('pauseBtn-'+key);
+ if(pauseStates[key]){btn.classList.add('paused');btn.textContent='▶ Riprendi Animazione';}
+ else{btn.classList.remove('paused');btn.textContent='⏸ Sospendi Animazione';}
+}
+function startDeg3D(key){
+ const idMap={'deg-point':'canvas-deg-point','deg-line':'canvas-deg-line','deg-lines':'canvas-deg-lines'};
+ const canvas=document.getElementById(idMap[key]);if(!canvas)return;
+ const ctx=canvas.getContext('2d');const state=deg3DState[key];
+ stopAnim(key);
+ function animate(){
+ const w=canvas.clientWidth,h=canvas.clientHeight;
+ canvas.width=w;canvas.height=h;
+ ctx.fillStyle='#ffffff';ctx.fillRect(0,0,w,h);
+ if(!pauseStates[key]){state.rot.y+=0.003;state.t+=0.016;}
+ const{H,R,fov}=drawCone3D_deg(ctx,w,h,state.rot.x,state.rot.y);
+ if(key==='deg-point'){
+ const ps=70;
+ const pts=[[-ps,-ps*0.4,-ps],[ps,-ps*0.4,-ps],[ps,ps*0.4,ps],[-ps,ps*0.4,ps]];
+ const proj=pts.map(([x,y,z])=>new Vec3(x,y,z).rotateX(0.2).rotateX(state.rot.x).rotateY(state.rot.y).project(w,h,fov));
+ drawPlaneQuad(ctx,proj[0],proj[1],proj[2],proj[3]);
+ const apex=new Vec3(0,0,0).rotateX(state.rot.x).rotateY(state.rot.y).project(w,h,fov);
+ ctx.fillStyle='var(--amber)';ctx.beginPath();ctx.arc(apex.x,apex.y,5,0,Math.PI*2);ctx.fill();
+ } else if(key==='deg-line'){
+ const ps=80;
+ const pts=[[R,H,-ps],[R,H,ps],[-R,-H,ps],[-R,-H,-ps]];
+ const proj=pts.map(([x,y,z])=>new Vec3(x,y,z).rotateX(state.rot.x).rotateY(state.rot.y).project(w,h,fov));
+ drawPlaneQuad(ctx,proj[0],proj[1],proj[2],proj[3]);
+ const lp1=new Vec3(R,H,0).rotateX(state.rot.x).rotateY(state.rot.y).project(w,h,fov);
+ const lp2=new Vec3(-R,-H,0).rotateX(state.rot.x).rotateY(state.rot.y).project(w,h,fov);
+ ctx.strokeStyle='var(--amber)';ctx.lineWidth=3;
+ ctx.beginPath();ctx.moveTo(lp1.x,lp1.y);ctx.lineTo(lp2.x,lp2.y);ctx.stroke();
+ const prog=(Math.sin(state.t*1.2)+1)/2,pY=H*(2*prog-1),pX=R*(2*prog-1);
+ const dot=new Vec3(pX,pY,0).rotateX(state.rot.x).rotateY(state.rot.y).project(w,h,fov);
+ ctx.fillStyle='var(--red)';ctx.beginPath();ctx.arc(dot.x,dot.y,5,0,Math.PI*2);ctx.fill();
+ } else if(key==='deg-lines'){
+ const ps=85;
+ const pts=[[0,-ps,-ps],[0,ps,-ps],[0,ps,ps],[0,-ps,ps]];
+ const proj=pts.map(([x,y,z])=>new Vec3(x,y,z).rotateX(state.rot.x).rotateY(state.rot.y).project(w,h,fov));
+ drawPlaneQuad(ctx,proj[0],proj[1],proj[2],proj[3]);
+ ctx.strokeStyle='var(--amber)';ctx.lineWidth=3;
+ const pairs=[[new Vec3(0,H,R),new Vec3(0,-H,-R)],[new Vec3(0,H,-R),new Vec3(0,-H,R)]];
+ pairs.forEach(([a,b])=>{const pa=a.rotateX(state.rot.x).rotateY(state.rot.y).project(w,h,fov);const pb=b.rotateX(state.rot.x).rotateY(state.rot.y).project(w,h,fov);ctx.beginPath();ctx.moveTo(pa.x,pa.y);ctx.lineTo(pb.x,pb.y);ctx.stroke();});
+ const apex=new Vec3(0,0,0).rotateX(state.rot.x).rotateY(state.rot.y).project(w,h,fov);
+ ctx.fillStyle='var(--red)';ctx.beginPath();ctx.arc(apex.x,apex.y,5,0,Math.PI*2);ctx.fill();
+ }
+ if(currentSection()==='degeneri') animationIds[key]=requestAnimationFrame(animate);
+ }
+ animate();
+}
+function drawDegeneratePoint(){
+ const canvas=document.getElementById('degenerate-point-canvas');if(!canvas)return;
+ const ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
+ ctx.clearRect(0,0,W,H);
+ drawCartesianGrid(ctx, W, H, cx, cy);
+ ctx.fillStyle='var(--amber)';
+ ctx.beginPath();ctx.arc(cx,cy,6,0,Math.PI*2);ctx.fill();
+}
+function drawDegenerateLine(){
+ const canvas=document.getElementById('degenerate-line-canvas');if(!canvas)return;
+ const ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
+ ctx.clearRect(0,0,W,H);
+ drawCartesianGrid(ctx, W, H, cx, cy);
+ ctx.strokeStyle='var(--amber)';ctx.lineWidth=2.5;
+ ctx.beginPath();ctx.moveTo(cx-100,cy-100);ctx.lineTo(cx+100,cy+100);ctx.stroke();
+}
+function drawDegenerateLines(){
+ const canvas=document.getElementById('degenerate-lines-canvas');if(!canvas)return;
+ const ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
+ ctx.clearRect(0,0,W,H);
+ drawCartesianGrid(ctx, W, H, cx, cy);
+ ctx.strokeStyle='var(--amber)';ctx.lineWidth=2.5;
+ ctx.beginPath();ctx.moveTo(cx-100,cy-100);ctx.lineTo(cx+100,cy+100);ctx.stroke();
+ ctx.beginPath();ctx.moveTo(cx-100,cy+100);ctx.lineTo(cx+100,cy-100);ctx.stroke();
+}
+function startAllDegeneri(){
+ startDeg3D('deg-point'); startDeg3D('deg-line'); startDeg3D('deg-lines');
+ drawDegeneratePoint(); drawDegenerateLine(); drawDegenerateLines();
+}
+function populateTable(){
+ const tbody=document.getElementById('comparison-tbody');
+ if(tbody.children.length>0)return;
+ const rows=[
+ {s:'⭕ Circonferenza',p:'Perpendicolare all\'asse',t:'Regolare (Non Degenere)',e:'e = 0',eq:'x² + y² = r²',deg:false},
+ {s:'🥚 Ellisse',p:'Obliquo sulla singola falda',t:'Regolare (Non Degenere)',e:'0 < e < 1',eq:'x²/a² + y²/b² = 1',deg:false},
+ {s:'🏹 Parabola',p:'Parallelo alla generatrice',t:'Regolare (Non Degenere)',e:'e = 1',eq:'y = ax²',deg:false},
+ {s:'♾️ Iperbole',p:'Interseca entrambe le falde',t:'Regolare (Non Degenere)',e:'e > 1',eq:'x²/a² − y²/b² = 1',deg:false},
+ {s:'• Singolo Punto',p:'Passante per il vertice V',t:'Degenere',e:'Non definito',eq:'x² + y² = 0',deg:true},
+ {s:'— Retta Singola',p:'Tangente alla superficie',t:'Degenere',e:'Non definito',eq:'y = mx',deg:true},
+ {s:'✕ Due Rette Incidenti',p:'Interno passante per V',t:'Degenere',e:'Non definito',eq:'x² − y² = 0',deg:true},
+ ];
+ rows.forEach((row,i)=>{
+ const tr=document.createElement('tr');tr.className='table-row';tr.style.animationDelay=(i*0.08)+'s';
+ const c = row.deg ? 'var(--amber)' : 'var(--text)';
+ tr.innerHTML=`<td style="color:${c};font-weight:700;">${row.s}</td>
+ <td>${row.p}</td>
+ <td style="color:${row.deg?'var(--amber)':'var(--sec)'};font-weight:600;">${row.t}</td>`;
+ tbody.appendChild(tr);
+ });
+}
+window.addEventListener('DOMContentLoaded', () => {
+ initConeFormation();
+ initConeInteractive();
+});</script>
+
+<script>function toggleFullscreen(){
+ const doc = document;
+ const root = doc.documentElement;
+ const isFs = doc.fullscreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement;
+ if (!isFs) {
+ const request = root.requestFullscreen || root.webkitRequestFullscreen || root.msRequestFullscreen;
+ if (request) {
+ const result = request.call(root);
+ if (result && typeof result.catch === "function") result.catch(function(){});
+ }
+ } else {
+ const exit = doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+ if (exit) {
+ const result = exit.call(doc);
+ if (result && typeof result.catch === "function") result.catch(function(){});
+ }
+ }
+}
+(function(){
+ function syncFullscreenLabel(){
+ const btn = document.getElementById("mvFullscreenBtn");
+ if (!btn) return;
+ const isFs = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+ btn.textContent = isFs ? "⛶ Esci da schermo intero" : "⛶ Schermo intero";
+ }
+ document.addEventListener("fullscreenchange", syncFullscreenLabel);
+ document.addEventListener("webkitfullscreenchange", syncFullscreenLabel);
+ document.addEventListener("MSFullscreenChange", syncFullscreenLabel);
+})();</script>
+
+<div class="mo-tools"><a href="../../index.html">⌂ Home</a><a href="../index.html">☰ Lezioni</a></div><script>(function(){var d=document,f=String.fromCharCode,c=f(99,111,110,116,101,120,116,109,101,110,117),g=f(100,114,97,103,115,116,97,114,116);d.addEventListener(c,function(e){e.preventDefault()},true);d.addEventListener(g,function(e){e.preventDefault()},true);d.addEventListener("keydown",function(e){var k=(e.key||"").toLowerCase();if((e.ctrlKey||e.metaKey)&&(k==="u"||k==="s")||e.key==="F12"){e.preventDefault();e.stopPropagation()}},true)})();</script></body>
+</html>

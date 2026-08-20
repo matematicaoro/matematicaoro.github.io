@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>I Quadrilateri nella Geometria Euclidea - MatematicaOro</title>
+    
+    <script>window.MathJax = {
+ tex: {
+ inlineMath: [['$', '$'], ['\\(', '\\)']],
+ displayMath: [['$$', '$$']],
+ processEscapes: true
+ },
+ options: {
+ skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+ },
+ svg: { fontCache: 'global' }
+ };</script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <style>:root{--primary:#1e3a8a;--primary-light:#3b82f6;--gold:#D4AF37;--success:#0d9488;--warning:#d97706;--danger:#dc2626;--info:#0891b2;--bg-page:#e0e7ff;--bg-card:#ffffff;--text:#1e293b;--text-muted:#475569;--border:#e2e8f0;--shadow:0 12px 32px rgba(0,0,0,0.12);--radius:20px;--font-main:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--font-mono:"Courier New",Consolas,monospace}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:0}body{font-family:var(--font-main);font-size:clamp(16px,1.8vw,18px);line-height:1.7;color:var(--text);background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;min-height:100vh;padding-top:4.5rem}.progress-bar{position:fixed;top:0;left:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--primary-light),var(--success));width:0%;z-index:101;transition:width 0.15s linear}nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0.8rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.04)}nav a{text-decoration:none;color:var(--text-muted);font-weight:600;font-size:0.8rem;padding:0.4rem 0.8rem;border-radius:8px;transition:all 0.25s ease}nav a:hover{color:var(--primary);background:#f0f4ff;transform:translateY(-1px)}nav a.active{color:#fff;background:var(--primary);box-shadow:0 4px 10px rgba(30,58,138,0.25)}main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem}header.main-header{margin-bottom:4rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}.card{background:var(--bg-card);border-radius:var(--radius);padding:3rem;margin-bottom:3.5rem;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.7);position:relative;overflow:hidden;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s ease;opacity:0;transform:translateY(30px)}.card.visible{opacity:1;transform:translateY(0)}.card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,0.16)}.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--primary),var(--primary-light))}.card[data-type="graph"]::before{background:linear-gradient(90deg,var(--success),#22c55e)}.card[data-type="warning"]::before{background:linear-gradient(90deg,var(--warning),#f59e0b)}.card[data-type="exercise"]::before{background:linear-gradient(90deg,var(--danger),#f87171)}.card[data-type="summary"]::before{background:linear-gradient(90deg,var(--info),#22d3ee)}.card-header{font-size:1.6rem;font-weight:800;margin-bottom:1.5rem;padding-bottom:0.6rem;border-bottom:2px solid var(--border);color:var(--primary);display:flex;align-items:center;gap:0.7rem}h3{margin-top:2rem;margin-bottom:1rem;color:var(--primary);font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem}h4{margin-top:1.6rem;margin-bottom:0.7rem;color:var(--success);font-size:1.15rem;font-weight:700}p,li{margin-bottom:1rem;text-align:justify}ul,ol{padding-left:1.8rem;margin-bottom:1.2rem}code{background:#f1f5f9;padding:0.2rem 0.5rem;border-radius:6px;font-family:var(--font-mono);font-size:0.9em;color:#0f172a;border:1px solid #e2e8f0}.box{padding:1.5rem;margin:2rem 0;border-radius:12px;border-left:6px solid var(--primary);background:#f8fafc;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.02)}.box-title{font-weight:800;margin-bottom:0.6rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.5px;display:flex;align-items:center;gap:0.5rem}.box.def{border-left-color:var(--primary-light);background-color:#eff6ff}.box.def .box-title{color:#1d4ed8}.box.obs{border-left-color:var(--success);background-color:#f0fdf4}.box.obs .box-title{color:#15803d}.box.err{border-left-color:var(--danger);background-color:#fef2f2}.box.err .box-title{color:#b91c1c}.box.strat{border-left-color:#a855f7;background-color:#faf5ff}.box.strat .box-title{color:#7e22ce}.box.ex{border-left-color:var(--warning);background-color:#fffbeb}.box.ex .box-title{color:#b45309}.grid-visual{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0}.grid-item{background:#f8fafc;border:1px solid var(--border);padding:1.5rem;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.02);transition:all 0.2s ease}.grid-item:hover{transform:translateY(-2px);border-color:var(--primary-light);background:#fff}.grid-item h5{color:var(--primary);font-size:1.1rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem}.svg-container{display:flex;justify-content:center;align-items:center;margin:1.5rem 0;background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:1rem}.math-step{display:flex;align-items:flex-start;gap:0.8rem;margin:0.8rem 0;background:#f8fafc;padding:0.8rem 1.2rem;border-radius:10px;border-left:4px solid var(--primary-light);font-size:0.95rem;flex-wrap:wrap}.step-num{font-weight:800;color:white;background:var(--primary-light);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0}.step-comment{color:var(--text-muted);margin-left:auto;font-style:italic;font-size:0.9em}.table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:2rem 0;border-radius:14px;border:1px solid var(--border);box-shadow:0 4px 15px rgba(0,0,0,0.03)}table{width:100%;min-width:650px;border-collapse:collapse;font-size:0.95rem;background:#fff}th,td{padding:1rem 1.2rem;text-align:left;vertical-align:middle}th{background:var(--primary);color:white;font-weight:700;letter-spacing:0.5px}tr{border-bottom:1px solid var(--border);transition:background 0.15s ease}tr:last-child{border-bottom:none}tr:nth-child(even){background-color:#f8fafc}tr:hover{background-color:#f1f5f9}details{background:#f8fafc;border:1px solid var(--border);border-radius:12px;margin:1.2rem 0;overflow:hidden;transition:all 0.3s ease;box-shadow:0 2px 6px rgba(0,0,0,0.01)}summary{padding:1.1rem 1.3rem;cursor:pointer;font-weight:700;color:var(--primary);user-select:none;list-style:none;display:flex;justify-content:space-between;align-items:center}summary::after{content:"➕";font-size:0.8rem;filter:grayscale(1);transition:transform 0.25s}details[open] summary::after{content:"➖"}details[open] summary{border-bottom:1px solid var(--border);background:#f0f4ff}details>div{padding:1.5rem;background:#ffffff}.mappa{background-color:#f8fafc;border:1px solid var(--border);padding:30px;border-radius:16px;display:flex;flex-direction:column;gap:1.5rem;position:relative}.map-node{background:white;border:1px solid var(--border);border-left:5px solid var(--primary);padding:1.4rem;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.02);transition:all 0.2s ease}.map-node:hover{transform:translateX(4px);border-color:var(--primary-light)}.map-node strong{color:var(--primary);display:block;margin-bottom:0.5rem;font-size:1.1rem;text-transform:uppercase;font-weight:800;letter-spacing:0.3px}@media print{nav,.no-print,.progress-bar,#fsBtn{display:none !important}body{background:#fff;font-size:12pt;padding-top:0}.card{box-shadow:none;border:1px solid #999;break-inside:avoid;margin-bottom:2rem;padding:1.5rem}.box,details,table{border:1px solid #888;box-shadow:none}}@media (max-width:768px){body{padding-top:0}nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0.6rem;-webkit-overflow-scrolling:touch}nav a{flex-shrink:0;font-size:0.75rem}.card{padding:1.8rem}}footer{border-top:1px solid var(--border);margin-top:3rem;padding:0.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:0.72rem;position:relative;z-index:1}footer .footer-brand{font-weight:700;white-space:nowrap}footer .footer-brand .brand-mat{color:#1e3a8a}footer .footer-brand .brand-viva{color:#C8972A}footer .footer-center{color:var(--text-muted);text-align:center;flex:1}footer .footer-center small{display:block;font-size:0.67rem;color:var(--text-muted);margin-top:0.15rem}footer .footer-copy{color:var(--text-muted);white-space:nowrap;text-align:right}@media (max-width:650px){footer{flex-direction:column;text-align:center;padding:1rem}}</style>
+<style id="mo-site-tools">.mo-tools{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 3px 14px rgba(20,50,90,.16);font-family:Arial,sans-serif}.mo-tools a{font:700 12px Arial,sans-serif;text-decoration:none;color:#173f78;background:#fff;border:1px solid #d6e0ea;border-radius:7px;padding:7px 9px}@media print{.mo-tools{display:none!important}}</style>
+</head>
+<body>
+<div class="progress-bar no-print" id="progressBar"></div>
+    <nav aria-label="Navigazione lezione" class="no-print">
+        <a href="#sec1">🧠 Definizioni</a>
+        <a href="#sec2">🔶 Parallelogrammi</a>
+        <a href="#sec3">📐 Rettangoli e Rombi</a>
+        <a href="#sec4">🔷 Quadrati</a>
+        <a href="#sec5">📐 Trapezi e Deltoidi</a>
+        <a href="#sec6">📜 Piccolo Teorema Talete</a>
+        <a href="#sec7">📍 Punti Medi</a>
+        <a href="#sec8">🗺️ Mappa</a>
+    </nav>
+
+    <main>
+        <header class="main-header">
+            <h1 style="font-size: 2.6rem; margin-bottom: 0.3rem;">
+                <span class="logo-text" style="color: #1e3a8a">Matematica</span><span class="logo-text" style="color: var(--gold)">Oro</span>
+            </h1>
+            <p style="font-size: 1.4rem; font-weight: 800; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px;">I Quadrilateri nella Geometria Euclidea: Proprietà, Teoremi e Dimostrazioni</p>
+        </header>
+
+        <section class="card" id="sec1">
+            <div class="card-header"><span>🧠</span> 1. Introduzione Fondamentale sui Quadrilateri</div>
+            <div class="card-body">
+                <p>Un <strong>quadrilatero</strong> è un poligono formato da quattro segmenti (detti <em>lati</em>) che congiungono ordinatamente quattro punti nel piano (detti <em>vertici</em>), a tre a tre non allineati.</p>
+
+                <div class="box def">
+                    <div class="box-title">📘 Definizione: Convessità di un Quadrilatero</div>
+                    Un quadrilatero si dice <strong>convesso</strong> se, per ogni sua coppia di punti interni, il segmento che li congiunge è interamente contenuto nel quadrilatero, oppure equivalentemente se giace interamente in uno dei due semipiani generati dal prolungamento di ciascuno dei suoi lati. In caso contrario si dice <strong>concavo</strong>.
+                </div>
+
+                <h3><span>📐</span> Teorema della Somma degli Angoli Interni</h3>
+                <div class="box strat">
+                    <div class="box-title">📜 Teorema</div>
+                    La somma degli angoli interni di un qualsiasi quadrilatero convesso è uguale a un angolo giro, cioè $360^\circ$ oppure $2\pi$ radianti.
+                </div>
+                <div class="svg-container">
+                    <svg width="350" height="200" viewBox="0 0 350 200" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="40,160 140,30 310,50 260,170" fill="#eff6ff" stroke="#1e3a8a" stroke-width="2.5"/>
+                        <line x1="40" y1="160" x2="310" y2="50" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5"/>
+                        
+                        <circle cx="40" cy="160" r="4" fill="#dc2626"/><text x="20" y="170" font-weight="bold">A</text>
+                        <circle cx="140" cy="30" r="4" fill="#dc2626"/><text x="135" y="20" font-weight="bold">B</text>
+                        <circle cx="310" cy="50" r="4" fill="#dc2626"/><text x="320" y="55" font-weight="bold">C</text>
+                        <circle cx="260" cy="170" r="4" fill="#dc2626"/><text x="270" y="185" font-weight="bold">D</text>
+                        
+                        <text x="100" y="90" fill="#1d4ed8" font-size="0.9em">Triangolo 1</text>
+                        <text x="200" y="120" fill="#1d4ed8" font-size="0.9em">Triangolo 2</text>
+                    </svg>
+                </div>
+                <details open>
+                    <summary>Dimostrazione della Somma degli Angoli Interni</summary>
+                    <div>
+                        <div class="math-step">
+                            <span class="step-num">1</span>
+                            <span>Tracciamo una qualsiasi diagonale (es. $AC$) che divide il quadrilatero $ABCD$ in due triangoli $\triangle ABC$ e $\triangle ADC$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">2</span>
+                            <span>La somma degli angoli interni di ciascun triangolo è $180^\circ$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">3</span>
+                            <span>La somma degli angoli interni del quadrilatero equivale alla somma degli angoli interni dei due triangoli: $180^\circ + 180^\circ = 360^\circ$. $\blacksquare$</span>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="card" id="sec2">
+            <div class="card-header"><span>🔶</span> 2. Parallelogrammi: Definizioni, Proprietà e Teoremi Inversi</div>
+            <div class="card-body">
+                <div class="box def">
+                    <div class="box-title">📘 Definizione</div>
+                    Un <strong>parallelogramma</strong> è un quadrilatero avente i lati opposti a due a due paralleli.
+                </div>
+
+                <div class="svg-container">
+                    <svg width="360" height="180" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="80,140 140,40 320,40 260,140" fill="#fefce8" stroke="#d97706" stroke-width="2.5"/>
+                        <line x1="80" y1="140" x2="320" y2="40" stroke="#b45309" stroke-width="1.5" stroke-dasharray="4"/>
+                        <line x1="140" y1="40" x2="260" y2="140" stroke="#b45309" stroke-width="1.5" stroke-dasharray="4"/>
+                        
+                        <circle cx="200" cy="90" r="4" fill="#b45309"/><text x="200" y="110" font-weight="bold" fill="#b45309">O</text>
+                        <circle cx="80" cy="140" r="4" fill="#dc2626"/><text x="65" y="150" font-weight="bold">A</text>
+                        <circle cx="260" cy="140" r="4" fill="#dc2626"/><text x="270" y="150" font-weight="bold">B</text>
+                        <circle cx="320" cy="40" r="4" fill="#dc2626"/><text x="330" y="45" font-weight="bold">C</text>
+                        <circle cx="140" cy="40" r="4" fill="#dc2626"/><text x="125" y="45" font-weight="bold">D</text>
+                    </svg>
+                </div>
+
+                <h3><span>🔄</span> Proprietà Dirette e Teoremi Inversi (Criteri)</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Proprietà Diretta</th>
+                                <th>Teorema Inverso (Criterio di Riconoscimento)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>I lati opposti sono congruenti ($AB \cong CD$, $AD \cong BC$)</td>
+                                <td>Se un quadrilatero ha i lati opposti congruenti a due a due, allora è un parallelogramma.</td>
+                            </tr>
+                            <tr>
+                                <td>Gli angoli opposti sono congruenti ($\hat{A} \cong \hat{C}$, $\hat{B} \cong \hat{D}$)</td>
+                                <td>Se un quadrilatero ha gli angoli opposti congruenti a due a due, allora è un parallelogramma.</td>
+                            </tr>
+                            <tr>
+                                <td>Le diagonali si scambiano reciprocamente nel loro punto medio.</td>
+                                <td>Se le diagonali di un quadrilatero si dividono mutuamente a metà, allora è un parallelogramma.</td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td>Se un quadrilatero ha una coppia di lati opposti paralleli e congruenti, allora è un parallelogramma.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <details>
+                    <summary>Dimostrazione Criterio 1: Lati opposti congruenti</summary>
+                    <div>
+                        <p><strong>Ipotesi:</strong> $AB \cong CD$ e $AD \cong BC$.<br><strong>Tesi:</strong> $AB \parallel CD$ e $AD \parallel BC$.</p>
+                        <div class="math-step">
+                            <span class="step-num">1</span>
+                            <span>Tracciamo la diagonale $AC$, dividendo il quadrilatero nei due triangoli $\triangle ABC$ e $\triangle CDA$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">2</span>
+                            <span>I due triangoli hanno $AB \cong CD$, $BC \cong DA$ e la diagonale $AC$ in comune. Quindi sono congruenti per il terzo criterio ($\triangle ABC \cong \triangle CDA$).</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">3</span>
+                            <span>Ne segue che $\hat{BAC} \cong \hat{DCA}$. Poiché sono angoli alterni interni rispetto alle rette $AB$ e $CD$ con trasversale $AC$, ne deriva che $AB \parallel CD$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">4</span>
+                            <span>Analogamente, $\hat{BCA} \cong \hat{DAC}$, il che implica $AD \parallel BC$. Il quadrilatero è dunque un parallelogramma. $\blacksquare$</span>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Dimostrazione Criterio 2: Una coppia di lati opposti paralleli e congruenti</summary>
+                    <div>
+                        <p><strong>Ipotesi:</strong> $AB \parallel CD$ e $AB \cong CD$.<br><strong>Tesi:</strong> $ABCD$ è un parallelogramma (cioè $AD \parallel BC$).</p>
+                        <div class="math-step">
+                            <span class="step-num">1</span>
+                            <span>Tracciamo la diagonale $AC$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">2</span>
+                            <span>Consideriamo $\triangle ABC$ e $\triangle CDA$: $AB \cong CD$ (ipotesi), $AC$ è in comune, e $\hat{BAC} \cong \hat{DCA}$ (alterni interni formati dalle parallele $AB$ e $CD$ con $AC$).</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">3</span>
+                            <span>Per il primo criterio, $\triangle ABC \cong \triangle CDA$. Ne deriva che $\hat{BCA} \cong \hat{DAC}$, angoli alterni interni per le rette $AD$ e $BC$ con trasversale $AC$. Di conseguenza $AD \parallel BC$. $\blacksquare$</span>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="card" id="sec3">
+            <div class="card-header"><span>📐</span> 3. Rettangoli e Rombi</div>
+            <div class="card-body">
+                <div class="grid-visual">
+                    <div class="grid-item">
+                        <h5><span>▭</span> Rettangolo</h5>
+                        <p>Un <strong>rettangolo</strong> è un parallelogramma avente tutti e quattro gli angoli retti.</p>
+                        <p><strong>Proprietà Caratteristica:</strong> Le diagonali sono congruenti ($AC \cong BD$).</p>
+                        <div class="svg-container">
+                            <svg width="220" height="130" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="20" y="20" width="180" height="90" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2.5"/>
+                                <line x1="20" y1="20" x2="200" y2="110" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4"/>
+                                <line x1="200" y1="20" x2="20" y2="110" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4"/>
+                                <path d="M 20 30 L 30 30 L 30 20" fill="none" stroke="#1d4ed8" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <h5><span>◊</span> Rombo</h5>
+                        <p>Un <strong>rombo</strong> è un parallelogramma avente tutti e quattro i lati congruenti.</p>
+                        <p><strong>Proprietà Caratteristiche:</strong> Le diagonali sono perpendicolari ($AC \perp BD$) e sono bisettrici degli angoli interni.</p>
+                        <div class="svg-container">
+                            <svg width="220" height="130" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="110,10 200,65 110,120 20,65" fill="#fdf4ff" stroke="#a855f7" stroke-width="2.5"/>
+                                <line x1="110" y1="10" x2="110" y2="120" stroke="#7e22ce" stroke-width="1.5"/>
+                                <line x1="20" y1="65" x2="200" y2="65" stroke="#7e22ce" stroke-width="1.5"/>
+                                <path d="M 110 55 L 120 55 L 120 65" fill="none" stroke="#7e22ce" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <h3><span>🔄</span> Teoremi Inversi per Rettangolo e Rombo</h3>
+
+                <details>
+                    <summary>Teorema Inverso del Rettangolo (Caratterizzazione delle Diagonali)</summary>
+                    <div>
+                        <p><strong>Enunciato:</strong> Se un parallelogramma ha le diagonali congruenti, allora è un rettangolo.</p>
+                        <p><strong>Dimostrazione:</strong> Sia $ABCD$ un parallelogramma con $AC \cong BD$. Consideriamo i triangoli $\triangle ABC$ e $\triangle BAD$. Essi hanno $AB$ in comune, $BC \cong AD$ (lati opposti del parallelogramma) e $AC \cong BD$ (ipotesi). Per il terzo criterio di congruenza, $\triangle ABC \cong \triangle BAD$. Di conseguenza $\hat{DAB} \cong \hat{CBA}$. Poiché in un parallelogramma gli angoli adiacenti a uno stesso lato sono supplementari ($\hat{DAB} + \hat{CBA} = 180^\circ$), ne segue che ciascuno di essi misura $90^\circ$. Dunque $ABCD$ è un rettangolo. $\blacksquare$</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Teorema Inverso del Rombo (Diagonali Perpendicolari)</summary>
+                    <div>
+                        <p><strong>Enunciato:</strong> Se un parallelogramma ha le diagonali perpendicolari, allora è un rombo.</p>
+                        <p><strong>Dimostrazione:</strong> Sia $ABCD$ un parallelogramma con $AC \perp BD$ nel loro punto di intersezione $O$. Poiché le diagonali in un parallelogramma si secano nel loro punto medio, $O$ è il punto medio di $BD$. Nel triangolo $\triangle ABD$, il segmento $AO$ è sia altezza (perché $AC \perp BD$) sia mediana (perché $BO \cong OD$). Pertanto $\triangle ABD$ è isoscele sulla base $BD$, da cui $AB \cong AD$. Essendo i lati opposti del parallelogramma congruenti ($AB \cong CD$ e $AD \cong BC$), tutti e quattro i lati risultano congruenti. Dunque $ABCD$ è un rombo. $\blacksquare$</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="card" id="sec4">
+            <div class="card-header"><span>🔷</span> 4. Il Quadrato: Sintesi e Struttura</div>
+            <div class="card-body">
+                <div class="box def">
+                    <div class="box-title">📘 Definizione</div>
+                    Un <strong>quadrato</strong> è un quadrilatero che è contemporaneamente un rettangolo e un rombo: ha tutti gli angoli retti ($90^\circ$) e tutti i lati congruenti.
+                </div>
+
+                <div class="svg-container">
+                    <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="30" y="30" width="140" height="140" fill="#f0fdf4" stroke="#0d9488" stroke-width="2.5"/>
+                        <line x1="30" y1="30" x2="170" y2="170" stroke="#15803d" stroke-width="1.5" stroke-dasharray="4"/>
+                        <line x1="170" y1="30" x2="30" y2="170" stroke="#15803d" stroke-width="1.5" stroke-dasharray="4"/>
+                        
+                        <path d="M 30 45 L 45 45 L 45 30" fill="none" stroke="#0d9488" stroke-width="1.5"/>
+                        <path d="M 170 45 L 155 45 L 155 30" fill="none" stroke="#0d9488" stroke-width="1.5"/>
+                        <path d="M 170 155 L 155 155 L 155 170" fill="none" stroke="#0d9488" stroke-width="1.5"/>
+                        <path d="M 30 155 L 45 155 L 45 170" fill="none" stroke="#0d9488" stroke-width="1.5"/>
+                        
+                        <circle cx="100" cy="100" r="3" fill="#0d9488"/>
+                    </svg>
+                </div>
+
+                <h3><span>✨</span> Proprietà Totali del Quadrato</h3>
+                <ul>
+                    <li>Tutti i lati sono congruenti ($AB \cong BC \cong CD \cong DA$).</li>
+                    <li>Tutti gli angoli sono retti ($\hat{A} = \hat{B} = \hat{C} = \hat{D} = 90^\circ$).</li>
+                    <li>Le diagonali sono congruenti ($AC \cong BD$).</li>
+                    <li>Le diagonali sono tra loro perpendicolari ($AC \perp BD$).</li>
+                    <li>Le diagonali si dividono reciprocamente a metà e sono bisettrici degli angoli interni (formano angoli di $45^\circ$).</li>
+                </ul>
+
+                <div class="box strat">
+                    <div class="box-title">🛠️ Come dimostrare che un quadrilatero è un Quadrato</div>
+                    Per dimostrare che un quadrilatero è un quadrato, si può seguire una di queste strade trasversali:
+                    <ol>
+                        <li>Dimostrare che è un <strong>rettangolo</strong> con due lati adiacenti congruenti o con diagonali perpendicolari.</li>
+                        <li>Dimostrare che è un <strong>rombo</strong> con un angolo retto o con diagonali congruenti.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="sec5">
+            <div class="card-header"><span>📐</span> 5. Trapezi e Deltoidi</div>
+            <div class="card-body">
+                <h4>A) Il Trapezio</h4>
+                <div class="box def">
+                    <div class="box-title">📘 Definizione</div>
+                    Un <strong>trapezio</strong> è un quadrilatero con una sola coppia di lati paralleli (detti <em>base maggiore</em> e <em>base minore</em>).
+                </div>
+
+                <p>Varianti principali del trapezio:</p>
+                <ul>
+                    <li><strong>Trapezio Scaleno:</strong> lati obliqui diversi e non perpendicolari alle basi.</li>
+                    <li><strong>Trapezio Rettangolo:</strong> uno dei lati obliqui è perpendicolare alle basi.</li>
+                    <li><strong>Trapezio Isoscele:</strong> i due lati obliqui sono congruenti.</li>
+                </ul>
+
+                <div class="box obs">
+                    <div class="box-title">👁️ Proprietà Chiave del Trapezio Isoscele</div>
+                    In un trapezio isoscele:
+                    <ol>
+                        <li>Gli angoli adiacenti a ciascuna delle basi sono congruenti.</li>
+                        <li>Le diagonali sono congruenti ($AC \cong BD$).</li>
+                    </ol>
+                </div>
+                <div class="grid-visual">
+                    <div class="grid-item">
+                        <h5>Trapezio Isoscele</h5>
+                        <div class="svg-container">
+                            <svg width="220" height="120" viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="20,100 60,30 160,30 200,100" fill="#f8fafc" stroke="#1e3a8a" stroke-width="2"/>
+                                <line x1="20" y1="100" x2="160" y2="30" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3"/>
+                                <line x1="200" y1="100" x2="60" y2="30" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <h5>Deltoide (Aquilone)</h5>
+                        <div class="svg-container">
+                            <svg width="180" height="130" viewBox="0 0 180 130" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="90,10 160,50 90,120 20,50" fill="#f8fafc" stroke="#d97706" stroke-width="2"/>
+                                <line x1="90" y1="10" x2="90" y2="120" stroke="#b45309" stroke-width="1.5"/>
+                                <line x1="20" y1="50" x2="160" y2="50" stroke="#b45309" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <h4>B) Il Deltoide (Aquilone)</h4>
+                <div class="box def">
+                    <div class="box-title">📘 Definizione</div>
+                    Un <strong>deltoide</strong> è un quadrilatero formato da due coppie di lati adiacenti congruenti.
+                </div>
+                <p><strong>Proprietà del Deltoide:</strong> Le diagonali sono perpendicolari tra loro; la diagonale principale è asse di simmetria, bisettrice degli angoli ai vertici opposti e divide l'altra diagonale a metà.</p>
+            </div>
+        </section>
+
+        <section class="card" data-type="graph" id="sec6">
+            <div class="card-header"><span>📜</span> 6. Il Piccolo Teorema di Talete e Conseguenze</div>
+            <div class="card-body">
+                <p>Il Piccolo Teorema di Talete è uno dei pilastri fondamentali della geometria euclidea e permette di stabilire una corrispondenza di congruenza tra segmenti su rette trasversali diverse.</p>
+
+                <div class="box def">
+                    <div class="box-title">📘 Enunciato: Piccolo Teorema di Talete</div>
+                    Dato un fascio di rette parallele intersecato da due rette trasversali $t_1$ e $t_2$, a segmenti congruenti su $t_1$ corrispondono segmenti congruenti su $t_2$.
+                </div>
+
+                <div class="svg-container">
+                    <svg width="450" height="220" viewBox="0 0 450 220" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="20" y1="40" x2="430" y2="40" stroke="#1e3a8a" stroke-width="2"/>
+                        <line x1="20" y1="110" x2="430" y2="110" stroke="#1e3a8a" stroke-width="2"/>
+                        <line x1="20" y1="180" x2="430" y2="180" stroke="#1e3a8a" stroke-width="2"/>
+                        <text x="435" y="45" fill="#1e3a8a" font-weight="bold">r₁</text>
+                        <text x="435" y="115" fill="#1e3a8a" font-weight="bold">r₂</text>
+                        <text x="435" y="185" fill="#1e3a8a" font-weight="bold">r₃</text>
+                        
+                        <line x1="60" y1="20" x2="160" y2="200" stroke="#d97706" stroke-width="2.5"/>
+                        <text x="50" y="17" fill="#d97706" font-weight="bold">t₁</text>
+                        <circle cx="71" cy="40" r="4" fill="#dc2626"/><text x="50" y="40" fill="#000">A</text>
+                        <circle cx="110" cy="110" r="4" fill="#dc2626"/><text x="90" y="110" fill="#000">B</text>
+                        <circle cx="130" cy="110" r="4" fill="#dc2626"/><text x="140" y="110" fill="#000">D</text>
+                        <circle cx="149" cy="180" r="4" fill="#dc2626"/><text x="130" y="180" fill="#000">C</text>
+                        <circle cx="169" cy="180" r="4" fill="#dc2626"/><text x="179" y="180" fill="#000">E</text>
+
+                        <line x1="220" y1="20" x2="380" y2="200" stroke="#0d9488" stroke-width="2.5"/>
+                        <text x="210" y="17" fill="#0d9488" font-weight="bold">t₂</text>
+                        <circle cx="238" cy="40" r="4" fill="#dc2626"/><text x="245" y="38" fill="#000">A'</text>
+                        <circle cx="300" cy="110" r="4" fill="#dc2626"/><text x="308" y="108" fill="#000">B'</text>
+                        
+                        <circle cx="362" cy="180" r="4" fill="#dc2626"/><text x="370" y="178" fill="#000">C'</text>
+
+                        <line x1="71" y1="40" x2="133" y2="110" stroke="#9333ea" stroke-width="1.5" stroke-dasharray="4"/>
+                        <line x1="110" y1="110" x2="172" y2="180" stroke="#9333ea" stroke-width="1.5" stroke-dasharray="4"/>
+                    </svg>
+                </div>
+
+                <details open>
+                    <summary>Dimostrazione del Piccolo Teorema di Talete</summary>
+                    <div>
+                        <p><strong>Ipotesi:</strong> $r_1 \parallel r_2 \parallel r_3$, $AB \cong BC$.<br><strong>Tesi:</strong> $A'B' \cong B'C'$.</p>
+                        <div class="math-step">
+                            <span class="step-num">1</span>
+                            <span>Tracciamo da $A$ e da $B$ i segmenti $AD$ e $BE$ paralleli alla trasversale $t_2$, con $D \in r_2$ e $E \in r_3$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">2</span>
+                            <span>I quadrilateri $AA'B'D$ e $BB'C'E$ sono parallelogrammi per costruzione, quindi $AD \cong A'B'$ e $BE \cong B'C'$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">3</span>
+                            <span>Consideriamo i triangoli $\triangle ABD$ e $\triangle BCE$. Essi hanno:
+                            <ul>
+                                <li>$AB \cong BC$ per ipotesi;</li>
+                                <li>$\hat{DAB} \cong \hat{EBC}$ perché angoli corrispondenti formati dalle parallele $AD$ e $BE$ con la trasversale $t_1$;</li>
+                                <li>$\hat{ABD} \cong \hat{BCE}$ per analoga ragione fra parallele del fascio e $t_1$.</li>
+                            </ul>
+                            </span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">4</span>
+                            <span>Per il secondo criterio di congruenza dei triangoli, $\triangle ABD \cong \triangle BCE$, dunque $AD \cong BE$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">5</span>
+                            <span>Per la proprietà transitiva della congruenza, poiché $A'B' \cong AD$, $BE \cong B'C'$ e $AD \cong BE$, ne consegue $A'B' \cong B'C'$. $\blacksquare$</span>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="card" id="sec7">
+            <div class="card-header"><span>📍</span> 7. Teorema dei Punti Medi dei Lati di un Triangolo e Inverso</div>
+            <div class="card-body">
+                <p>Dal piccolo teorema di Talete derivano due teoremi fondamentali per lo studio dei triangoli e dei quadrilateri.</p>
+
+                <h4>A) Teorema dei Punti Medi (Diretto)</h4>
+                <div class="box def">
+                    <div class="box-title">📘 Enunciato</div>
+                    Il segmento che congiunge i punti medi di due lati di un triangolo è parallelo al terzo lato ed è congruente alla sua metà.
+                </div>
+
+                <div class="svg-container">
+                    <svg width="320" height="180" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="160,20 40,160 280,160" fill="none" stroke="#1e3a8a" stroke-width="2.5"/>
+                        <line x1="100" y1="90" x2="220" y2="90" stroke="#0d9488" stroke-width="3"/>
+                        
+                        <circle cx="160" cy="20" r="4" fill="#dc2626"/><text x="155" y="15" font-weight="bold">A</text>
+                        <circle cx="40" cy="160" r="4" fill="#dc2626"/><text x="25" y="170" font-weight="bold">B</text>
+                        <circle cx="280" cy="160" r="4" fill="#dc2626"/><text x="285" y="170" font-weight="bold">C</text>
+                        
+                        <circle cx="100" cy="90" r="4" fill="#0d9488"/><text x="80" y="90" font-weight="bold" fill="#0d9488">M</text>
+                        <circle cx="220" cy="90" r="4" fill="#0d9488"/><text x="230" y="90" font-weight="bold" fill="#0d9488">N</text>
+                    </svg>
+                </div>
+
+                <details>
+                    <summary>Dimostrazione del Teorema dei Punti Medi</summary>
+                    <div>
+                        <p><strong>Sia $\triangle ABC$, $M$ punto medio di $AB$, $N$ punto medio di $AC$.</strong><br><strong>Tesi:</strong> $MN \parallel BC$ e $MN = \frac{1}{2}BC$.</p>
+                        <div class="math-step">
+                            <span class="step-num">1</span>
+                            <span>Prolunghiamo il segmento $MN$ oltre $N$ di un segmento $ND \cong MN$. Congiungiamo $D$ con $C$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">2</span>
+                            <span>Confrontiamo i triangoli $\triangle AMN$ e $\triangle CDN$:
+                            <ul>
+                                <li>$AN \cong NC$ perché $N$ è punto medio di $AC$;</li>
+                                <li>$MN \cong ND$ per costruzione;</li>
+                                <li>$\hat{ANM} \cong \hat{CND}$ perché angoli opposti al vertice.</li>
+                            </ul>
+                            Quindi $\triangle AMN \cong \triangle CDN$ per il primo criterio di congruenza.
+                            </span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">3</span>
+                            <span>Ne segue che $AM \cong CD$ e $\hat{MAN} \cong \hat{DCN}$. Gli angoli alterni interni congruenti implicano $AB \parallel CD$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">4</span>
+                            <span>Poiché $AM \cong MB$ (essendo $M$ punto medio) e $AM \cong CD$, risulta $MB \cong CD$. Poiché $MB \parallel CD$, il quadrilatero $MBCD$ è un parallelogramma.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">5</span>
+                            <span>Quindi $MD \parallel BC$ (e dunque $MN \parallel BC$) e $MD \cong BC$. Essendo $MN = \frac{1}{2}MD$, segue che $MN = \frac{1}{2}BC$. $\blacksquare$</span>
+                        </div>
+                    </div>
+                </details>
+
+                <h4>B) Teorema Inverso dei Punti Medi</h4>
+                <div class="box def">
+                    <div class="box-title">📘 Enunciato</div>
+                    La retta passante per il punto medio di un lato di un triangolo e parallela a un altro lato interseca il terzo lato nel suo punto medio.
+                </div>
+
+                <details>
+                    <summary>Dimostrazione del Teorema Inverso</summary>
+                    <div>
+                        <p><strong>Ipotesi:</strong> In $\triangle ABC$, $M$ è il punto medio di $AB$, $r$ è una retta per $M$ parallela a $BC$ che incontra $AC$ in $N$.<br><strong>Tesi:</strong> $AN \cong NC$.</p>
+                        <div class="math-step">
+                            <span class="step-num">1</span>
+                            <span>Tracciamo per il vertice $A$ la retta $s$ parallela a $BC$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">2</span>
+                            <span>Consideriamo il fascio di tre rette parallele $s$, $r$, $BC$. Tali parallele sono tagliate dalle due trasversali $AB$ e $AC$.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">3</span>
+                            <span>Sulla trasversale $AB$, le parallele determinano due segmenti congruenti $AM \cong MB$ perché $M$ è punto medio.</span>
+                        </div>
+                        <div class="math-step">
+                            <span class="step-num">4</span>
+                            <span>Per il Piccolo Teorema di Talete, a segmenti congruenti su una trasversale corrispondono segmenti congruenti sull'altra trasversale. Pertanto $AN \cong NC$, ossia $N$ è il punto medio di $AC$. $\blacksquare$</span>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="box obs">
+                    <div class="box-title">👁️ Conseguenza Notevole: Teorema di Varignon</div>
+                    Congiungendo i punti medi dei lati di un qualsiasi quadrilatero convesso, si ottiene sempre un <strong>parallelogramma</strong> la cui area è pari alla metà dell'area del quadrilatero di partenza.
+                </div>
+
+                <div class="svg-container">
+                    <svg width="350" height="200" viewBox="0 0 350 200" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="30,150 120,30 320,40 270,180" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+                        <polygon points="75,90 220,35 295,110 150,165" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+                        
+                        <circle cx="75" cy="90" r="3.5" fill="#16a34a"/><text x="55" y="95" font-size="0.8em">P</text>
+                        <circle cx="220" cy="35" r="3.5" fill="#16a34a"/><text x="220" y="25" font-size="0.8em">Q</text>
+                        <circle cx="295" cy="110" r="3.5" fill="#16a34a"/><text x="305" y="115" font-size="0.8em">R</text>
+                        <circle cx="150" cy="165" r="3.5" fill="#16a34a"/><text x="145" y="180" font-size="0.8em">S</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="summary" id="sec8">
+            <div class="card-header"><span>🗺️</span> 8. Mappa Strategica delle Inclusioni e Albero Logico</div>
+            <div class="card-body">
+                <div class="mappa">
+                    <div class="map-node" style="border-left-color: var(--primary-light);">
+                        <strong>🚀 1. QUADRILATERI GENERICI</strong>
+                        Somma degli angoli interni = $360^\circ$. Teorema di Varignon: i punti medi formano sempre un parallelogramma.
+                    </div>
+                    <div class="map-node" style="border-left-color: var(--success);">
+                        <strong>📊 2. TRAPEZI E PARALLELOGRAMMI</strong>
+                        <ul>
+                            <li><strong>Trapezio:</strong> 1 coppia di lati opposti paralleli.</li>
+                            <li><strong>Parallelogramma:</strong> 2 coppie di lati opposti paralleli. Diagonali che si bisecano.</li>
+                        </ul>
+                    </div>
+                    <div class="map-node" style="border-left-color: var(--warning);">
+                        <strong>💎 3. RETTANGOLI E ROMBI</strong>
+                        <ul>
+                            <li><strong>Rettangolo:</strong> Parallelogramma con angoli retti e diagonali congruenti.</li>
+                            <li><strong>Rombo:</strong> Parallelogramma con lati congruenti e diagonali perpendicolari.</li>
+                        </ul>
+                    </div>
+                    <div class="map-node" style="border-left-color: var(--danger);">
+                        <strong>👑 4. QUADRATO (Sintesi Perfetta)</strong>
+                        È contemporaneamente un Rettangolo e un Rombo. Diagonali congruenti, perpendicolari e bisettrici.
+                    </div>
+                </div>
+                <p style="text-align: center; font-weight: bold; color: var(--primary); margin-top: 2.5rem; font-style: italic;">
+                    «Geometria è l'arte di ragionare bene su figure disegnate male.» — Henri Poincaré
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+            <span class="footer-center">
+                    Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+                    <small>Prof.ssa M. Prandelli</small>
+            </span>
+            <span class="footer-copy">© 2026 MatematicaOro</span>
+        </footer>
+    </main>
+
+    <button class="no-print" id="fsBtn" onclick="toggleFullscreen()" style="position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--primary); color: white; border: none; padding: 0.8rem 1.2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 6px 16px rgba(30,58,138,0.35); font-weight: 600; transition: all 0.2s; z-index: 102;">
+        🖥️ Schermo Intero
+    </button>
+
+    <script>const progressBar = document.getElementById('progressBar');
+ const navLinks = document.querySelectorAll('nav a');
+ navLinks.forEach(link => {
+ link.addEventListener('click', (event) => {
+ const href = link.getAttribute('href');
+ if (!href || !href.startsWith('#')) return;
+ const target = document.querySelector(href);
+ if (!target) return;
+ event.preventDefault();
+ const nav = link.closest('nav');
+ const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+ const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+ window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+ history.replaceState(null, '', href);
+ });
+ });
+ const sections = document.querySelectorAll('section');
+ window.addEventListener('scroll', () => {
+ const h = document.documentElement.scrollHeight - window.innerHeight;
+ progressBar.style.width = `${(window.scrollY / h) * 100}%`;
+ let current = '';
+ sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 140) current = sec.id; });
+ navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + current); });
+ });
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+ }, { threshold: 0.05 });
+ document.querySelectorAll('.card').forEach(card => observer.observe(card));
+ function toggleFullscreen() {
+ if (!document.fullscreenElement) {
+ document.documentElement.requestFullscreen().catch(err => console.warn(`Errore Fullscreen: ${err}`));
+ } else {
+ document.exitFullscreen();
+ }
+ }
+ document.addEventListener('fullscreenchange', () => {
+ document.getElementById('fsBtn').textContent = document.fullscreenElement ? '🖥️ Esci Schermo Intero' : '🖥️ Schermo Intero';
+ });</script>
+<div class="mo-tools"><a href="../../index.html">⌂ Home</a><a href="../index.html">☰ Lezioni</a></div><script>(function(){var d=document,f=String.fromCharCode,c=f(99,111,110,116,101,120,116,109,101,110,117),g=f(100,114,97,103,115,116,97,114,116);d.addEventListener(c,function(e){e.preventDefault()},true);d.addEventListener(g,function(e){e.preventDefault()},true);d.addEventListener("keydown",function(e){var k=(e.key||"").toLowerCase();if((e.ctrlKey||e.metaKey)&&(k==="u"||k==="s")||e.key==="F12"){e.preventDefault();e.stopPropagation()}},true)})();</script></body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>La Circonferenza nella Geometria Analitica - MatematicaOro</title>
+    <style>:root{--primary:#2563eb;--primary-light:#3b82f6;--gold:#D4AF37;--success:#16a34a;--warning:#d97706;--danger:#dc2626;--info:#0891b2;--bg-page:#e0e7ff;--bg-card:#ffffff;--text:#0f172a;--text-muted:#475569;--border:#e2e8f0;--shadow:0 12px 32px rgba(0,0,0,0.15);--radius:16px;--font-main:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--font-mono:"Courier New",Consolas,monospace}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:0}body{font-family:var(--font-main);font-size:clamp(16px,1.8vw,19px);line-height:1.7;color:var(--text);background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;min-height:100vh;padding-top:4rem}.progress-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-light));width:0%;z-index:101;transition:width 0.15s linear}nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0.7rem 1rem;display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.05)}nav a{text-decoration:none;color:var(--text-muted);font-weight:600;font-size:0.85rem;padding:0.4rem 0.8rem;border-radius:8px;transition:all 0.2s}nav a:hover{color:var(--primary);background:#eff6ff;transform:translateY(-1px)}nav a.active{color:#fff;background:var(--primary);box-shadow:0 2px 6px rgba(37,99,235,0.2)}main{max-width:980px;margin:0 auto;padding:2rem 1rem 4rem}.card{background:var(--bg-card);border-radius:var(--radius);padding:2rem;margin-bottom:2.5rem;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.5);position:relative;overflow:hidden;transition:transform 0.3s ease,box-shadow 0.3s ease;opacity:0;transform:translateY(25px)}.card.visible{opacity:1;transform:translateY(0)}.card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.18)}.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--primary),var(--primary-light))}.card[data-type="graph"]::before{background:linear-gradient(90deg,var(--success),#22c55e)}.card[data-type="warning"]::before{background:linear-gradient(90deg,var(--warning),#f59e0b)}.card[data-type="exercise"]::before{background:linear-gradient(90deg,var(--danger),#f87171)}.card[data-type="summary"]::before{background:linear-gradient(90deg,var(--info),#22d3ee)}.card-header{font-size:1.45rem;font-weight:700;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:0.6rem;color:var(--text)}.card-body{padding-top:0.5rem}h3{margin-top:1.4rem;margin-bottom:0.8rem;color:var(--text-muted);font-size:1.1rem}p,li{margin-bottom:0.9rem}ul,ol{padding-left:1.5rem;margin-bottom:1rem}code{background:#e2e8f0;padding:0.15rem 0.4rem;border-radius:4px;font-family:var(--font-mono);font-size:0.95em}.box{border-left:4px solid var(--primary);background:#f8fafc;padding:1rem 1.2rem;margin:1.2rem 0;border-radius:0 10px 10px 0;transition:transform 0.2s,box-shadow 0.2s}.box:hover{transform:translateX(4px);box-shadow:0 4px 10px rgba(37,99,235,0.15)}.box.warning{border-color:var(--warning);background:#fffbeb}.box.example{border-color:var(--success);background:#f0fdf4}.box.info{border-color:var(--text-muted);background:#f1f5f9}.box p:last-child{margin-bottom:0}.math-step{display:flex;align-items:baseline;gap:0.6rem;margin:0.6rem 0;background:#f8fafc;padding:0.7rem 0.8rem;border-radius:8px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.95rem;flex-wrap:wrap}.step-num{font-weight:bold;color:var(--primary);min-width:2.5rem}.step-comment{color:var(--text-muted);margin-left:auto;font-style:italic}.table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.2rem 0;border-radius:10px}table{width:100%;min-width:600px;border-collapse:collapse;font-size:0.95rem;background:#fff}th,td{border:1px solid var(--border);padding:0.7rem 0.5rem;text-align:center;vertical-align:middle}th{background:linear-gradient(to bottom,#f1f5f9,#e2e8f0);font-weight:600}tr:hover td{background:#f8fafc;transition:background 0.2s}details{background:#f8fafc;border:1px solid var(--border);border-radius:10px;margin:1rem 0;overflow:hidden;transition:all 0.2s}summary{padding:0.9rem 1rem;cursor:pointer;font-weight:600;color:var(--primary);user-select:none;list-style:none;display:flex;justify-content:space-between;align-items:center}summary::after{content:"▼";transition:transform 0.25s}details[open] summary::after{transform:rotate(180deg)}details[open] summary{border-bottom:1px solid var(--border);background:#eff6ff}details>div{padding:1rem}details:hover{box-shadow:0 2px 8px rgba(0,0,0,0.05)}.mappa{background-color:#f8fafc;border:1px solid var(--border);padding:20px;border-radius:8px;font-family:var(--font-mono);line-height:1.4;white-space:pre-wrap;font-size:0.85rem;color:var(--text)}@media print{nav,.no-print,.progress-bar{display:none !important}body{background:#fff;font-size:12pt;line-height:1.4;padding-top:0}.card{box-shadow:none;border:1px solid #999;break-inside:avoid;margin-bottom:1.5rem}.box,details,table{border:1px solid #888;box-shadow:none}a{color:#000;text-decoration:none}}@media (max-width:768px){body{padding-top:0}nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0.5rem;-webkit-overflow-scrolling:touch;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{font-size:0.8rem;padding:0.3rem 0.6rem;flex-shrink:0}.card{padding:1.2rem;margin-bottom:1.5rem}.card-header{font-size:1.2rem;flex-wrap:wrap}.math-step{flex-direction:column;align-items:flex-start;gap:0.3rem}.step-comment{margin-left:0;font-size:0.85rem}#fsBtn{bottom:1rem;right:1rem;padding:0.6rem 0.9rem;font-size:0.85rem}}.text-center{text-align:center}.text-muted{color:var(--text-muted)}footer{border-top:1px solid var(--border);margin-top:3rem;padding:0.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:0.72rem;position:relative;z-index:1}footer .footer-brand{font-weight:700;white-space:nowrap}footer .footer-brand .brand-mat{color:#1e3a8a}footer .footer-brand .brand-viva{color:#C8972A}footer .footer-center{color:var(--text-muted);text-align:center;flex:1}footer .footer-center small{display:block;font-size:0.67rem;color:var(--text-muted);margin-top:0.15rem}footer .footer-copy{color:var(--text-muted);white-space:nowrap;text-align:right}@media (max-width:650px){footer{flex-direction:column;text-align:center;padding:1rem}}.logo-text{font-weight:800;letter-spacing:-0.5px}</style>
+<style id="mo-site-tools">.mo-tools{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 3px 14px rgba(20,50,90,.16);font-family:Arial,sans-serif}.mo-tools a{font:700 12px Arial,sans-serif;text-decoration:none;color:#173f78;background:#fff;border:1px solid #d6e0ea;border-radius:7px;padding:7px 9px}@media print{.mo-tools{display:none!important}}</style>
+</head>
+<body>
+<div class="progress-bar no-print" id="progressBar"></div>
+    <nav aria-label="Navigazione lezione" class="no-print">
+        <a href="#intro">🧠 Motivazione</a>
+        <a href="#definizione">📐 Cos'è</a>
+        <a href="#equazione-canonica">🧹 Equazione Canonica</a>
+        <a href="#centro-raggio">📊 Centro e Raggio</a>
+        <a href="#casi-particolari">🏷️ Casi Particolari</a>
+        <a href="#posizioni-rette">➕ Retta e Circonferenza</a>
+        <a href="#rette-tangenti">🧮 Rette Tangenti</a>
+        <a href="#condizioni">⭐ Determinare la Circonferenza</a>
+        <a href="#errori">⚠️ Errori Comuni</a>
+        <a href="#mappa">🗺️ Mappa</a>
+        <a href="#esercizi">📝 Esercizi</a>
+        <a href="#verifica">🏁 Verifica</a>
+    </nav>
+
+    <main>
+        <header class="text-center" style="margin-bottom: 2.5rem;">
+            <h1 style="font-size: 2.6rem; margin-bottom: 0.3rem;">
+                <span class="logo-text" style="color: #1e3a8a">Matematica</span><span class="logo-text" style="color: var(--gold)">Oro</span>
+            </h1>
+            <p style="font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">La Circonferenza nella Geometria Analitica: Luoghi ed Equazioni</p>
+        </header>
+
+        <section class="card" data-type="info" id="intro">
+            <div class="card-header">01 — Dal Luogo Geometrico all'Algebra: Introduzione</div>
+            <div class="card-body">
+                <p>Nel piano cartesiano abbiamo imparato a rappresentare le rette tramite equazioni di primo grado. Tuttavia, molte forme della natura, della fisica e della tecnologia non seguono percorsi rettilinei, ma descrivono curve e traiettorie piane di secondo grado: le <strong>coniche</strong>.</p>
+                <p>La più semplice e perfetta tra le coniche è la <strong>circonferenza</strong>. Se vogliamo modellizzare l'orbita circolare di un satellite attorno a un punto centrale o l'area di copertura di un'antenna trasmettitrice, abbiamo bisogno di tradurre la proprietà geometrica di equidistanza in un'equazione algebrica tra le coordinate <code>x</code> e <code>y</code>.</p>
+                
+                <div class="box info">
+                    <strong>📐 Applicazioni della Circonferenza</strong><br>
+                    La circonferenza si incontra costantemente nella modellizzazione e nella fisica:
+                    <ul>
+                        <li><strong>Geolocalizzazione (GPS):</strong> Intersezione di circonferenze di raggio noto dai satelliti per determinare la posizione.</li>
+                        <li><strong>Moto Circolare Uniforme:</strong> La traiettoria di un punto materiale ad una distanza fissa <code>r</code> dal centro di rotazione.</li>
+                        <li><strong>Ingegneria e Architettura:</strong> Archi a tutto sesto, ruote dentate e strutture portanti a sezione circolare.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="summary" id="definizione">
+            <div class="card-header">02 — Cos'è la Circonferenza: Definizione Geometrica</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>💡 Definizione Formale</strong><br>
+                    La <strong>circonferenza</strong> è il luogo geometrico dei punti del piano cartesiano che hanno distanza costante, detta <strong>raggio</strong> (<code>r > 0</code>), da un punto fisso detto <strong>centro</strong> <code>C(x₀, y₀)</code>.
+                </div>
+                <p>Un generico punto <code>P(x, y)</code> appartiene alla circonferenza se e solo se la sua distanza dal centro <code>C</code> è pari a <code>r</code>, ossia <code>d(P, C) = r</code>.</p>
+
+                <h3>Deduzione dell'Equazione con il Teorema di Pitagora</h3>
+                <p>Utilizzando la formula della distanza tra due punti nel piano cartesiano:</p>
+                <div class="math-step"><span class="step-num">1️⃣</span> <span>Distanza tra P(x, y) e C(x₀, y₀): <code>√[(x - x₀)² + (y - y₀)²] = r</code></span></div>
+                <div class="math-step"><span class="step-num">2️⃣</span> <span>Elevando al quadrato entrambi i membri: <code>(x - x₀)² + (y - y₀)² = r²</code></span></div>
+                <p>Questa è l'<strong>equazione della circonferenza con centro C(x₀, y₀) e raggio r</strong>.</p>
+            </div>
+        </section>
+
+        <section class="card" id="equazione-canonica">
+            <div class="card-header">03 — L'Equazione Canonica o Generale</div>
+            <div class="card-body">
+                <p>Sviluppando i quadrati dei binomi nell'equazione <code>(x - x₀)² + (y - y₀)² = r²</code>, otteniamo:</p>
+                <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 0.5rem 0;"><code>x² - 2x₀x + x₀² + y² - 2y₀y + y₀² - r² = 0</code></div>
+                
+                <p>Ponendo: <code>a = -2x₀</code>, <code>b = -2y₀</code> e <code>c = x₀² + y₀² - r²</code>, arriviamo alla forma canonica della circonferenza.</p>
+                
+                <div class="box info">
+                    <strong>🧹 Forma Canonica (o Cartesiana Generale)</strong><br>
+                    L'equazione generale di una circonferenza è:
+                    <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 0.5rem 0;"><code>x² + y² + ax + by + c = 0</code></div>
+                    <em>Caratteristiche fondamentali:</em>
+                    <ul>
+                        <li>È un'equazione di 2° grado nelle variabili <code>x</code> e <code>y</code>.</li>
+                        <li>I coefficienti di <code>x²</code> e <code>y²</code> sono uguali (e riducibili a 1).</li>
+                        <li>Non compare il termine misto <code>xy</code> (coefficiente del termine <code>xy</code> pari a 0).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="centro-raggio">
+            <div class="card-header">04 — Coordinate del Centro e Misura del Raggio</div>
+            <div class="card-body">
+                <p>Data l'equazione in forma canonica <code>x² + y² + ax + by + c = 0</code>, possiamo ricavare le proprietà geometriche fondamentali tramite le seguenti relazioni:</p>
+
+                <div class="box info">
+                    <strong>📊 Formule Fondamentali</strong><br>
+                    <ul>
+                        <li><strong>Coordinate del Centro C:</strong> <code>C(x₀, y₀) = C(-a/2, -b/2)</code></li>
+                        <li><strong>Lunghezza del Raggio r:</strong> <code>r = √[(a/2)² + (b/2)² - c] = √(x₀² + y₀² - c)</code></li>
+                    </ul>
+                </div>
+
+                <div class="box warning">
+                    <strong>⚠️ Condizione di Esistenza (Circonferenza Reale)</strong><br>
+                    Affinché l'equazione rappresenti una circonferenza reale con raggio non nullo, il radicando deve essere strettamente positivo:<br>
+                    <div style="text-align: center; font-weight: bold; font-size: 1.2rem; margin: 0.5rem 0;"><code>(a/2)² + (b/2)² - c > 0</code><br>
+                    • Se il radicando è uguale a <code>0</code>, la circonferenza degenera in un singolo punto (il centro).<br>
+                    • Se il radicando è minore di <code>0</code>, la circonferenza si dice non reale (nessun punto del piano la soddisfa).
+                </div>
+
+                <div class="box example">
+                    <strong>📝 Esempio Guidato</strong><br>
+                    Determina centro e raggio della circonferenza: <code>x² + y² - 6x + 4y - 12 = 0</code><br>
+                    • Coefficienti: <code>a = -6</code>, <code>b = 4</code>, <code>c = -12</code><br>
+                    • Centro C: <code>x₀ = -(-6)/2 = 3</code>, <code>y₀ = -(4)/2 = -2</code> &rarr; <strong>C(3, -2)</strong><br>
+                    • Raggio r: <code>r = √(3² + (-2)² - (-12)) = √(9 + 4 + 12) = √25 = 5</code> &rarr; <strong>r = 5</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="casi-particolari">
+            <div class="card-header">05 — Casi Particolari dell'Equazione</div>
+            <div class="card-body">
+                <p>Se uno o più coefficienti <code>a</code>, <code>b</code>, <code>c</code> sono nulli, la circonferenza assume posizioni particolari rispetto agli assi cartesiani:</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Condizione</th>
+                                <th>Equazione</th>
+                                <th>Proprietà Geometrica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>a = 0</strong></td><td><code>x² + y² + by + c = 0</code></td><td>Centro sull'asse y: <code>C(0, -b/2)</code></td></tr>
+                            <tr><td><strong>b = 0</strong></td><td><code>x² + y² + ax + c = 0</code></td><td>Centro sull'asse x: <code>C(-a/2, 0)</code></td></tr>
+                            <tr><td><strong>c = 0</strong></td><td><code>x² + y² + ax + by = 0</code></td><td>Passa per l'origine degli assi <code>O(0, 0)</code></td></tr>
+                            <tr><td><strong>a = 0 e b = 0</strong></td><td><code>x² + y² + c = 0</code></td><td>Centro nell'origine <code>O(0, 0)</code></td></tr>
+                            <tr><td><strong>a = 0 e c = 0</strong></td><td><code>x² + y² + by = 0</code></td><td>Centro sull'asse y e passa per l'origine</td></tr>
+                            <tr><td><strong>b = 0 e c = 0</strong></td><td><code>x² + y² + ax = 0</code></td><td>Centro sull'asse x e passa per l'origine</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="graph" id="posizioni-rette">
+            <div class="card-header">06 — Posizioni Relative tra Retta e Circonferenza</div>
+            <div class="card-body">
+                <p>Per studiare le intersezioni tra una retta <code>s</code> e una circonferenza <code>γ</code>, si considera il sistema formato dalle equazioni della retta e della circonferenza, ottenendo un'equazione risolvente di secondo grado con discriminante <code>Δ</code>.</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Posizione Relativa</th>
+                                <th>Punti di Intersezione</th>
+                                <th>Condizione sul Discriminante (Δ)</th>
+                                <th>Condizione sulla Distanza d(C, r)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Secante</strong></td><td>2 punti distinti P₁, P₂</td><td><code>Δ > 0</code></td><td><code>d < r</code></td></tr>
+                            <tr><td><strong>Tangente</strong></td><td>2 punti reali e coincidenti T</td><td><code>Δ = 0</code></td><td><code>d = r</code></td></tr>
+                            <tr><td><strong>Esterna</strong></td><td>Nessun punto reale</td><td><code>Δ < 0</code></td><td><code>d > r</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="box info">
+                    <strong>💡 Metodo Alternativo Geometrico</strong><br>
+                    Invece di calcolare il sistema e il discriminante <code>Δ</code>, si può confrontare la distanza <code>d</code> del centro <code>C</code> dalla retta <code>s</code> con la misura del raggio <code>r</code> usando la formula della distanza punto-retta: 
+                    <div style="text-align: center;">
+                        <code>d = |ax₀ + by₀ + c| / √(a² + b²)</code>.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="graph" id="rette-tangenti">
+            <div class="card-header">07 — Rette Tangenti</div>
+            <div class="card-body">
+                <p>Data una circonferenza e un punto <code>P(xₚ, yₚ)</code>, il numero di rette tangenti condotte da <code>P</code> dipende dalla posizione di <code>P</code> rispetto alla circonferenza:</p>
+                <ul>
+                    <li><strong>P è esterno:</strong> Esistono <strong>2 rette tangenti</strong>.</li>
+                    <li><strong>P appartiene alla circonferenza:</strong> Esiste <strong>1 sola retta tangente</strong>.</li>
+                    <li><strong>P è interno:</strong> Non esiste <strong>nessuna retta tangente</strong> reale.</li>
+                </ul>
+
+                <h3>Metodi per Trovare l'Equazione delle Tangenti</h3>
+                <div class="box example">
+                    <strong>Metodo 1 (Geometria - Distanza centro-retta):</strong><br>
+                    1. Scrivere il fascio di rette passanti per P: 
+                    <div style="text-align: center;">
+                    <code>y - yₚ = m(x - xₚ)</code> &rarr; <code>mx - y + (yₚ - m xₚ) = 0</code>.
+                    </div><br>
+                    2. Imporre che la distanza del centro C dalla retta sia uguale al raggio: <code>d(C, s) = r</code>.<br>
+                    3. Risolvere l'equazione nell'incognita <code>m</code>.
+                </div>
+
+                <div class="box example">
+                    <strong>Formula di Sdoppiamento (Se P appartiene alla circonferenza):</strong><br>
+                    Se il punto <code>P(x₀, y₀)</code> appartiene alla circonferenza <code>x² + y² + ax + by + c = 0</code>, l'equazione della tangente in P si ottiene sostituendo:<br>
+                    <code>x² &rarr; x₀x</code>, &nbsp;&nbsp; <code>y² &rarr; y₀y</code>, &nbsp;&nbsp; <code>x &rarr; (x + x₀)/2</code>, &nbsp;&nbsp; <code>y &rarr; (y + y₀)/2</code><br>
+                    <strong>Equazione della tangente:</strong> <code>x₀x + y₀y + a((x + x₀)/2) + b((y + y₀)/2) + c = 0</code>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="summary" id="condizioni">
+            <div class="card-header">08 — Determinare l'Equazione di una Circonferenza</div>
+            <div class="card-body">
+                <p>L'equazione canonica <code>x² + y² + ax + by + c = 0</code> contiene <strong>3 parametri indipendenti</strong> <code>a</code>, <code>b</code>, <code>c</code>. Pertanto, per individuare univocamente una circonferenza occorrono <strong>3 condizioni indipendenti</strong>.</p>
+
+                <h3>Esempi di Triple di Condizioni Sufficienti</h3>
+                <ul>
+                    <li>Passaggio per <strong>3 punti non allineati</strong>.</li>
+                    <li>Coordinate del <strong>centro C(x₀, y₀)</strong> e misura del <strong>raggio r</strong>.</li>
+                    <li>Coordinate del <strong>centro C</strong> e passaggio per <strong>un punto P</strong>.</li>
+                    <li>Passaggio per <strong>2 punti</strong> e centro appartenente a una <strong>retta data</strong>.</li>
+                    <li>Passaggio per <strong>2 punti</strong> e tangenza a una <strong>retta data</strong>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="card" data-type="warning" id="errori">
+            <div class="card-header">09 — Guida all'Autocorrezione degli Errori Frequenti</div>
+            <div class="card-body">
+                <div class="box warning">
+                    <strong>⚠️ Errore 1: Calcolare il centro senza normalizzare i coefficienti di x² e y²</strong><br>
+                    • Sbagliato: Data <code>2x² + 2y² - 8x + 4y - 6 = 0</code>, dire che <code>a = -8</code> e <code>b = 4</code> &rarr; <code>C(4, -2)</code>.<br>
+                    • Spiegazione: Prima di usare le formule di centro e raggio, occorre dividere tutta l'equazione per il coefficiente di x² e y² (in questo caso 2).<br>
+                    • Corretto: Dividendo per 2 si ottiene <code>x² + y² - 4x + 2y - 3 = 0</code>. Quindi <code>a = -4, b = 2</code> &rarr; <code>C(2, -1)</code>.
+                </div>
+
+                <div class="box warning">
+                    <strong>⚠️ Errore 2: Dimenticare il segno meno nelle coordinate del centro</strong><br>
+                    • Sbagliato: Per la circonferenza <code>x² + y² + 6x - 8y = 0</code>, affermare che <code>C(3, -4)</code>.<br>
+                    • Spiegazione: Ricorda la formula <code>x₀ = -a/2</code> e <code>y₀ = -b/2</code>. I segni vanno invertiti!<br>
+                    • Corretto: <code>x₀ = -6/2 = -3</code> e <code>y₀ = -(-8)/2 = 4</code> &rarr; <code>C(-3, 4)</code>.
+                </div>
+
+                <div class="box warning">
+                    <strong>⚠️ Errore 3: Considerare reale una circonferenza con radicando negativo</strong><br>
+                    • Sbagliato: Dire che <code>x² + y² - 2x - 2y + 10 = 0</code> è una circonferenza di raggio <code>r = √(-8)</code>.<br>
+                    • Spiegazione: La radice di un numero negativo non esiste nei numeri reali. L'equazione non rappresenta alcun punto reale.<br>
+                    • Corretto: L'equazione non rappresenta una circonferenza reale (raggio non reale).
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="summary" id="mappa">
+            <div class="card-header">10 — Mappa Concettuale Finale</div>
+            <div class="card-body">
+                <div class="mappa">
+CIRCONFERENZA
+ │
+ ├── DEFINIZIONE GEOMETRICA ──► Luogo dei punti P(x,y) equidistanti dal centro C
+ │
+ ├── EQUAZIONE CANONICA ──────► x² + y² + ax + by + c = 0
+ │                              ► Centro: C(-a/2, -b/2)
+ │                              ► Raggio: r = √[(a/2)² + (b/2)² - c]  (con radicando ≥ 0)
+ │
+ ├── CASI PARTICOLARI ────────► a = 0  ⇒ Centro su asse y
+ │                              ► b = 0  ⇒ Centro su asse x
+ │                              ► c = 0  ⇒ Passa per l'origine O(0,0)
+ │
+ ├── POSIZIONI RELATIVE ──────► Retta Secante:   Δ > 0  oppure  d(C, s) < r
+ │                              ► Retta Tangente:  Δ = 0  oppure  d(C, s) = r
+ │                              ► Retta Esterna:   Δ < 0  oppure  d(C, s) > r
+ │
+ └── TANGENTI E CONDIZIONI ───► Tangente in P ∈ γ: Formula di sdoppiamento
+                                ► Tangenti da P esterno: Distanza centro-retta d(C,s) = r
+                                ► Per determinarla servono 3 condizioni indipendenti
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="exercise" id="esercizi">
+            <div class="card-header">11 — Esercizi Guidati e Svolti</div>
+            <div class="card-body">
+                <p>Esercitati con queste applicazioni sulla circonferenza di difficoltà base. Apri i dettagli per verificare.</p>
+                
+                <div class="exercise">
+                    <h3>1. Determina centro e raggio di <code>x² + y² - 4x + 6y - 3 = 0</code></h3>
+                    <details>
+                        <summary>💡 Svolgimento</summary>
+                        <div>
+                            Identifichiamo i coefficienti: <code>a = -4</code>, <code>b = 6</code>, <code>c = -3</code>.<br>
+                            • Coordinate del centro: <code>x₀ = -(-4)/2 = 2</code>, <code>y₀ = -6/2 = -3</code> &rarr; <code>C(2, -3)</code>.<br>
+                            • Calcolo del raggio: <code>r = √(2² + (-3)² - (-3)) = √(4 + 9 + 3) = √16 = 4</code>.<br>
+                            <strong>✅ Risultato: Centro <code>C(2, -3)</code>, Raggio <code>r = 4</code>.</strong>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="exercise">
+                    <h3>2. Trova l'equazione della circonferenza di centro <code>C(-1, 2)</code> e passante per <code>P(2, 6)</code></h3>
+                    <details>
+                        <summary>💡 Svolgimento</summary>
+                        <div>
+                            <div class="math-step"><span class="step-num">1.</span> <span>Calcoliamo il raggio r come distanza tra C e P: <code>r = √[(2 - (-1))² + (6 - 2)²] = √[3² + 4²] = √(9 + 16) = √25 = 5</code></span></div>
+                            <div class="math-step"><span class="step-num">2.</span> <span>Usiamo l'equazione con centro e raggio: <code>(x - x₀)² + (y - y₀)² = r²</code></span></div>
+                            <div class="math-step"><span class="step-num">3.</span> <span>Sostituiamo i valori: <code>(x + 1)² + (y - 2)² = 25</code></span></div>
+                            <div class="math-step"><span class="step-num">4.</span> <span>Sviluppiamo i quadrati: <code>x² + 2x + 1 + y² - 4y + 4 = 25</code> &rarr; <code>x² + y² + 2x - 4y - 20 = 0</code></span></div>
+                            <strong>✅ Risultato: <code>x² + y² + 2x - 4y - 20 = 0</code></strong>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="exercise">
+                    <h3>3. Calcola la retta tangente alla circonferenza <code>x² + y² = 25</code> nel punto <code>P(3, 4)</code></h3>
+                    <details>
+                        <summary>💡 Svolgimento</summary>
+                        <div>
+                            <div class="math-step"><span class="step-num">1.</span> <span>Verifichiamo che P appartiene alla circonferenza: <code>3² + 4² = 9 + 16 = 25</code> (Sì).</span></div>
+                            <div class="math-step"><span class="step-num">2.</span> <span>Applichiamo la formula di sdoppiamento per la circonferenza <code>x² + y² - 25 = 0</code>: <code>x₀x + y₀y - 25 = 0</code></span></div>
+                            <div class="math-step"><span class="step-num">3.</span> <span>Sostituiamo <code>x₀ = 3</code> e <code>y₀ = 4</code>: <code>3x + 4y - 25 = 0</code></span></div>
+                            <strong>✅ Risultato: <code>3x + 4y - 25 = 0</code> (in forma esplicita: <code>y = -3/4 x + 25/4</code>).</strong>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="exercise" id="verifica">
+            <div class="card-header">12 — Verifica Finale (5 Minuti)</div>
+            <div class="card-body">
+                <p>Controlla la tua preparazione prima di chiudere il modulo.</p>
+                <h3>Parte 1: Quesiti Teorici</h3>
+                <ol>
+                    <li>Qual è la condizione algebrica affinché l'equazione <code>x² + y² + ax + by + c = 0</code> rappresenti una circonferenza reale?</li>
+                    <li>Cosa indica geometricamente l'annullamento del coefficiente <code>c</code> nell'equazione canonica?</li>
+                </ol>
+                <h3>Parte 2: Esercizi di Calcolo</h3>
+                <ol>
+                    <li>Determina le coordinate del centro e il raggio della circonferenza <code>x² + y² + 8x - 10y + 16 = 0</code>.</li>
+                    <li>Scrivi l'equazione della circonferenza avente centro nell'origine <code>O(0,0)</code> e raggio <code>r = 6</code>.</li>
+                    <li>Stabilisci la posizione relativa tra la retta <code>y = 2</code> e la circonferenza <code>x² + y² = 9</code>.</li>
+                </ol>
+                <details>
+                    <summary>🔍 Mostra Soluzioni di Controllo</summary>
+                    <div>
+                        <p>Teoria 1: <em>Il radicando nella formula del raggio deve essere strettamente positivo (o non negativo per una circonferenza degenere): <code>(a/2)² + (b/2)² - c ≥ 0</code>.</em></p>
+                        <p>Teoria 2: <em>Se <code>c = 0</code>, la circonferenza passa per l'origine degli assi cartesiani <code>O(0,0)</code>.</em></p>
+                        <p>Es.1: <code>a = 8, b = -10, c = 16</code> &rarr; <code>C(-4, 5)</code>; <code>r = √((-4)² + 5² - 16) = √(16 + 25 - 16) = √25 = 5</code>.</p>
+                        <p>Es.2: <code>x² + y² = 36</code> (oppure <code>x² + y² - 36 = 0</code>).</p>
+                        <p>Es.3: Il raggio è <code>r = 3</code>. La distanza della retta parallela all'asse x: <code>y = 2</code> dal centro <code>(0,0)</code> è <code>d = 2</code>. Poiché <code>d < r</code> (<code>2 < 3</code>), la retta è <strong>secante</strong> in due punti. Ergo, interseca la circonferenza in due punti.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <footer>
+            <span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+            <span class="footer-center">
+                    Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+                    <small>Prof.ssa M. Prandelli</small>
+            </span>
+            <span class="footer-copy">© 2026 MatematicaOro</span>
+        </footer>
+    </main>
+
+    <button class="no-print" id="fsBtn" onclick="toggleFullscreen()" style="position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--primary); color: white; border: none; padding: 0.8rem 1.2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 6px 16px rgba(37,99,235,0.35); font-weight: 600; transition: all 0.2s; z-index: 102;">
+        🖥️ Schermo Intero
+    </button>
+
+    <script>const progressBar = document.getElementById('progressBar');
+ const navLinks = document.querySelectorAll('nav a');
+ const nav = document.querySelector('nav');
+ const sections = document.querySelectorAll('section');
+ function getNavHeight() {
+ return nav ? nav.getBoundingClientRect().height : 0;
+ }
+ function setActiveLink(currentId) {
+ navLinks.forEach(link => {
+ link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+ });
+ }
+ function updateNavigationState() {
+ const h = document.documentElement.scrollHeight - window.innerHeight;
+ progressBar.style.width = h > 0 ? `${Math.min(100, (window.scrollY / h) * 100)}%` : '0%';
+ const activationY = window.scrollY + getNavHeight() + 2;
+ let current = sections.length ? sections[0].id : '';
+ sections.forEach(sec => {
+ const sectionTop = sec.getBoundingClientRect().top + window.scrollY;
+ if (sectionTop <= activationY) current = sec.id;
+ });
+ if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2 && sections.length) {
+ current = sections[sections.length - 1].id;
+ }
+ setActiveLink(current);
+ }
+ navLinks.forEach(link => {
+ link.addEventListener('click', (event) => {
+ const href = link.getAttribute('href');
+ if (!href || !href.startsWith('#')) return;
+ const target = document.querySelector(href);
+ if (!target) return;
+ event.preventDefault();
+ const targetTop = target.getBoundingClientRect().top + window.scrollY;
+ const targetY = targetTop - getNavHeight();
+ setActiveLink(target.id);
+ window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+ history.replaceState(null, '', href);
+ });
+ });
+ window.addEventListener('scroll', updateNavigationState, { passive: true });
+ window.addEventListener('resize', updateNavigationState);
+ updateNavigationState();
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+ }, { threshold: 0.1 });
+ document.querySelectorAll('.card').forEach(card => observer.observe(card));
+ function toggleFullscreen() {
+ if (!document.fullscreenElement) {
+ document.documentElement.requestFullscreen().catch(err => console.warn(`Errore Fullscreen: ${err}`));
+ } else {
+ document.exitFullscreen();
+ }
+ }
+ document.addEventListener('fullscreenchange', () => {
+ document.getElementById('fsBtn').textContent = document.fullscreenElement ? '🖥️ Esci Schermo Intero' : '🖥️ Schermo Intero';
+ });</script>
+<div class="mo-tools"><a href="../../index.html">⌂ Home</a><a href="../index.html">☰ Lezioni</a></div><script>(function(){var d=document,f=String.fromCharCode,c=f(99,111,110,116,101,120,116,109,101,110,117),g=f(100,114,97,103,115,116,97,114,116);d.addEventListener(c,function(e){e.preventDefault()},true);d.addEventListener(g,function(e){e.preventDefault()},true);d.addEventListener("keydown",function(e){var k=(e.key||"").toLowerCase();if((e.ctrlKey||e.metaKey)&&(k==="u"||k==="s")||e.key==="F12"){e.preventDefault();e.stopPropagation()}},true)})();</script></body>
+</html>

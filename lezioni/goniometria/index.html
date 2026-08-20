@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>La Goniometria - MatematicaOro</title>
+    <style>:root{--primary:#2563eb;--primary-light:#3b82f6;--gold:#D4AF37;--success:#16a34a;--warning:#d97706;--danger:#dc2626;--info:#0891b2;--bg-page:#e0e7ff;--bg-card:#ffffff;--text:#0f172a;--text-muted:#475569;--border:#e2e8f0;--shadow:0 12px 32px rgba(0,0,0,0.15);--radius:16px;--font-main:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--font-mono:"Courier New",Consolas,monospace}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:0}body{font-family:var(--font-main);font-size:clamp(16px,1.8vw,19px);line-height:1.7;color:var(--text);background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;min-height:100vh;padding-top:4rem}.progress-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-light));width:0%;z-index:101;transition:width 0.15s linear}nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0.7rem 1rem;display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.05)}nav a{text-decoration:none;color:var(--text-muted);font-weight:600;font-size:0.85rem;padding:0.4rem 0.8rem;border-radius:8px;transition:all 0.2s}nav a:hover{color:var(--primary);background:#eff6ff;transform:translateY(-1px)}nav a.active{color:#fff;background:var(--primary);box-shadow:0 2px 6px rgba(37,99,235,0.2)}main{max-width:980px;margin:0 auto;padding:2rem 1rem 4rem}.card{background:var(--bg-card);border-radius:var(--radius);padding:2rem;margin-bottom:2.5rem;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.5);position:relative;overflow:hidden;transition:transform 0.3s ease,box-shadow 0.3s ease;opacity:0;transform:translateY(25px)}.card.visible{opacity:1;transform:translateY(0)}.card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.18)}.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--primary),var(--primary-light))}.card[data-type="graph"]::before{background:linear-gradient(90deg,var(--success),#22c55e)}.card[data-type="warning"]::before{background:linear-gradient(90deg,var(--warning),#f59e0b)}.card[data-type="exercise"]::before{background:linear-gradient(90deg,var(--danger),#f87171)}.card[data-type="summary"]::before{background:linear-gradient(90deg,var(--info),#22d3ee)}.card-header{font-size:1.45rem;font-weight:700;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:0.6rem;color:var(--text)}.card-body{padding-top:0.5rem}h3{margin-top:1.4rem;margin-bottom:0.8rem;color:var(--text-muted);font-size:1.1rem}p,li{margin-bottom:0.9rem}ul,ol{padding-left:1.5rem;margin-bottom:1rem}code{background:#e2e8f0;padding:0.15rem 0.4rem;border-radius:4px;font-family:var(--font-mono);font-size:0.95em}.box{border-left:4px solid var(--primary);background:#f8fafc;padding:1rem 1.2rem;margin:1.2rem 0;border-radius:0 10px 10px 0;transition:transform 0.2s,box-shadow 0.2s}.box:hover{transform:translateX(4px);box-shadow:0 4px 10px rgba(37,99,235,0.15)}.box.warning{border-color:var(--warning);background:#fffbeb}.box.example{border-color:var(--success);background:#f0fdf4}.box.info{border-color:var(--text-muted);background:#f1f5f9}.box p:last-child{margin-bottom:0}.math-step{display:flex;align-items:baseline;gap:0.6rem;margin:0.6rem 0;background:#f8fafc;padding:0.7rem 0.8rem;border-radius:8px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.95rem;flex-wrap:wrap}.step-num{font-weight:bold;color:var(--primary);min-width:2.5rem}.step-comment{color:var(--text-muted);margin-left:auto;font-style:italic}.table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.2rem 0;border-radius:10px}table{width:100%;min-width:600px;border-collapse:collapse;font-size:0.95rem;background:#fff}th,td{border:1px solid var(--border);padding:0.7rem 0.5rem;text-align:center;vertical-align:middle}th{background:linear-gradient(to bottom,#f1f5f9,#e2e8f0);font-weight:600}tr:hover td{background:#f8fafc;transition:background 0.2s}details{background:#f8fafc;border:1px solid var(--border);border-radius:10px;margin:1rem 0;overflow:hidden;transition:all 0.2s}summary{padding:0.9rem 1rem;cursor:pointer;font-weight:600;color:var(--primary);user-select:none;list-style:none;display:flex;justify-content:space-between;align-items:center}summary::after{content:"▼";transition:transform 0.25s}details[open] summary::after{transform:rotate(180deg)}details[open] summary{border-bottom:1px solid var(--border);background:#eff6ff}details>div{padding:1rem}details:hover{box-shadow:0 2px 8px rgba(0,0,0,0.05)}.mappa{background-color:#f8fafc;border:1px solid var(--border);padding:20px;border-radius:8px;font-family:var(--font-mono);line-height:1.4;white-space:pre-wrap;font-size:0.85rem;color:var(--text)}.svg-container{text-align:center;margin:1.5rem 0;padding:1rem;background:#ffffff;border:1px solid var(--border);border-radius:12px;box-shadow:inset 0 2px 4px rgba(0,0,0,0.02)}.badge-container{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:1.2rem}.graph-badge{display:inline-flex;align-items:center;gap:0.4rem;padding:0.4rem 0.9rem;border-radius:50px;border:2px solid var(--border);background:#f8fafc;color:var(--text);font-size:0.85rem;font-weight:700;cursor:pointer;user-select:none;transition:all 0.2s ease}.graph-badge:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(0,0,0,0.08)}.graph-badge.active{color:#ffffff}.graph-badge[data-fn="sin"].active{background:#dc2626;border-color:#dc2626}.graph-badge[data-fn="cos"].active{background:#2563eb;border-color:#2563eb}.graph-badge[data-fn="tan"].active{background:#16a34a;border-color:#16a34a}.graph-badge[data-fn="cot"].active{background:#d97706;border-color:#d97706}.graph-badge[data-fn="arcsin"].active{background:#7c3aed;border-color:#7c3aed}.graph-badge[data-fn="arccos"].active{background:#0891b2;border-color:#0891b2}.graph-badge[data-fn="arctan"].active{background:#db2777;border-color:#db2777}.canvas-container{position:relative;width:100%;background:#ffffff;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:inset 0 2px 6px rgba(0,0,0,0.03)}canvas{display:block;width:100%;height:auto}@media print{nav,.no-print,.progress-bar{display:none !important}body{background:#fff;font-size:12pt;line-height:1.4;padding-top:0}.card{box-shadow:none;border:1px solid #999;break-inside:avoid;margin-bottom:1.5rem}.box,details,table{border:1px solid #888;box-shadow:none}a{color:#000;text-decoration:none}}@media (max-width:768px){body{padding-top:0}nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0.5rem;-webkit-overflow-scrolling:touch;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{font-size:0.8rem;padding:0.3rem 0.6rem;flex-shrink:0}.card{padding:1.2rem;margin-bottom:1.5rem}.card-header{font-size:1.2rem;flex-wrap:wrap}.math-step{flex-direction:column;align-items:flex-start;gap:0.3rem}.step-comment{margin-left:0;font-size:0.85rem}#fsBtn{bottom:1rem;right:1rem;padding:0.6rem 0.9rem;font-size:0.85rem}}.text-center{text-align:center}.text-muted{color:var(--text-muted)}footer{border-top:1px solid var(--border);margin-top:3rem;padding:0.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:0.72rem;position:relative;z-index:1}footer .footer-brand{font-weight:700;white-space:nowrap}footer .footer-brand .brand-mat{color:#1e3a8a}footer .footer-brand .brand-viva{color:#C8972A}footer .footer-center{color:var(--text-muted);text-align:center;flex:1}footer .footer-center small{display:block;font-size:0.67rem;color:var(--text-muted);margin-top:0.15rem}footer .footer-copy{color:var(--text-muted);white-space:nowrap;text-align:right}@media (max-width:650px){footer{flex-direction:column;text-align:center;padding:1rem}}.logo-text{font-weight:800;letter-spacing:-0.5px}</style>
+<style id="mo-site-tools">.mo-tools{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 3px 14px rgba(20,50,90,.16);font-family:Arial,sans-serif}.mo-tools a{font:700 12px Arial,sans-serif;text-decoration:none;color:#173f78;background:#fff;border:1px solid #d6e0ea;border-radius:7px;padding:7px 9px}@media print{.mo-tools{display:none!important}}</style>
+</head>
+<body>
+<div class="progress-bar no-print" id="progressBar"></div>
+    <nav aria-label="Navigazione lezione" class="no-print">
+        <a href="#intro">🧠 Motivazione</a>
+        <a href="#circonferenza">⭕ Circonferenza Goniometrica</a>
+        <a href="#seno-coseno">📈 Seno e Coseno</a>
+        <a href="#tangente-cotangente">📐 Tangente e Cotangente</a>
+        <a href="#proprieta">⭐ Proprietà Fondamentali</a>
+        <a href="#valori-notevoli">📊 Valori Notevoli</a>
+        <a href="#grafici-diretti">📊 Grafici Goniometrici</a>
+        <a href="#funzioni-inverse">🔄 Arcsin, Arccos, Arctan</a>
+        <a href="#grafici-inversi">📈 Grafici Funzioni Inverse</a>
+        <a href="#errori">⚠️ Errori Comuni</a>
+        <a href="#mappa">🗺️ Mappa</a>
+    </nav>
+
+    <main>
+
+        <header class="text-center" style="margin-bottom: 2.5rem;">
+<h1 style="font-size: 2.6rem; margin-bottom: 0.3rem;">
+    <span class="logo-text" style="color: #1e3a8a">Matematica</span><span class="logo-text" style="color: var(--gold)">Oro</span>
+</h1>
+            
+            <p style="font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">La Geometria degli Angoli: Fondamenti di Goniometria</p>
+        </header>
+
+        <section class="card" data-type="info" id="intro">
+            <div class="card-header">01 — Misurare gli Angoli e i Fenomeni Periodici: Introduzione</div>
+            <div class="card-body">
+                <p>La <strong>goniometria</strong> (dal greco <em>gōnía</em>, angolo, e <em>métron</em>, misura) è la branca della matematica che si occupa della misurazione degli angoli e delle relazioni funzionali ad essi collegate. A differenza della trigonometria classica, che studia principalmente i triangoli, la goniometria analizza le funzioni periodiche in un contesto matematico astratto ed essenziale.</p>
+                <p>In natura e nella tecnologia, moltissimi fenomeni presentano un comportamento ciclico e ripetitivo: l'oscillazione di un pendolo, le onde sonore ed elettromagnetiche, le maree, la corrente alternata e i cicli stagionali. Tutti questi fenomeni vengono modellizzati matematicamente mediante le <strong>funzioni goniometriche</strong>.</p>
+                
+                <div class="box info">
+                    <strong>📐 Unità di Misura degli Angoli: Gradi e Radianti</strong><br>
+                    In goniometria, la misura dell'angolo viene espressa in due sistemi principali:
+                    <ul>
+                        <li><strong>Gradi sessagesimali (°):</strong> Una circonferenza completa misura <code>360°</code>.</li>
+                        <li><strong>Radianti (rad):</strong> Un radiante è l'angolo al centro che sottende un arco di lunghezza pari al raggio della circonferenza. La circonferenza completa equivale a <code>2π rad</code>.</li>
+                        <li><strong>Conversione:</strong> Vale la proporzione <code>α° : 180° = α_rad : π</code>. Quindi 
+                          <div style="text-align: center;"><code>α_rad = α° · (π / 180°)</code>.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="summary" id="circonferenza">
+            <div class="card-header">02 — La Circonferenza Goniometrica</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>💡 Definizione Formale</strong><br>
+                    La <strong>circonferenza goniometrica</strong> è una circonferenza avente centro nell'origine <code>O(0,0)</code> di un sistema di assi cartesiani ortogonali e raggio di lunghezza unitaria <code>r = 1</code>. La sua equazione cartesiana è <code>x² + y² = 1</code>.
+                </div>
+                <p>Convenzionalmente, gli angoli orientati hanno il primo lato coincidente con il semiasse positivo delle ascisse (il punto <code>A(1,0)</code> è detto <em>origine degli archi</em>) e vertice nell'origine <code>O(0,0)</code>. L'angolo α si considera <strong>positivo</strong> se descritto in senso <strong>antiorario</strong>, e <strong>negativo</strong> se descritto in senso <strong>orario</strong>.</p>
+
+                <h3>Il Punto Goniometrico P(α)</h3>
+                <p>Ad ogni angolo reale α corrisponde in modo unico un punto <code>P(x, y)</code> sulla circonferenza goniometrica, ottenuto ruotando il punto <code>A(1, 0)</code> attorno all'origine di un angolo α.</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Quadrante</th>
+                                <th>Intervallo Angolo α (gradi)</th>
+                                <th>Intervallo Angolo α (radianti)</th>
+                                <th>Segno x_P</th>
+                                <th>Segno y_P</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>I Quadrante</strong></td><td>0° < α < 90°</td><td>0 < α < π/2</td><td>🟢 Positivo (+)</td><td>🟢 Positivo (+)</td></tr>
+                            <tr><td><strong>II Quadrante</strong></td><td>90° < α < 180°</td><td>π/2 < α < π</td><td>🔴 Negativo (-)</td><td>🟢 Positivo (+)</td></tr>
+                            <tr><td><strong>III Quadrante</strong></td><td>180° < α < 270°</td><td>π < α < 3π/2</td><td>🔴 Negativo (-)</td><td>🔴 Negativo (-)</td></tr>
+                            <tr><td><strong>IV Quadrante</strong></td><td>270° < α < 360°</td><td>3π/2 < α < 2π</td><td>🟢 Positivo (+)</td><td>🔴 Negativo (-)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="seno-coseno">
+            <div class="card-header">03 — Definizione di Seno e Coseno</div>
+            <div class="card-body">
+                <p>Sulla circonferenza goniometrica, le coordinate cartesiane del punto <code>P(α)</code> definiscono direttamente le prime due funzioni goniometriche fondamentali.</p>
+                
+                <div class="box info">
+                    <strong>📏 Definizione di Coseno e Seno</strong><br>
+                    Sia <code>P(x, y)</code> il punto della circonferenza goniometrica associato all'angolo orientato α. Si definisce:
+                    <ul>
+                        <li><strong>Coseno di α (cos α):</strong> l'ascissa <code>x</code> del punto P, ossia <code>cos α = x_P</code>.</li>
+                        <li><strong>Seno di α (sin α):</strong> l'ordinata <code>y</code> del punto P, ossia <code>sin α = y_P</code>.</li>
+                    </ul>
+                </div>
+
+                <div class="svg-container">
+                    <svg viewBox="0 0 340 320" width="340" height="320">
+                        <rect x="0" y="0" width="340" height="320" fill="#fafafa" rx="8"/>
+
+                        
+                        <line x1="20" y1="160" x2="320" y2="160" stroke="#94a3b8" stroke-width="1.5"/>
+                        <line x1="150" y1="20" x2="150" y2="300" stroke="#94a3b8" stroke-width="1.5"/>
+                        <text x="308" y="175" font-family="sans-serif" font-size="13" fill="#64748b">x</text>
+                        <text x="158" y="30" font-family="sans-serif" font-size="13" fill="#64748b">y</text>
+
+                        
+                        <circle cx="150" cy="160" r="100" fill="none" stroke="#1e3a8a" stroke-width="2"/>
+
+                        
+                        <line x1="150" y1="160" x2="226.6" y2="160" stroke="#2563eb" stroke-width="4"/>
+                        
+                        <line x1="226.6" y1="160" x2="226.6" y2="95.72" stroke="#dc2626" stroke-width="4"/>
+                        
+                        <line x1="150" y1="95.72" x2="226.6" y2="95.72" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+
+                        
+                        <line x1="150" y1="160" x2="226.6" y2="95.72" stroke="#0f172a" stroke-width="2"/>
+
+                        
+                        <path d="M 178 160 A 28 28 0 0 0 171.45 142.00" fill="none" stroke="#16a34a" stroke-width="2"/>
+                        <text x="172" y="152" font-family="sans-serif" font-size="13" font-weight="bold" fill="#16a34a">α</text>
+
+                        
+                        <circle cx="150" cy="160" r="3" fill="#0f172a"/>
+                        <text x="130" y="176" font-family="sans-serif" font-size="12" fill="#0f172a">O</text>
+
+                        
+                        <circle cx="250" cy="160" r="3.5" fill="#0f172a"/>
+                        <text x="254" y="178" font-family="sans-serif" font-size="12" fill="#0f172a">A(1,0)</text>
+
+                        
+                        <circle cx="226.6" cy="95.72" r="4" fill="#0f172a"/>
+                        <text x="232" y="88" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">P(cos α, sin α)</text>
+
+                        
+                        <text x="178" y="178" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2563eb">cos α</text>
+                        <text x="234" y="130" font-family="sans-serif" font-size="13" font-weight="bold" fill="#dc2626">sin α</text>
+                    </svg>
+                </div>
+
+                <h3>Proprietà Immediate di Seno e Coseno</h3>
+                <ul>
+                    <li><strong>Dominio:</strong> Entrambe le funzioni sono definite per qualsiasi numero reale <code>α ∈ ℝ</code>.</li>
+                    <li><strong>Codominio (Limitatezza):</strong> Poiché P appartiene alla circonferenza di raggio 1, l'ascissa e l'ordinata assumono valori limitati tra -1 e +1:
+                        <div class="math-step"><span class="step-num">1.</span> <span><code>-1 ≤ cos α ≤ 1</code></span></div>
+                        <div class="math-step"><span class="step-num">2.</span> <span><code>-1 ≤ sin α ≤ 1</code></span></div>
+                    </li>
+                    <li><strong>Periodicità:</strong> Effettuando un giro completo di 360° (<code>2π</code> rad), il punto P torna nella medesima posizione. Pertanto:
+                        <div class="math-step"><span class="step-num">3.</span> <span><code>cos(α + 2kπ) = cos α</code> con <code>k ∈ ℤ</code></span></div>
+                        <div class="math-step"><span class="step-num">4.</span> <span><code>sin(α + 2kπ) = sin α</code> con <code>k ∈ ℤ</code></span></div>
+                    </li>
+                    <li><strong>Parità / Disparità:</strong> Il coseno è una funzione <em>pari</em> (<code>cos(-α) = cos α</code>), mentre il seno è una funzione <em>dispari</em> (<code>sin(-α) = -sin α</code>).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="card" id="tangente-cotangente">
+            <div class="card-header">04 — Definizione di Tangente e Cotangente</div>
+            <div class="card-body">
+                <p>Le funzioni tangente e cotangente si definiscono geometricamente mediante rette tangenti alla circonferenza goniometrica o analiticamente tramite il rapporto tra seno e coseno.</p>
+
+                <div class="box info">
+                    <strong>📐 Definizione Geometrica e Analitica</strong><br>
+                    <ul>
+                        <li><strong>Tangente (tan α o tg α):</strong> Tracciata la retta <code>x = 1</code> tangente alla circonferenza nel punto <code>A(1,0)</code>, sia <code>T(1, y_T)</code> l'intersezione tra tale retta e la retta contenente il raggio OP. L'ordinata di T è la tangente:
+                        <code>tan α = y_T = (sin α) / (cos α)</code>.</li>
+                        <li><strong>Cotangente (cot α o ctg α):</strong> Tracciata la retta <code>y = 1</code> tangente nel punto <code>B(0,1)</code>, sia <code>C(x_C, 1)</code> l'intersezione con il prolungamento del raggio OP. L'ascissa di C è la cotangente:
+                        <code>cot α = x_C = (cos α) / (sin α)</code>.</li>
+                    </ul>
+                </div>
+
+                <div class="svg-container">
+                    <svg viewBox="0 0 340 320" width="340" height="320">
+                        <rect x="0" y="0" width="340" height="320" fill="#fafafa" rx="8"/>
+
+                        
+                        <line x1="20" y1="160" x2="320" y2="160" stroke="#94a3b8" stroke-width="1.5"/>
+                        <line x1="150" y1="20" x2="150" y2="300" stroke="#94a3b8" stroke-width="1.5"/>
+
+                        
+                        <circle cx="150" cy="160" r="100" fill="none" stroke="#1e3a8a" stroke-width="2"/>
+
+                        
+                        <line x1="250" y1="30" x2="250" y2="290" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4,3"/>
+                        <text x="254" y="42" font-family="sans-serif" font-size="12" fill="#94a3b8">x = 1</text>
+
+                        
+                        <line x1="30" y1="60" x2="310" y2="60" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4,3"/>
+                        <text x="285" y="52" font-family="sans-serif" font-size="12" fill="#94a3b8">y = 1</text>
+
+                        
+                        <line x1="150" y1="160" x2="269.18" y2="60" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+                        
+                        <line x1="250" y1="160" x2="250" y2="76.09" stroke="#16a34a" stroke-width="4"/>
+                        
+                        <line x1="150" y1="60" x2="269.18" y2="60" stroke="#d97706" stroke-width="4"/>
+
+                        
+                        <circle cx="150" cy="160" r="3" fill="#0f172a"/>
+                        <text x="130" y="176" font-family="sans-serif" font-size="12" fill="#0f172a">O</text>
+
+                        
+                        <circle cx="250" cy="160" r="3.5" fill="#0f172a"/>
+                        <text x="254" y="178" font-family="sans-serif" font-size="12" fill="#0f172a">A(1,0)</text>
+
+                        
+                        <circle cx="150" cy="60" r="3.5" fill="#0f172a"/>
+                        <text x="118" y="55" font-family="sans-serif" font-size="12" fill="#0f172a">B(0,1)</text>
+
+                        
+                        <circle cx="226.6" cy="95.72" r="4" fill="#0f172a"/>
+                        <text x="230" y="112" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">P</text>
+
+                        
+                        <circle cx="250" cy="76.09" r="4" fill="#16a34a"/>
+                        <text x="256" y="80" font-family="sans-serif" font-size="12" font-weight="bold" fill="#16a34a">T(1, tan α)</text>
+
+                        
+                        <circle cx="269.18" cy="60" r="4" fill="#d97706"/>
+                        <text x="272" y="70" font-family="sans-serif" font-size="12" font-weight="bold" fill="#d97706">C(cot α, 1)</text>
+
+                        
+                        <text x="255" y="120" font-family="sans-serif" font-size="13" font-weight="bold" fill="#16a34a">tan α</text>
+                        <text x="185" y="48" font-family="sans-serif" font-size="13" font-weight="bold" fill="#d97706">cot α</text>
+                    </svg>
+                </div>
+
+                <h3>Condizioni di Esistenza e Periodicità</h3>
+                <ul>
+                    <li><strong>Dominio Tangente:</strong> La tangente non è definita quando <code>cos α = 0</code>, ovvero per <code>α = π/2 + kπ</code> (90°, 270°, ecc.).</li>
+                    <li><strong>Dominio Cotangente:</strong> La cotangente non è definita quando <code>sin α = 0</code>, ovvero per <code>α = kπ</code> (0°, 180°, 360°, ecc.).</li>
+                    <li><strong>Periodicità:</strong> Tangente e cotangente sono funzioni periodiche di periodo <strong>T = π (180°)</strong>:
+                    <code>tan(α + kπ) = tan α</code> e <code>cot(α + kπ) = cot α</code>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="card" data-type="graph" id="proprieta">
+            <div class="card-header">05 — Prime Proprietà e Relazioni Fondamentali</div>
+            <div class="card-body">
+                <p>Tra le funzioni goniometriche sussistono relazioni algebriche di fondamentale importanza, derivabili direttamente dal Teorema di Pitagora applicato al triangolo rettangolo formato sulla circonferenza goniometrica.</p>
+
+                <div class="box info">
+                    <strong>⭐ Prima Relazione Fondamentale della Goniometria</strong><br>
+                    Per ogni angolo α reale, applicando il teorema di Pitagora al triangolo rettangolo con ipotenusa 1 e cateti <code>|cos α|</code> e <code>|sin α|</code>:
+                    <div style="text-align:center; font-size: 1.3rem; margin: 0.8rem 0; font-weight: bold; color: var(--primary);">
+                        <code>sin² α + cos² α = 1</code>
+                    </div>
+                </div>
+
+                <h3>Formule Derivate dal Primo Teorema Fondamentale</h3>
+                <p>Dalla prima relazione fondamentale si ricavano le espressioni per isolare seno e coseno (con scelta opportuna del segno in base al quadrante):</p>
+                <div class="math-step"><span class="step-num">1.</span> <span><code>sin α = ± √(1 - cos² α)</code></span></div>
+                <div class="math-step"><span class="step-num">2.</span> <span><code>cos α = ± √(1 - sin² α)</code></span></div>
+
+                <h3>Seconda e Terza Relazione Fondamentale</h3>
+                <div class="box example">
+                    <ul>
+                        <li><strong>Seconda relazione:</strong> <code>tan α = (sin α) / (cos α)</code> per <code>α ≠ π/2 + kπ</code></li>
+                        <li><strong>Terza relazione:</strong> <code>cot α = (cos α) / (sin α)</code> per <code>α ≠ kπ</code></li>
+                        <li><strong>Espressione di cos² α e sin² α in funzione di tan α:</strong><br>
+                        <code>1 + tan² α = 1 / (cos² α)</code> &nbsp;&rarr;&nbsp; <code>cos² α = 1 / (1 + tan² α)</code><br>
+                        <code>sin² α = (tan² α) / (1 + tan² α)</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="summary" id="valori-notevoli">
+            <div class="card-header">06 — Tabella dei Valori Notevoli</div>
+            <div class="card-body">
+                <p>I valori che le funzioni goniometriche assumono negli angoli principali del primo quadrante e sui quattro assi (angoli cardinali) costituiscono lo strumento di calcolo fondamentale per ogni problema goniometrico.</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>α (gradi)</th>
+                                <th>α (radianti)</th>
+                                <th>sin α</th>
+                                <th>cos α</th>
+                                <th>tan α</th>
+                                <th>cot α</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>0°</strong></td><td><code>0</code></td><td>0</td><td>1</td><td>0</td><td>Non definita</td></tr>
+                            <tr><td><strong>30°</strong></td><td><code>π/6</code></td><td>1/2</td><td>√3 / 2</td><td>√3 / 3</td><td>√3</td></tr>
+                            <tr><td><strong>45°</strong></td><td><code>π/4</code></td><td>√2 / 2</td><td>√2 / 2</td><td>1</td><td>1</td></tr>
+                            <tr><td><strong>60°</strong></td><td><code>π/3</code></td><td>√3 / 2</td><td>1/2</td><td>√3</td><td>√3 / 3</td></tr>
+                            <tr><td><strong>90°</strong></td><td><code>π/2</code></td><td>1</td><td>0</td><td>Non definita</td><td>0</td></tr>
+                            <tr><td><strong>180°</strong></td><td><code>π</code></td><td>0</td><td>-1</td><td>0</td><td>Non definita</td></tr>
+                            <tr><td><strong>270°</strong></td><td><code>3π/2</code></td><td>-1</td><td>0</td><td>Non definita</td><td>0</td></tr>
+                            <tr><td><strong>360°</strong></td><td><code>2π</code></td><td>0</td><td>1</td><td>0</td><td>Non definita</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="graph" id="grafici-diretti">
+            <div class="card-header">07 — Grafici Interattivi delle Funzioni Goniometriche</div>
+            <div class="card-body">
+                <p>Seleziona i badge sottostanti per visualizzare e sovrapporre i grafici delle funzioni goniometriche sullo stesso piano cartesiano:</p>
+                
+                <div class="badge-container" id="badges-direct">
+                    <span class="graph-badge active" data-fn="sin">
+                        <input type="checkbox" checked style="display:none;"> y = sin(x)
+                    </span>
+                    <span class="graph-badge active" data-fn="cos">
+                        <input type="checkbox" checked style="display:none;"> y = cos(x)
+                    </span>
+                    <span class="graph-badge" data-fn="tan">
+                        <input type="checkbox" style="display:none;"> y = tan(x)
+                    </span>
+                    <span class="graph-badge" data-fn="cot">
+                        <input type="checkbox" style="display:none;"> y = cot(x)
+                    </span>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="canvasDirect" width="800" height="400"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="funzioni-inverse">
+            <div class="card-header">08 — Le Funzioni Goniometriche Inverse</div>
+            <div class="card-body">
+                <p>Le funzioni goniometriche trasfomano un angolo α in un numero reale. Le loro <strong>funzioni inverse</strong> compiono il percorso opposto: dato un valore numerico, restituiscono l'angolo corrispondente. Poiché le funzioni goniometriche dirette sono periodiche (e quindi non iniettive), per poterne definire l'inversa occorre restringerne opportunamente il dominio.</p>
+
+                <div class="box info">
+                    <strong>🔄 Arcsin, Arccos, Arctan: Definizioni e Restrizioni</strong><br>
+                    <ul>
+                        <li><strong>Arcoseno (arcsin x):</strong>
+                            <br>Inversa della funzione seno ristretta all'intervallo <code>[-π/2, π/2]</code>.
+                            <br>• Dominio: <code>[-1, 1]</code> &nbsp;|&nbsp; Codominio: <code>[-π/2, π/2]</code> (ovvero <code>[-90°, +90°]</code>).
+                            <br>• Significato: <code>y = arcsin x  ⇔  sin y = x</code> con <code>y ∈ [-π/2, π/2]</code>.
+                        </li>
+                        <li style="margin-top: 0.8rem;"><strong>Arcocoseno (arccos x):</strong>
+                            <br>Inversa della funzione coseno ristretta all'intervallo <code>[0, π]</code>.
+                            <br>• Dominio: <code>[-1, 1]</code> &nbsp;|&nbsp; Codominio: <code>[0, π]</code> (ovvero <code>[0°, 180°]</code>).
+                            <br>• Significato: <code>y = arccos x  ⇔  cos y = x</code> con <code>y ∈ [0, π]</code>.
+                        </li>
+                        <li style="margin-top: 0.8rem;"><strong>Arcotangente (arctan x o arctg x):</strong>
+                            <br>Inversa della funzione tangente ristretta all'intervallo aperto <code>(-π/2, π/2)</code>.
+                            <br>• Dominio: tutto <code>ℝ</code> &nbsp;|&nbsp; Codominio: <code>(-π/2, π/2)</code> (ovvero <code>(-90°, +90°)</code>).
+                            <br>• Significato: <code>y = arctan x  ⇔  tan y = x</code> con <code>y ∈ (-π/2, π/2)</code>.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="box example">
+                    <strong>📝 Esempi di Calcolo Immediato con Inverse</strong><br>
+                    • <code>arcsin(1/2) = π/6</code> (ovvero 30°), perché <code>sin(π/6) = 1/2</code> e <code>π/6 ∈ [-π/2, π/2]</code>.<br>
+                    • <code>arccos(-1/2) = 2π/3</code> (ovvero 120°), perché <code>cos(2π/3) = -1/2</code> e <code>2π/3 ∈ [0, π]</code>.<br>
+                    • <code>arctan(1) = π/4</code> (ovvero 45°), perché <code>tan(π/4) = 1</code> e <code>π/4 ∈ (-π/2, π/2)</code>.<br>
+                    • <code>arcsin(2)</code> &rarr; <strong>Non ha significato reale</strong>, poiché 2 è fuori dal dominio <code>[-1, 1]</code>.
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="graph" id="grafici-inversi">
+            <div class="card-header">09 — Grafici Interattivi delle Funzioni Inverse</div>
+            <div class="card-body">
+                <p>Seleziona i badge per confrontare i grafici delle funzioni goniometriche inverse:</p>
+                
+                <div class="badge-container" id="badges-inverse">
+                    <span class="graph-badge active" data-fn="arcsin">
+                        <input type="checkbox" checked style="display:none;"> y = arcsin(x)
+                    </span>
+                    <span class="graph-badge active" data-fn="arccos">
+                        <input type="checkbox" checked style="display:none;"> y = arccos(x)
+                    </span>
+                    <span class="graph-badge" data-fn="arctan">
+                        <input type="checkbox" style="display:none;"> y = arctan(x)
+                    </span>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="canvasInverse" width="800" height="400"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="warning" id="errori">
+            <div class="card-header">10 — Guida all'Autocorrezione degli Errori Frequenti</div>
+            <div class="card-body">
+                <div class="box warning">
+                    <strong>⚠️ Errore 1: Confondere `sin(a + b)` con `sin(a) + sin(b)`</strong><br>
+                    • Sbagliato: <code>sin(30° + 60°) = sin(30°) + sin(60°) = 1/2 + √3/2</code><br>
+                    • Spiegazione: Le funzioni goniometriche non rispettano la proprietà distributiva! Infatti <code>sin(30° + 60°) = sin(90°) = 1</code>, che è diverso da <code>(1 + √3)/2</code>.<br>
+                    • Corretto: Per la somma di angoli occorre utilizzare le formule di addizione: 
+                    <div style="text-align: center;">
+                            <code>sin(α + β) = sin α cos β + cos α sin β</code>.
+                    </div>
+                </div>
+
+                <div class="box warning">
+                    <strong>⚠️ Errore 2: Considerare `arcsin(x)` come `1 / sin(x)`</strong><br>
+                    • Sbagliato: Scrivere <code>arcsin(x) = (sin x)⁻¹ = 1 / sin x</code><br>
+                    • Spiegazione: La notazione <code>arcsin x</code> indica l'inversa della funzione rispetto alla composizione (l'angolo il cui seno è x), non il reciproco algebrico del seno! Il reciproco del seno si chiama cosecante (<code>cosec x = 1 / sin x</code>).
+                </div>
+
+                <div class="box warning">
+                    <strong>⚠️ Errore 3: Dimenticare il segno del radicando nel ricavare cos α o sin α</strong><br>
+                    • Sbagliato: <code>cos α = √(1 - sin² α)</code> sempre.<br>
+                    • Spiegazione: Il coseno è negativo nel II e III quadrante! Bisogna inserire il segno meno se l'angolo α si trova nel secondo o terzo quadrante.<br>
+                    • Corretto: <code>cos α = -√(1 - sin² α)</code> per <code>α ∈ (π/2, 3π/2)</code>.
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="summary" id="mappa">
+            <div class="card-header">11 — Mappa Concettuale Finale</div>
+            <div class="card-body">
+                <div class="mappa">
+GONIOMETRIA (Circonferenza Goniometrica x² + y² = 1, Raggio r = 1)
+ │
+ ├── FUNZIONI DIRETTE
+ │    ├── Coseno (cos α)   ► Ascissa x_P del punto goniometrico. Dom: ℝ, Codom: [-1, 1], Pari
+ │    ├── Seno (sin α)     ► Ordinata y_P del punto goniometrico. Dom: ℝ, Codom: [-1, 1], Dispari
+ │    ├── Tangente (tan α) ► y_T su retta x=1. tan α = sin α / cos α. Dom: α ≠ π/2 + kπ
+ │    └── Cotangente (cot α) ► x_C su retta y=1. cot α = cos α / sin α. Dom: α ≠ kπ
+ │
+ ├── RELAZIONI FONDAMENTALI
+ │    ├── 1ª Relazione: sin² α + cos² α = 1 (Teorema di Pitagora)
+ │    ├── 2ª Relazione: tan α = sin α / cos α
+ │    └── 3ª Relazione: cot α = cos α / sin α 
+ │
+ └── FUNZIONI INVERSE
+      ├── Arcoseno (arcsin x)  ► Dom: [-1, 1]  ──► Codom: [-π/2, π/2]
+      ├── Arcocoseno (arccos x)► Dom: [-1, 1]  ──► Codom: [0, π]
+      └── Arcotangente (arctan)► Dom: ℝ        ──► Codom: (-π/2, π/2)
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+            <span class="footer-center">
+                    Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+                    <small>Prof.ssa M. Prandelli</small>
+            </span>
+            <span class="footer-copy">© 2026 MatematicaOro</span>
+        </footer>
+    </main>
+
+    <button class="no-print" id="fsBtn" onclick="toggleFullscreen()" style="position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--primary); color: white; border: none; padding: 0.8rem 1.2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 6px 16px rgba(37,99,235,0.35); font-weight: 600; transition: all 0.2s; z-index: 102;">
+        🖥️ Schermo Intero
+    </button>
+
+    <script>const progressBar = document.getElementById('progressBar');
+ const navLinks = document.querySelectorAll('nav a');
+ navLinks.forEach(link => {
+ link.addEventListener('click', (event) => {
+ const href = link.getAttribute('href');
+ if (!href || !href.startsWith('#')) return;
+ const target = document.querySelector(href);
+ if (!target) return;
+ event.preventDefault();
+ const nav = link.closest('nav');
+ const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+ const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+ window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+ history.replaceState(null, '', href);
+ });
+ });
+ const sections = document.querySelectorAll('section');
+ const navEl = document.querySelector('nav');
+ window.addEventListener('scroll', () => {
+ const h = document.documentElement.scrollHeight - window.innerHeight;
+ progressBar.style.width = `${(window.scrollY / h) * 100}%`;
+ const navHeight = navEl ? navEl.getBoundingClientRect().height : 0;
+ let current = '';
+ sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - navHeight - 12) current = sec.id; });
+ navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + current); });
+ });
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+ }, { threshold: 0.1 });
+ document.querySelectorAll('.card').forEach(card => observer.observe(card));
+ function toggleFullscreen() {
+ if (!document.fullscreenElement) {
+ document.documentElement.requestFullscreen().catch(err => console.warn(`Errore Fullscreen: ${err}`));
+ } else {
+ document.exitFullscreen();
+ }
+ }
+ document.addEventListener('fullscreenchange', () => {
+ document.getElementById('fsBtn').textContent = document.fullscreenElement ? '🖥️ Esci Schermo Intero' : '🖥️ Schermo Intero';
+ });
+ /* --- SCRIPT GRAFICI INTERATTIVI --- */
+ function setupBadges(containerId, redrawCallback) {
+ const badges = document.querySelectorAll(`#${containerId} .graph-badge`);
+ badges.forEach(badge => {
+ badge.addEventListener('click', () => {
+ badge.classList.toggle('active');
+ redrawCallback();
+ });
+ });
+ }
+ const canvasDirect = document.getElementById('canvasDirect');
+ const ctxDirect = canvasDirect.getContext('2d');
+ function drawDirectGraph() {
+ const width = canvasDirect.width;
+ const height = canvasDirect.height;
+ ctxDirect.clearRect(0, 0, width, height);
+ const xMin = -2 * Math.PI;
+ const xMax = 2 * Math.PI;
+ const yMin = -3;
+ const yMax = 3;
+ const toScreenX = (x) => ((x - xMin) / (xMax - xMin)) * width;
+ const toScreenY = (y) => height - ((y - yMin) / (yMax - yMin)) * height;
+ ctxDirect.strokeStyle = '#e2e8f0';
+ ctxDirect.lineWidth = 1;
+ ctxDirect.fillStyle = '#64748b';
+ ctxDirect.font = '12px system-ui';
+ ctxDirect.beginPath();
+ ctxDirect.moveTo(toScreenX(0), 0);
+ ctxDirect.lineTo(toScreenX(0), height);
+ ctxDirect.strokeStyle = '#cbd5e1';
+ ctxDirect.stroke();
+ ctxDirect.beginPath();
+ ctxDirect.moveTo(0, toScreenY(0));
+ ctxDirect.lineTo(width, toScreenY(0));
+ ctxDirect.stroke();
+ const xTicks = [
+ { val: -2 * Math.PI, label: '-2π' },
+ { val: -1.5 * Math.PI, label: '-3π/2' },
+ { val: -Math.PI, label: '-π' },
+ { val: -0.5 * Math.PI, label: '-π/2' },
+ { val: 0.5 * Math.PI, label: 'π/2' },
+ { val: Math.PI, label: 'π' },
+ { val: 1.5 * Math.PI, label: '3π/2' },
+ { val: 2 * Math.PI, label: '2π' }
+ ];
+ xTicks.forEach(tick => {
+ const sx = toScreenX(tick.val);
+ ctxDirect.beginPath();
+ ctxDirect.moveTo(sx, 0);
+ ctxDirect.lineTo(sx, height);
+ ctxDirect.strokeStyle = '#f1f5f9';
+ ctxDirect.stroke();
+ ctxDirect.fillText(tick.label, sx - 10, toScreenY(0) + 16);
+ });
+ [-2, -1, 1, 2].forEach(yVal => {
+ const sy = toScreenY(yVal);
+ ctxDirect.beginPath();
+ ctxDirect.moveTo(0, sy);
+ ctxDirect.lineTo(width, sy);
+ ctxDirect.strokeStyle = '#f1f5f9';
+ ctxDirect.stroke();
+ ctxDirect.fillText(yVal.toString(), toScreenX(0) + 6, sy + 4);
+ });
+ const activeBadges = Array.from(document.querySelectorAll('#badges-direct .graph-badge.active'))
+ .map(b => b.getAttribute('data-fn'));
+ const step = (xMax - xMin) / width;
+ function plotFunction(fnEval, color) {
+ ctxDirect.beginPath();
+ ctxDirect.strokeStyle = color;
+ ctxDirect.lineWidth = 2.5;
+ let isDrawing = false;
+ for (let px = 0; px <= width; px++) {
+ const x = xMin + (px / width) * (xMax - xMin);
+ const y = fnEval(x);
+ if (y !== null && !isNaN(y) && isFinite(y) && y >= yMin - 1 && y <= yMax + 1) {
+ const sy = toScreenY(y);
+ if (!isDrawing) {
+ ctxDirect.moveTo(px, sy);
+ isDrawing = true;
+ } else {
+ ctxDirect.lineTo(px, sy);
+ }
+ } else {
+ isDrawing = false;
+ }
+ }
+ ctxDirect.stroke();
+ }
+ if (activeBadges.includes('sin')) plotFunction(x => Math.sin(x), '#dc2626');
+ if (activeBadges.includes('cos')) plotFunction(x => Math.cos(x), '#2563eb');
+ if (activeBadges.includes('tan')) plotFunction(x => Math.tan(x), '#16a34a');
+ if (activeBadges.includes('cot')) plotFunction(x => 1 / Math.tan(x), '#d97706');
+ }
+ const canvasInverse = document.getElementById('canvasInverse');
+ const ctxInverse = canvasInverse.getContext('2d');
+ function drawInverseGraph() {
+ const width = canvasInverse.width;
+ const height = canvasInverse.height;
+ ctxInverse.clearRect(0, 0, width, height);
+ const xMin = -3;
+ const xMax = 3;
+ const yMin = -Math.PI;
+ const yMax = Math.PI;
+ const toScreenX = (x) => ((x - xMin) / (xMax - xMin)) * width;
+ const toScreenY = (y) => height - ((y - yMin) / (yMax - yMin)) * height;
+ ctxInverse.strokeStyle = '#e2e8f0';
+ ctxInverse.lineWidth = 1;
+ ctxInverse.fillStyle = '#64748b';
+ ctxInverse.font = '12px system-ui';
+ ctxInverse.beginPath();
+ ctxInverse.moveTo(toScreenX(0), 0);
+ ctxInverse.lineTo(toScreenX(0), height);
+ ctxInverse.strokeStyle = '#cbd5e1';
+ ctxInverse.stroke();
+ ctxInverse.beginPath();
+ ctxInverse.moveTo(0, toScreenY(0));
+ ctxInverse.lineTo(width, toScreenY(0));
+ ctxInverse.stroke();
+ [-2, -1, 1, 2].forEach(xVal => {
+ const sx = toScreenX(xVal);
+ ctxInverse.beginPath();
+ ctxInverse.moveTo(sx, 0);
+ ctxInverse.lineTo(sx, height);
+ ctxInverse.strokeStyle = '#f1f5f9';
+ ctxInverse.stroke();
+ ctxInverse.fillText(xVal.toString(), sx - 4, toScreenY(0) + 16);
+ });
+ const yTicks = [
+ { val: -Math.PI, label: '-π' },
+ { val: -0.5 * Math.PI, label: '-π/2' },
+ { val: 0.5 * Math.PI, label: 'π/2' },
+ { val: Math.PI, label: 'π' }
+ ];
+ yTicks.forEach(tick => {
+ const sy = toScreenY(tick.val);
+ ctxInverse.beginPath();
+ ctxInverse.moveTo(0, sy);
+ ctxInverse.lineTo(width, sy);
+ ctxInverse.strokeStyle = '#f1f5f9';
+ ctxInverse.stroke();
+ ctxInverse.fillText(tick.label, toScreenX(0) + 6, sy + 4);
+ });
+ const activeBadges = Array.from(document.querySelectorAll('#badges-inverse .graph-badge.active'))
+ .map(b => b.getAttribute('data-fn'));
+ function plotFunction(fnEval, color) {
+ ctxInverse.beginPath();
+ ctxInverse.strokeStyle = color;
+ ctxInverse.lineWidth = 2.5;
+ let isDrawing = false;
+ for (let px = 0; px <= width; px++) {
+ const x = xMin + (px / width) * (xMax - xMin);
+ const y = fnEval(x);
+ if (y !== null && !isNaN(y) && isFinite(y)) {
+ const sy = toScreenY(y);
+ if (!isDrawing) {
+ ctxInverse.moveTo(px, sy);
+ isDrawing = true;
+ } else {
+ ctxInverse.lineTo(px, sy);
+ }
+ } else {
+ isDrawing = false;
+ }
+ }
+ ctxInverse.stroke();
+ }
+ if (activeBadges.includes('arcsin')) plotFunction(x => (x >= -1 && x <= 1) ? Math.asin(x) : null, '#7c3aed');
+ if (activeBadges.includes('arccos')) plotFunction(x => (x >= -1 && x <= 1) ? Math.acos(x) : null, '#0891b2');
+ if (activeBadges.includes('arctan')) plotFunction(x => Math.atan(x), '#db2777');
+ }
+ setupBadges('badges-direct', drawDirectGraph);
+ setupBadges('badges-inverse', drawInverseGraph);
+ drawDirectGraph();
+ drawInverseGraph();</script>
+<div class="mo-tools"><a href="../../index.html">⌂ Home</a><a href="../index.html">☰ Lezioni</a></div><script>(function(){var d=document,f=String.fromCharCode,c=f(99,111,110,116,101,120,116,109,101,110,117),g=f(100,114,97,103,115,116,97,114,116);d.addEventListener(c,function(e){e.preventDefault()},true);d.addEventListener(g,function(e){e.preventDefault()},true);d.addEventListener("keydown",function(e){var k=(e.key||"").toLowerCase();if((e.ctrlKey||e.metaKey)&&(k==="u"||k==="s")||e.key==="F12"){e.preventDefault();e.stopPropagation()}},true)})();</script></body>
+</html>

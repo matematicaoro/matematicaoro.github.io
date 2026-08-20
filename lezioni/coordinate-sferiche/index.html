@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Le Coordinate Sferiche - MatematicaOro</title>
+
+    <style>:root{--primary:#1e3a8a;--primary-light:#3b82f6;--gold:#D4AF37;--success:#0d9488;--warning:#d97706;--danger:#dc2626;--info:#0891b2;--bg-page:#e0e7ff;--bg-card:#ffffff;--text:#1e293b;--text-muted:#475569;--border:#e2e8f0;--shadow:0 12px 32px rgba(0,0,0,0.12);--radius:20px;--font-main:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--font-mono:"Courier New",Consolas,monospace;--r-color:#dc2626;--theta-color:#0891b2;--phi-color:#0d9488}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:0}body{font-family:var(--font-main);font-size:clamp(16px,1.8vw,18px);line-height:1.7;color:var(--text);background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;min-height:100vh;padding-top:4.5rem}.progress-bar{position:fixed;top:0;left:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--primary-light),var(--success));width:0%;z-index:101;transition:width 0.15s linear}nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0.8rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.04)}nav a{text-decoration:none;color:var(--text-muted);font-weight:600;font-size:0.8rem;padding:0.4rem 0.8rem;border-radius:8px;transition:all 0.25s ease}nav a:hover{color:var(--primary);background:#f0f4ff;transform:translateY(-1px)}nav a.active{color:#fff;background:var(--primary);box-shadow:0 4px 10px rgba(30,58,138,0.25)}main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem}header.main-header{margin-bottom:4rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}.card{background:var(--bg-card);border-radius:var(--radius);padding:3rem;margin-bottom:3.5rem;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.7);position:relative;overflow:hidden;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s ease;opacity:0;transform:translateY(30px)}.card.visible{opacity:1;transform:translateY(0)}.card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,0.16)}.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--primary),var(--primary-light))}.card[data-type="graph"]::before{background:linear-gradient(90deg,var(--success),#22c55e)}.card[data-type="warning"]::before{background:linear-gradient(90deg,var(--warning),#f59e0b)}.card[data-type="exercise"]::before{background:linear-gradient(90deg,var(--danger),#f87171)}.card[data-type="summary"]::before{background:linear-gradient(90deg,var(--info),#22d3ee)}.card-header{font-size:1.6rem;font-weight:800;margin-bottom:1.5rem;padding-bottom:0.6rem;border-bottom:2px solid var(--border);color:var(--primary);display:flex;align-items:center;gap:0.7rem}h3{margin-top:2rem;margin-bottom:1rem;color:var(--primary);font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem}h4{margin-top:1.6rem;margin-bottom:0.7rem;color:var(--success);font-size:1.15rem;font-weight:700}p,li{margin-bottom:1rem;text-align:justify}ul,ol{padding-left:1.8rem;margin-bottom:1.2rem}code{background:#f1f5f9;padding:0.2rem 0.5rem;border-radius:6px;font-family:var(--font-mono);font-size:0.9em;color:#0f172a;border:1px solid #e2e8f0}.box{padding:1.5rem;margin:2rem 0;border-radius:12px;border-left:6px solid var(--primary);background:#f8fafc;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.02)}.box-title{font-weight:800;margin-bottom:0.6rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.5px;display:flex;align-items:center;gap:0.5rem}.box.def{border-left-color:var(--primary-light);background-color:#eff6ff}.box.def .box-title{color:#1d4ed8}.box.obs{border-left-color:var(--success);background-color:#f0fdf4}.box.obs .box-title{color:#15803d}.box.err{border-left-color:var(--danger);background-color:#fef2f2}.box.err .box-title{color:#b91c1c}.box.strat{border-left-color:#a855f7;background-color:#faf5ff}.box.strat .box-title{color:#7e22ce}.box.ex{border-left-color:var(--warning);background-color:#fffbeb}.box.ex .box-title{color:#b45309}.grid-visual{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0}.grid-item{background:#f8fafc;border:1px solid var(--border);padding:1.5rem;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.02);transition:all 0.2s ease}.grid-item:hover{transform:translateY(-2px);border-color:var(--primary-light);background:#fff}.grid-item h5{color:var(--primary);font-size:1.1rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem}.table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:2rem 0;border-radius:14px;border:1px solid var(--border);box-shadow:0 4px 15px rgba(0,0,0,0.03)}table{width:100%;min-width:550px;border-collapse:collapse;font-size:0.95rem;background:#fff}th,td{padding:1rem 1.2rem;text-align:left;vertical-align:middle}th{background:var(--primary);color:white;font-weight:700;letter-spacing:0.5px;text-align:center}td{text-align:center}td:first-child,th:first-child{text-align:left}tr{border-bottom:1px solid var(--border);transition:background 0.15s ease}tr:last-child{border-bottom:none}tr:nth-child(even){background-color:#f8fafc}tr:hover{background-color:#f1f5f9}details{background:#f8fafc;border:1px solid var(--border);border-radius:12px;margin:1.2rem 0;overflow:hidden;transition:all 0.3s ease;box-shadow:0 2px 6px rgba(0,0,0,0.01)}summary{padding:1.1rem 1.3rem;cursor:pointer;font-weight:700;color:var(--primary);user-select:none;list-style:none;display:flex;justify-content:space-between;align-items:center}summary::after{content:"➕";font-size:0.8rem;filter:grayscale(1);transition:transform 0.25s}details[open] summary::after{content:"➖"}details[open] summary{border-bottom:1px solid var(--border);background:#f0f4ff}details>div{padding:1.5rem;background:#ffffff}.mappa{background-color:#f8fafc;border:1px solid var(--border);padding:30px;border-radius:16px;display:flex;flex-direction:column;gap:1.5rem;position:relative}.map-node{background:white;border:1px solid var(--border);border-left:5px solid var(--primary);padding:1.4rem;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.02);transition:all 0.2s ease}.map-node:hover{transform:translateX(4px);border-color:var(--primary-light)}.map-node strong{color:var(--primary);display:block;margin-bottom:0.5rem;font-size:1.1rem;text-transform:uppercase;font-weight:800;letter-spacing:0.3px}.r-color{color:var(--r-color);font-weight:700}.theta-color{color:var(--theta-color);font-weight:700}.phi-color{color:var(--phi-color);font-weight:700}.math-box{background:#eef2ff;color:var(--text);border:1px solid var(--border);border-left:4px solid var(--primary-light);border-radius:12px;padding:1rem 1.5rem;font-family:var(--font-mono);font-size:1.05rem;margin:0.8rem 0;box-shadow:0 4px 10px rgba(0,0,0,0.03)}.math-box .r-color{color:var(--r-color)}.math-box .theta-color{color:var(--theta-color)}.math-box .phi-color{color:var(--phi-color)}.flex-responsive{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-start}.tag-pill{display:inline-block;padding:0.2rem 0.7rem;border-radius:999px;font-size:0.75rem;font-weight:700}canvas.viz-canvas{border-radius:12px;background:radial-gradient(ellipse at center,#111827,#0a0e1a);display:block;margin:0 auto;max-width:100%}.quiz-option{background:#f8fafc;border:2px solid var(--border);border-radius:10px;padding:0.7rem 1rem;cursor:pointer;transition:all 0.25s;font-size:0.95rem;text-align:left;font-family:var(--font-main);color:var(--text);font-weight:600}.quiz-option:hover{border-color:var(--primary-light);background:#eff6ff}.quiz-option.correct{border-color:var(--success);background:#f0fdf4;color:#15803d}.quiz-option.wrong{border-color:var(--danger);background:#fef2f2;color:#b91c1c}.exercise-input{background:#fff;border:2px solid var(--border);border-radius:8px;padding:0.5rem 0.8rem;color:var(--text);font-family:var(--font-mono);font-size:1rem;outline:none;width:90px;text-align:center;transition:border-color 0.3s}.exercise-input:focus{border-color:var(--primary-light)}.verify-btn{background:var(--primary);color:#fff;border:none;padding:0.6rem 1.3rem;border-radius:8px;cursor:pointer;font-weight:700;font-size:0.9rem;transition:all 0.2s}.verify-btn:hover{background:var(--primary-light);transform:translateY(-1px)}.concept-node{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:0.6rem 1rem;font-size:0.9rem;text-align:center;transition:border-color 0.3s;font-weight:600}.rotate-btn{background:#eef2ff;border:1px solid var(--border);color:var(--primary);padding:0.4rem 0.9rem;border-radius:50px;cursor:pointer;font-weight:600;font-size:0.8rem;margin-top:0.6rem;transition:all 0.2s}.rotate-btn:hover{background:var(--primary);color:#fff}@media print{nav,.no-print,.progress-bar,#fsBtn{display:none !important}body{background:#fff;font-size:12pt;padding-top:0}.card{box-shadow:none;border:1px solid #999;break-inside:avoid;margin-bottom:2rem;padding:1.5rem}.box,details,table{border:1px solid #888;box-shadow:none}}@media (max-width:768px){body{padding-top:0}nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0.6rem;-webkit-overflow-scrolling:touch}nav a{flex-shrink:0;font-size:0.75rem}.card{padding:1.8rem}.flex-responsive{flex-direction:column}}footer{border-top:1px solid var(--border);margin-top:3rem;padding:0.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:0.72rem;position:relative;z-index:1}footer .footer-brand{font-weight:700;white-space:nowrap}footer .footer-brand .brand-mat{color:#1e3a8a}footer .footer-brand .brand-viva{color:#C8972A}footer .footer-center{color:var(--text-muted);text-align:center;flex:1}footer .footer-center small{display:block;font-size:0.67rem;color:var(--text-muted);margin-top:0.15rem}footer .footer-copy{color:var(--text-muted);white-space:nowrap;text-align:right}@media (max-width:650px){footer{flex-direction:column;text-align:center;padding:1rem}}</style>
+<style id="mo-site-tools">.mo-tools{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 3px 14px rgba(20,50,90,.16);font-family:Arial,sans-serif}.mo-tools a{font:700 12px Arial,sans-serif;text-decoration:none;color:#173f78;background:#fff;border:1px solid #d6e0ea;border-radius:7px;padding:7px 9px}@media print{.mo-tools{display:none!important}}</style>
+</head>
+<body>
+<div class="progress-bar no-print" id="progressBar"></div>
+    <nav aria-label="Navigazione lezione" class="no-print">
+        <a href="#sec1">🌐 Introduzione</a>
+        <a href="#sec2">📍 Definizione</a>
+        <a href="#sec3">🔄 Formule</a>
+        <a href="#sec4">⚡ Applicazioni</a>
+        <a href="#sec5">🗺️ Riepilogo</a>
+    </nav>
+
+    <main>
+        <header class="main-header">
+<h1 style="font-size: 2.6rem; margin-bottom: 0.3rem;">
+<span class="logo-text" style="color: #1e3a8a">Matematica</span><span class="logo-text" style="color: var(--gold)">Oro</span>
+</h1>
+            <p style="font-size: 1.4rem; font-weight: 800; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px;">Le Coordinate Sferiche</p>
+        </header>
+
+        <section class="card" id="sec1">
+            <div class="card-header"><span>🌐</span> 1. Introduzione: Come Descriviamo un Punto nello Spazio?</div>
+            <div class="card-body">
+                <p>Fino ad ora abbiamo localizzato un punto nello spazio tridimensionale attraverso le <strong>coordinate cartesiane</strong> (x, y, z). Esiste tuttavia un sistema alternativo, particolarmente utile quando il problema presenta una <strong>simmetria sferica</strong>: le <strong>coordinate sferiche</strong>, che individuano un punto tramite una distanza e due angoli.</p>
+
+                <div class="box def">
+                    <div class="box-title">💡 La Domanda Chiave</div>
+                    «Come descriviamo la posizione di un punto nello spazio?» Invece di tre distanze lungo assi perpendicolari, possiamo usare <strong>una distanza dall'origine</strong> e <strong>due angoli</strong> di orientamento.
+                </div>
+
+                <div class="grid-visual">
+                    <div class="grid-item" style="text-align:center;">
+                        <h5 style="justify-content:center;"><span>📐</span> Coordinate Cartesiane</h5>
+                        <p style="text-align:center; margin-bottom:0;">Un punto è individuato dalla terna <strong>(x, y, z)</strong>, tre distanze lungo assi perpendicolari.</p>
+                    </div>
+                    <div class="grid-item" style="text-align:center;">
+                        <h5 style="justify-content:center;"><span>🌐</span> Coordinate Sferiche</h5>
+                        <p style="text-align:center; margin-bottom:0;">Un punto è individuato dalla terna <strong>(<span class="r-color">r</span>, <span class="theta-color">θ</span>, <span class="phi-color">φ</span>)</strong>: una distanza e due angoli.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="graph" id="sec2">
+            <div class="card-header"><span>📍</span> 2. Cosa sono le Coordinate Sferiche?</div>
+            <div class="card-body">
+                <p>Un sistema alternativo per localizzare un punto nello spazio 3D usando una <strong>distanza</strong> e <strong>due angoli</strong>.</p>
+
+                <div class="flex-responsive">
+                    <div style="flex:1; min-width:260px; display:flex; flex-direction:column; gap:1rem;">
+                        <div class="grid-item" style="border-left:4px solid #dc2626;">
+                            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.4rem;">
+                                <span class="tag-pill" style="background:#fee2e2; color:#b91c1c;">r</span> <strong>Distanza radiale</strong>
+                            </div>
+                            <p style="margin-bottom:0;">Distanza dall'origine al punto P (OP=r). Sempre ≥ 0.</p>
+                        </div>
+                        <div class="grid-item" style="border-left:4px solid #0891b2;">
+                            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.4rem;">
+                                <span class="tag-pill" style="background:#cffafe; color:#0e7490;">θ (theta)</span> <strong>Angolo azimutale</strong>
+                            </div>
+                            <p style="margin-bottom:0;">Angolo dal verso positivo di <em>x</em> verso la proiezione di <strong>r</strong> nel piano <em>xy</em>. Intervallo: [0, 2π).</p>
+                        </div>
+                        <div class="grid-item" style="border-left:4px solid #0d9488;">
+                            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.4rem;">
+                                <span class="tag-pill" style="background:#ccfbf1; color:#0f766e;">φ (phi)</span> <strong>Angolo polare</strong>
+                            </div>
+                            <p style="margin-bottom:0;">Angolo rispetto all'asse z positivo. Intervallo: [0, π].</p>
+                        </div>
+                    </div>
+                    <div style="flex:1; min-width:300px; display:flex; flex-direction:column; align-items:center;">
+                        <canvas id="canvas3d" class="viz-canvas" width="420" height="340" style="width:100%; max-width:420px;"></canvas>
+                        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.6rem; text-align:center;">🖱️ Trascina per ruotare — asse z verso l'alto</p>
+                        <button class="rotate-btn no-print" id="pauseRotateBtn">⏸️ Pausa rotazione</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="sec3">
+            <div class="card-header"><span>🔄</span> 3. Relazione con le Coordinate Cartesiane</div>
+            <div class="card-body">
+
+                <div class="box strat">
+                    <div class="box-title">📐 Come determinare il quadrante corretto di θ</div>
+                    <p>La proiezione del vettore <strong>r</strong> sul piano <em>xy</em> ha modulo <strong>ρ = r sin φ</strong>. L'angolo <span class="theta-color">θ</span> è quello che questa proiezione forma con l'asse x positivo. Per identificare il quadrante corretto si usano <em>entrambe</em> le componenti:</p>
+                    <div class="grid-visual" style="margin: 1rem 0;">
+                        <div class="math-box" style="margin:0;">cos <span class="theta-color">θ</span> = x / (r sin <span class="phi-color">φ</span>) = x / ρ</div>
+                        <div class="math-box" style="margin:0;">sin <span class="theta-color">θ</span> = y / (r sin <span class="phi-color">φ</span>) = y / ρ</div>
+                    </div>
+                    <p>Il segno di <em>cos θ</em> e <em>sin θ</em> indica il quadrante:</p>
+                    <div class="grid-visual" style="grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 0.8rem; margin-top: 0.5rem;">
+                        <div class="grid-item" style="padding:0.9rem;">
+                            <strong style="color:#0891b2;">I quadrante</strong><br>x &gt; 0, y &gt; 0<br><small style="color:var(--text-muted);">cos θ &gt; 0, sin θ &gt; 0<br>θ ∈ (0, π/2)</small>
+                        </div>
+                        <div class="grid-item" style="padding:0.9rem;">
+                            <strong style="color:#0891b2;">II quadrante</strong><br>x &lt; 0, y &gt; 0<br><small style="color:var(--text-muted);">cos θ &lt; 0, sin θ &gt; 0<br>θ ∈ (π/2, π)</small>
+                        </div>
+                        <div class="grid-item" style="padding:0.9rem;">
+                            <strong style="color:#0891b2;">III quadrante</strong><br>x &lt; 0, y &lt; 0<br><small style="color:var(--text-muted);">cos θ &lt; 0, sin θ &lt; 0<br>θ ∈ (π, 3π/2)</small>
+                        </div>
+                        <div class="grid-item" style="padding:0.9rem;">
+                            <strong style="color:#0891b2;">IV quadrante</strong><br>x &gt; 0, y &lt; 0<br><small style="color:var(--text-muted);">cos θ &gt; 0, sin θ &lt; 0<br>θ ∈ (3π/2, 2π)</small>
+                        </div>
+                    </div>
+                    <p style="margin-top:1rem; margin-bottom:0;">💡 <strong>Procedura:</strong> calcola ρ = r sin φ, poi ricava cos θ = x/ρ e sin θ = y/ρ. I segni di entrambi determinano univocamente il quadrante, e quindi il valore esatto di θ ∈ [0, 2π).</p>
+                </div>
+                <div class="flex-responsive">
+                    <div style="flex:1; min-width:260px;">
+                        <h3><span>➡️</span> Sferiche → Cartesiane</h3>
+                        <div class="math-box"><span style="color:var(--primary);">x</span> = <span class="r-color">r</span> sin<span class="phi-color">φ</span> cos<span class="theta-color">θ</span></div>
+                        <div class="math-box"><span style="color:var(--primary);">y</span> = <span class="r-color">r</span> sin<span class="phi-color">φ</span> sin<span class="theta-color">θ</span></div>
+                        <div class="math-box"><span style="color:var(--primary);">z</span> = <span class="r-color">r</span> cos<span class="phi-color">φ</span></div>
+                    </div>
+                    <div style="flex:1; min-width:260px;">
+                        <h3><span>⬅️</span> Cartesiane → Sferiche</h3>
+                        <div class="math-box"><span class="r-color">r</span> = √(x² + y² + z²)</div>
+                        <div class="math-box"><span class="theta-color">θ</span>: cos<span class="theta-color">θ</span> = x/ρ, sin<span class="theta-color">θ</span> = y/ρ</div>
+                        <div class="math-box"><span class="phi-color">φ</span> = arccos(z / <span class="r-color">r</span>)</div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </section>
+
+        <section class="card" id="sec4">
+            <div class="card-header"><span>⚡</span> 4. Applicazioni Pratiche</div>
+            <div class="card-body">
+                <div class="grid-visual">
+                    <div class="grid-item">
+                        <h5><span>⚡</span> Fisica</h5>
+                        <p style="margin-bottom:0;">Campi elettrici e gravitazionali con simmetria sferica. Il potenziale coulombiano V = kq/<span class="r-color">r</span> si semplifica notevolmente.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h5><span>🔭</span> Astronomia</h5>
+                        <p style="margin-bottom:0;">Posizione dei corpi celesti: ascensione retta e declinazione sono coordinate sferiche sulla sfera celeste.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h5><span>∫∫∫</span> Integrazione Tripla</h5>
+                        <p>Lo Jacobiano <span class="r-color">r²</span> sin<span class="phi-color">φ</span> semplifica il calcolo di volumi e momenti su regioni sferiche.</p>
+                        <div class="math-box" style="margin-top:0.6rem; font-size:0.9rem;">dV = <span class="r-color">r²</span> sin<span class="phi-color">φ</span> d<span class="r-color">r</span> d<span class="theta-color">θ</span> d<span class="phi-color">φ</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="summary" id="sec5">
+            <div class="card-header"><span>🗺️</span> 5. Riepilogo Finale</div>
+            <div class="card-body">
+                <h3><span>🧩</span> Mappa Concettuale</h3>
+                <div class="mappa" style="flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; padding: 1.5rem;">
+                    <div class="concept-node" style="border-left: 4px solid #dc2626;"><span class="r-color">r</span> — Distanza</div>
+                    <div style="font-size:1.3rem; color: var(--text-muted);">→</div>
+                    <div class="concept-node" style="border-left: 4px solid var(--primary-light); background:#eff6ff;">Punto P(<span class="r-color">r</span>,<span class="theta-color">θ</span>,<span class="phi-color">φ</span>)</div>
+                    <div style="font-size:1.3rem; color: var(--text-muted);">←</div>
+                    <div class="concept-node" style="border-left: 4px solid #0891b2;"><span class="theta-color">θ</span> — Azimut</div>
+                    <div class="concept-node" style="border-left: 4px solid #0d9488;"><span class="phi-color">φ</span> — Polare</div>
+                    <div style="font-size:1.3rem; color: var(--text-muted);">⇌</div>
+                    <div class="concept-node">Cartesiane (x, y, z)</div>
+                    <div style="font-size:1.3rem; color: var(--text-muted);">⇌</div>
+                    <div class="concept-node">Cilindriche (ρ, θ, z)</div>
+                </div>
+
+                <h3 style="margin-top:2.5rem;"><span>📊</span> Confronto dei Sistemi di Coordinate</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th></th><th>Cartesiane</th><th>Cilindriche</th><th>Sferiche</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:700;">Coordinate</td>
+                                <td>(x, y, z)</td>
+                                <td>(ρ, θ, z)</td>
+                                <td>(<span class="r-color">r</span>, <span class="theta-color">θ</span>, <span class="phi-color">φ</span>)</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;">Simmetria naturale</td>
+                                <td>Rettangolare</td>
+                                <td>Assiale</td>
+                                <td>Sferica</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;">Elemento di volume</td>
+                                <td>dx dy dz</td>
+                                <td>ρ dρ dθ dz</td>
+                                <td><span class="r-color">r²</span>sin<span class="phi-color">φ</span> d<span class="r-color">r</span>d<span class="theta-color">θ</span>d<span class="phi-color">φ</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;">Uso tipico</td>
+                                <td>Geometria piana</td>
+                                <td>Tubi, fili</td>
+                                <td>Sfere, campi centrali</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="text-align: center; font-weight: bold; color: var(--primary); margin-top: 2.5rem; font-style: italic;">
+                    «Le coordinate sferiche trasformano la complessità in simmetria.»
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+            <span class="footer-center">
+                    Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+                    <small>Prof.ssa M. Prandelli</small>
+            </span>
+            <span class="footer-copy">© 2026 MatematicaOro</span>
+        </footer>
+    </main>
+
+    <button class="no-print" id="fsBtn" onclick="toggleFullscreen()" style="position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--primary); color: white; border: none; padding: 0.8rem 1.2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 6px 16px rgba(30,58,138,0.35); font-weight: 600; transition: all 0.2s; z-index: 102;">
+        🖥️ Schermo Intero
+    </button>
+
+    <script>const progressBar = document.getElementById('progressBar');
+ const navLinks = document.querySelectorAll('nav a');
+ navLinks.forEach(link => {
+ link.addEventListener('click', (event) => {
+ const href = link.getAttribute('href');
+ if (!href || !href.startsWith('#')) return;
+ const target = document.querySelector(href);
+ if (!target) return;
+ event.preventDefault();
+ const nav = link.closest('nav');
+ const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+ const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+ window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+ history.replaceState(null, '', href);
+ });
+ });
+ const sections = document.querySelectorAll('section');
+ window.addEventListener('scroll', () => {
+ const h = document.documentElement.scrollHeight - window.innerHeight;
+ progressBar.style.width = `${(window.scrollY / h) * 100}%`;
+ let current = '';
+ sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 140) current = sec.id; });
+ navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + current); });
+ });
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+ }, { threshold: 0.05 });
+ document.querySelectorAll('.card').forEach(card => observer.observe(card));
+ function toggleFullscreen() {
+ if (!document.fullscreenElement) {
+ document.documentElement.requestFullscreen().catch(err => console.warn(`Errore Fullscreen: ${err}`));
+ } else {
+ document.exitFullscreen();
+ }
+ }
+ document.addEventListener('fullscreenchange', () => {
+ document.getElementById('fsBtn').textContent = document.fullscreenElement ? '🖥️ Esci Schermo Intero' : '🖥️ Schermo Intero';
+ });</script>
+
+    <script>const canvas3d = document.getElementById('canvas3d');
+ const ctx3d = canvas3d.getContext('2d');
+ let rotX = -0.5, rotZ = 0.4;
+ let dragging = false, lastMX = 0, lastMY = 0;
+ let isRotationPaused = false;
+ canvas3d.addEventListener('mousedown', (e) => {
+ dragging = true;
+ lastMX = e.clientX;
+ lastMY = e.clientY;
+ });
+ canvas3d.addEventListener('touchstart', (e) => {
+ dragging = true;
+ lastMX = e.touches[0].clientX;
+ lastMY = e.touches[0].clientY;
+ }, { passive: true });
+ window.addEventListener('mouseup', () => { dragging = false; });
+ window.addEventListener('touchend', () => { dragging = false; });
+ window.addEventListener('mousemove', (e) => {
+ if (!dragging) return;
+ rotZ += (e.clientX - lastMX) * 0.008;
+ rotX += (e.clientY - lastMY) * 0.008;
+ rotX = Math.max(-1.2, Math.min(-0.1, rotX));
+ lastMX = e.clientX;
+ lastMY = e.clientY;
+ draw3DScene();
+ });
+ window.addEventListener('touchmove', (e) => {
+ if (!dragging) return;
+ rotZ += (e.touches[0].clientX - lastMX) * 0.008;
+ rotX += (e.touches[0].clientY - lastMY) * 0.008;
+ rotX = Math.max(-1.2, Math.min(-0.1, rotX));
+ lastMX = e.touches[0].clientX;
+ lastMY = e.touches[0].clientY;
+ draw3DScene();
+ }, { passive: true });
+ function project(x3, y3, z3) {
+ let x1 = x3 * Math.cos(rotZ) - y3 * Math.sin(rotZ);
+ let y1 = x3 * Math.sin(rotZ) + y3 * Math.cos(rotZ);
+ let z1 = z3;
+ let y2 = y1 * Math.cos(rotX) - z1 * Math.sin(rotX);
+ let z2 = y1 * Math.sin(rotX) + z1 * Math.cos(rotX);
+ let x2 = x1;
+ const scale = 90;
+ const cx = canvas3d.width / 2;
+ const cy = canvas3d.height / 2;
+ return [cx + x2 * scale, cy - z2 * scale, y2];
+ }
+ function drawLine3D(ctx, x1, y1, z1, x2, y2, z2, color, width = 1.5) {
+ const [px1, py1] = project(x1, y1, z1);
+ const [px2, py2] = project(x2, y2, z2);
+ ctx.beginPath();
+ ctx.moveTo(px1, py1);
+ ctx.lineTo(px2, py2);
+ ctx.strokeStyle = color;
+ ctx.lineWidth = width;
+ ctx.stroke();
+ }
+ function drawArrow3D(ctx, x1, y1, z1, x2, y2, z2, color, width = 1.5) {
+ drawLine3D(ctx, x1, y1, z1, x2, y2, z2, color, width);
+ const [px2, py2] = project(x2, y2, z2);
+ const [px1, py1] = project(x1, y1, z1);
+ const angle = Math.atan2(py2 - py1, px2 - px1);
+ const arrowSize = 12;
+ ctx.beginPath();
+ ctx.moveTo(px2, py2);
+ ctx.lineTo(px2 - arrowSize * Math.cos(angle - Math.PI / 6), py2 - arrowSize * Math.sin(angle - Math.PI / 6));
+ ctx.moveTo(px2, py2);
+ ctx.lineTo(px2 - arrowSize * Math.cos(angle + Math.PI / 6), py2 - arrowSize * Math.sin(angle + Math.PI / 6));
+ ctx.strokeStyle = color;
+ ctx.lineWidth = width;
+ ctx.stroke();
+ }
+ function drawText3D(ctx, x, y, z, text, color, fontSize = 12) {
+ const [px, py] = project(x, y, z);
+ ctx.fillStyle = color;
+ ctx.font = `bold ${fontSize}px sans-serif`;
+ ctx.fillText(text, px + 4, py - 4);
+ }
+ function draw3DScene() {
+ const w = canvas3d.width;
+ const h = canvas3d.height;
+ ctx3d.clearRect(0, 0, w, h);
+ ctx3d.globalAlpha = 0.15;
+ for (let i = -2; i <= 2; i++) {
+ drawLine3D(ctx3d, i, -2, 0, i, 2, 0, '#4facfe', 0.5);
+ drawLine3D(ctx3d, -2, i, 0, 2, i, 0, '#4facfe', 0.5);
+ }
+ ctx3d.globalAlpha = 1;
+ drawArrow3D(ctx3d, 0, -1.8, 0, 0, 1.8, 0, '#ff6b6b', 2);
+ drawArrow3D(ctx3d, -1.8, 0, 0, 1.8, 0, 0, '#43e97b', 2);
+ drawArrow3D(ctx3d, 0, 0, -0.3, 0, 0, 1.8, '#4facfe', 2);
+ drawText3D(ctx3d, 0, 1.9, 0, 'x', '#ff6b6b', 14);
+ drawText3D(ctx3d, 1.9, 0, 0, 'y', '#43e97b', 14);
+ drawText3D(ctx3d, 0, 0, 1.9, 'z', '#4facfe', 14);
+ const r = 1.5, theta = Math.PI / 4, phi = Math.PI / 3;
+ const px = r * Math.sin(phi) * Math.sin(theta);
+ const py = r * Math.sin(phi) * Math.cos(theta);
+ const pz = r * Math.cos(phi);
+ const pxFloor = px, pyFloor = py;
+ ctx3d.setLineDash([]);
+ drawLine3D(ctx3d, 0, 0, 0, px, py, pz, '#ff6b6b', 2.5);
+ ctx3d.setLineDash([4, 4]);
+ drawLine3D(ctx3d, px, py, pz, pxFloor, pyFloor, 0, '#94a3b8', 1);
+ drawLine3D(ctx3d, 0, 0, 0, pxFloor, pyFloor, 0, '#94a3b8', 1.2);
+ ctx3d.setLineDash([]);
+ ctx3d.beginPath();
+ const arcR = 0.5;
+ for (let a = 0; a <= theta; a += 0.05) {
+ const [ax, ay] = project(arcR * Math.sin(a), arcR * Math.cos(a), 0);
+ if (a === 0) ctx3d.moveTo(ax, ay);
+ else ctx3d.lineTo(ax, ay);
+ }
+ ctx3d.strokeStyle = '#4facfe';
+ ctx3d.lineWidth = 2;
+ ctx3d.stroke();
+ drawText3D(ctx3d, 0.55 * Math.sin(theta / 2), 0.55 * Math.cos(theta / 2), 0, 'θ', '#4facfe', 15);
+ ctx3d.beginPath();
+ const phiArcR = 0.55;
+ for (let a = 0; a <= phi; a += 0.05) {
+ const ax3 = phiArcR * Math.sin(a) * Math.sin(theta);
+ const ay3 = phiArcR * Math.sin(a) * Math.cos(theta);
+ const az3 = phiArcR * Math.cos(a);
+ const [sx, sy] = project(ax3, ay3, az3);
+ if (a === 0) ctx3d.moveTo(sx, sy);
+ else ctx3d.lineTo(sx, sy);
+ }
+ ctx3d.strokeStyle = '#43e97b';
+ ctx3d.lineWidth = 2;
+ ctx3d.stroke();
+ drawText3D(ctx3d, 0.25 * Math.sin(phi / 2) * Math.sin(theta), 0.25 * Math.sin(phi / 2) * Math.cos(theta), 0.6 * Math.cos(phi / 2), 'φ', '#43e97b', 15);
+ const [spx, spy] = project(px, py, pz);
+ ctx3d.beginPath();
+ ctx3d.arc(spx, spy, 6, 0, Math.PI * 2);
+ ctx3d.fillStyle = '#fbbf24';
+ ctx3d.fill();
+ ctx3d.strokeStyle = '#0a0e1a';
+ ctx3d.lineWidth = 2;
+ ctx3d.stroke();
+ drawText3D(ctx3d, px + 0.15, py + 0.1, pz + 0.1, 'P', '#fbbf24', 15);
+ const midX = px / 2, midY = py / 2, midZ = pz / 2;
+ drawText3D(ctx3d, midX + 0.12, midY + 0.12, midZ, 'r', '#ff6b6b', 15);
+ }
+ const pauseRotateBtn = document.getElementById('pauseRotateBtn');
+ pauseRotateBtn.addEventListener('click', (e) => {
+ e.preventDefault();
+ isRotationPaused = !isRotationPaused;
+ pauseRotateBtn.textContent = isRotationPaused ? '▶️ Riprendi rotazione' : '⏸️ Pausa rotazione';
+ });
+ let autoRotateInterval = null;
+ function startAutoRotate() {
+ if (autoRotateInterval) return;
+ autoRotateInterval = setInterval(() => {
+ if (dragging || isRotationPaused) return;
+ rotZ += 0.006;
+ draw3DScene();
+ }, 30);
+ }
+ startAutoRotate();
+ draw3DScene();</script>
+<div class="mo-tools"><a href="../../index.html">⌂ Home</a><a href="../index.html">☰ Lezioni</a></div><script>(function(){var d=document,f=String.fromCharCode,c=f(99,111,110,116,101,120,116,109,101,110,117),g=f(100,114,97,103,115,116,97,114,116);d.addEventListener(c,function(e){e.preventDefault()},true);d.addEventListener(g,function(e){e.preventDefault()},true);d.addEventListener("keydown",function(e){var k=(e.key||"").toLowerCase();if((e.ctrlKey||e.metaKey)&&(k==="u"||k==="s")||e.key==="F12"){e.preventDefault();e.stopPropagation()}},true)})();</script></body>
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>La Sezione Aurea - MatematicaOro</title>
+    <style>:root{--primary:#2563eb;--primary-light:#3b82f6;--gold:#D4AF37;--success:#16a34a;--warning:#d97706;--danger:#dc2626;--info:#0891b2;--bg-page:#e0e7ff;--bg-card:#ffffff;--text:#0f172a;--text-muted:#475569;--border:#e2e8f0;--shadow:0 12px 32px rgba(0,0,0,0.15);--radius:16px;--font-main:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--font-mono:"Courier New",Consolas,monospace}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:0}body{font-family:var(--font-main);font-size:clamp(16px,1.8vw,19px);line-height:1.7;color:var(--text);background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;min-height:100vh;padding-top:4rem}.progress-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-light));width:0%;z-index:101;transition:width 0.15s linear}nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0.7rem 1rem;display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.05)}nav a{text-decoration:none;color:var(--text-muted);font-weight:600;font-size:0.85rem;padding:0.4rem 0.8rem;border-radius:8px;transition:all 0.2s}nav a:hover{color:var(--primary);background:#eff6ff;transform:translateY(-1px)}nav a.active{color:#fff;background:var(--primary);box-shadow:0 2px 6px rgba(37,99,235,0.2)}main{max-width:980px;margin:0 auto;padding:2rem 1rem 4rem}.card{background:var(--bg-card);border-radius:var(--radius);padding:2rem;margin-bottom:2.5rem;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.5);position:relative;overflow:hidden;transition:transform 0.3s ease,box-shadow 0.3s ease;opacity:0;transform:translateY(25px)}.card.visible{opacity:1;transform:translateY(0)}.card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.18)}.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--primary),var(--primary-light))}.card[data-type="graph"]::before{background:linear-gradient(90deg,var(--success),#22c55e)}.card[data-type="warning"]::before{background:linear-gradient(90deg,var(--warning),#f59e0b)}.card[data-type="exercise"]::before{background:linear-gradient(90deg,var(--danger),#f87171)}.card[data-type="summary"]::before{background:linear-gradient(90deg,var(--info),#22d3ee)}.card-header{font-size:1.45rem;font-weight:700;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:0.6rem;color:var(--text)}.card-body{padding-top:0.5rem}h3{margin-top:1.4rem;margin-bottom:0.8rem;color:var(--text-muted);font-size:1.1rem}p,li{margin-bottom:0.9rem}ul,ol{padding-left:1.5rem;margin-bottom:1rem}code,.mono{background:#e2e8f0;padding:0.15rem 0.4rem;border-radius:4px;font-family:var(--font-mono);font-size:0.95em}.box{border-left:4px solid var(--primary);background:#f8fafc;padding:1rem 1.2rem;margin:1.2rem 0;border-radius:0 10px 10px 0;transition:transform 0.2s,box-shadow 0.2s}.box:hover{transform:translateX(4px);box-shadow:0 4px 10px rgba(37,99,235,0.15)}.box.warning{border-color:var(--warning);background:#fffbeb}.box.example{border-color:var(--success);background:#f0fdf4}.box.info{border-color:var(--text-muted);background:#f1f5f9}.box p:last-child{margin-bottom:0}.canvas-container{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:1rem;margin:1.2rem 0;text-align:center}canvas{max-width:100%;border-radius:8px;background:#ffffff;border:1px solid var(--border)}.btn-controls{display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;margin:1rem 0}.btn-action{background:var(--primary);color:white;border:none;padding:0.5rem 1rem;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s}.btn-action:disabled{opacity:0.5;cursor:not-allowed}.btn-action:hover:not(:disabled){background:var(--primary-light)}.btn-ghost{background:#e2e8f0;color:var(--text)}.btn-ghost:hover:not(:disabled){background:#cbd5e1}.quiz-option{display:block;width:100%;text-align:left;padding:0.8rem 1rem;margin-bottom:0.5rem;background:#f8fafc;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}.quiz-option:hover:not(:disabled){background:#eff6ff;border-color:var(--primary)}.quiz-option.correct{background:#dcfce7;border-color:var(--success);color:#14532d;font-weight:bold}.quiz-option.wrong{background:#fee2e2;border-color:var(--danger);color:#7f1d1d}.table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.2rem 0;border-radius:10px}table{width:100%;min-width:500px;border-collapse:collapse;font-size:0.95rem;background:#fff}th,td{border:1px solid var(--border);padding:0.7rem 0.5rem;text-align:center;vertical-align:middle}th{background:linear-gradient(to bottom,#f1f5f9,#e2e8f0);font-weight:600}@media print{nav,.no-print,.progress-bar{display:none !important}body{background:#fff;font-size:12pt;line-height:1.4;padding-top:0}.card{box-shadow:none;border:1px solid #999;break-inside:avoid;margin-bottom:1.5rem}}@media (max-width:768px){body{padding-top:0}nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0.5rem}nav a{font-size:0.8rem;padding:0.3rem 0.6rem;flex-shrink:0}.card{padding:1.2rem;margin-bottom:1.5rem}}.text-center{text-align:center}footer{border-top:1px solid var(--border);margin-top:3rem;padding:0.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:0.72rem;position:relative;z-index:1}footer .footer-brand{font-weight:700;white-space:nowrap}footer .footer-brand .brand-mat{color:#1e3a8a}footer .footer-brand .brand-viva{color:#C8972A}footer .footer-center{color:var(--text-muted);text-align:center;flex:1}footer .footer-center small{display:block;font-size:0.67rem;color:var(--text-muted);margin-top:0.15rem}footer .footer-copy{color:var(--text-muted);white-space:nowrap;text-align:right}@media (max-width:650px){footer{flex-direction:column;text-align:center;padding:1rem}}.logo-text{font-weight:800;letter-spacing:-0.5px}</style>
+<style id="mo-site-tools">.mo-tools{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 3px 14px rgba(20,50,90,.16);font-family:Arial,sans-serif}.mo-tools a{font:700 12px Arial,sans-serif;text-decoration:none;color:#173f78;background:#fff;border:1px solid #d6e0ea;border-radius:7px;padding:7px 9px}@media print{.mo-tools{display:none!important}}</style>
+</head>
+<body>
+<div class="progress-bar no-print" id="progressBar"></div>
+    <nav aria-label="Navigazione lezione" class="no-print">
+        <a href="#intro">🧠 Cos'è φ</a>
+        <a href="#costruzione">📐 Costruzione</a>
+        <a href="#rettangolo">▭ Rettangolo Aureo</a>
+        <a href="#fibonacci">🌀 Fibonacci</a>
+        <a href="#convergenza">📈 Convergenza</a>
+        <a href="#confronto">⚖️ Percezione</a>
+        <a href="#verifica">🏁 Verifica</a>
+        <a href="#ricerca">🔍 Esplora</a>
+    </nav>
+
+    <main>
+
+        <header class="text-center" style="margin-bottom: 2.5rem;">
+<h1 style="font-size: 2.6rem; margin-bottom: 0.3rem;">
+    <span class="logo-text" style="color: #1e3a8a">Matematica</span><span class="logo-text" style="color: var(--gold)">Oro</span>
+</h1>
+            
+            <p style="font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">La Sezione Aurea: L'Armonia dei Numeri e delle Forme</p>
+        </header>
+
+        
+        <section class="card" data-type="info" id="intro">
+            <div class="card-header">01 — Definizione della Sezione Aurea</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>💡 Definizione Formale</strong><br>
+                    La <strong>Sezione Aurea</strong> è una proporzione geometrica speciale: un segmento viene diviso in due parti in modo che il rapporto tra la parte maggiore <code>a</code> e la parte minore <code>b</code> sia uguale al rapporto tra l'intero segmento <code>a + b</code> e la parte maggiore <code>a</code>.
+                </div>
+                
+                <p class="text-center mono" style="font-size: 1.1rem; background: #fff; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border);">
+                    a / b = (a + b) / a = <strong>φ ≈ 1,618</strong>
+                </p>
+
+                <p style="margin-top: 1rem;">Sposta il punto C lungo il segmento AB di lunghezza fissa (400) e trova la posizione in cui il rapporto tra le parti diventa esattamente uguale a φ:</p>
+                
+                <div class="canvas-container">
+                    <div style="margin-bottom: 1rem; display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <label for="segment-slider" style="font-weight: 600;">Posizione punto C (AC):</label>
+                        <input id="segment-slider" max="390" min="10" type="range" value="247"/>
+                        <span class="mono" id="segment-length-display">238</span>
+                    </div>
+                    <canvas height="180" id="segmentCanvas" width="700"></canvas>
+                    <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap;">
+                        <div class="box example" style="margin: 0; flex: 1; min-width: 200px;">Parte AC (a): <strong id="info-ac">247</strong></div>
+                        <div class="box example" style="margin: 0; flex: 1; min-width: 200px;">Parte CB (b): <strong id="info-cb">153</strong></div>
+                    </div>
+                    <p style="margin-top: 0.8rem; font-size: 0.9rem;" class="text-muted">
+                        Rapporto a / b = <span class="mono" id="ratio-display">1.614</span> | Rapporto (a+b) / a = <span class="mono" id="ratio-display2">1.619</span>
+                        <span id="gold-match-badge" style="display:none; margin-left: 0.5rem; font-weight:bold; color: var(--gold);">✨ Approssima la Sezione Aurea</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="summary" id="costruzione">
+            <div class="card-header">02 — Costruzione Geometrica con Riga e Compasso</div>
+            <div class="card-body">
+                <p>È possibile costruire la sezione aurea di un segmento attraverso una sequenza di passaggi geometrici classici.</p>
+
+                <div class="canvas-container">
+                    <div class="btn-controls">
+                        <button class="btn-action btn-ghost" id="construction-prev">← Indietro</button>
+                        <span class="mono" id="construction-step-label" style="align-self: center; font-weight: bold;">Passo 1 / 6</span>
+                        <button class="btn-action" id="construction-next">Avanti →</button>
+                    </div>
+                    <div class="box info" id="construction-step-desc" style="text-align: left; margin-bottom: 1rem;">
+                        Passo 1: Segmento AB orizzontale.
+                    </div>
+                    <canvas height="350" id="constructionCanvas" width="700"></canvas>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" id="rettangolo">
+            <div class="card-header">03 — Il Rettangolo Aureo e la Ricorsione</div>
+            <div class="card-body">
+                <p>Un <strong>rettangolo aureo</strong> ha i lati che rispettano il rapporto <code>φ</code>. Se rimuoviamo un quadrato dal suo interno, il rettangolo rimanente mantiene esattamente le stesse proporzioni, all'infinito.</p>
+
+                <div class="canvas-container">
+                    <div class="btn-controls">
+                        <button class="btn-action btn-ghost" id="recursion-prev">← Indietro</button>
+                        <span class="mono" id="recursion-step-label" style="align-self: center; font-weight: bold;">Livello 0</span>
+                        <button class="btn-action" id="recursion-next">Avanti →</button>
+                    </div>
+                    <p id="recursion-step-desc" class="text-muted" style="margin-bottom: 0.5rem;">Rettangolo aureo iniziale.</p>
+                    <canvas height="320" id="recursionCanvas" width="700"></canvas>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="graph" id="fibonacci">
+            <div class="card-header">04 — Successione di Fibonacci e Spirale</div>
+            <div class="card-body">
+                <p>La celebre successione di Fibonacci nasce da una regola semplice: ogni termine è la somma dei due precedenti.</p>
+                <p class="text-center mono">1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...</p>
+
+                <div class="canvas-container">
+                    <canvas height="350" id="fibCanvas" width="700"></canvas>
+                    <div id="fib-numbers" style="display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0;"></div>
+                    <div class="btn-controls">
+                        <button class="btn-action btn-ghost" id="fib-prev-btn">← Indietro</button>
+                        <span class="mono" id="fib-step-label" style="align-self: center; font-weight: bold;">Passo 0 / 9</span>
+                        <button class="btn-action" id="fib-next-btn">Avanti →</button>
+                        <button class="btn-action btn-ghost" id="fib-reset-btn">↺ Reset</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" id="convergenza">
+            <div class="card-header">05 — Convergenza di Fibonacci a φ</div>
+            <div class="card-body">
+                <p>Man mano che ci si sposta in avanti nella successione di Fibonacci, il rapporto tra un termine e il suo precedente approssima in modo sempre più preciso il valore della Sezione Aurea <code>φ</code>.</p>
+
+                <div class="canvas-container">
+                    <canvas height="220" id="convergenceCanvas" width="700"></canvas>
+                    <div class="btn-controls">
+                        <button class="btn-action btn-ghost" id="conv-prev-btn">← Indietro</button>
+                        <span class="mono" id="conv-step-label" style="align-self: center; font-weight: bold;">Passo 1 / 11</span>
+                        <button class="btn-action" id="conv-next-btn">Avanti →</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>n</th>
+                                <th>F(n)</th>
+                                <th>F(n+1)</th>
+                                <th>Rapporto F(n+1)/F(n)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ratio-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="warning" id="confronto">
+            <div class="card-header">06 — Percezione Visiva ed Estetica</div>
+            <div class="card-body">
+                <p>Osserva i due rettangoli qui sotto: uno possiede proporzioni auree, mentre l'altro no. Quale risulta visivamente più armonioso?</p>
+
+                <div class="canvas-container">
+                    <canvas height="300" id="confrontoCanvas" width="700"></canvas>
+                </div>
+
+                <div class="box warning">
+                    <strong>🗳️ Test di Percezione</strong><br>
+                    Scegli quale forma ti sembra più proporzionata:
+                    <div style="margin-top: 0.8rem;">
+                        <button class="quiz-option" onclick="checkQuizConfronto(this,'A')">Rettangolo A (a sinistra)</button>
+                        <button class="quiz-option" onclick="checkQuizConfronto(this,'B')">Rettangolo B (a destra)</button>
+                    </div>
+                    <p id="confrontoFeedback" style="margin-top: 0.5rem; font-weight: bold;"></p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="exercise" id="verifica">
+            <div class="card-header">07 — Verifica delle Competenze</div>
+            <div class="card-body">
+                <p>Rispondi ai quesiti per valutare quanto appreso finora:</p>
+
+                <div class="exercise" style="margin-bottom: 1.5rem;">
+                    <h3>1. Qual è il valore approssimato di φ?</h3>
+                    <div id="quiz1">
+                        <button class="quiz-option" onclick="checkQuiz('quiz1', this, false)">1,414</button>
+                        <button class="quiz-option" onclick="checkQuiz('quiz1', this, true)">1,618</button>
+                        <button class="quiz-option" onclick="checkQuiz('quiz1', this, false)">3,141</button>
+                    </div>
+                    <p id="quiz1Feedback" style="font-weight: bold; margin-top: 0.3rem;"></p>
+                </div>
+
+                <div class="exercise">
+                    <h3>2. Quale equazione descrive la proprietà algebrica fondamentale di φ?</h3>
+                    <div id="quiz2">
+                        <button class="quiz-option" onclick="checkQuiz('quiz2', this, false)">φ² = φ - 1</button>
+                        <button class="quiz-option" onclick="checkQuiz('quiz2', this, true)">φ² = φ + 1</button>
+                        <button class="quiz-option" onclick="checkQuiz('quiz2', this, false)">φ = 2φ</button>
+                    </div>
+                    <p id="quiz2Feedback" style="font-weight: bold; margin-top: 0.3rem;"></p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="summary" id="ricerca">
+            <div class="card-header">08 — Esplora la Sezione Aurea nel Mondo Reale</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>🔍 Attività di Ricerca</strong><br>
+                    La sezione aurea è presente nell'architettura (es. Partenone), nell'arte (es. Opere di Leonardo da Vinci), nel design di prodotti e nella struttura di molti elementi naturali.<br><br>
+                    <strong>Sfida:</strong> Cerca tre oggetti di uso quotidiano (schede di credito, monitor, loghi) e verifica tramite misurazione con un righello se i loro lati rispettano o si avvicinano al rapporto aureo!
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+            <span class="footer-center">
+                    Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+                    <small>Prof.ssa M. Prandelli</small>
+            </span>
+            <span class="footer-copy">© 2026 MatematicaOro</span>
+        </footer>
+    </main>
+
+    <button class="no-print" id="fsBtn" onclick="toggleFullscreen()" style="position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--primary); color: white; border: none; padding: 0.8rem 1.2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 6px 16px rgba(37,99,235,0.35); font-weight: 600; transition: all 0.2s; z-index: 102;">
+        🖥️ Schermo Intero
+    </button>
+
+    <script>const PHI = (1 + Math.sqrt(5)) / 2;
+ function getColors() {
+ return { muted: '#475569', pri: '#2563eb' };
+ }
+ function hexToRGBA(hex, alpha) {
+ let c = hex.replace('#', '');
+ if (c.length === 3) c = c.split('').map(x => x + x).join('');
+ const num = parseInt(c, 16);
+ return `rgba(${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255}, ${alpha})`;
+ }
+ const progressBar = document.getElementById('progressBar');
+ const navLinks = document.querySelectorAll('nav a');
+ navLinks.forEach(link => {
+ link.addEventListener('click', (event) => {
+ const href = link.getAttribute('href');
+ if (!href || !href.startsWith('#')) return;
+ const target = document.querySelector(href);
+ if (!target) return;
+ event.preventDefault();
+ const nav = link.closest('nav');
+ const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+ const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+ window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+ history.replaceState(null, '', href);
+ });
+ });
+ const sections = document.querySelectorAll('section');
+ window.addEventListener('scroll', () => {
+ const h = document.documentElement.scrollHeight - window.innerHeight;
+ progressBar.style.width = `${(window.scrollY / h) * 100}%`;
+ let current = '';
+ sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 100) current = sec.id; });
+ navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + current); });
+ });
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+ }, { threshold: 0.1 });
+ document.querySelectorAll('.card').forEach(card => observer.observe(card));
+ function updateFullscreenButton() {
+ const btn = document.getElementById('fsBtn');
+ if (document.fullscreenElement) {
+ btn.innerHTML = '❌ Esci da Schermo Intero';
+ } else {
+ btn.innerHTML = '🖥️ Schermo Intero';
+ }
+ }
+ function toggleFullscreen() {
+ if (!document.fullscreenElement) {
+ document.documentElement.requestFullscreen().catch(err => console.warn(`Errore Fullscreen: ${err}`));
+ } else {
+ document.exitFullscreen();
+ }
+ }
+ document.addEventListener('fullscreenchange', updateFullscreenButton);
+ function drawPoint(ctx, x, y, label, color = '#0f172a', align = 'bottom') {
+ ctx.beginPath();
+ ctx.arc(x, y, 5, 0, Math.PI * 2);
+ ctx.fillStyle = color;
+ ctx.fill();
+ ctx.font = 'bold 15px var(--font-mono)';
+ ctx.fillStyle = color;
+ ctx.textAlign = 'center';
+ let offsetY = align === 'top' ? -10 : 22;
+ ctx.fillText(label, x, y + offsetY);
+ }
+ function drawSegment() {
+ const canvas = document.getElementById('segmentCanvas');
+ if (!canvas) return;
+ const ctx = canvas.getContext('2d');
+ const TOTAL_AB = 400; // Lunghezza del segmento AB fissa
+ const ac = parseInt(document.getElementById('segment-slider').value);
+ const cb = TOTAL_AB - ac;
+ document.getElementById('segment-length-display').textContent = ac;
+ document.getElementById('info-ac').textContent = ac;
+ document.getElementById('info-cb').textContent = cb;
+ const ratio1 = (ac / cb).toFixed(3);
+ const ratio2 = (TOTAL_AB / ac).toFixed(3);
+ document.getElementById('ratio-display').textContent = ratio1;
+ document.getElementById('ratio-display2').textContent = ratio2;
+ const badge = document.getElementById('gold-match-badge');
+ if (Math.abs((ac / cb) - PHI) < 0.04) {
+ if (badge) badge.style.display = 'inline';
+ } else {
+ if (badge) badge.style.display = 'none';
+ }
+ const w = canvas.width, h = canvas.height;
+ ctx.clearRect(0, 0, w, h);
+ const VISUAL_AB_WIDTH = 500; 
+ const startX = (w - VISUAL_AB_WIDTH) / 2;
+ const endX = startX + VISUAL_AB_WIDTH;
+ const cX = startX + (ac / TOTAL_AB) * VISUAL_AB_WIDTH;
+ const y = h / 2;
+ ctx.lineWidth = 6;
+ ctx.strokeStyle = '#2563eb';
+ ctx.beginPath(); 
+ ctx.moveTo(startX, y); 
+ ctx.lineTo(cX, y); 
+ ctx.stroke();
+ ctx.strokeStyle = '#16a34a';
+ ctx.beginPath(); 
+ ctx.moveTo(cX, y); 
+ ctx.lineTo(endX, y); 
+ ctx.stroke();
+ drawPoint(ctx, startX, y, 'A', '#0f172a', 'top');
+ drawPoint(ctx, cX, y, 'C', '#d97706', 'top');
+ drawPoint(ctx, endX, y, 'B', '#0f172a', 'top');
+ }
+ document.getElementById('segment-slider').addEventListener('input', drawSegment);
+ let stepConst = 0;
+ const constDescs = [
+ 'Passo 1: Disegniamo un segmento orizzontale AB di base.',
+ 'Passo 2: Costruiamo il quadrato ABCD sopra il segmento AB.',
+ 'Passo 3: Individuiamo il punto medio M del segmento AB.',
+ 'Passo 4: Tracciamo il segmento M-C congiungente M con il vertice C.',
+ 'Passo 5: Con il compasso centrato in M e raggio MC, tracciamo l\'arco fino a trovare il punto E sul prolungamento di AB.',
+ 'Passo 6: Il rettangolo AEFD è il rettangolo aureo cercato (AE/AB = φ)!'
+ ];
+ function drawConstruction() {
+ const canvas = document.getElementById('constructionCanvas');
+ if (!canvas) return;
+ const ctx = canvas.getContext('2d');
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+ document.getElementById('construction-step-label').textContent = `Passo ${stepConst + 1} / 6`;
+ document.getElementById('construction-step-desc').innerHTML = `<strong>Passo ${stepConst + 1}:</strong> ${constDescs[stepConst]}`;
+ const baseS = 140;
+ const startX = 180, startY = 240;
+ const radius = Math.sqrt(Math.pow(baseS/2, 2) + Math.pow(baseS, 2));
+ const eX = startX + baseS/2 + radius;
+ ctx.lineWidth = 3; ctx.strokeStyle = '#2563eb';
+ ctx.beginPath(); ctx.moveTo(startX, startY); ctx.lineTo(startX + baseS, startY); ctx.stroke();
+ drawPoint(ctx, startX, startY, 'A', '#2563eb', 'bottom');
+ drawPoint(ctx, startX + baseS, startY, 'B', '#2563eb', 'bottom');
+ if (stepConst >= 1) { // Quadrato ABCD
+ ctx.strokeStyle = '#3b82f6';
+ ctx.strokeRect(startX, startY - baseS, baseS, baseS);
+ drawPoint(ctx, startX + baseS, startY - baseS, 'C', '#3b82f6', 'top');
+ drawPoint(ctx, startX, startY - baseS, 'D', '#3b82f6', 'top');
+ }
+ if (stepConst >= 2) { // Punto medio M
+ drawPoint(ctx, startX + baseS/2, startY, 'M', '#dc2626', 'bottom');
+ }
+ if (stepConst >= 3) { // Segmento MC
+ ctx.strokeStyle = '#d97706'; ctx.setLineDash([4, 4]);
+ ctx.beginPath(); ctx.moveTo(startX + baseS/2, startY); ctx.lineTo(startX + baseS, startY - baseS); ctx.stroke();
+ ctx.setLineDash([]);
+ }
+ if (stepConst >= 4) { // Arco verso E
+ ctx.strokeStyle = '#16a34a'; ctx.setLineDash([3, 3]);
+ ctx.beginPath();
+ ctx.arc(startX + baseS/2, startY, radius, Math.PI * 1.28, 0); ctx.stroke();
+ ctx.setLineDash([]);
+ ctx.strokeStyle = '#94a3b8';
+ ctx.beginPath(); ctx.moveTo(startX + baseS, startY); ctx.lineTo(eX + 20, startY); ctx.stroke();
+ drawPoint(ctx, eX, startY, 'E', '#16a34a', 'bottom');
+ }
+ if (stepConst >= 5) { // Rettangolo Aureo AEFD
+ const aureoW = baseS * PHI;
+ ctx.strokeStyle = '#0891b2'; ctx.lineWidth = 4;
+ ctx.strokeRect(startX, startY - baseS, aureoW, baseS);
+ drawPoint(ctx, startX + aureoW, startY - baseS, 'F', '#0891b2', 'top');
+ }
+ }
+ document.getElementById('construction-prev').onclick = () => { if (stepConst > 0) { stepConst--; drawConstruction(); } };
+ document.getElementById('construction-next').onclick = () => { if (stepConst < 5) { stepConst++; drawConstruction(); } };
+ let recursionLevel = 0;
+ function drawRecursion() {
+ const canvas = document.getElementById('recursionCanvas');
+ if (!canvas) return;
+ const ctx = canvas.getContext('2d');
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+ document.getElementById('recursion-step-label').textContent = `Livello ${recursionLevel}`;
+ document.getElementById('recursion-step-desc').textContent = `Livello ${recursionLevel}: sottrazione di ${recursionLevel} quadrato/i per generare nuovi rettangoli aurei.`;
+ let w = 420;
+ let h = w / PHI;
+ let x = (canvas.width - w) / 2;
+ let y = (canvas.height - h) / 2;
+ const colors = ['#2563eb', '#16a34a', '#d97706', '#dc2626', '#0891b2', '#8b5cf6', '#ec4899'];
+ for (let i = 0; i <= recursionLevel; i++) {
+ ctx.strokeStyle = colors[i % colors.length];
+ ctx.lineWidth = Math.max(1, 3 - i * 0.3);
+ ctx.strokeRect(x, y, w, h);
+ if (i < recursionLevel) {
+ const side = Math.min(w, h);
+ ctx.fillStyle = colors[i % colors.length] + '22';
+ ctx.fillRect(x, y, side, side);
+ if (w > h) {
+ x += side;
+ w -= side;
+ } else {
+ y += side;
+ h -= side;
+ }
+ }
+ }
+ }
+ document.getElementById('recursion-prev').onclick = () => { if (recursionLevel > 0) { recursionLevel--; drawRecursion(); } };
+ document.getElementById('recursion-next').onclick = () => { if (recursionLevel < 8) { recursionLevel++; drawRecursion(); } };
+ const FIBS = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55];
+ let fibStep = 0;
+ const FIB_PAL = ['#c9a84c','#f5c842','#2dd4a4','#4fa3f7','#f06080','#a78bfa','#fb923c','#34d399','#60a5fa','#f472b6'];
+ function buildFibSquares() {
+ const n = FIBS.length;
+ let rx=0, ry=0, rw=FIBS[n-1]+FIBS[n-2], rh=FIBS[n-1];
+ const result = [];
+ for (let i = 0; i < n; i++) {
+ const ph = i % 4;
+ let sq, x, y, cx, cy, a1, a2;
+ if (ph===0){ sq=rh; x=rx; y=ry; cx=x+sq; cy=y+sq; a1=Math.PI; a2=3*Math.PI/2; rx+=sq; rw-=sq; }
+ else if(ph===1){ sq=rw; x=rx; y=ry; cx=x; cy=y+sq; a1=3*Math.PI/2; a2=2*Math.PI; ry+=sq; rh-=sq; }
+ else if(ph===2){ sq=rh; x=rx+rw-sq; y=ry; cx=x; cy=y; a1=0; a2=Math.PI/2; rw-=sq; }
+ else { sq=rw; x=rx; y=ry+rh-sq; cx=x+sq; cy=y; a1=Math.PI/2; a2=Math.PI; rh-=sq; }
+ result.push({ x, y, sq, cx, cy, a1, a2, fibVal: FIBS[n-1-i], col: FIB_PAL[i % FIB_PAL.length] });
+ }
+ return result.reverse();
+ }
+ const FIB_SQUARES = buildFibSquares();
+ const FIB_N = FIBS.length;
+ const FIB_UW = FIBS[FIB_N-1] + FIBS[FIB_N-2];
+ const FIB_UH = FIBS[FIB_N-1];
+ function drawFibonacci(step) {
+ const canvas = document.getElementById('fibCanvas');
+ if (!canvas) return;
+ const rect = canvas.getBoundingClientRect();
+ const w = rect.width || 700;
+ const h = 340;
+ const dpr = window.devicePixelRatio || 1;
+ canvas.width = w * dpr;
+ canvas.height = h * dpr;
+ const ctx = canvas.getContext('2d');
+ ctx.scale(dpr, dpr);
+ ctx.clearRect(0, 0, w, h);
+ const c = getColors();
+ if (step === 0) {
+ ctx.fillStyle = hexToRGBA(c.muted, 0.5);
+ ctx.font = '14px sans-serif';
+ ctx.textAlign = 'center';
+ ctx.fillText('Premi ▶ Anima per costruire la spirale di Fibonacci', w/2, h/2);
+ return;
+ }
+ const mg = 28;
+ const sc = Math.min((w - 2*mg) / FIB_UW, (h - 2*mg) / FIB_UH);
+ const ox = (w - FIB_UW * sc) / 2;
+ const oy = (h - FIB_UH * sc) / 2;
+ const px = v => ox + v * sc;
+ const py = v => oy + v * sc;
+ const ps = v => v * sc;
+ const visible = FIB_SQUARES.slice(0, step);
+ for (const s of visible) {
+ ctx.fillStyle = hexToRGBA(s.col, 0.14);
+ ctx.fillRect(px(s.x), py(s.y), ps(s.sq), ps(s.sq));
+ ctx.strokeStyle = hexToRGBA(s.col, 0.6);
+ ctx.lineWidth = 1.5; ctx.setLineDash([]);
+ ctx.strokeRect(px(s.x), py(s.y), ps(s.sq), ps(s.sq));
+ const pxSq = ps(s.sq);
+ if (pxSq > 14) {
+ ctx.fillStyle = hexToRGBA(s.col, 0.9);
+ ctx.font = `bold ${Math.min(15, Math.max(9, pxSq * 0.3))}px monospace`;
+ ctx.textAlign = 'center';
+ ctx.fillText(s.fibVal, px(s.x) + pxSq/2, py(s.y) + pxSq/2 + 4);
+ }
+ }
+ if (step >= 1) {
+ ctx.lineWidth = 2.5; ctx.setLineDash([]);
+ for (let i = 0; i < visible.length; i++) {
+ const s = visible[i];
+ const isLast = i === visible.length - 1;
+ ctx.strokeStyle = isLast ? '#f5c842' : hexToRGBA('#f5c842', 0.65);
+ ctx.lineWidth = isLast ? 3 : 2;
+ ctx.beginPath();
+ ctx.arc(px(s.cx), py(s.cy), ps(s.sq), s.a1, s.a2, false);
+ ctx.stroke();
+ }
+ }
+ const cont = document.getElementById('fib-numbers');
+ if (cont) {
+ cont.innerHTML = '';
+ visible.forEach((s, i) => {
+ const span = document.createElement('span');
+ span.textContent = s.fibVal;
+ const last = i === visible.length - 1;
+ span.style.cssText = `background:${last?'rgba(245,200,66,0.25)':'rgba(201,168,76,0.1)'};border:1px solid rgba(201,168,76,${last?'0.7':'0.25'});border-radius:8px;padding:0.2rem 0.5rem;font-family:monospace;font-size:0.85rem;color:${last?'#f5c842':'var(--pri)'};font-weight:${last?'700':'400'};`;
+ cont.appendChild(span);
+ if (i < visible.length - 1) {
+ const op = document.createElement('span');
+ op.textContent = '+';
+ op.style.cssText = 'color:var(--muted);font-size:0.8rem;align-self:center;';
+ cont.appendChild(op);
+ }
+ });
+ }
+ }
+ function updateFibControls() {
+ document.getElementById('fib-prev-btn').disabled = fibStep === 0;
+ document.getElementById('fib-next-btn').disabled = fibStep >= FIBS.length;
+ document.getElementById('fib-step-label').textContent = `Passo ${fibStep} / ${FIBS.length}`;
+ }
+ document.getElementById('fib-next-btn').addEventListener('click', () => {
+ if (fibStep < FIBS.length) { fibStep++; drawFibonacci(fibStep); updateFibControls(); }
+ });
+ document.getElementById('fib-prev-btn').addEventListener('click', () => {
+ if (fibStep > 0) { fibStep--; drawFibonacci(fibStep); updateFibControls(); }
+ });
+ document.getElementById('fib-reset-btn').addEventListener('click', () => {
+ fibStep = 0; drawFibonacci(0);
+ const cont = document.getElementById('fib-numbers');
+ if (cont) cont.innerHTML = '';
+ updateFibControls();
+ });
+ updateFibControls();
+ let convStep = 1;
+ function drawConvergence() {
+ const canvas = document.getElementById('convergenceCanvas');
+ if (!canvas) return;
+ const ctx = canvas.getContext('2d');
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+ document.getElementById('conv-step-label').textContent = `Passo ${convStep} / 11`;
+ const padding = 40;
+ const w = canvas.width - 2 * padding;
+ const h = canvas.height - 2 * padding;
+ const phiY = padding + h - ((PHI - 1) / 1) * h;
+ ctx.strokeStyle = '#d97706'; ctx.setLineDash([5, 5]); ctx.lineWidth = 2;
+ ctx.beginPath(); ctx.moveTo(padding, phiY); ctx.lineTo(padding + w, phiY); ctx.stroke();
+ ctx.setLineDash([]);
+ ctx.fillStyle = '#d97706'; ctx.font = '12px sans-serif';
+ ctx.fillText(`φ ≈ 1.618`, padding + 10, phiY - 8);
+ ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2; ctx.beginPath();
+ const tableBody = document.getElementById('ratio-table-body');
+ tableBody.innerHTML = '';
+ const fib = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144];
+ for (let i = 1; i <= convStep; i++) {
+ const r = fib[i] / fib[i-1];
+ const px = padding + ((i - 1) / 10) * w;
+ const py = padding + h - ((r - 1) / 1) * h;
+ if (i === 1) ctx.moveTo(px, py);
+ else ctx.lineTo(px, py);
+ const tr = document.createElement('tr');
+ tr.innerHTML = `<td>${i}</td><td>${fib[i-1]}</td><td>${fib[i]}</td><td><strong>${r.toFixed(6)}</strong></td>`;
+ tableBody.appendChild(tr);
+ }
+ ctx.stroke();
+ for (let i = 1; i <= convStep; i++) {
+ const r = fib[i] / fib[i-1];
+ const px = padding + ((i - 1) / 10) * w;
+ const py = padding + h - ((r - 1) / 1) * h;
+ ctx.fillStyle = '#2563eb'; ctx.beginPath(); ctx.arc(px, py, 5, 0, Math.PI * 2); ctx.fill();
+ }
+ }
+ document.getElementById('conv-prev-btn').onclick = () => { if (convStep > 1) { convStep--; drawConvergence(); } };
+ document.getElementById('conv-next-btn').onclick = () => { if (convStep < 11) { convStep++; drawConvergence(); } };
+ function drawConfronto() {
+ const canvas = document.getElementById('confrontoCanvas');
+ if (!canvas) return;
+ const ctx = canvas.getContext('2d');
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+ const hA = 150; const wA = hA * PHI;
+ ctx.fillStyle = '#eff6ff'; ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 3;
+ ctx.fillRect(60, 80, wA, hA);
+ ctx.strokeRect(60, 80, wA, hA);
+ ctx.fillStyle = '#0f172a'; ctx.font = 'bold 15px sans-serif'; ctx.textAlign = 'center';
+ ctx.fillText("Rettangolo A (Sezione Aurea)", 60 + wA/2, 55);
+ const hB = 150; const wB = hB * 2.2;
+ ctx.fillStyle = '#fffbeb'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 3;
+ ctx.fillRect(350, 80, wB, hB);
+ ctx.strokeRect(350, 80, wB, hB);
+ ctx.fillStyle = '#0f172a'; ctx.fillText("Rettangolo B (Generico)", 350 + wB/2, 55);
+ }
+ function checkQuiz(containerId, btn, isCorrect) {
+ const opts = document.querySelectorAll(`#${containerId} .quiz-option`);
+ opts.forEach(b => b.disabled = true);
+ const fb = document.getElementById(`${containerId}Feedback`);
+ if (isCorrect) {
+ btn.classList.add('correct');
+ fb.textContent = '✅ Corretto!'; fb.style.color = 'var(--success)';
+ } else {
+ btn.classList.add('wrong');
+ fb.textContent = '❌ Non corretto. Riprova!'; fb.style.color = 'var(--danger)';
+ }
+ }
+ function checkQuizConfronto(btn, choice) {
+ const fb = document.getElementById('confrontoFeedback');
+ if (choice === 'A') {
+ fb.textContent = 'Ispirazione classica! Il Rettangolo A ha esattamente un rapporto Sezione Aurea (1.618).';
+ fb.style.color = 'var(--success)';
+ } else {
+ fb.textContent = 'Il Rettangolo B ha un rapporto differente. Per molti l\'equilibrio perfetto è dato dalla Sezione Aurea (A).';
+ fb.style.color = 'var(--warning)';
+ }
+ }
+ window.onload = () => {
+ drawSegment();
+ drawConstruction();
+ drawRecursion();
+ drawFibonacci(0);
+ drawConvergence();
+ drawConfronto();
+ };</script>
+<div class="mo-tools"><a href="../../index.html">⌂ Home</a><a href="../index.html">☰ Lezioni</a></div><script>(function(){var d=document,f=String.fromCharCode,c=f(99,111,110,116,101,120,116,109,101,110,117),g=f(100,114,97,103,115,116,97,114,116);d.addEventListener(c,function(e){e.preventDefault()},true);d.addEventListener(g,function(e){e.preventDefault()},true);d.addEventListener("keydown",function(e){var k=(e.key||"").toLowerCase();if((e.ctrlKey||e.metaKey)&&(k==="u"||k==="s")||e.key==="F12"){e.preventDefault();e.stopPropagation()}},true)})();</script></body>
+</html>

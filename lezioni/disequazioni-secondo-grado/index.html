@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Disequazioni di Secondo Grado - MatematicaOro</title>
+<style>:root{--primary:#2563eb;--primary-light:#3b82f6;--gold:#D4AF37;--success:#16a34a;--warning:#d97706;--danger:#dc2626;--info:#0891b2;--bg-page:#e0e7ff;--bg-card:#ffffff;--text:#0f172a;--text-muted:#475569;--border:#e2e8f0;--shadow:0 12px 32px rgba(0,0,0,0.15);--radius:16px;--font-main:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--font-mono:"Courier New",Consolas,monospace}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:0}body{font-family:var(--font-main);font-size:clamp(16px,1.8vw,19px);line-height:1.7;color:var(--text);background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;min-height:100vh;padding-top:4rem}.progress-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-light));width:0%;z-index:101;transition:width 0.15s linear}nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0.7rem 1rem;display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.05)}nav a{text-decoration:none;color:var(--text-muted);font-weight:600;font-size:0.85rem;padding:0.4rem 0.8rem;border-radius:8px;transition:all 0.2s}nav a:hover{color:var(--primary);background:#eff6ff;transform:translateY(-1px)}nav a.active{color:#fff;background:var(--primary);box-shadow:0 2px 6px rgba(37,99,235,0.2)}main{max-width:980px;margin:0 auto;padding:2rem 1rem 4rem}.card{background:var(--bg-card);border-radius:var(--radius);padding:2rem;margin-bottom:2.5rem;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.5);position:relative;overflow:hidden;transition:transform 0.3s ease,box-shadow 0.3s ease;opacity:0;transform:translateY(25px)}.card.visible{opacity:1;transform:translateY(0)}.card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.18)}.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--primary),var(--primary-light))}.card[data-type="graph"]::before{background:linear-gradient(90deg,var(--success),#22c55e)}.card[data-type="warning"]::before{background:linear-gradient(90deg,var(--warning),#f59e0b)}.card[data-type="exercise"]::before{background:linear-gradient(90deg,var(--danger),#f87171)}.card[data-type="summary"]::before{background:linear-gradient(90deg,var(--info),#22d3ee)}.card-header{font-size:1.45rem;font-weight:700;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:0.6rem;color:var(--text)}.card-body{padding-top:0.5rem}h3{margin-top:1.4rem;margin-bottom:0.8rem;color:var(--text-muted);font-size:1.1rem}p,li{margin-bottom:0.9rem}ul,ol{padding-left:1.5rem;margin-bottom:1rem}code{background:#e2e8f0;padding:0.15rem 0.4rem;border-radius:4px;font-family:var(--font-mono);font-size:0.95em}.box{border-left:4px solid var(--primary);background:#f8fafc;padding:1rem 1.2rem;margin:1.2rem 0;border-radius:0 10px 10px 0;transition:transform 0.2s,box-shadow 0.2s}.box:hover{transform:translateX(4px);box-shadow:0 4px 10px rgba(37,99,235,0.15)}.box.warning{border-color:var(--warning);background:#fffbeb}.box.example{border-color:var(--success);background:#f0fdf4}.box.info{border-color:var(--text-muted);background:#f1f5f9}.box p:last-child{margin-bottom:0}.math-step{display:flex;align-items:baseline;gap:0.6rem;margin:0.6rem 0;background:#f8fafc;padding:0.7rem 0.8rem;border-radius:8px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.95rem;flex-wrap:wrap}.step-num{font-weight:bold;color:var(--primary);min-width:2.5rem}.step-comment{color:var(--text-muted);margin-left:auto;font-style:italic}input[type="range"]{width:100%;margin:0.5rem 0;cursor:pointer;accent-color:var(--primary)}.btn-group{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1rem 0}.btn{padding:0.5rem 1rem;border:1px solid var(--border);background:#fff;border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.2s}.btn:hover{background:var(--primary-light);color:#fff;transform:translateY(-2px)}.btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}.canvas-container{width:100%;max-width:640px;margin:1.2rem auto;background:#fff;border-radius:12px;padding:1rem;box-shadow:inset 0 0 0 1px var(--border);border:1px solid var(--border);position:relative}canvas{width:100%;height:auto;display:block;background:#fafbfc;border-radius:8px}.canvas-label{text-align:center;margin-top:0.5rem;color:var(--text-muted);font-size:0.9rem;min-height:1.5em}.table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.2rem 0;border-radius:10px}table{width:100%;min-width:600px;border-collapse:collapse;font-size:0.95rem;background:#fff}th,td{border:1px solid var(--border);padding:0.7rem 0.5rem;text-align:center;vertical-align:middle}th{background:linear-gradient(to bottom,#f1f5f9,#e2e8f0);font-weight:600}tr:hover td{background:#f8fafc;transition:background 0.2s}details{background:#f8fafc;border:1px solid var(--border);border-radius:10px;margin:1rem 0;overflow:hidden;transition:all 0.2s}summary{padding:0.9rem 1rem;cursor:pointer;font-weight:600;color:var(--primary);user-select:none;list-style:none;display:flex;justify-content:space-between;align-items:center}summary::after{content:"▼";transition:transform 0.25s}details[open] summary::after{transform:rotate(180deg)}details[open] summary{border-bottom:1px solid var(--border);background:#eff6ff}details>div{padding:1rem}details:hover{box-shadow:0 2px 8px rgba(0,0,0,0.05)}@media print{nav,.no-print,.progress-bar{display:none !important}body{background:#fff;font-size:12pt;line-height:1.4;padding-top:0}.card{box-shadow:none;border:1px solid #999;break-inside:avoid;margin-bottom:1.5rem}.box,details,table{border:1px solid #888;box-shadow:none}a{color:#000;text-decoration:none}}@media (max-width:768px){body{padding-top:0}nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0.5rem;-webkit-overflow-scrolling:touch;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{font-size:0.8rem;padding:0.3rem 0.6rem;flex-shrink:0}.card{padding:1.2rem;margin-bottom:1.5rem}.card-header{font-size:1.2rem;flex-wrap:wrap}.math-step{flex-direction:column;align-items:flex-start;gap:0.3rem}.step-comment{margin-left:0;font-size:0.85rem}.canvas-container{padding:0.5rem}.btn-group{gap:0.4rem}.btn{padding:0.45rem 0.8rem;font-size:0.85rem}#fsBtn{bottom:1rem;right:1rem;padding:0.6rem 0.9rem;font-size:0.85rem}}.text-center{text-align:center}.text-muted{color:var(--text-muted)}footer{border-top:1px solid var(--border);margin-top:3rem;padding:0.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:0.72rem;position:relative;z-index:1}footer .footer-brand{font-weight:700;white-space:nowrap}footer .footer-brand .brand-mat{color:#1e3a8a}footer .footer-brand .brand-viva{color:#C8972A}footer .footer-center{color:var(--text-muted);text-align:center;flex:1}footer .footer-center small{display:block;font-size:0.67rem;color:var(--text-muted);margin-top:0.15rem}footer .footer-copy{color:var(--text-muted);white-space:nowrap;text-align:right}@media (max-width:650px){footer{flex-direction:column;text-align:center;padding:1rem}}.logo-text{font-weight:800;letter-spacing:-0.5px}</style>
+<style id="mo-site-tools">.mo-tools{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 3px 14px rgba(20,50,90,.16);font-family:Arial,sans-serif}.mo-tools a{font:700 12px Arial,sans-serif;text-decoration:none;color:#173f78;background:#fff;border:1px solid #d6e0ea;border-radius:7px;padding:7px 9px}@media print{.mo-tools{display:none!important}}</style>
+</head>
+<body>
+<div class="progress-bar no-print" id="progressBar"></div>
+<nav aria-label="Navigazione lezione" class="no-print">
+<a href="#intro">📐 Cos'è</a>
+<a href="#parabola">📈 Parabola</a>
+<a href="#delta">Δ Discriminante</a>
+<a href="#procedura">🗺️ Procedura</a>
+<a href="#esplorazione">🎛️ Esplorazione</a>
+<a href="#delta-pos">✅ Δ &gt; 0</a>
+<a href="#delta-zero">🟡 Δ = 0</a>
+<a href="#delta-neg">❌ Δ &lt; 0</a>
+<a href="#parallelismo">⚖️ Paragone</a>
+<a href="#riassunto">📋 Riepilogo</a>
+<a href="#verifica">🧠 Esercizi</a>
+</nav>
+<main>
+
+<header class="text-center" style="margin-bottom: 2.5rem;">
+<h1 style="font-size: 2.6rem; margin-bottom: 0.3rem;">
+    <span class="logo-text" style="color: #1e3a8a">Matematica</span><span class="logo-text" style="color: var(--gold)">Oro</span>
+</h1>
+
+<p style="font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">Disequazioni di secondo grado e parabola</p>
+
+</header>
+<section class="card" data-type="info" id="intro">
+<div class="card-header">01 — Cos'è una disequazione di secondo grado?</div>
+<div class="card-body">
+<p>Una disequazione di secondo grado è una disuguaglianza del tipo:</p>
+<p class="math-step"><span class="step-num">📐</span> <span>ax² + bx + c &gt; 0   |   &lt; 0   |   ≥ 0   |   ≤ 0</span></p>
+<p>con <code>a ≠ 0</code>.</p>
+<p>Il nostro obiettivo è trovare tutti i valori di <code>x</code> per cui la disuguaglianza è vera. Non un singolo numero, ma un insieme (spesso un intervallo) di valori.</p>
+
+<p>Il metodo risolutivo si basa su un'idea geometrica molto semplice, che vedremo subito nella sezione successiva dedicata alla parabola.</p>
+</div>
+</section><section class="card" data-type="graph" id="parabola">
+<div class="card-header">02 — La Parabola: cos'è e come si usa</div>
+<div class="card-body">
+<p>Ad ogni espressione <code>ax² + bx + c</code>, con <code>a ≠ 0</code>, possiamo associare una curva nel piano chiamata parabola:</p>
+<p class="math-step"><span class="step-num">📈</span> <span>y = ax² + bx + c</span></p>
+<p>La parabola è una curva simmetrica con la concavità rivolta verso l'alto "U" o verso il basso "∩", a seconda del segno del coefficiente <code>a</code>. Ecco i due casi:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+<div class="canvas-container">
+<canvas height="260" id="canvasParabolaPos" width="420"></canvas>
+<div class="canvas-label">🟢 a &gt; 0 — Concavità verso l'alto (U)</div>
+</div>
+<div class="canvas-container">
+<canvas height="260" id="canvasParabolaNeg" width="420"></canvas>
+<div class="canvas-label">🔴 a &lt; 0 — Concavità verso il basso (∩)</div>
+</div>
+</div>
+<div class="box warning"><strong>⚠️ Il segno di a è fondamentale</strong><br/>Il metodo risolutivo dipende dal sapere se la parabola ha concavità verso l'alto "U" oppure verso il basso "∩".</div>
+</div>
+</section><section class="card" id="delta">
+<div class="card-header">03 — Il Discriminante Δ: quante volte la parabola interseca l'asse x?</div>
+<div class="card-body">
+<p>Prima di risolvere la disequazione dobbiamo sapere come la parabola si posiziona rispetto all'asse x. Questa informazione è contenuta nel discriminante:</p>
+<p class="math-step"><span class="step-num">🔢</span> <span>Δ = b² − 4ac</span></p>
+<p>Il discriminante ci dice quante soluzioni reali ha l'equazione associata <code>ax² + bx + c = 0</code>, cioè quante volte la parabola interseca l'asse x:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Segno di Δ</th><th>Geometria</th><th>Significato</th></tr></thead>
+<tbody>
+<tr><td><strong>Δ &gt; 0</strong></td><td>Due intersezioni distinte: x₁ e x₂ (x₁ &lt; x₂)</td><td>La parabola interseca l'asse x in due punti distinti</td></tr>
+<tr><td><strong>Δ = 0</strong></td><td>Un solo punto di tangenza: x₀</td><td>La parabola interseca l'asse x in due punti coincidenti</td></tr>
+<tr><td><strong>Δ &lt; 0</strong></td><td>Nessuna intersezione</td><td>La parabola è completamente sopra o completamente sotto l'asse x</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box example"><strong>📝 Esempio di calcolo di Δ</strong><br/>Data: <code>2x² − 3x + 1 &gt; 0</code> — qui <code>a = 2</code>, <code>b = −3</code>, <code>c = 1</code><div class="math-step"><span class="step-num">1️⃣</span> <span>Δ = b² − 4ac = (−3)² − 4 · 2 · 1 = 9 − 8 = 1 &gt; 0</span> <span class="step-comment">→ la parabola interseca l'asse in due punti distinti ✅</span></div></div>
+</div>
+</section><section class="card" id="procedura">
+<div class="card-header">04 — La Procedura in 4 Passi</div>
+<div class="card-body">
+<p>Ogni volta che incontri una disequazione di secondo grado, segui sempre questi 4 passi nell'ordine:</p>
+<ol>
+<li><strong>Scrivi la disequazione in forma canonica</strong><br/>Riordina in modo da avere <code>ax² + bx + c > 0 (<0)</code> con <code>a ≠ 0</code>. Se necessario, moltiplica per −1 (in tal caso ricorda di invertire il verso della disequazione!)</li>
+<li><strong>Calcola il discriminante</strong> <code>Δ = b² − 4ac</code><br/>Questo numero decide quante radici reali ha l'equazione associata, cioè quante volte la parabola interseca l'asse x.</li>
+<li><strong>Se Δ ≥ 0, calcola le radici x₁ e x₂</strong><br/>Con la formula: <code>x = (−b ± √Δ) / 2a</code>. Chiama x₁ la radice minore e x₂ quella maggiore.</li>
+<li><strong>Scrivi la soluzione in base al segno di Δ e di a</strong><br/>Il segno di <code>a</code> (concavità della parabola) è fondamentale: determina se la parabola è del tipo U o del tipo ∩, e quindi dove si trova rispetto all'asse x.</li>
+</ol>
+<div class="box info"><strong>📊 I casi concreti nelle sezioni successive</strong><br/>
+A seconda del valore di Δ si presentano tre situazioni distinte, ciascuna con le proprie regole di soluzione:<br/>
+• <strong>Δ &gt; 0</strong> → l'equazione associata ha due radici reali distinte x₁ e x₂<br/>
+• <strong>Δ = 0</strong> → l'equazione associata ha due radici reali e coincidenti x₁=x₂=x₀<br/>
+• <strong>Δ &lt; 0</strong> → l'equazione associata non ha radici reali<br/>
+<em>Nelle sezioni successive vedremo esattamente come ricavare la soluzione della disequazione in ciascuno di questi tre casi.</em></div>
+</div>
+</section><section class="card" data-type="graph" id="esplorazione">
+<div class="card-header">05 — Esplorazione Interattiva</div>
+<div class="card-body">
+<p>Modifica i coefficienti con gli slider e osserva come cambiano il discriminante, il grafico e il tipo di soluzione. Prova a portare Δ da positivo a negativo!</p>
+<div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 1rem 0;">
+<div style="flex: 1; min-width: 240px;">
+<label><strong>a</strong> (determina la concavità): <span id="valA">1</span></label>
+<input id="sliderA" max="3" min="-3" step="0.5" type="range" value="1"/>
+<label><strong>b</strong> (sposta l'asse di simmetria): <span id="valB">-2</span></label>
+<input id="sliderB" max="5" min="-5" step="0.5" type="range" value="-2"/>
+<label><strong>c</strong> (intersezione con l'asse y): <span id="valC">-3</span></label>
+<input id="sliderC" max="5" min="-5" step="0.5" type="range" value="-3"/>
+</div>
+<div class="canvas-container">
+<canvas height="280" id="canvasDelta" width="440"></canvas>
+<div class="canvas-label">y = <span id="eqText">1x² − 2x − 3</span>   |   Δ = <span id="deltaText">16</span></div>
+</div>
+</div>
+</div>
+</section><section class="card" data-type="graph" id="delta-pos">
+<div class="card-header">06 — Caso 1: Δ &gt; 0 </div>
+<div class="card-body">
+<h3>🧮 Risoluzione Algebrica</h3>
+<p>Quando <code>Δ &gt; 0</code>, l'equazione associata ha due radici reali distinte x₁ e x₂ (con x₁ &lt; x₂). Il trinomio si scompone come:</p>
+<p class="math-step"><span class="step-num">🔍</span> <span>ax² + bx + c = a(x − x₁)(x − x₂)</span></p>
+<p>Per determinare gli intervalli soluzione confrontiamo il <strong>verso della disequazione</strong> con il <strong>segno di <code>a</code></strong> e applichiamo la regola del <code>DICE</code>:</p>
+<div class="box example"><strong>🎲 DI — Discordi → Interni</strong><br/>Se il verso della disequazione è opposto al segno di <code>a</code> → soluzione interna: <code>x₁ &lt; x &lt; x₂</code></div>
+<div class="box rule-box" style="border-color: var(--primary); background: #eff6ff;"><strong>🎲 CE — Concordi → Esterni</strong><br/>Se il verso della disequazione è uguale al segno di <code>a</code> → soluzione esterna: <code>x &lt; x₁ ∨ x &gt; x₂</code></div>
+<div class="box example"><strong>📝 Esempio Guidato Passo per Passo</strong><br/>Risolvere: <code>x² − 5x + 6 &gt; 0</code><div class="math-step"><span class="step-num">1️⃣</span> <span>Identifica i coefficienti: a = 1, b = −5, c = 6</span></div><div class="math-step"><span class="step-num">2️⃣</span> <span>Calcola Δ: Δ = (−5)² − 4·1·6 = 25 − 24 = 1 &gt; 0</span> <span class="step-comment">→ due soluzioni reali e distinte ✅</span></div><div class="math-step"><span class="step-num">3️⃣</span> <span>Calcola le radici: x₁ = (5 − √1) / 2 = 2   |   x₂ = (5 + √1) / 2 = 3</span></div><div class="math-step"><span class="step-num">4️⃣</span> <span>Applica DICE: a = 1 &gt; 0, verso disequazione &gt; 0 → segni concordi → Esterni (CE)</span></div><div class="math-step"><span class="step-num">5️⃣</span> <span>Soluzione: x &lt; 2 ∨ x &gt; 3</span></div></div>
+<h3>📈 Risoluzione Grafica</h3>
+<div class="box info"><strong>🔍 L'intuizione geometrica centrale</strong><br/>
+Per risolvere <code>ax² + bx + c &gt; 0</code> bisogna rispondere alla domanda: "Per quali valori di x la parabola sta <em>sopra</em> l'asse x?"<br/>
+Per risolvere <code>ax² + bx + c &lt; 0</code> bisogna rispondere alla domanda: "Per quali valori di x la parabola sta <em>sotto</em> l'asse x?"<br/>
+Le <strong>soluzioni</strong> sono le <strong>ascisse</strong> dei punti della parabola che stanno sopra o sotto l'asse x.<br/>
+<strong>Tutto il metodo si riduce a leggere il grafico.</strong></div>
+<p>Clicca sui pulsanti per cambiare il verso della disequazione e osserva come cambia la soluzione (in azzurro sull'asse):</p>
+<div class="btn-group" id="btnGroup1"><button class="btn active" data-op="&gt;">&gt; 0</button><button class="btn" data-op="&lt;">&lt; 0</button><button class="btn" data-op="&gt;=">≥ 0</button><button class="btn" data-op="&lt;=">≤ 0</button></div>
+<div class="canvas-container"><canvas height="320" id="canvasPos" width="540"></canvas><div class="canvas-label">Segno richiesto: &gt; 0 | <strong>Soluzione: x &lt; 1 ∨ x &gt; 2</strong></div></div>
+<div class="box warning"><strong>⚠️ Attenzione ai segni ≤ e ≥</strong><br/>Con disuguaglianza stretta (<code>&lt;</code> o <code>&gt;</code>) i punti x₁ e x₂ sono esclusi dalla soluzione (cerchietti aperti sul grafico).<br/>Con disuguaglianza larga (<code>≤</code> o <code>≥</code>) i punti x₁ e x₂ sono inclusi (cerchietti chiusi).</div></div>
+</section><section class="card" data-type="graph" id="delta-zero">
+<div class="card-header">07 — Caso 2: Δ = 0</div>
+<div class="card-body">
+<h3>🧮 Risoluzione Algebrica</h3>
+<p>Quando <code>Δ = 0</code>, l'equazione ha due soluzioni reali e coincidenti: <code>x₀ = −b/(2a)</code>. Il trinomio è il prodotto di <code>a</code> per un quadrato perfetto:</p>
+<p class="math-step"><span class="step-num">🔍</span> <span>ax² + bx + c = a(x − x₀)²</span></p>
+<p>Poiché <code>(x − x₀)² ≥ 0</code> sempre, il segno dell'espressione dipende solo da <code>a</code>:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Δ</th><th>Segno di a</th><th>&gt; 0</th><th>≥ 0</th><th>&lt; 0</th><th>≤ 0</th></tr></thead>
+<tbody>
+
+<tr><td><strong>Δ = 0</strong></td><td>a &gt; 0</td><td>ℝ \ {x₀}</td><td>∀x ∈ ℝ</td><td>∅</td><td>{x₀}</td></tr>
+<tr><td><strong>Δ = 0</strong></td><td>a &lt; 0</td><td>∅ </td><td>{x₀} </td><td>ℝ \ {x₀}</td><td>∀x ∈ ℝ</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="box example"><strong>📝 Esempio Svolto</strong><br/>Risolvere: <code>x² − 6x + 9 ≤ 0</code><div class="math-step"><span class="step-num">1️⃣</span> <span>Coefficienti: a = 1, b = −6, c = 9</span></div><div class="math-step"><span class="step-num">2️⃣</span> <span>Δ: Δ = (−6)² − 4·1·9 = 36 − 36 = 0 → due soluzioni reali e coincidenti</span></div><div class="math-step"><span class="step-num">3️⃣</span> <span>Radice: x₀ = −(−6)/(2·1) = 3</span></div><div class="math-step"><span class="step-num">4️⃣</span> <span>Interpretazione: a = 1 &gt; 0, quindi (x−3)² ≥ 0 sempre → mai &lt; 0</span></div><div class="math-step"><span class="step-num">5️⃣</span> <span>Chiediamo ≤ 0: vale solo dove l'espressione è uguale a 0, cioè x = 3</span></div></div>
+<h3>📈 Risoluzione Grafica</h3>
+<p>La parabola interseca l'asse x in un solo punto. Osserva che non c'è mai una regione "tra due radici":</p>
+<div class="btn-group" id="btnGroup2"><button class="btn active" data-op="&gt;">&gt; 0</button><button class="btn" data-op="&lt;">&lt; 0</button><button class="btn" data-op="&gt;=">≥ 0</button><button class="btn" data-op="&lt;=">≤ 0</button></div>
+<div class="canvas-container"><canvas height="320" id="canvasZero" width="540"></canvas><div class="canvas-label">Segno richiesto: &gt; 0 | <strong>Soluzione: ∀x ≠ 1</strong></div></div>
+<div class="box info"><strong>📌 Nota Bene</strong><br/>
+Un quadrato è sempre ≥ 0. Moltiplicato per <code>a &gt; 0</code> rimane ≥ 0. L'unico momento in cui vale 0 è quando <code>x = x₀</code>.<br/>
+<strong>Quindi non può mai essere strettamente negativo (con a &gt; 0).</strong></div></div>
+</section><section class="card" data-type="warning" id="delta-neg">
+<div class="card-header">08 — Caso 3: Δ &lt; 0</div>
+<div class="card-body">
+<h3>🧮 Risoluzione Algebrica</h3>
+<p>Quando <code>Δ &lt; 0</code>, l'equazione non ha soluzioni reali. La parabola è completamente sopra o completamente sotto l'asse x — non lo interseca mai.</p>
+<div class="box example"><strong>🟢 Se a &gt; 0:</strong> <br/><code>ax² + bx + c &gt; 0 → ∀x ∈ ℝ</code>  |  <code>ax² + bx + c &lt; 0 → ∅</code></div>
+<div class="box warning"><strong>🔴 Se a &lt; 0:</strong> <br/><code>ax² + bx + c &lt; 0 → ∀x ∈ ℝ</code>  |  <code>ax² + bx + c &gt; 0 → ∅</code></div>
+<div class="box example"><strong>📝 Esempio Guidato</strong><br/>Risolvere: <code>x² + 2x + 5 &gt; 0</code><div class="math-step"><span class="step-num">1️⃣</span> <span>Coefficienti: a = 1, b = 2, c = 5</span></div><div class="math-step"><span class="step-num">2️⃣</span> <span>Δ: Δ = 4 − 20 = −16 &lt; 0 → nessuna radice reale</span></div><div class="math-step"><span class="step-num">3️⃣</span> <span>Segno di a: a = 1 &gt; 0 </span></div><div class="math-step"><span class="step-num">4️⃣</span> <span>Chiediamo &gt; 0 → Soluzione: ∀x ∈ ℝ</span></div></div>
+
+<h3>📈 Risoluzione Grafica</h3>
+<p>Nota come la parabola non interseca mai l'asse x. Cambia il segno di <code>a</code> per vedere l'effetto opposto:</p>
+<div class="btn-group" id="btnGroup3"><button class="btn active" data-a="1" data-op="&gt;">&gt; 0 (a&gt;0)</button><button class="btn" data-a="1" data-op="&lt;">&lt; 0 (a&gt;0)</button><button class="btn" data-a="-1" data-op="&gt;">&gt; 0 (a&lt;0)</button><button class="btn" data-a="-1" data-op="&lt;">&lt; 0 (a&lt;0)</button></div>
+<div class="canvas-container"><canvas height="320" id="canvasNeg" width="540"></canvas><div class="canvas-label">Verso disequazione: &gt; 0 | <strong>Soluzione: ∀x ∈ ℝ</strong></div></div>
+</div>
+<div class="box info"><strong>🔍 Logica intuitiva</strong><br/>Se la parabola è sempre sopra l'asse (non lo interseca mai), allora <code>y &gt; 0</code> per tutti i valori di x. La soluzione è l'intero ℝ.<br/>Viceversa, la stessa parabola non può mai stare sotto l'asse: nessun x verifica <code>y &lt; 0</code> → soluzione vuota ∅.</div>
+<div class="box warning"><strong>⚠️ Errore comune</strong><br/>Molti studenti dimenticano di considerare il segno di <code>a</code> nel caso Δ &lt; 0. Con <code>a &lt; 0</code> è tutto capovolto rispetto a <code>a &gt; 0</code>!</div>
+
+</section><section class="card" id="parallelismo">
+<div class="card-header">09 — Visione d'insieme: Algebra e Grafico</div>
+<div class="card-body">
+<p>I due approcci portano sempre allo stesso risultato. Ecco come si corrispondono:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+<div class="box info"><strong>🧮 Vista Algebrica</strong><br/><code>Δ &gt; 0</code> → <code>a(x−x₁)(x−x₂) > 0 (<0)</code><br/><code>Δ = 0</code> → <code>a(x−x₀)² > 0 (<0)</code><br/><code>Δ &lt; 0</code> → Segno di a e verso disequazione</div>
+<div class="box info"><strong>📊 Vista Grafica</strong><br/><code>Δ &gt; 0</code> → Interseca l'asse in 2 punti distinti<br/><code>Δ = 0</code> → Interseca l'asse in 2 punti coincidenti<br/><code>Δ &lt; 0</code> → Completamente sopra o sotto l'asse</div>
+</div>
+</div>
+</section><section class="card" data-type="summary" id="riassunto">
+<div class="card-header">10 — Tabella Riepilogativa Completa</div>
+<div class="card-body">
+<p class="text-muted" style="margin-bottom: 0.5rem;">Con <code>a &gt; 0</code>. Per <code>a &lt; 0</code>: le soluzioni di "&gt; 0" e "&lt; 0" si scambiano.</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Δ</th><th>Parabola</th><th>&gt; 0</th><th>≥ 0</th><th>&lt; 0</th><th>≤ 0</th></tr></thead>
+<tbody>
+<tr><td><strong>&gt; 0</strong></td><td>Interseca in x₁, x₂</td><td>x &lt; x₁ ∨ x &gt; x₂</td><td>x ≤ x₁ ∨ x ≥ x₂</td><td>x₁ &lt; x &lt; x₂</td><td>x₁ ≤ x ≤ x₂</td></tr>
+<tr><td><strong>= 0</strong></td><td>Tangente in x₀</td><td>ℝ \ {x₀}</td><td>∀x ∈ ℝ</td><td>∅</td><td>{x₀}</td></tr>
+<tr><td><strong>&lt; 0</strong></td><td>Sopra l'asse</td><td>∀x ∈ ℝ</td><td>∀x ∈ ℝ</td><td>∅</td><td>∅</td></tr>
+</tbody>
+</table>
+</div>
+
+</section><section class="card" data-type="exercise" id="verifica">
+<div class="card-header">11 — Esercizi Guidati</div>
+<div class="card-body">
+<p>Prova a risolvere ciascun esercizio. Usa il pulsante "Suggerimento" se sei bloccato, poi "Soluzione" per vedere i passi completi.</p>
+<div class="exercise"><h3>1. Risolvi: <code>x² − x − 6 &lt; 0</code></h3><details><summary>💡 Suggerimento</summary><div>Identifica a, b, c. Calcola Δ. Trova le radici. Applica DICE controllando il segno di a e il verso della disequazione.</div></details><details><summary>✅ Soluzione</summary><div><div class="math-step"><span class="step-num">➊</span> <span>Coefficienti: a = 1, b = −1, c = −6</span></div><div class="math-step"><span class="step-num">➋</span> <span>Calcola Δ: Δ = (−1)² − 4·1·(−6) = 1 + 24 = 25 &gt; 0 → due soluzioni reali e distinte</span></div><div class="math-step"><span class="step-num">➌</span> <span>Soluzioni: x₁ = (1 − 5)/2 = −2 e x₂ = (1 + 5)/2 = 3</span></div><div class="math-step"><span class="step-num">➍</span> <span>DICE: a = 1 &gt; 0, verso disequazione &lt; 0 → Discordi → Interni</span></div><p><strong>✅ Soluzione: <code>−2 &lt; x &lt; 3</code></strong></p></div></details></div>
+<div class="exercise"><h3>2. Risolvi: <code>−x² + 2x − 1 &lt; 0</code></h3><details><summary>💡 Suggerimento</summary><div>Attenzione: a è negativo! Calcola Δ. Se Δ = 0, ricorda che il segno dipende solo da a e dal quadrato perfetto.</div></details><details><summary>✅ Soluzione</summary><div><div class="math-step"><span class="step-num">➊</span> <span>Coefficienti: a = −1, b = 2, c = −1 (attenzione: a è negativo!)</span></div><div class="math-step"><span class="step-num">➋</span> <span>Calcola Δ: Δ = 4 − 4·(−1)·(−1) = 4 − 4 = 0 → due soluzioni reali e coincidenti</span></div><div class="math-step"><span class="step-num">➌</span> <span>Soluzioni: x₀ = −2 / (2·(−1)) = 1</span></div><div class="math-step"><span class="step-num">➍</span> <span>Δ = 0 e a = −1 &lt; 0: la parabola è sempre ≤ 0. Verso disequazione &lt; 0 → vero per tutti x ≠ 1</span></div><p><strong>✅ Soluzione: <code>∀x ≠ 1</code> (cioè x ∈ ℝ \ {1})</strong></p></div></details></div>
+<div class="exercise"><h3>3. Risolvi: <code>x² + x + 1 &gt; 0</code></h3><details><summary>💡 Suggerimento</summary><div>Calcola Δ. Se è negativo, controlla il segno di a e il verso della disequazione.</div></details><details><summary>✅ Soluzione</summary><div><div class="math-step"><span class="step-num">➊</span> <span>Coefficienti: a = 1, b = 1, c = 1</span></div><div class="math-step"><span class="step-num">➋</span> <span>Calcola Δ: Δ = 1 − 4 = −3 &lt; 0 → nessuna radice reale</span></div><div class="math-step"><span class="step-num">➌</span> <span>Δ &lt; 0 e a = 1 &gt; 0: la parabola è sempre sopra l'asse</span></div><div class="math-step"><span class="step-num">➍</span> <span>Chiediamo &gt; 0: è sempre verificata → soluzione tutto ℝ</span></div><p><strong>✅ Soluzione: <code>∀x ∈ ℝ</code></strong></p></div></details></div>
+<div class="exercise"><h3>4. (Sfida) Risolvi: <code>2x² − 7x + 3 ≥ 0</code></h3><details><summary>💡 Suggerimento</summary><div>Calcola Δ. Trova le radici. Applica DICE con ≥ (estremi inclusi).</div></details><details><summary>✅ Soluzione</summary><div><div class="math-step"><span class="step-num">➊</span> <span>Coefficienti: a = 2, b = −7, c = 3</span></div><div class="math-step"><span class="step-num">➋</span> <span>Δ = (−7)² − 4·2·3 = 49 − 24 = 25 &gt; 0 → due soluzioni reali e distinte</span></div><div class="math-step"><span class="step-num">➌</span> <span>Soluzioni: x₁ = (7 − 5)/4 = 1/2 e x₂ = (7 + 5)/4 = 3</span></div><div class="math-step"><span class="step-num">➍</span> <span>DICE: a = 2 &gt; 0, verso disequazione ≥ 0 → Concordi → Esterni (con estremi inclusi perché ≥)</span></div><p><strong>✅ Soluzione: <code>x ≤ 1/2 ∨ x ≥ 3</code></strong></p></div></details></div>
+</div>
+</section><footer>
+<span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+<span class="footer-center">
+        Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+        <small>Prof.ssa M. Prandelli</small>
+</span>
+<span class="footer-copy">© 2026 MatematicaOro</span>
+</footer>
+</main>
+<button class="no-print" id="fsBtn" onclick="toggleFullscreen()" style="position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--primary); color: white; border: none; padding: 0.8rem 1.2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 6px 16px rgba(37,99,235,0.35); font-weight: 600; transition: all 0.2s; z-index: 102;">
+    🖥️ Schermo Intero
+  </button>
+<script>const progressBar = document.getElementById('progressBar');
+ const navLinks = document.querySelectorAll('nav a');
+ navLinks.forEach(link => {
+ link.addEventListener('click', (event) => {
+ const href = link.getAttribute('href');
+ if (!href || !href.startsWith('#')) return;
+ const target = document.querySelector(href);
+ if (!target) return;
+ event.preventDefault();
+ const nav = link.closest('nav');
+ const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+ const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+ window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+ history.replaceState(null, '', href);
+ });
+ });
+ const sections = document.querySelectorAll('section');
+ window.addEventListener('scroll', () => {
+ const h = document.documentElement.scrollHeight - window.innerHeight;
+ progressBar.style.width = `${(window.scrollY / h) * 100}%`;
+ let current = '';
+ sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 100) current = sec.id; });
+ navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + current); });
+ });
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+ }, { threshold: 0.1 });
+ document.querySelectorAll('.card').forEach(card => observer.observe(card));
+ function toggleFullscreen() {
+ if (!document.fullscreenElement) {
+ document.documentElement.requestFullscreen().catch(err => console.warn(`Errore Fullscreen: ${err}`));
+ } else {
+ document.exitFullscreen();
+ }
+ }
+ document.addEventListener('fullscreenchange', () => {
+ document.getElementById('fsBtn').textContent = document.fullscreenElement ? '🖥️ Esci Schermo Intero' : '🖥️ Schermo Intero';
+ });
+ function drawQuadGraph(canvasId, a, b, c, op, config = {}) {
+ const canvas = document.getElementById(canvasId);
+ if (!canvas) return;
+ const ctx = canvas.getContext('2d');
+ const w = canvas.width, h = canvas.height;
+ const cx = w / 2, cy = h / 2, scale = config.scale || 45;
+ ctx.clearRect(0, 0, w, h);
+ ctx.fillStyle = '#fafbfc'; ctx.fillRect(0, 0, w, h);
+ ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+ for(let i = -12; i <= 12; i++) {
+ ctx.beginPath(); ctx.moveTo(cx + i * scale, 0); ctx.lineTo(cx + i * scale, h); ctx.stroke();
+ ctx.beginPath(); ctx.moveTo(0, cy + i * scale); ctx.lineTo(w, cy + i * scale); ctx.stroke();
+ }
+ ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+ ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
+ ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
+ if(a === 0) { if(config.caption) config.caption.innerHTML = "a non può essere 0"; return; }
+ ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 3; ctx.lineJoin = 'round';
+ ctx.beginPath();
+ let first = true;
+ for(let px = 0; px <= w; px += 2) {
+ let x = (px - cx) / scale;
+ let y = a * x * x + b * x + c;
+ let py = cy - y * scale;
+ if(py < -50 || py > h + 50) { first = true; continue; }
+ if(first) { ctx.moveTo(px, py); first = false; } else ctx.lineTo(px, py);
+ }
+ ctx.stroke();
+ let delta = b*b - 4*a*c;
+ let roots = [];
+ if(delta >= 0) {
+ let r1 = (-b - Math.sqrt(delta))/(2*a);
+ let r2 = (-b + Math.sqrt(delta))/(2*a);
+ roots = [Math.min(r1,r2), Math.max(r1,r2)];
+ }
+ let isClosed = op.includes("=");
+ let wantPos = (op === ">" || op === ">=");
+ ctx.fillStyle = 'rgba(34, 211, 238, 0.5)';
+ ctx.strokeStyle = '#06b6d4'; ctx.lineWidth = 6;
+ let solText = "";
+ if ((wantPos && a > 0) || (!wantPos && a < 0)) {
+ if (delta > 0) {
+ ctx.fillRect(0, cy-3, roots[0]*scale + cx, 6);
+ ctx.fillRect(roots[1]*scale + cx, cy-3, w - (roots[1]*scale + cx), 6);
+ let ltSym = isClosed ? '≤' : '<';
+ let gtSym = isClosed ? '≥' : '>';
+ solText = `x ${ltSym} ${roots[0].toFixed(2)} ∨ x ${gtSym} ${roots[1].toFixed(2)}`;
+ } else if (delta === 0) {
+ ctx.fillRect(0, cy-3, w, 6);
+ if(!isClosed) ctx.clearRect(cx + roots[0]*scale - 4, cy-3, 8, 6);
+ solText = isClosed ? `∀x ∈ ℝ` : `∀x ≠ ${roots[0].toFixed(2)}`;
+ } else {
+ ctx.fillRect(0, cy-3, w, 6);
+ solText = `∀x ∈ ℝ`;
+ }
+ } else {
+ if (delta > 0) {
+ ctx.fillRect(roots[0]*scale + cx, cy-3, (roots[1]-roots[0])*scale, 6);
+ let ltSym = isClosed ? '≤' : '<';
+ solText = `${roots[0].toFixed(2)} ${ltSym} x ${ltSym} ${roots[1].toFixed(2)}`;
+ } else if (delta === 0) {
+ if(isClosed) {
+ solText = `x = ${roots[0].toFixed(2)}`;
+ } else {
+ solText = `∅`;
+ }
+ } else {
+ solText = `∅`;
+ }
+ }
+ if(delta >= 0) {
+ let drawPoint = (xPos) => {
+ if(isClosed) {
+ ctx.fillStyle = '#ef4444';
+ ctx.beginPath(); ctx.arc(xPos, cy, 7, 0, Math.PI*2); ctx.fill();
+ ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+ } else {
+ ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3;
+ ctx.beginPath(); ctx.arc(xPos, cy, 7, 0, Math.PI*2); ctx.stroke();
+ }
+ };
+ drawPoint(cx + roots[0]*scale);
+ if(delta > 0) drawPoint(cx + roots[1]*scale);
+ }
+ if(config.caption) {
+ config.caption.innerHTML = `Segno richiesto: <strong>${op} 0</strong> | <span style="color:${solText==='∅'?'#dc2626':'#059669'}"><strong>Soluzione: ${solText}</strong></span>`;
+ }
+ }
+ drawQuadGraph('canvasParabolaPos', 1, 0, -1, ">=", {scale: 40});
+ drawQuadGraph('canvasParabolaNeg', -1, 0, 1, ">=", {scale: 40});
+ const ctxDelta = document.getElementById('canvasDelta').getContext('2d');
+ const sliderA = document.getElementById('sliderA'), sliderB = document.getElementById('sliderB'), sliderC = document.getElementById('sliderC');
+ const valA = document.getElementById('valA'), valB = document.getElementById('valB'), valC = document.getElementById('valC');
+ const eqText = document.getElementById('eqText'), deltaText = document.getElementById('deltaText');
+ function updateDeltaGraph() {
+ let a = parseFloat(sliderA.value), b = parseFloat(sliderB.value), c = parseFloat(sliderC.value);
+ valA.textContent = a; valB.textContent = b; valC.textContent = c;
+ drawQuadGraph('canvasDelta', a, b, c, ">=", {scale: 40});
+ let bStr = b >= 0 ? '+ ' + b : '− ' + Math.abs(b);
+ let cStr = c >= 0 ? '+ ' + c : '− ' + Math.abs(c);
+ eqText.textContent = `${a}x² ${bStr}x ${cStr}`;
+ deltaText.textContent = (b*b - 4*a*c).toFixed(2);
+ }
+ sliderA.addEventListener('input', updateDeltaGraph);
+ sliderB.addEventListener('input', updateDeltaGraph);
+ sliderC.addEventListener('input', updateDeltaGraph);
+ const caseConfigs = [
+ { group: 'btnGroup1', canvas: 'canvasPos', a: 1, b: -3, c: 2, caption: document.querySelector('#canvasPos').nextElementSibling, scale: 45 },
+ { group: 'btnGroup2', canvas: 'canvasZero', a: 1, b: -2, c: 1, caption: document.querySelector('#canvasZero').nextElementSibling, scale: 45 },
+ { group: 'btnGroup3', canvas: 'canvasNeg', a: 1, b: 0, c: 2, caption: document.querySelector('#canvasNeg').nextElementSibling, scale: 40 }
+ ];
+ caseConfigs.forEach(cfg => {
+ const buttons = document.querySelectorAll(`#${cfg.group} .btn`);
+ buttons.forEach(btn => {
+ btn.addEventListener('click', () => {
+ buttons.forEach(b => b.classList.remove('active'));
+ btn.classList.add('active');
+ const op = btn.dataset.op;
+ const a = btn.dataset.a ? parseFloat(btn.dataset.a) : cfg.a;
+ let c = (cfg.group === 'btnGroup3' && a < 0) ? -2 : cfg.c;
+ drawQuadGraph(cfg.canvas, a, cfg.b, c, op, { caption: cfg.caption, scale: cfg.scale });
+ });
+ });
+ buttons[0].click();
+ });
+ updateDeltaGraph();</script>
+<div class="mo-tools"><a href="../../index.html">⌂ Home</a><a href="../index.html">☰ Lezioni</a></div><script>(function(){var d=document,f=String.fromCharCode,c=f(99,111,110,116,101,120,116,109,101,110,117),g=f(100,114,97,103,115,116,97,114,116);d.addEventListener(c,function(e){e.preventDefault()},true);d.addEventListener(g,function(e){e.preventDefault()},true);d.addEventListener("keydown",function(e){var k=(e.key||"").toLowerCase();if((e.ctrlKey||e.metaKey)&&(k==="u"||k==="s")||e.key==="F12"){e.preventDefault();e.stopPropagation()}},true)})();</script></body>
+</html>

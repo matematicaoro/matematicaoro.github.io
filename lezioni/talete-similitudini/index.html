@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Talete e le Similitudini - MatematicaOro</title>
+    <style>:root{--primary:#2563eb;--primary-light:#3b82f6;--gold:#D4AF37;--success:#16a34a;--warning:#d97706;--danger:#dc2626;--info:#0891b2;--bg-page:#e0e7ff;--bg-card:#ffffff;--text:#0f172a;--text-muted:#475569;--border:#e2e8f0;--shadow:0 12px 32px rgba(0,0,0,0.15);--radius:16px;--font-main:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--font-mono:"Courier New",Consolas,monospace}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:0}body{font-family:var(--font-main);font-size:clamp(16px,1.8vw,19px);line-height:1.7;color:var(--text);background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;min-height:100vh;padding-top:4rem}.progress-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-light));width:0%;z-index:101;transition:width 0.15s linear}nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0.7rem 1rem;display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.05)}nav a{text-decoration:none;color:var(--text-muted);font-weight:600;font-size:0.85rem;padding:0.4rem 0.8rem;border-radius:8px;transition:all 0.2s}nav a:hover{color:var(--primary);background:#eff6ff;transform:translateY(-1px)}nav a.active{color:#fff;background:var(--primary);box-shadow:0 2px 6px rgba(37,99,235,0.2)}main{max-width:980px;margin:0 auto;padding:2rem 1rem 4rem}.card{background:var(--bg-card);border-radius:var(--radius);padding:2rem;margin-bottom:2.5rem;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.5);position:relative;overflow:hidden;transition:transform 0.3s ease,box-shadow 0.3s ease;opacity:0;transform:translateY(25px)}.card.visible{opacity:1;transform:translateY(0)}.card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.18)}.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--primary),var(--primary-light))}.card[data-type="graph"]::before{background:linear-gradient(90deg,var(--success),#22c55e)}.card[data-type="warning"]::before{background:linear-gradient(90deg,var(--warning),#f59e0b)}.card[data-type="circle"]::before{background:linear-gradient(90deg,#9333ea,#a855f7)}.card[data-type="summary"]::before{background:linear-gradient(90deg,var(--info),#22d3ee)}.card-header{font-size:1.45rem;font-weight:700;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:0.6rem;color:var(--text)}.card-body{padding-top:0.5rem}h3{margin-top:1.4rem;margin-bottom:0.8rem;color:var(--text-muted);font-size:1.1rem}p,li{margin-bottom:0.9rem}ul,ol{padding-left:1.5rem;margin-bottom:1rem}code{background:#e2e8f0;padding:0.15rem 0.4rem;border-radius:4px;font-family:var(--font-mono);font-size:0.95em}.box{border-left:4px solid var(--primary);background:#f8fafc;padding:1rem 1.2rem;margin:1.2rem 0;border-radius:0 10px 10px 0;transition:transform 0.2s,box-shadow 0.2s}.box:hover{transform:translateX(4px);box-shadow:0 4px 10px rgba(37,99,235,0.15)}.box.warning{border-color:var(--warning);background:#fffbeb}.box.example{border-color:var(--success);background:#f0fdf4}.box.info{border-color:var(--text-muted);background:#f1f5f9}.box.circle-box{border-color:#9333ea;background:#faf5ff}.box p:last-child{margin-bottom:0}.math-step{display:flex;align-items:baseline;gap:0.6rem;margin:0.6rem 0;background:#f8fafc;padding:0.7rem 0.8rem;border-radius:8px;border:1px solid var(--border);font-family:var(--font-mono);font-size:0.95rem;flex-wrap:wrap}.step-num{font-weight:bold;color:var(--primary);min-width:2.5rem}.step-comment{color:var(--text-muted);margin-left:auto;font-style:italic}.table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.2rem 0;border-radius:10px}table{width:100%;min-width:600px;border-collapse:collapse;font-size:0.95rem;background:#fff}th,td{border:1px solid var(--border);padding:0.7rem 0.5rem;text-align:center;vertical-align:middle}th{background:linear-gradient(to bottom,#f1f5f9,#e2e8f0);font-weight:600}tr:hover td{background:#f8fafc;transition:background 0.2s}details{background:#f8fafc;border:1px solid var(--border);border-radius:10px;margin:1rem 0;overflow:hidden;transition:all 0.2s}summary{padding:0.9rem 1rem;cursor:pointer;font-weight:600;color:var(--primary);user-select:none;list-style:none;display:flex;justify-content:space-between;align-items:center}summary::after{content:"▼";transition:transform 0.25s}details[open] summary::after{transform:rotate(180deg)}details[open] summary{border-bottom:1px solid var(--border);background:#eff6ff}details>div{padding:1rem}details:hover{box-shadow:0 2px 8px rgba(0,0,0,0.05)}.mappa{background-color:#f8fafc;border:1px solid var(--border);padding:20px;border-radius:8px;font-family:var(--font-mono);line-height:1.4;white-space:pre-wrap;font-size:0.85rem;color:var(--text)}.diagram-container{display:flex;justify-content:center;align-items:center;background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1.5rem 0}.diagram-container svg{max-width:100%;height:auto}@media print{nav,.no-print,.progress-bar{display:none !important}body{background:#fff;font-size:12pt;line-height:1.4;padding-top:0}.card{box-shadow:none;border:1px solid #999;break-inside:avoid;margin-bottom:1.5rem}.box,details,table{border:1px solid #888;box-shadow:none}a{color:#000;text-decoration:none}}@media (max-width:768px){body{padding-top:0}nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0.5rem;-webkit-overflow-scrolling:touch;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{font-size:0.8rem;padding:0.3rem 0.6rem;flex-shrink:0}.card{padding:1.2rem;margin-bottom:1.5rem}.card-header{font-size:1.2rem;flex-wrap:wrap}.math-step{flex-direction:column;align-items:flex-start;gap:0.3rem}.step-comment{margin-left:0;font-size:0.85rem}#fsBtn{bottom:1rem;right:1rem;padding:0.6rem 0.9rem;font-size:0.85rem}}.text-center{text-align:center}.text-muted{color:var(--text-muted)}footer{border-top:1px solid var(--border);margin-top:3rem;padding:0.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:0.72rem;position:relative;z-index:1}footer .footer-brand{font-weight:700;white-space:nowrap}footer .footer-brand .brand-mat{color:#1e3a8a}footer .footer-brand .brand-viva{color:#C8972A}footer .footer-center{color:var(--text-muted);text-align:center;flex:1}footer .footer-center small{display:block;font-size:0.67rem;color:var(--text-muted);margin-top:0.15rem}footer .footer-copy{color:var(--text-muted);white-space:nowrap;text-align:right}@media (max-width:650px){footer{flex-direction:column;text-align:center;padding:1rem}}.logo-text{font-weight:800;letter-spacing:-0.5px}</style>
+<style id="mo-site-tools">.mo-tools{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 3px 14px rgba(20,50,90,.16);font-family:Arial,sans-serif}.mo-tools a{font:700 12px Arial,sans-serif;text-decoration:none;color:#173f78;background:#fff;border:1px solid #d6e0ea;border-radius:7px;padding:7px 9px}@media print{.mo-tools{display:none!important}}</style>
+</head>
+<body>
+<div class="progress-bar no-print" id="progressBar"></div>
+    <nav aria-label="Navigazione lezione" class="no-print">
+        <a href="#intro">🏛️ Storia</a>
+        <a href="#teorema">📐 Teorema di Talete</a>
+        <a href="#corollari">🔺 Triangoli</a>
+        <a href="#similitudine">🔍 Cos'è la Similitudine</a>
+        <a href="#criteri">📊 Criteri di Similitudine</a>
+        <a href="#proprieta">⚖️ Aree e Perimetri</a>
+        <a href="#errori">⚠️ Errori Comuni</a>
+        <a href="#corde">⭕ Teorema Corde</a>
+        <a href="#secanti">⭕ Teorema Secanti</a>
+        <a href="#tangente-secante">⭕ Tangente e Secante</a>
+        <a href="#mappa">🗺️ Mappa</a>
+    </nav>
+
+    <main>
+
+        <header class="text-center" style="margin-bottom: 2.5rem;">
+<h1 style="font-size: 2.6rem; margin-bottom: 0.3rem;">
+    <span class="logo-text" style="color: #1e3a8a">Matematica</span><span class="logo-text" style="color: var(--gold)">Oro</span>
+</h1>
+            
+            <p style="font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">Talete e il Mondo delle Similitudini</p>
+        </header>
+
+        <section class="card" data-type="info" id="intro">
+            <div class="card-header">01 — L'Ombra della Piramide: Introduzione Storica</div>
+            <div class="card-body">
+                <p>Si racconta che il faraone egizio abbia chiesto a <strong>Talete di Mileto</strong> (VI secolo a.C.) di misurare l'altezza della grande Piramide di Cheope. Senza poterci salire sopra e senza strumenti moderni, Talete utilizzò solo un bastone, la luce del sole e un'intuizione geniale: la <strong>proporzionalità delle ombre</strong>.</p>
+                <p>Aspettò il momento della giornata in cui l'ombra del bastone piantato a terra era lunga esattamente quanto il bastone stesso. In quel preciso istante, concluse che anche l'ombra della piramide doveva essere congruente alla sua altezza reale!</p>
+                
+                <div class="box info">
+                    <strong>📐 Dalle Ombre alla Geometria Razionale</strong><br>
+                    Questa intuizione si basa sul fatto che i raggi del sole arrivano sulla Terra praticamente paralleli. Si formano così due triangoli rettangoli che hanno la <strong>stessa forma</strong>, anche se dimensioni diverse: i primi <strong>triangoli simili</strong> della storia della geometria.
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="summary" id="teorema">
+            <div class="card-header">02 — Il Teorema di Talete (Fascio di Rette Parallele)</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>💡 Enunciato Formale</strong><br>
+                    Un fascio di rette parallele intersecato da due trasversali determina su di esse <strong>segmenti corrispondenti direttamente proporzionali</strong>.
+                </div>
+
+                
+                <div class="diagram-container">
+                    <svg width="500" height="260" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+                        
+                        <line x1="40" y1="50" x2="460" y2="50" stroke="#2563eb" stroke-width="2" stroke-dasharray="6,4"/>
+                        <line x1="40" y1="130" x2="460" y2="130" stroke="#2563eb" stroke-width="2" stroke-dasharray="6,4"/>
+                        <line x1="40" y1="210" x2="460" y2="210" stroke="#2563eb" stroke-width="2" stroke-dasharray="6,4"/>
+                        
+                        <text x="470" y="55" fill="#2563eb" font-weight="bold" font-size="14">a</text>
+                        <text x="470" y="135" fill="#2563eb" font-weight="bold" font-size="14">b</text>
+                        <text x="470" y="215" fill="#2563eb" font-weight="bold" font-size="14">c</text>
+
+                        
+                        <line x1="110" y1="20" x2="160" y2="240" stroke="#0f172a" stroke-width="2.5"/>
+                        <text x="95" y="25" fill="#0f172a" font-weight="bold" font-size="14">t₁</text>
+
+                        
+                        <line x1="420" y1="20" x2="240" y2="240" stroke="#0f172a" stroke-width="2.5"/>
+                        <text x="430" y="25" fill="#0f172a" font-weight="bold" font-size="14">t₂</text>
+
+                        
+                        <circle cx="116.8" cy="50" r="5" fill="#dc2626"/>
+                        <text x="95" y="50" fill="#0f172a" font-weight="bold" font-size="14">A</text>
+
+                        <circle cx="135" cy="130" r="5" fill="#dc2626"/>
+                        <text x="112" y="130" fill="#0f172a" font-weight="bold" font-size="14">B</text>
+
+                        <circle cx="153.2" cy="210" r="5" fill="#dc2626"/>
+                        <text x="130" y="210" fill="#0f172a" font-weight="bold" font-size="14">C</text>
+
+                        
+                        <circle cx="395.5" cy="50" r="5" fill="#dc2626"/>
+                        <text x="408" y="50" fill="#0f172a" font-weight="bold" font-size="14">A'</text>
+
+                        <circle cx="330" cy="130" r="5" fill="#dc2626"/>
+                        <text x="342" y="130" fill="#0f172a" font-weight="bold" font-size="14">B'</text>
+
+                        <circle cx="264.5" cy="210" r="5" fill="#dc2626"/>
+                        <text x="276" y="210" fill="#0f172a" font-weight="bold" font-size="14">C'</text>
+                    </svg>
+                </div>
+
+                <p>Se tre rette parallele <code>a ∥ b ∥ c</code> tagliano due trasversali nei punti <code>A, B, C</code> sulla prima e <code>A', B', C'</code> sulla seconda, allora vale la proporzione:</p>
+                <p class="text-center" style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">AB : BC = A'B' : B'C' &nbsp;&nbsp; oppure &nbsp;&nbsp; AB : A'B' = BC : B'C'</p>
+
+                <h3>Esempi e Casi di Applicazione</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Condizione iniziale</th>
+                                <th>Risultato geometrico</th>
+                                <th>Significato pratico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>AB ≅ BC</strong></td><td><strong>A'B' ≅ B'C'</strong></td><td>A segmenti congruenti su una trasversale corrispondono segmenti congruenti sull'altra trasversale.</td></tr>
+                            <tr><td><strong>AB : BC = 2</strong></td><td><strong>A'B' : B'C' = 2</strong></td><td>Il rapporto tra le lunghezze dei segmenti si conserva perfettamente.</td></tr>
+                            <tr><td><strong>Rette non parallele</strong></td><td>🔴 Proporzione NON valida</td><td>Il teorema richiede tassativamente il parallelismo delle rette.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="corollari">
+            <div class="card-header">03 — Conseguenze nei Triangoli</div>
+            <div class="card-body">
+                <p>Cosa succede se applichiamo il teorema di Talete ad un triangolo?</p>
+                
+                <div class="box info">
+                    <strong>🔺 Corollario al Triangolo</strong><br>
+                    Una retta parallela a un lato di un triangolo divide gli altri due lati (o i loro prolungamenti) in <strong>segmenti proporzionali</strong>.
+                </div>
+
+                
+                <div class="diagram-container">
+                    <svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                        
+                        <polygon points="200,20 50,220 350,220" fill="none" stroke="#0f172a" stroke-width="2.5"/>
+                        
+                        
+                        <line x1="110" y1="140" x2="290" y2="140" stroke="#2563eb" stroke-width="2.5"/>
+
+                        
+                        <text x="195" y="15" fill="#0f172a" font-weight="bold" font-size="14">A</text>
+                        <text x="32" y="230" fill="#0f172a" font-weight="bold" font-size="14">B</text>
+                        <text x="358" y="230" fill="#0f172a" font-weight="bold" font-size="14">C</text>
+
+                        
+                        <circle cx="110" cy="140" r="5" fill="#dc2626"/>
+                        <text x="88" y="145" fill="#0f172a" font-weight="bold" font-size="14">D</text>
+
+                        <circle cx="290" cy="140" r="5" fill="#dc2626"/>
+                        <text x="300" y="145" fill="#0f172a" font-weight="bold" font-size="14">E</text>
+
+                        
+                        <text x="200" y="132" fill="#2563eb" font-weight="bold" font-size="12" text-anchor="middle">DE ∥ BC</text>
+                    </svg>
+                </div>
+
+                
+                <p class="text-center" style="font-size: 1.2rem; font-weight: bold; color: var(--primary); margin: 1rem 0;">
+                    AD : DB = AE : EC
+                </p>
+
+                <h3>Procedura per Trovare un Lato Mancante</h3>
+                <div class="math-step"><span class="step-num">1️⃣</span> <span>Identificare le rette parallele e il triangolo interessato.</span></div>
+                <div class="math-step"><span class="step-num">2️⃣</span> <span>Impostare la proporzione tra i segmenti: <code>AD : DB = AE : EC</code>.</span></div>
+                <div class="math-step"><span class="step-num">3️⃣</span> <span>Sostituire i valori noti e risolvere l'equazione.</span></div>
+
+                <div class="box example">
+                    <strong>📝 Esempio Svolto</strong><br>
+                    Nel triangolo ABC, una parallela al lato BC interseca AB in D e AC in E.<br>
+                    Sapendo che <code>AD = 6 cm</code>, <code>DB = 3 cm</code> e <code>AE = 8 cm</code>, quanto misura <code>EC</code>?<br><br>
+                    &rarr; Impostiamo la proporzione: <code>6 : 3 = 8 : x</code><br>
+                    &rarr; Calcoliamo l'incognita: <code>x = (3 · 8) / 6 = 24 / 6 = 4 cm</code><br>
+                    &rarr; Risultato: <code>EC = 4 cm</code>.
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="similitudine">
+            <div class="card-header">04 — Il Concetto di Similitudine</div>
+            <div class="card-body">
+                <p>In geometria, due figure non devono per forza essere congruenti per avere legami matematici profondi.</p>
+
+                <div class="box info">
+                    <strong>📊 Definizione di Triangoli Simili</strong><br>
+                    Due triangoli si dicono <strong>simili</strong> (simbolo <code>~</code>) se hanno:<br>
+                    1. Gli <strong>angoli corrispondenti congruenti</strong> (<code>Â ≅ Â'</code>, <code>B̂ ≅ B̂'</code>, <code>Ĉ ≅ Ĉ'</code>).<br>
+                    2. I <strong>lati corrispondenti in proporzione</strong> (il rapporto tra coppie di lati omologhi è costante).
+                </div>
+
+                
+                <div class="diagram-container">
+                    <svg width="500" height="210" viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg">
+                        
+                        <polygon points="80,40 20,160 140,160" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+                        <text x="75" y="30" fill="#0f172a" font-weight="bold" font-size="14">A</text>
+                        <text x="5" y="170" fill="#0f172a" font-weight="bold" font-size="14">B</text>
+                        <text x="145" y="170" fill="#0f172a" font-weight="bold" font-size="14">C</text>
+
+                        
+                        
+                        <path d="M 70,60 A 20 20 0 0 0 88,60" fill="none" stroke="#dc2626" stroke-width="2"/>
+                        
+                        <path d="M 38,160 A 20 20 0 0 0 30,140" fill="none" stroke="#16a34a" stroke-width="2"/>
+                        
+                        <path d="M 122,136 A 20 20 0 0 0 120,160" fill="none" stroke="#9333ea" stroke-width="2"/>
+
+                        
+                        <polygon points="340,20 250,180 470,180" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+                        <text x="335" y="12" fill="#0f172a" font-weight="bold" font-size="14">A'</text>
+                        <text x="230" y="190" fill="#0f172a" font-weight="bold" font-size="14">B'</text>
+                        <text x="478" y="190" fill="#0f172a" font-weight="bold" font-size="14">C'</text>
+
+                        
+                        
+                        <path d="M 325,47 A 30 30 0 0 0 352,47" fill="none" stroke="#dc2626" stroke-width="2"/>
+                        
+                        <path d="M 277,180 A 30 30 0 0 0 265,150" fill="none" stroke="#16a34a" stroke-width="2"/>
+                        
+                        <path d="M 443,144 A 30 30 0 0 0 440,180" fill="none" stroke="#9333ea" stroke-width="2"/>
+                        
+                        
+                        <text x="200" y="100" fill="#0f172a" font-weight="bold" font-size="18">~</text>
+                        <text x="185" y="125" fill="#475569" font-size="12">k = 1.5</text>
+                    </svg>
+                </div>
+
+                
+                <p class="text-center" style="font-size: 1.2rem; font-weight: bold; color: var(--primary); margin: 1rem 0;">
+                    AB : A'B' = BC : B'C' = AC : A'C' = k
+                </p>
+
+                <p>Questo rapporto costante si chiama <strong>rapporto di similitudine (k)</strong>.</p>
+
+                <div class="box example">
+                    <strong>📝 Esempio Guidato</strong><br>
+                    Se due triangoli sono simili con rapporto <code>k = 2</code>, significa che ogni lato del secondo triangolo ha lunghezza doppia rispetto al lato corrispondente del primo, ma <strong>gli angoli interni rimangono congruenti</strong>.
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="criteri">
+            <div class="card-header">05 — I Tre Criteri di Similitudine dei Triangoli</div>
+            <div class="card-body">
+                <p>Per dimostrare che due triangoli sono simili non serve verificare tutti i lati e tutti gli angoli. Bastano le condizioni minime garantite dai 3 Criteri:</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>Condizione richiesta</th>
+                                <th>Descrizione pratica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>1° Criterio (AA)</strong></td><td>2 Angoli congruenti</td><td>Due triangoli sono simili se hanno <strong>due angoli rispettivamente congruenti</strong>.</td></tr>
+                            <tr><td><strong>2° Criterio (LAL)</strong></td><td>2 Lati in prop. + Angolo compreso</td><td>Due triangoli sono simili se hanno due lati in proporzione e l'<strong>angolo tra essi compreso congruente</strong>.</td></tr>
+                            <tr><td><strong>3° Criterio (LLL)</strong></td><td>3 lati in proporzione</td><td>Due triangoli sono simili se tutti e tre i <strong>lati corrispondenti sono proporzionali</strong>.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="graph" id="proprieta">
+            <div class="card-header">06 — Proprietà delle Figure Simili: Perimetri e Aree</div>
+            <div class="card-body">
+                <p>Cosa succede alle misure lineari e alle superfici quando ingrandiamo o rimpiccioliamo una figura di un fattore <code>k</code>?</p>
+
+                <div class="box warning">
+                    <strong>⚠️ Attenzione alla Dimensione!</strong><br>
+                    Se il rapporto di similitudine tra due figure è <code>k</code>:
+                    <ul>
+                        <li>Il rapporto tra le lunghezze corrispondenti (lati, altezze, <strong>perimetri</strong>) è pari a <strong><code>k</code></strong>.</li>
+                        <li>Il rapporto tra le <strong>aree</strong> è pari a <strong><code>k²</code></strong> (il quadrato del rapporto!).</li>
+                    </ul>
+                </div>
+
+                <div class="box example">
+                    <strong>➕ Esempio Pratico</strong><br>
+                    Un triangolo A ha area di <code>10 cm²</code>. Un triangolo B è simile ad A con rapporto di ingrandimento <code>k = 3</code>.<br>
+                    • Il perimetro di B sarà <strong>3 volte</strong> quello di A.<br>
+                    • L'area di B NON sarà 3 volte maggiore, ma <code>3² = 9</code> volte maggiore!<br>
+                    &rarr; <code>Area(B) = 10 · 9 = 90 cm²</code>.
+                </div>
+            </div>
+        </section>
+
+        <section class="card" data-type="warning" id="errori">
+            <div class="card-header">07 — Guida all'Autocorrezione degli Errori Frequenti</div>
+            <div class="card-body">
+                <div class="box warning">
+                    <strong>⚠️ Errore 1: Moltiplicare l'area per k anziché per k²</strong><br>
+                    • Sbagliato: Se raddoppio i lati di una figura (k=2), la sua area raddoppia.<br>
+                    • Spiegazione: L'area è una misura bidimensionale! Se duplichi base e altezza, l'area diventa <code>2 × 2 = 4</code> volte più grande.<br>
+                    • Corretto: <code>Area_nuova = Area_vecchia · k²</code>
+                </div>
+
+                <div class="box warning">
+                    <strong>⚠️ Errore 2: Pensare che in figure simili cambino anche gli angoli</strong><br>
+                    • Sbagliato: Ingrandendo un triangolo equilatero, i suoi angoli diventano più ampi di 60°.<br>
+                    • Spiegazione: La similitudine preserva la <strong>forma</strong>. Gli angoli rimangono sempre congruenti!<br>
+                    • Corretto: Gli angoli corrispondenti sono SEMPRE congruenti.
+                </div>
+
+                <div class="box warning">
+                    <strong>⚠️ Errore 3: Applicare Talete senza il parallelismo</strong><br>
+                    • Sbagliato: Impostare proporzioni tra segmenti su rette generiche non parallele.<br>
+                    • Spiegazione: La proporzionalità garantita dal Teorema di Talete vale <strong>esclusivamente</strong> in presenza di rette parallele.
+                </div>
+            </div>
+        </section>
+
+        
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+        
+<section class="card" data-type="circle" id="corde">
+    <div class="card-header">08 — Teorema delle Corde</div>
+    <div class="card-body">
+        <div class="box circle-box">
+            <strong>⭕ Enunciato Formale</strong><br>
+            Se due corde di una circonferenza si intersecano in un punto interno <strong>P</strong>, i segmenti individuati su una corda sono i medi e quelli individuati sull'altra sono gli estremi di una proporzione.
+            <br><br>
+            <div class="text-center" style="font-size: 1.1rem; font-weight: bold; color: #9333ea;">
+                PA : PD = PC : PB &nbsp;⇒&nbsp; PA · PB = PC · PD
+            </div>
+        </div>
+
+        
+        <div class="diagram-container">
+            <svg width="360" height="360" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+                
+                <circle cx="180" cy="180" r="120" fill="#faf5ff" stroke="#9333ea" stroke-width="2.5"/>
+                
+                
+                <polygon points="180,180 85,106 264,106" fill="rgba(37, 99, 235, 0.08)" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,4"/>
+                
+                
+                <polygon points="180,180 96,254 275,254" fill="rgba(22, 163, 74, 0.08)" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+                
+                <line x1="85" y1="106" x2="275" y2="254" stroke="#0f172a" stroke-width="2.5"/>
+
+                
+                <line x1="96" y1="254" x2="264" y2="106" stroke="#0f172a" stroke-width="2.5"/>
+
+                
+                <circle cx="85" cy="106" r="5" fill="#dc2626"/>
+                <text x="65" y="100" fill="#0f172a" font-weight="bold" font-size="14">A</text>
+
+                <circle cx="275" cy="254" r="5" fill="#dc2626"/>
+                <text x="285" y="270" fill="#0f172a" font-weight="bold" font-size="14">B</text>
+
+                <circle cx="96" cy="254" r="5" fill="#dc2626"/>
+                <text x="75" y="270" fill="#0f172a" font-weight="bold" font-size="14">C</text>
+
+                <circle cx="264" cy="106" r="5" fill="#dc2626"/>
+                <text x="275" y="100" fill="#0f172a" font-weight="bold" font-size="14">D</text>
+
+                
+                <circle cx="180" cy="180" r="5" fill="#9333ea"/>
+                <text x="180" y="165" fill="#9333ea" font-weight="bold" font-size="15" text-anchor="middle">P</text>
+            </svg>
+        </div>
+
+        <h3>Dimostrazione Geometrica tramite Similitudine</h3>
+        <p>Congiungendo <strong>A</strong> con <strong>D</strong> e <strong>C</strong> con <strong>B</strong>, si considerano i triangoli <strong>PAD</strong> e <strong>PCB</strong>:</p>
+        <ul>
+            <li>Gli angoli <strong>APD</strong> e <strong>CPB</strong> sono congruenti perché <strong>opposti al vertice</strong>.</li>
+            <li>Gli angoli <strong>PAD</strong> e <strong>PCB</strong> sono congruenti perché <strong>angoli alla circonferenza che insistono sullo stesso arco BD</strong>.</li>
+        </ul>
+        <p>Per il <strong>1° Criterio di similitudine (AA)</strong>, i triangoli <strong>PAD</strong> e <strong>PCB</strong> sono simili. Pertanto, i lati omologhi sono in proporzione:</p>
+        <p class="text-center" style="font-size: 1.1rem; font-weight: bold; color: var(--primary, #2563eb);">
+            PA : PC = PD : PB &nbsp;⇒&nbsp; PA · PB = PC · PD
+        </p>
+
+        <div class="box example">
+            <strong>📝 Esempio Svolto</strong><br>
+            Due corde <strong>AB</strong> e <strong>CD</strong> si intersecano nel punto <strong>P</strong>. Sapendo che <code>PA = 4 cm</code>, <code>PB = 9 cm</code> e <code>PC = 3 cm</code>, calcola la lunghezza del segmento <strong>PD</strong>.<br><br>
+            → Applicando il teorema: <code>PA · PB = PC · PD</code><br>
+            → Sostituendo i valori: <code>4 · 9 = 3 · PD  ⇒  36 = 3 · PD</code><br>
+            → Risolvendo: <code>PD = 36 / 3 = 12 cm</code>.
+        </div>
+    </div>
+</section>
+
+       
+<section class="card" data-type="circle" id="secanti">
+    <div class="card-header">09 — Teorema delle Secanti</div>
+    <div class="card-body">
+        <div class="box circle-box">
+            <strong>⭕ Enunciato Formale</strong><br>
+            Se da un punto <strong>P</strong> esterno a una circonferenza si tracciano due rette secanti che intersecano la circonferenza nei punti <strong>A, B</strong> e <strong>C, D</strong>, allora vale la proporzione:
+            <br><br>
+            <div class="text-center" style="font-size: 1.1rem; font-weight: bold; color: #9333ea;">
+                PA : PC = PD : PB &nbsp;⇒&nbsp; PA · PB = PC · PD
+            </div>
+        </div>
+
+        
+        <div class="diagram-container">
+            <svg width="450" height="260" viewBox="0 0 450 260" xmlns="http://www.w3.org/2000/svg">
+                
+                <circle cx="300" cy="130" r="100" fill="#faf5ff" stroke="#9333ea" stroke-width="2.5"/>
+                
+                
+                <circle cx="40" cy="130" r="5" fill="#9333ea"/>
+                <text x="20" y="135" fill="#9333ea" font-weight="bold" font-size="15">P</text>
+
+                
+                <line x1="40" y1="130" x2="380" y2="60" stroke="#0f172a" stroke-width="2.5"/>
+                <line x1="40" y1="130" x2="380" y2="200" stroke="#0f172a" stroke-width="2.5"/>
+
+                
+                <circle cx="206" cy="96" r="5" fill="#dc2626"/>
+                <text x="202" y="82" fill="#0f172a" font-weight="bold" font-size="14">A</text>
+
+                <circle cx="374" cy="61" r="5" fill="#dc2626"/>
+                <text x="378" y="52" fill="#0f172a" font-weight="bold" font-size="14">B</text>
+
+                
+                <circle cx="206" cy="164" r="5" fill="#dc2626"/>
+                <text x="202" y="185" fill="#0f172a" font-weight="bold" font-size="14">C</text>
+
+                <circle cx="374" cy="199" r="5" fill="#dc2626"/>
+                <text x="378" y="215" fill="#0f172a" font-weight="bold" font-size="14">D</text>
+
+                
+                <line x1="374" y1="61" x2="206" y2="164" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <line x1="374" y1="199" x2="206" y2="96" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4,4"/>
+            </svg>
+        </div>
+
+        <h3>Dimostrazione Geometrica tramite Similitudine</h3>
+        <p>Tracciando i segmenti <strong>AD</strong> e <strong>BC</strong>, consideriamo i triangoli <strong>PAD</strong> e <strong>PCB</strong>:</p>
+        <ul>
+            <li>L'angolo in <strong>P</strong> (<strong>APC</strong>) è <strong>in comune</strong> ad entrambi i triangoli.</li>
+            <li>Gli angoli <strong>PDA</strong> e <strong>PBC</strong> sono congruenti perché <strong>angoli alla circonferenza che insistono sullo stesso arco AC</strong>.</li>
+        </ul>
+        <p>Per il <strong>1° Criterio di similitudine (AA)</strong>, i triangoli <strong>PAD</strong> e <strong>PCB</strong> sono simili. Di conseguenza, impostando la proporzione tra i lati omologhi si ottiene:</p>
+        <p class="text-center" style="font-size: 1.1rem; font-weight: bold; color: var(--primary, #2563eb);">
+            PA : PC = PD : PB &nbsp;⇒&nbsp; PA · PB = PC · PD
+        </p>
+
+        <div class="box example">
+            <strong>📝 Esempio Svolto</strong><br>
+            Da un punto <strong>P</strong> si tracciano due secanti ad una circonferenza. Sulla prima secante, la parte esterna è <code>PA = 5 cm</code> e l'intera secante è <code>PB = 12 cm</code>. Sulla seconda secante, la parte esterna misura <code>PC = 6 cm</code>. Calcola la lunghezza dell'intera secante <strong>PD</strong>.<br><br>
+            → Applicando la formula: <code>PA · PB = PC · PD</code><br>
+            → Sostituendo i dati: <code>5 · 12 = 6 · PD  ⇒  60 = 6 · PD</code><br>
+            → Risolvendo per <strong>PD</strong>: <code>PD = 60 / 6 = 10 cm</code>.
+        </div>
+    </div>
+</section>
+
+        
+<section class="card" data-type="circle" id="tangente-secante">
+    <div class="card-header">10 — Teorema della Tangente e della Secante</div>
+    <div class="card-body">
+        <div class="box circle-box">
+            <strong>⭕ Enunciato Formale</strong><br>
+            Se da un punto <strong>P</strong> esterno a una circonferenza si tracciano una retta tangente (nel punto <strong>T</strong>) e una retta secante (nei punti <strong>A</strong> e <strong>B</strong>), il segmento di tangente <strong>PT</strong> è <strong>medio proporzionale</strong> tra l'intera secante e la sua parte esterna:
+            <br><br>
+            <div class="text-center" style="font-size: 1.1rem; font-weight: bold; color: #9333ea;">
+                PB : PT = PT : PA &nbsp;⇒&nbsp; PT² = PA · PB
+            </div>
+        </div>
+
+        
+        <div class="diagram-container">
+            <svg width="450" height="260" viewBox="0 0 450 260" xmlns="http://www.w3.org/2000/svg">
+                
+                <circle cx="300" cy="130" r="100" fill="#faf5ff" stroke="#9333ea" stroke-width="2.5"/>
+                
+                
+                <circle cx="40" cy="180" r="5" fill="#9333ea"/>
+                <text x="20" y="185" fill="#9333ea" font-weight="bold" font-size="15">P</text>
+
+                
+                <line x1="40" y1="180" x2="240" y2="50" stroke="#0f172a" stroke-width="2.5"/>
+
+                
+                <line x1="40" y1="180" x2="395" y2="160" stroke="#0f172a" stroke-width="2.5"/>
+
+                
+                <circle cx="240" cy="50" r="5" fill="#dc2626"/>
+                <text x="240" y="35" fill="#0f172a" font-weight="bold" font-size="14" text-anchor="middle">T</text>
+
+                
+                <circle cx="201" cy="171" r="5" fill="#dc2626"/>
+                <text x="198" y="195" fill="#0f172a" font-weight="bold" font-size="14">A</text>
+
+                <circle cx="395" cy="160" r="5" fill="#dc2626"/>
+                <text x="405" y="165" fill="#0f172a" font-weight="bold" font-size="14">B</text>
+
+                
+                <line x1="240" y1="50" x2="201" y2="171" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <line x1="240" y1="50" x2="395" y2="160" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4,4"/>
+            </svg>
+        </div>
+
+        <h3>Dimostrazione Geometrica tramite Similitudine</h3>
+        <p>Questo teorema rappresenta un <em>caso limite</em> del Teorema delle Secanti, in cui i due punti di intersezione della seconda secante finiscono per coincidere nel punto di tangenza <strong>T</strong>.</p>
+        <p>Considerando i triangoli <strong>PTA</strong> e <strong>PTB</strong>:</p>
+        <ul>
+            <li>L'angolo in <strong>P</strong> (<strong>TPA</strong>) è <strong>comune</strong> a entrambi i triangoli.</li>
+            <li>L'angolo <strong>PTA</strong> (formato dalla tangente e dalla corda <strong>TA</strong>) è congruente all'angolo alla circonferenza <strong>PBT</strong> che insiste sullo stesso arco <strong>TA</strong>.</li>
+        </ul>
+        <p>Per il <strong>1° Criterio di similitudine (AA)</strong>, i triangoli <strong>PTA</strong> e <strong>PTB</strong> sono simili e vale la proporzione:</p>
+        <p class="text-center" style="font-size: 1.1rem; font-weight: bold; color: var(--primary, #2563eb);">
+            PB : PT = PT : PA &nbsp;⇒&nbsp; PT² = PA · PB
+        </p>
+
+        <div class="box example">
+            <strong>📝 Esempio Svolto</strong><br>
+            Da un punto <strong>P</strong> esterno ad una circonferenza si tracciano un segmento di tangente <strong>PT</strong> e una secante <strong>PAB</strong>. Sapendo che la parte esterna della secante misura <code>PA = 4 cm</code> e il segmento di tangente misura <code>PT = 8 cm</code>, determina la misura dell'intera secante <strong>PB</strong>.<br><br>
+            → Applicando la formula: <code>PT² = PA · PB</code><br>
+            → Sostituendo i valori noti: <code>8² = 4 · PB  ⇒  64 = 4 · PB</code><br>
+            → Calcoliamo <strong>PB</strong>: <code>PB = 64 / 4 = 16 cm</code>.
+        </div>
+    </div>
+</section>
+
+        
+        
+        <section class="card" data-type="summary" id="mappa">
+            <div class="card-header">11 — Mappa Concettuale Finale</div>
+            <div class="card-body">
+                <div class="mappa">
+TALETE, SIMILITUDINI E TEOREMI DELLA CIRCONFERENZA
+ │
+ ├── TEOREMA DI TALETE ──────► Rette parallele + 2 trasversali
+ │                            ► Segmenti corrispondenti proporzionali: AB:BC = A'B':B'C'
+ │
+ ├── FIGURE SIMILI (~) ───────► Stessa FORMA, dimensioni diverse
+ │                            ► Angoli corrispondenti CONGRUENTI (≅)
+ │                            ► Lati corrispondenti IN PROPORZIONE (rapporto k)
+ │
+ ├── CRITERI SIMILITUDINE ────► 1° (AA): 2 angoli congruenti
+ │ (TRIANGOLI)                ► 2° (LAL): 2 lati prop. e angolo compreso congruente
+ │                            ► 3° (LLL): 3 lati proporzionali
+ │
+ ├── RELAZIONI SCALA ────────► Lunghezze / Perimetri ──► Rapporto k
+ │                            ► Aree      ──► Rapporto k²
+ │
+ └── TEOREMI CIRCONFERENZA ──► T. Corde:            PA · PB = PC · PD (P interno)
+                              ► T. Secanti:          PA · PB = PC · PD (P esterno)
+                              ► T. Tangente/Secante: PT² = PA · PB     (P esterno)
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+            <span class="footer-center">
+                    Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+                    <small>Prof.ssa M. Prandelli</small>
+            </span>
+            <span class="footer-copy">© 2026 MatematicaOro</span>
+        </footer>
+    </main>
+
+    <button class="no-print" id="fsBtn" onclick="toggleFullscreen()" style="position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--primary); color: white; border: none; padding: 0.8rem 1.2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 6px 16px rgba(37,99,235,0.35); font-weight: 600; transition: all 0.2s; z-index: 102;">
+        🖥️ Schermo Intero
+    </button>
+
+    <script>const progressBar = document.getElementById('progressBar');
+ const navLinks = document.querySelectorAll('nav a');
+ navLinks.forEach(link => {
+ link.addEventListener('click', (event) => {
+ const href = link.getAttribute('href');
+ if (!href || !href.startsWith('#')) return;
+ const target = document.querySelector(href);
+ if (!target) return;
+ event.preventDefault();
+ const nav = link.closest('nav');
+ const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+ const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+ window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+ history.replaceState(null, '', href);
+ });
+ });
+ const sections = document.querySelectorAll('section');
+ const navEl = document.querySelector('nav');
+ window.addEventListener('scroll', () => {
+ const h = document.documentElement.scrollHeight - window.innerHeight;
+ progressBar.style.width = `${(window.scrollY / h) * 100}%`;
+ const navHeight = navEl ? navEl.getBoundingClientRect().height : 0;
+ let current = '';
+ sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - navHeight - 12) current = sec.id; });
+ navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + current); });
+ });
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+ }, { threshold: 0.1 });
+ document.querySelectorAll('.card').forEach(card => observer.observe(card));
+ function toggleFullscreen() {
+ if (!document.fullscreenElement) {
+ document.documentElement.requestFullscreen().catch(err => console.warn(`Errore Fullscreen: ${err}`));
+ } else {
+ document.exitFullscreen();
+ }
+ }
+ document.addEventListener('fullscreenchange', () => {
+ document.getElementById('fsBtn').textContent = document.fullscreenElement ? '🖥️ Esci Schermo Intero' : '🖥️ Schermo Intero';
+ });</script>
+<div class="mo-tools"><a href="../../index.html">⌂ Home</a><a href="../index.html">☰ Lezioni</a></div><script>(function(){var d=document,f=String.fromCharCode,c=f(99,111,110,116,101,120,116,109,101,110,117),g=f(100,114,97,103,115,116,97,114,116);d.addEventListener(c,function(e){e.preventDefault()},true);d.addEventListener(g,function(e){e.preventDefault()},true);d.addEventListener("keydown",function(e){var k=(e.key||"").toLowerCase();if((e.ctrlKey||e.metaKey)&&(k==="u"||k==="s")||e.key==="F12"){e.preventDefault();e.stopPropagation()}},true)})();</script></body>
+</html>

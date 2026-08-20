@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>I Triangoli: Congruenza e Proprietà - MatematicaOro</title>
+    
+    <script>window.MathJax = {
+ tex: {
+ inlineMath: [['$', '$'], ['\\(', '\\)']],
+ displayMath: [['$$', '$$'], ['\\[', '\\]']],
+ processEscapes: true
+ },
+ options: {
+ skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+ },
+ svg: { fontCache: 'global' }
+ };</script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <style>:root{--primary:#1e3a8a;--primary-light:#3b82f6;--gold:#D4AF37;--success:#0d9488;--warning:#d97706;--danger:#dc2626;--info:#0891b2;--bg-page:#e0e7ff;--bg-card:#ffffff;--text:#1e293b;--text-muted:#475569;--border:#e2e8f0;--shadow:0 12px 32px rgba(0,0,0,0.12);--radius:20px;--font-main:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--font-mono:"Courier New",Consolas,monospace}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:0}body{font-family:var(--font-main);font-size:clamp(16px,1.8vw,18px);line-height:1.7;color:var(--text);background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;min-height:100vh;padding-top:4.5rem}.progress-bar{position:fixed;top:0;left:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--primary-light),var(--success));width:0%;z-index:101;transition:width 0.15s linear}nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0.8rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.04)}nav a{text-decoration:none;color:var(--text-muted);font-weight:600;font-size:0.8rem;padding:0.4rem 0.8rem;border-radius:8px;transition:all 0.25s ease}nav a:hover{color:var(--primary);background:#f0f4ff;transform:translateY(-1px)}nav a.active{color:#fff;background:var(--primary);box-shadow:0 4px 10px rgba(30,58,138,0.25)}main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem}header.main-header{margin-bottom:4rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}.card{background:var(--bg-card);border-radius:var(--radius);padding:3rem;margin-bottom:3.5rem;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.7);position:relative;overflow:hidden;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s ease;opacity:0;transform:translateY(30px)}.card.visible{opacity:1;transform:translateY(0)}.card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,0.16)}.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,var(--primary),var(--primary-light))}.card[data-type="graph"]::before{background:linear-gradient(90deg,var(--success),#22c55e)}.card[data-type="warning"]::before{background:linear-gradient(90deg,var(--warning),#f59e0b)}.card[data-type="summary"]::before{background:linear-gradient(90deg,var(--info),#22d3ee)}.card-header{font-size:1.6rem;font-weight:800;margin-bottom:1.5rem;padding-bottom:0.6rem;border-bottom:2px solid var(--border);color:var(--primary);display:flex;align-items:center;gap:0.7rem}h3{margin-top:2rem;margin-bottom:1rem;color:var(--primary);font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem}h4{margin-top:1.6rem;margin-bottom:0.7rem;color:var(--success);font-size:1.15rem;font-weight:700}p,li{margin-bottom:1rem;text-align:justify}ul,ol{padding-left:1.8rem;margin-bottom:1.2rem}code{background:#f1f5f9;padding:0.2rem 0.5rem;border-radius:6px;font-family:var(--font-mono);font-size:0.85em;color:#0f172a;border:1px solid #e2e8f0;display:inline-block;margin-top:0.3rem}.box{padding:1.5rem;margin:2rem 0;border-radius:12px;border-left:6px solid var(--primary);background:#f8fafc;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.02)}.box-title{font-weight:800;margin-bottom:0.6rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.5px;display:flex;align-items:center;gap:0.5rem}.box.def{border-left-color:var(--primary-light);background-color:#eff6ff}.box.def .box-title{color:#1d4ed8}.box.obs{border-left-color:var(--success);background-color:#f0fdf4}.box.obs .box-title{color:#15803d}.box.err{border-left-color:var(--danger);background-color:#fef2f2}.box.err .box-title{color:#b91c1c}.box.strat{border-left-color:#a855f7;background-color:#faf5ff}.box.strat .box-title{color:#7e22ce}.box.ex{border-left-color:var(--warning);background-color:#fffbeb}.box.ex .box-title{color:#b45309}.grid-visual{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin:2rem 0}.grid-item{background:#f8fafc;border:1px solid var(--border);padding:1.5rem;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.02);transition:all 0.2s ease;text-align:left}.grid-item:hover{transform:translateY(-2px);border-color:var(--primary-light);background:#fff}.grid-item h5{color:var(--primary);font-size:1.1rem;margin-bottom:0.6rem;display:flex;align-items:center;justify-content:center;gap:0.4rem;text-align:center}.svg-container{background:#f1f5f9;border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1.5rem 0;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:inset 0 2px 6px rgba(0,0,0,0.03)}.svg-container svg{max-width:100%;height:auto}.fig-caption{font-size:0.85rem;color:var(--text-muted);margin-top:0.8rem;font-style:italic;text-align:center}.math-step{display:flex;align-items:center;gap:0.8rem;margin:0.8rem 0;background:#f8fafc;padding:0.8rem 1.2rem;border-radius:10px;border-left:4px solid var(--primary-light);font-size:0.95rem;flex-wrap:wrap}.step-num{font-weight:800;color:white;background:var(--primary-light);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem}.step-comment{color:var(--text-muted);margin-left:auto;font-style:italic;font-size:0.9em}.table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:2rem 0;border-radius:14px;border:1px solid var(--border);box-shadow:0 4px 15px rgba(0,0,0,0.03)}table{width:100%;min-width:650px;border-collapse:collapse;font-size:0.95rem;background:#fff}th,td{padding:1rem 1.2rem;text-align:left;vertical-align:middle}th{background:var(--primary);color:white;font-weight:700;letter-spacing:0.5px}tr{border-bottom:1px solid var(--border);transition:background 0.15s ease}tr:last-child{border-bottom:none}tr:nth-child(even){background-color:#f8fafc}tr:hover{background-color:#f1f5f9}details{background:#f8fafc;border:1px solid var(--border);border-radius:12px;margin:1.2rem 0;overflow:hidden;transition:all 0.3s ease;box-shadow:0 2px 6px rgba(0,0,0,0.01)}summary{padding:1.1rem 1.3rem;cursor:pointer;font-weight:700;color:var(--primary);user-select:none;list-style:none;display:flex;justify-content:space-between;align-items:center}summary::after{content:"➕";font-size:0.8rem;filter:grayscale(1);transition:transform 0.25s}details[open] summary::after{content:"➖"}details[open] summary{border-bottom:1px solid var(--border);background:#f0f4ff}details>div{padding:1.5rem;background:#ffffff}.mappa{background-color:#f8fafc;border:1px solid var(--border);padding:30px;border-radius:16px;display:flex;flex-direction:column;gap:1.5rem;position:relative}.map-node{background:white;border:1px solid var(--border);border-left:5px solid var(--primary);padding:1.4rem;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.02);transition:all 0.2s ease}.map-node:hover{transform:translateX(4px);border-color:var(--primary-light)}.map-node strong{color:var(--primary);display:block;margin-bottom:0.5rem;font-size:1.1rem;text-transform:uppercase;font-weight:800;letter-spacing:0.3px}@media print{nav,.no-print,.progress-bar,#fsBtn{display:none !important}body{background:#fff;font-size:12pt;padding-top:0}.card{box-shadow:none;border:1px solid #999;break-inside:avoid;margin-bottom:2rem;padding:1.5rem}.box,details,table{border:1px solid #888;box-shadow:none}}@media (max-width:768px){body{padding-top:0}nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0.6rem;-webkit-overflow-scrolling:touch}nav a{flex-shrink:0;font-size:0.75rem}.card{padding:1.8rem}}footer{border-top:1px solid var(--border);margin-top:3rem;padding:0.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:0.72rem;position:relative;z-index:1}footer .footer-brand{font-weight:700;white-space:nowrap}footer .footer-brand .brand-mat{color:#1e3a8a}footer .footer-brand .brand-viva{color:#C8972A}footer .footer-center{color:var(--text-muted);text-align:center;flex:1}footer .footer-center small{display:block;font-size:0.67rem;color:var(--text-muted);margin-top:0.15rem}footer .footer-copy{color:var(--text-muted);white-space:nowrap;text-align:right}@media (max-width:650px){footer{flex-direction:column;text-align:center;padding:1rem}}</style>
+<style id="mo-site-tools">.mo-tools{position:fixed;left:14px;bottom:14px;z-index:99999;display:flex;gap:6px;padding:6px;background:rgba(255,255,255,.96);border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 3px 14px rgba(20,50,90,.16);font-family:Arial,sans-serif}.mo-tools a{font:700 12px Arial,sans-serif;text-decoration:none;color:#173f78;background:#fff;border:1px solid #d6e0ea;border-radius:7px;padding:7px 9px}@media(max-width:650px){.mo-tools{left:7px;bottom:7px}.mo-tools a{font-size:11px;padding:6px}}@media print{.mo-tools{display:none!important}}</style>
+</head>
+<body>
+    <div class="progress-bar no-print" id="progressBar"></div>
+    <nav aria-label="Navigazione lezione" class="no-print">
+        <a href="#sec1">📐 Congruenza</a>
+        <a href="#sec2">🎯 Criteri</a>
+        <a href="#sec3">🔺 Triangolo Isoscele</a>
+        <a href="#sec4">🌐 Angolo Esterno</a>
+        <a href="#sec5">📏 Lati e Angoli</a>
+        <a href="#sec6">🔺 Disuguaglianza</a>
+        <a href="#sec8">🗺️ Mappa</a>
+    </nav>
+
+    <main>
+        <header class="main-header">
+            <h1 style="font-size: 2.6rem; margin-bottom: 0.3rem;">
+                <span class="logo-text" style="color: #1e3a8a">Matematica</span><span class="logo-text" style="color: var(--gold)">Oro</span>
+            </h1>
+            <p style="font-size: 1.4rem; font-weight: 800; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px;">Geometria Euclidea: La Logica dei Triangoli</p>
+        </header>
+
+        
+        <section class="card" id="sec1">
+            <div class="card-header"><span>📐</span> 1. La Congruenza nei Triangoli: Concetto e Definizione</div>
+            <div class="card-body">
+                <p>In Geometria Euclidea, il concetto di uguaglianza geometrica prende il nome di <strong>congruenza</strong>.</p>
+
+                <div class="box def">
+                    <div class="box-title">📘 Definizione Formale di Triangoli Congruenti</div>
+                    Due triangoli $ABC$ e $A'B'C'$ si dicono <strong>congruenti</strong> ($\triangle ABC \cong \triangle A'B'C'$) se esiste una corrispondenza biunivoca tra i loro vertici tale per cui gli elementi corrispondenti (lati e angoli) sono ordinatamente congruenti:
+                    $$AB \cong A'B', \quad BC \cong B'C', \quad CA \cong C'A'$$
+                    $$\hat{A} \cong \hat{A}', \quad \hat{B} \cong \hat{B}', \quad \hat{C} \cong \hat{C}'$$
+                </div>
+
+                
+                <div class="svg-container">
+                    <svg width="420" height="180" viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg">
+                        
+                        <polygon points="30,140 150,140 70,30" fill="rgba(59,130,246,0.15)" stroke="#1e3a8a" stroke-width="2.5"/>
+                        
+                        <circle cx="30" cy="140" r="4" fill="#1e3a8a"/>
+                        <circle cx="150" cy="140" r="4" fill="#1e3a8a"/>
+                        <circle cx="70" cy="30" r="4" fill="#1e3a8a"/>
+                        <text x="15" y="155" font-size="14" font-weight="bold" fill="#1e3a8a">A</text>
+                        <text x="155" y="155" font-size="14" font-weight="bold" fill="#1e3a8a">B</text>
+                        <text x="65" y="20" font-size="14" font-weight="bold" fill="#1e3a8a">C</text>
+
+                        
+                        <path d="M 170 85 Q 200 65 230 85" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-dasharray="4,4"/>
+                        <polygon points="230,85 220,80 222,90" fill="#D4AF37"/>
+                        <text x="150" y="60" font-size="12" font-weight="bold" fill="#D4AF37">Movimento Rigido</text>
+
+                        
+                        <polygon points="250,140 370,140 290,30" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="2.5"/>
+                        
+                        <circle cx="250" cy="140" r="4" fill="#3b82f6"/>
+                        <circle cx="370" cy="140" r="4" fill="#3b82f6"/>
+                        <circle cx="290" cy="30" r="4" fill="#3b82f6"/>
+                        <text x="235" y="155" font-size="14" font-weight="bold" fill="#3b82f6">A'</text>
+                        <text x="375" y="155" font-size="14" font-weight="bold" fill="#3b82f6">B'</text>
+                        <text x="285" y="20" font-size="14" font-weight="bold" fill="#3b82f6">C'</text>
+                    </svg>
+                    <div class="fig-caption">Figura 1.1 — Sovrapposizione perfetta tra due triangoli congruenti mediante un movimento rigido.</div>
+                </div>
+
+                <div class="box obs">
+                    <div class="box-title">👁️ Nota Metodologica</div>
+                    Per dimostrare la congruenza di due triangoli non è necessario verificare tutte e 6 le congruenze (3 lati e 3 angoli). La geometria euclidea ci fornisce i <strong>Criteri di Congruenza</strong>, ovvero insiemi minimi di condizioni sufficienti.
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="graph" id="sec2">
+            <div class="card-header"><span>🎯</span> 2. I Tre Criteri Fondamentali di Congruenza</div>
+            <div class="card-body">
+                <p>I criteri di congruenza sono gli strumenti operativi chiave usati nelle dimostrazioni geometriche.</p>
+
+                
+                <div class="grid-visual">
+                    
+                    <div class="grid-item">
+                        <h5><span>1️⃣</span> Primo Criterio (LAL)</h5>
+                        <div class="svg-container" style="background:#fff; margin:0.8rem 0; padding:0.8rem;">
+                            <svg width="260" height="110" viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg">
+                                
+                                <polygon points="15,95 115,95 45,25" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+                                <line x1="15" y1="95" x2="115" y2="95" stroke="#dc2626" stroke-width="3.5"/>
+                                <line x1="15" y1="95" x2="45" y2="25" stroke="#dc2626" stroke-width="3.5"/>
+                                <path d="M 30,95 A 15,15 0 0,0 21,83" fill="none" stroke="#0d9488" stroke-width="3"/>
+                                <text x="5" y="105" font-size="11" font-weight="bold" fill="#1e3a8a">A</text>
+                                <text x="118" y="105" font-size="11" font-weight="bold" fill="#1e3a8a">B</text>
+                                <text x="40" y="18" font-size="11" font-weight="bold" fill="#1e3a8a">C</text>
+
+                                
+                                <polygon points="145,95 245,95 175,25" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+                                <line x1="145" y1="95" x2="245" y2="95" stroke="#dc2626" stroke-width="3.5"/>
+                                <line x1="145" y1="95" x2="175" y2="25" stroke="#dc2626" stroke-width="3.5"/>
+                                <path d="M 160,95 A 15,15 0 0,0 151,83" fill="none" stroke="#0d9488" stroke-width="3"/>
+                                <text x="133" y="105" font-size="11" font-weight="bold" fill="#3b82f6">A'</text>
+                                <text x="248" y="105" font-size="11" font-weight="bold" fill="#3b82f6">B'</text>
+                                <text x="170" y="18" font-size="11" font-weight="bold" fill="#3b82f6">C'</text>
+                            </svg>
+                        </div>
+                        <p style="font-size:0.85rem;">Due triangoli che hanno ordinatamente congruenti <strong>due lati</strong> e l'<strong>angolo tra di essi compreso</strong> sono congruenti.</p>
+                        <p style="font-size:0.85rem; margin-bottom:0.2rem;"><strong>Ipotesi (Hp):</strong></p>
+                        <code>$AB \cong A'B'$, $AC \cong A'C'$, $\hat{A} \cong \hat{A}'$</code>
+                        <p style="font-size:0.85rem; margin-top:0.5rem; margin-bottom:0.2rem;"><strong>Tesi (Th):</strong></p>
+                        <code style="color:var(--primary); font-weight:bold;">△ABC ≅ △A'B'C'</code>
+                    </div>
+
+                    
+                    <div class="grid-item">
+                        <h5><span>2️⃣</span> Secondo Criterio (ALA)</h5>
+                        <div class="svg-container" style="background:#fff; margin:0.8rem 0; padding:0.8rem;">
+                            <svg width="260" height="110" viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg">
+                                
+                                <polygon points="15,95 115,95 45,25" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+                                <line x1="15" y1="95" x2="115" y2="95" stroke="#dc2626" stroke-width="3.5"/>
+                                <path d="M 30,95 A 15,15 0 0,0 21,83" fill="none" stroke="#0d9488" stroke-width="3"/>
+                                <path d="M 100,95 A 15,15 0 0,1 101,81" fill="none" stroke="#0d9488" stroke-width="3"/>
+                                <text x="5" y="105" font-size="11" font-weight="bold" fill="#1e3a8a">A</text>
+                                <text x="118" y="105" font-size="11" font-weight="bold" fill="#1e3a8a">B</text>
+                                <text x="40" y="18" font-size="11" font-weight="bold" fill="#1e3a8a">C</text>
+
+                                
+                                <polygon points="145,95 245,95 175,25" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+                                <line x1="145" y1="95" x2="245" y2="95" stroke="#dc2626" stroke-width="3.5"/>
+                                <path d="M 160,95 A 15,15 0 0,0 151,83" fill="none" stroke="#0d9488" stroke-width="3"/>
+                                <path d="M 230,95 A 15,15 0 0,1 231,81" fill="none" stroke="#0d9488" stroke-width="3"/>
+                                <text x="133" y="105" font-size="11" font-weight="bold" fill="#3b82f6">A'</text>
+                                <text x="248" y="105" font-size="11" font-weight="bold" fill="#3b82f6">B'</text>
+                                <text x="170" y="18" font-size="11" font-weight="bold" fill="#3b82f6">C'</text>
+                            </svg>
+                        </div>
+                        <p style="font-size:0.85rem;">Due triangoli che hanno ordinatamente congruenti <strong>un lato</strong> e i due <strong>angoli ad esso adiacenti</strong> sono congruenti.</p>
+                        <p style="font-size:0.85rem; margin-bottom:0.2rem;"><strong>Ipotesi (Hp):</strong></p>
+                        <code>$AB \cong A'B'$, $\hat{A} \cong \hat{A}'$, $\hat{B} \cong \hat{B}'$</code>
+                        <p style="font-size:0.85rem; margin-top:0.5rem; margin-bottom:0.2rem;"><strong>Tesi (Th):</strong></p>
+                        <code style="color:var(--primary); font-weight:bold;">△ABC ≅ △A'B'C'</code>
+                    </div>
+
+                    
+                    <div class="grid-item">
+                        <h5><span>3️⃣</span> Terzo Criterio (LLL)</h5>
+                        <div class="svg-container" style="background:#fff; margin:0.8rem 0; padding:0.8rem;">
+                            <svg width="260" height="110" viewBox="0 0 260 110" xmlns="http://www.w3.org/2000/svg">
+                                
+                                <polygon points="15,95 115,95 45,25" fill="rgba(220,38,38,0.08)" stroke="#dc2626" stroke-width="3.5"/>
+                                <text x="5" y="105" font-size="11" font-weight="bold" fill="#1e3a8a">A</text>
+                                <text x="118" y="105" font-size="11" font-weight="bold" fill="#1e3a8a">B</text>
+                                <text x="40" y="18" font-size="11" font-weight="bold" fill="#1e3a8a">C</text>
+
+                                
+                                <polygon points="145,95 245,95 175,25" fill="rgba(220,38,38,0.08)" stroke="#dc2626" stroke-width="3.5"/>
+                                <text x="133" y="105" font-size="11" font-weight="bold" fill="#3b82f6">A'</text>
+                                <text x="248" y="105" font-size="11" font-weight="bold" fill="#3b82f6">B'</text>
+                                <text x="170" y="18" font-size="11" font-weight="bold" fill="#3b82f6">C'</text>
+                            </svg>
+                        </div>
+                        <p style="font-size:0.85rem;">Due triangoli che hanno ordinatamente congruenti <strong>tutti e tre i lati</strong> sono congruenti.</p>
+                        <p style="font-size:0.85rem; margin-bottom:0.2rem;"><strong>Ipotesi (Hp):</strong></p>
+                        <code>AB ≅ A'B', BC ≅ B'C', CA ≅ C'A'</code>
+                        <p style="font-size:0.85rem; margin-top:0.5rem; margin-bottom:0.2rem;"><strong>Tesi (Th):</strong></p>
+                        <code style="color:var(--primary); font-weight:bold;">△ABC ≅ △A'B'C'</code>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>Ipotesi (Hp)</th>
+                                <th>Condizione Chiave</th>
+                                <th>Tesi (Th)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Primo (LAL)</strong></td>
+                                <td>$AB \cong A'B'$, $AC \cong A'C'$, $\hat{A} \cong \hat{A}'$</td>
+                                <td>L'angolo DEVE essere compreso tra i due lati.</td>
+                                <td><strong>$\triangle ABC \cong \triangle A'B'C'$</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Secondo (ALA)</strong></td>
+                                <td>$AB \cong A'B'$, $\hat{A} \cong \hat{A}'$, $\hat{B} \cong \hat{B}'$</td>
+                                <td>Gli angoli DEVONO essere adiacenti al lato.</td>
+                                <td><strong>$\triangle ABC \cong \triangle A'B'C'$</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Terzo (LLL)</strong></td>
+                                <td>$AB \cong A'B'$, $BC \cong B'C'$, $CA \cong C'A'$</td>
+                                <td>Tutti i lati corrispondenti devono coincidere.</td>
+                                <td><strong>$\triangle ABC \cong \triangle A'B'C'$</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" id="sec3">
+            <div class="card-header"><span>🔺</span> 3. Il Triangolo Isoscele: Definizione, Teorema e Dimostrazione</div>
+            <div class="card-body">
+                <div class="box def">
+                    <div class="box-title">📘 Definizione di Triangolo Isoscele</div>
+                    Un triangolo si dice <strong>isoscele</strong> se ha almeno due lati congruenti. I due lati congruenti si chiamano <em>lati obliqui</em> ($AC \cong BC$), il terzo lato è la <em>base</em> ($AB$), e l'angolo opposto alla base è l'<em>angolo al vertice</em> ($\hat{C}$).
+                </div>
+
+                <h3><span>📜</span> Teorema del Triangolo Isoscele e delle sue Linee Notevoli</h3>
+                <p><strong>Enunciato:</strong> In un triangolo isoscele, gli angoli adiacenti alla base sono congruenti ($\hat{A} \cong \hat{B}$). Inoltre, la bisettrice dell'angolo al vertice è anche mediana e altezza relativa alla base.</p>
+
+                
+                <div class="svg-container">
+                    <svg width="300" height="230" viewBox="0 0 300 230" xmlns="http://www.w3.org/2000/svg">
+                        
+                        <polygon points="40,190 260,190 150,30" fill="rgba(59,130,246,0.08)" stroke="#1e3a8a" stroke-width="2.5"/>
+                        
+                        <line x1="150" y1="30" x2="150" y2="190" stroke="#a855f7" stroke-width="2.5" stroke-dasharray="5,5"/>
+                        
+                        
+                        <path d="M 150,178 L 162,178 L 162,190" fill="none" stroke="#dc2626" stroke-width="2"/>
+
+                        
+                        <path d="M 140,50 A 20,20 0 0,0 150,55" fill="none" stroke="#a855f7" stroke-width="2"/>
+                        <path d="M 160,50 A 20,20 0 0,1 150,55" fill="none" stroke="#a855f7" stroke-width="2"/>
+                        
+                        
+                        <path d="M 70,190 A 30,30 0 0,0 58,162" fill="none" stroke="#0d9488" stroke-width="2.5"/>
+                        <path d="M 230,190 A 30,30 0 0,1 242,162" fill="none" stroke="#0d9488" stroke-width="2.5"/>
+
+                        
+                        <line x1="90" y1="105" x2="100" y2="115" stroke="#dc2626" stroke-width="2.5"/>
+                        <line x1="200" y1="115" x2="210" y2="105" stroke="#dc2626" stroke-width="2.5"/>
+
+                        
+                        <circle cx="40" cy="190" r="4" fill="#1e3a8a"/>
+                        <circle cx="260" cy="190" r="4" fill="#1e3a8a"/>
+                        <circle cx="150" cy="30" r="4" fill="#1e3a8a"/>
+                        <circle cx="150" cy="190" r="4" fill="#a855f7"/>
+
+                        <text x="20" y="205" font-size="15" font-weight="bold" fill="#1e3a8a">A</text>
+                        <text x="270" y="205" font-size="15" font-weight="bold" fill="#1e3a8a">B</text>
+                        <text x="145" y="20" font-size="15" font-weight="bold" fill="#1e3a8a">C</text>
+                        <text x="145" y="215" font-size="15" font-weight="bold" fill="#a855f7">D</text>
+                    </svg>
+                    <div class="fig-caption">Figura 3.1 — Costruzione della bisettrice $CD$ per dimostrare la congruenza degli angoli alla base, la mediana e l'altezza.</div>
+                </div>
+
+                <div class="box strat">
+                    <div class="box-title">⚙️ Dimostrazione Completa (Angoli, Mediana e Altezza)</div>
+                    <p><strong>Ipotesi (Hp):</strong> $AC \cong BC$, $CD$ è bisettrice dell'angolo $\hat{C}$ ($A\hat{C}D \cong B\hat{C}D$).<br>
+                    <strong>Tesi (Th):</strong><br>
+                    1) $\hat{A} \cong \hat{B}$ (angoli alla base congruenti);<br>
+                    2) $AD \cong DB$ ($CD$ è mediana);<br>
+                    3) $CD \perp AB$ ($CD$ è altezza).</p>
+                    
+                    <div class="math-step"><span class="step-num">1</span><span>Tracciamo la bisettrice $CD$ dell'angolo al vertice $\hat{C}$ e consideriamo i due triangoli $ACD$ e $BCD$.</span><span class="step-comment">Costruzione</span></div>
+                    <div class="math-step"><span class="step-num">2</span><span>Confrontiamo $ACD$ e $BCD$: essi hanno $AC \cong BC$ (per ipotesi), $CD$ in comune e $A\hat{C}D \cong B\hat{C}D$ (per costruzione di bisettrice).</span><span class="step-comment">Confronto LAL</span></div>
+                    <div class="math-step"><span class="step-num">3</span><span>I triangoli $ACD \cong BCD$ per il <strong>Primo Criterio di Congruenza (LAL)</strong>.</span><span class="step-comment">Congruenza</span></div>
+                    <div class="math-step"><span class="step-num">4</span><span>Poiché triangoli congruenti hanno tutti gli elementi corrispondenti congruenti, ne deduciamo che $\hat{A} \cong \hat{B}$. (Tesi 1 provata)</span><span class="step-comment">Angoli alla base</span></div>
+                    <div class="math-step"><span class="step-num">5</span><span>Dalla congruenza dei triangoli segue anche che $AD \cong DB$. Quindi $D$ è il punto medio della base $AB$, il che dimostra che $CD$ è <strong>mediana</strong>. (Tesi 2 provata)</span><span class="step-comment">Mediana</span></div>
+                    <div class="math-step"><span class="step-num">6</span><span>Infine, dalla congruenza segue che gli angoli $A\hat{D}C \cong B\hat{D}C$. Poiché essi sono adiacenti e formano un angolo piatto ($180^\circ$), ciascuno di essi deve essere un angolo retto ($90^\circ$). Pertanto $CD \perp AB$, il che dimostra che $CD$ è anche <strong>altezza</strong>. (Tesi 3 provata) $\blacksquare$</span><span class="step-comment">Altezza</span></div>
+                </div>
+
+                <h3><span>🔗</span> Conseguenze del Teorema del Triangolo Isoscele</h3>
+                <ul>
+                    <li><strong>Coincidenza delle Linee Notevoli:</strong> In un triangolo isoscele, la bisettrice dell'angolo al vertice, la mediana e l'altezza relative alla base coincidono in un unico segmento.</li>
+                    <li><strong>Corollario (Triangolo Equilatero):</strong> Un triangolo equilatero ha tutti e tre i lati congruenti, quindi è anche equiangolo (ogni angolo misura $60^\circ$).</li>
+                    <li><strong>Teorema Inverso:</strong> Se un triangolo ha due angoli congruenti, allora è isoscele (i lati opposti a tali angoli sono congruenti).</li>
+                </ul>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="warning" id="sec4">
+            <div class="card-header"><span>🌐</span> 4. Il Primo Teorema dell'Angolo Esterno</div>
+            <div class="card-body">
+                <div class="box def">
+                    <div class="box-title">📘 Definizione di Angolo Esterno</div>
+                    Un <strong>angolo esterno</strong> è l'angolo adiacente a un angolo interno, formato da un lato e dal prolungamento del lato adiacente.
+                </div>
+
+                <h3><span>📜</span> Enunciato e Dimostrazione Formale</h3>
+                <p><strong>Enunciato:</strong> In un triangolo, ciascun angolo esterno è strettamente maggiore di ciascuno dei due angoli interni ad esso non adiacenti.</p>
+
+                
+                <div class="svg-container">
+                    <svg width="450" height="220" viewBox="0 0 450 220" xmlns="http://www.w3.org/2000/svg">
+                        
+                        <line x1="30" y1="180" x2="420" y2="180" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4"/>
+                        
+                        <polygon points="50,180 250,180 180,40" fill="rgba(59,130,246,0.08)" stroke="#1e3a8a" stroke-width="2.5"/>
+                        
+                        
+                        <circle cx="215" cy="110" r="4" fill="#d97706"/>
+                        
+                        
+                        <line x1="50" y1="180" x2="380" y2="40" stroke="#d97706" stroke-width="2" stroke-dasharray="4,4"/>
+                        <line x1="250" y1="180" x2="380" y2="40" stroke="#d97706" stroke-width="2"/>
+
+                        
+                        <path d="M 250,180 L 310,180 A 60,60 0 0,0 228,136 Z" fill="rgba(220, 38, 38, 0.35)" stroke="#dc2626" stroke-width="3" stroke-dasharray="3,1"/>
+
+                        
+                        <circle cx="50" cy="180" r="4" fill="#1e3a8a"/>
+                        <circle cx="250" cy="180" r="4" fill="#1e3a8a"/>
+                        <circle cx="180" cy="40" r="4" fill="#1e3a8a"/>
+                        <circle cx="380" cy="40" r="4" fill="#d97706"/>
+
+                        <text x="35" y="200" font-size="15" font-weight="bold" fill="#1e3a8a">A</text>
+                        <text x="245" y="200" font-size="15" font-weight="bold" fill="#1e3a8a">B</text>
+                        <text x="175" y="28" font-size="15" font-weight="bold" fill="#1e3a8a">C</text>
+                        <text x="222" y="110" font-size="14" font-weight="bold" fill="#d97706">M</text>
+                        <text x="390" y="40" font-size="15" font-weight="bold" fill="#d97706">P</text>
+                        <text x="420" y="200" font-size="15" font-weight="bold" fill="#64748b">X</text>
+                        <text x="290" y="150" font-size="14" font-weight="bold" fill="#dc2626">Angolo Esterno</text>
+                    </svg>
+                    <div class="fig-caption">Figura 4.1 — Evidenziazione dell'angolo esterno $C\hat{B}X$ e costruzione della mediana $AM$ prolungata di $MP \cong AM$.</div>
+                </div>
+
+                <div class="box strat">
+                    <div class="box-title">⚙️ Dimostrazione Passo-Passo</div>
+                    <p><strong>Ipotesi (Hp):</strong> Triangolo $ABC$ con angolo esterno $C\hat{B}X$.<br>
+                    <strong>Tesi (Th):</strong> $C\hat{B}X > \hat{C}$ e $C\hat{B}X > \hat{A}$.</p>
+
+                    <div class="math-step"><span class="step-num">1</span><span>Prendiamo il punto medio $M$ del lato $BC$, rendendo $CM \cong MB$.</span><span class="step-comment">Punto Medio</span></div>
+                    <div class="math-step"><span class="step-num">2</span><span>Tracciamo il segmento $AM$ e prolunghiamolo oltre $M$ di un segmento $MP \cong AM$. Congiungiamo $P$ con $B$.</span><span class="step-comment">Costruzione</span></div>
+                    <div class="math-step"><span class="step-num">3</span><span>Confrontiamo i triangoli $AMC$ e $PMB$: $CM \cong MB$; $AM \cong MP$; gli angoli opposti al vertice $A\hat{M}C \cong P\hat{M}B$.</span><span class="step-comment">LAL</span></div>
+                    <div class="math-step"><span class="step-num">4</span><span>I triangoli $AMC \cong PMB$ per il 1° Criterio. Di conseguenza, l'angolo $A\hat{C}M \cong P\hat{B}M$.</span><span class="step-comment">Congruenza</span></div>
+                    <div class="math-step"><span class="step-num">5</span><span>Poiché il raggio $BP$ è interno all'angolo esterno $C\hat{B}X$, l'angolo $P\hat{B}M$ è una parte dell'angolo $C\hat{B}X$. Essendo il tutto maggiore della parte: $C\hat{B}X > P\hat{B}M \cong \hat{C}$. $\blacksquare$</span><span class="step-comment">Tesi dimostrata</span></div>
+                </div>
+
+                <h3><span>⚡</span> Conseguenze del Primo Teorema dell'Angolo Esterno</h3>
+                <ul>
+                    <li>In un qualsiasi triangolo non possono esserci due angoli retti o due angoli ottusi oppure un angolo retto e uno ottuso.</li>
+                    <li>Gli angoli alla base di un triangolo isoscele sono **sempre acuti**.</li>
+                </ul>
+            </div>
+        </section>
+
+        
+        <section class="card" id="sec5">
+            <div class="card-header"><span>📏</span> 5. Relazioni tra Lati e Angoli di un Triangolo</div>
+            <div class="card-body">
+                <p>Esiste una relazione d'ordine diretta tra le lunghezze dei lati di un triangolo e le ampiezze degli angoli ad essi opposti.</p>
+
+                <div class="box def">
+                    <div class="box-title">📘 Teorema del Lato Maggiore e Angolo Maggiore</div>
+                    In ogni triangolo, a **lato maggiore si oppone angolo maggiore** e, viceversa, ad **angolo maggiore si oppone lato maggiore**.
+                    $$AB > BC \iff \hat{C} > \hat{A}$$
+                </div>
+
+               
+<div class="svg-container">
+    <svg width="380" height="180" viewBox="0 0 380 180" xmlns="http://www.w3.org/2000/svg">
+
+        <polygon points="40,140 340,140 120,30"
+                 fill="rgba(13,148,136,0.08)"
+                 stroke="#1e3a8a"
+                 stroke-width="2.5"/>
+
+        
+        <line x1="40" y1="140" x2="340" y2="140"
+              stroke="#dc2626"
+              stroke-width="4"/>
+
+        
+        <path d="M 102,55
+         A 30,30 0 0,0 147,44"
+        fill="none"
+        stroke="#dc2626"
+        stroke-width="3"/>
+
+        
+        <circle cx="40" cy="140" r="4" fill="#1e3a8a"/>
+        <circle cx="340" cy="140" r="4" fill="#1e3a8a"/>
+        <circle cx="120" cy="30" r="4" fill="#dc2626"/>
+
+        
+        <text x="20" y="155"
+              font-size="15"
+              font-weight="bold"
+              fill="#1e3a8a">A</text>
+
+        <text x="350" y="155"
+              font-size="15"
+              font-weight="bold"
+              fill="#1e3a8a">B</text>
+
+        <text x="110" y="18"
+              font-size="15"
+              font-weight="bold"
+              fill="#dc2626">C</text>
+
+        <text x="145" y="42"
+              font-size="13"
+              font-weight="bold"
+              fill="#dc2626">Angolo Maggiore</text>
+
+        <text x="120" y="170"
+              font-size="13"
+              font-weight="bold"
+              fill="#dc2626">Lato Maggiore (AB)</text>
+    </svg>
+
+    <div class="fig-caption">
+        Figura 5.1 — Al lato più lungo $AB$ si oppone l'angolo di ampiezza maggiore $\hat{C}$.
+    </div>
+</div>
+
+                <div class="box obs">
+                    <div class="box-title">👁️ Corollario per i Triangoli Rettangoli</div>
+                    In un triangolo rettangolo, l'<strong>ipotenusa</strong> è sempre il lato più lungo, poiché si oppone all'angolo retto, che è necessariamente l'angolo maggiore del triangolo.
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="warning" id="sec6">
+            <div class="card-header"><span>🔺</span> 6. La Disuguaglianza Triangolare</div>
+            <div class="card-body">
+                <p>Non tutte le terne di numeri possono rappresentare i lati di un triangolo: i tre segmenti devono "chiudersi".</p>
+
+                <div class="box def">
+                    <div class="box-title">📘 Teorema della Disuguaglianza Triangolare</div>
+                    In ogni triangolo, ciascun lato è **strettamente minore della somma** degli altri due e **maggiore della loro differenza**.
+                    $$|a - b| < c < a + b$$
+                </div>
+
+                
+                <div class="svg-container">
+                    <svg width="400" height="160" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+                        
+                        <g transform="translate(0,0)">
+                            <line x1="20" y1="130" x2="180" y2="130" stroke="#1e3a8a" stroke-width="3"/>
+                            <line x1="20" y1="130" x2="60" y2="90" stroke="#dc2626" stroke-width="3"/>
+                            <line x1="180" y1="130" x2="130" y2="100" stroke="#dc2626" stroke-width="3"/>
+                            <text x="30" y="150" font-size="12" font-weight="bold" fill="#dc2626">2 cm + 3 cm = 5 cm < 8 cm</text>
+                            <text x="50" y="60" font-size="13" font-weight="bold" fill="#dc2626">❌ Non si chiude!</text>
+                        </g>
+                        
+                        <g transform="translate(200,0)">
+                            <polygon points="20,130 170,130 90,40" fill="rgba(13,148,136,0.1)" stroke="#0d9488" stroke-width="3"/>
+                            <text x="35" y="150" font-size="12" font-weight="bold" fill="#0d9488">7 cm + 7 cm > 10 cm</text>
+                            <text x="55" y="30" font-size="13" font-weight="bold" fill="#0d9488">VALIDO</text>
+                        </g>
+                    </svg>
+                    <div class="fig-caption">Figura 6.1 — A sinistra: segmenti che non rispettano la disuguaglianza. A destra: un triangolo valido.</div>
+                </div>
+
+                <div class="box err">
+                    <div class="box-title">⚠️ Errore Concettuale Frequente</div>
+                    <strong>Errore:</strong> Credere che tre segmenti di lunghezza $2\text{ cm}$, $3\text{ cm}$ e $8\text{ cm}$ possano formare un triangolo.<br>
+                    <strong>Verifica:</strong> $2 + 3 = 5 \not> 8$. I segmenti non si incontreranno mai nello spazio!
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="card" data-type="summary" id="sec8">
+            <div class="card-header"><span>🗺️</span> 7. Mappa Concettuale Riassuntiva</div>
+            <div class="card-body">
+                <div class="mappa">
+                    <div class="map-node" style="border-left-color: var(--primary-light);">
+                        <strong>📐 1. CONGRUENZA DEI TRIANGOLI</strong>
+                        Si applicano i tre Criteri (LAL, ALA, LLL) per identificare triangoli congruenti.
+                    </div>
+                    <div class="map-node" style="border-left-color: var(--success);">
+                        <strong>🔺 2. TRIANGOLO ISOSCELE</strong>
+                        Lati obliqui congruenti $\iff$ Angoli alla base congruenti. La bisettrice al vertice fa anche da altezza e mediana.
+                    </div>
+                    <div class="map-node" style="border-left-color: var(--warning);">
+                        <strong>🌐 3. PRIMO TEOREMA DELL'ANGOLO ESTERNO</strong>
+                        L'angolo esterno è sempre strettamente maggiore di ciascuno dei due angoli interni non adiacenti.
+                    </div>
+                    <div class="map-node" style="border-left-color: var(--danger);">
+                        <strong>📏 4. DISUGUAGLIANZA TRIANGOLARE</strong>
+                        Ogni lato deve essere minore della somma e maggiore della differenza degli altri due.
+                    </div>
+                </div>
+                <p style="text-align: center; font-weight: bold; color: var(--primary); margin-top: 2.5rem; font-style: italic;">
+                    «La geometria è la scienza del ragionamento visivo rigoroso.»
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+            <span class="footer-center">
+                    Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+                    <small>Prof.ssa M. Prandelli</small>
+            </span>
+            <span class="footer-copy">© 2026 MatematicaOro</span>
+        </footer>
+    </main>
+
+    <button class="no-print" id="fsBtn" onclick="toggleFullscreen()" style="position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--primary); color: white; border: none; padding: 0.8rem 1.2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 6px 16px rgba(30,58,138,0.35); font-weight: 600; transition: all 0.2s; z-index: 102;">
+        🖥️ Schermo Intero
+    </button>
+
+    <script>const progressBar = document.getElementById('progressBar');
+ const navLinks = document.querySelectorAll('nav a');
+ navLinks.forEach(link => {
+ link.addEventListener('click', (event) => {
+ const href = link.getAttribute('href');
+ if (!href || !href.startsWith('#')) return;
+ const target = document.querySelector(href);
+ if (!target) return;
+ event.preventDefault();
+ const nav = link.closest('nav');
+ const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+ const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+ window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+ history.replaceState(null, '', href);
+ });
+ });
+ const sections = document.querySelectorAll('section');
+ window.addEventListener('scroll', () => {
+ const h = document.documentElement.scrollHeight - window.innerHeight;
+ progressBar.style.width = `${(window.scrollY / h) * 100}%`;
+ let current = '';
+ sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 140) current = sec.id; });
+ navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + current); });
+ });
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+ }, { threshold: 0.05 });
+ document.querySelectorAll('.card').forEach(card => observer.observe(card));
+ function toggleFullscreen() {
+ if (!document.fullscreenElement) {
+ document.documentElement.requestFullscreen().catch(err => console.warn(`Errore Fullscreen: ${err}`));
+ } else {
+ document.exitFullscreen();
+ }
+ }
+ document.addEventListener('fullscreenchange', () => {
+ document.getElementById('fsBtn').textContent = document.fullscreenElement ? '🖥️ Esci Schermo Intero' : '🖥️ Schermo Intero';
+ });</script>
+<div class="mo-tools"><a href="../../index.html">⌂ Home</a><a href="../index.html">☰ Lezioni</a></div><script>(function(){var d=document,f=String.fromCharCode,c=f(99,111,110,116,101,120,116,109,101,110,117),g=f(100,114,97,103,115,116,97,114,116);d.addEventListener(c,function(e){e.preventDefault()},true);d.addEventListener(g,function(e){e.preventDefault()},true);d.addEventListener("keydown",function(e){var k=(e.key||"").toLowerCase();if((e.ctrlKey||e.metaKey)&&(k==="u"||k==="s")||e.key==="F12"){e.preventDefault();e.stopPropagation()}},true)})();</script>
+</body>
+</html>
