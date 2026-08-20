@@ -1,0 +1,12 @@
+MATEMATICAORO VIEWER COMPLETO v2
+
+Questa versione è corretta per il test locale:
+- NON usa fetch() o richieste AJAX;
+- l'elenco delle 44 storie è incorporato direttamente in viewer.html;
+- le 45 immagini sono nella cartella assets/;
+- i link della lista usano viewer.html#031 ecc., compatibili con file://.
+
+IMPORTANTE:
+1. estrai completamente lo ZIP in una cartella;
+2. non aprire index.html dall'interno dello ZIP;
+3. apri index.html dalla cartella estratta.

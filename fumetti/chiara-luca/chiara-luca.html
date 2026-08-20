@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chiara e Luca · MatematicaOro</title>
+<style>
+:root{--blue:#163f76;--blue2:#0f315c;--gold:#c99b24;--bg:#eef3f8;--panel:#fff;--line:#d8e1eb;--text:#1e2c3c;--muted:#67788e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--text)}
+a{color:inherit}header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.nav{max-width:1180px;margin:auto;padding:11px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.brand{font-weight:900;font-size:1.12rem;margin-right:auto;text-decoration:none}.brand .m{color:var(--blue2)}.brand .o{color:var(--gold)}
+.nav a:not(.brand){text-decoration:none;color:var(--blue);font-weight:700;padding:7px 9px;border-radius:8px}
+.nav a:not(.brand):hover{background:#f4f7fa}
+main{max-width:1180px;margin:auto;padding:28px 18px 50px}
+.hero{display:grid;grid-template-columns:minmax(240px,340px) 1fr;gap:32px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 6px 22px rgba(15,49,92,.06)}
+.cover{width:100%;border-radius:12px;display:block;box-shadow:0 8px 22px rgba(15,23,42,.16)}
+.kicker{color:var(--gold);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.76rem}
+h1{font-family:Georgia,"Times New Roman",serif;color:var(--blue2);font-size:2.35rem;line-height:1.05;margin:7px 0 9px}
+.hero p{color:var(--muted);font-size:1.02rem;line-height:1.55;max-width:720px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;text-decoration:none;border-radius:9px;padding:10px 14px;font-weight:800}
+.btn-primary{background:var(--blue);color:#fff}.btn-light{border:1px solid var(--line);background:#fff;color:var(--blue)}
+.prologue{margin-top:18px;border-left:4px solid var(--gold);background:#fff8e8;padding:14px 16px;border-radius:0 10px 10px 0}
+.prologue strong{color:var(--blue2)}.prologue a{color:var(--blue);font-weight:800;text-decoration:none}
+.section-title{margin:34px 0 8px;color:var(--blue2);font-family:Georgia,serif;font-size:1.7rem}
+.intro{margin:0 0 18px;color:var(--muted)}
+.level{background:#fff;border:1px solid var(--line);border-radius:13px;margin:12px 0;overflow:hidden}
+.level summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 18px;font-weight:900;color:var(--blue2)}
+.level summary::-webkit-details-marker{display:none}.summary-note{font-size:.78rem;color:var(--muted);font-weight:700}
+.level-body{border-top:1px solid #edf1f5;padding:5px 18px 20px}
+.topic h3{font-size:1rem;color:var(--blue);margin:20px 0 10px}
+.story-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:11px}
+.story-card{display:grid;grid-template-columns:72px 1fr;gap:11px;align-items:center;text-decoration:none;background:#fbfcfe;border:1px solid #e1e7ee;border-radius:10px;padding:8px;min-height:112px;transition:.15s}
+.story-card:hover{transform:translateY(-1px);border-color:#bac9d9;box-shadow:0 4px 13px rgba(15,49,92,.07)}
+.story-card img{width:72px;height:100px;object-fit:cover;border-radius:6px;background:#fff}
+.story-copy h4{margin:2px 0 4px;font-size:.91rem;line-height:1.18;color:#1d3553}
+.story-copy p{margin:0 0 7px;color:var(--muted);font-size:.76rem;line-height:1.25}
+.story-code{font-size:.67rem;color:var(--gold);font-weight:900;letter-spacing:.05em}
+.badge{font-size:.68rem;font-weight:800;background:#eaf0f7;color:var(--blue);padding:3px 6px;border-radius:999px}
+.coming{background:#f7f9fb;border:1px dashed #cbd6e2;border-radius:9px;padding:18px;color:var(--muted);text-align:center;font-weight:700}
+.narrative{margin-top:30px;background:linear-gradient(135deg,#fff,#fff7e5);border:1px solid #ead9aa;border-radius:14px;padding:18px}
+.narrative h2{font-family:Georgia,serif;color:var(--blue2);margin:0 0 6px}.narrative p{color:var(--muted);margin:0 0 12px}
+.footer{margin-top:42px;padding:22px;text-align:center;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line)}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero .cover-wrap{max-width:330px;margin:auto}h1{font-size:2rem}.nav{justify-content:center}.brand{width:100%;text-align:center;margin:0}}
+</style>
+</head>
+<body>
+<header><nav class="nav">
+<a class="brand" href="../../index.html"><span class="m">Matematica</span><span class="o">Oro</span></a>
+<a href="../../index.html">Home</a>
+<a href="#livelli">Livelli</a>
+<a href="#storie">Storie</a>
+</nav></header>
+<main>
+<section class="hero">
+  <div class="cover-wrap"><img class="cover" src="assets/copertina-chiara-luca.webp" alt="Copertina Chiara e Luca"></div>
+  <div>
+    <div class="kicker">Collana</div>
+    <h1>Chiara e Luca</h1>
+    <p>Matematica, scuola, amicizia e vita quotidiana. Le tavole sono organizzate per livello e per argomento; i numeri 001–044 restano semplicemente i codici editoriali delle storie.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="viewer.html#001">Inizia la storia</a>
+      <a class="btn btn-light" href="#livelli">Esplora i livelli</a>
+    </div>
+    <div class="prologue"><strong>Prima di iniziare — Introduzione: Il quattro.</strong> È il prologo della collana e racconta l'origine del rapporto tra Chiara e Luca. <a href="viewer.html#001">Leggi il prologo →</a></div>
+  </div>
+</section>
+
+<h2 class="section-title" id="livelli">Percorsi per livello</h2>
+<p class="intro">Ogni livello raccoglie le tavole per area matematica. Il livello è una guida di navigazione, non una classe scolastica rigida.</p>
+<details class="level" open>
+      <summary><span>Livello 1</span><span class="summary-note">Contenuti disponibili</span></summary>
+      <div class="level-body"><div class="topic"><h3>Numeri e calcolo</h3><div class="story-grid"><a class="story-card" href="viewer.html#002">
+      <img src="thumbs/002.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">002</div>
+        <h4>I numeri che contano</h4>
+        <p>Numeri interi</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#003">
+      <img src="thumbs/003.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">003</div>
+        <h4>Le potenze dei numeri interi — Tre non significa moltiplicare!</h4>
+        <p>Potenze</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#004">
+      <img src="thumbs/004.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">004</div>
+        <h4>Le potenze dei numeri interi — Il tranello dei segni</h4>
+        <p>Potenze e segni</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#005">
+      <img src="thumbs/005.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">005</div>
+        <h4>Le frazioni</h4>
+        <p>Frazioni</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a></div></div><div class="topic"><h3>Algebra</h3><div class="story-grid"><a class="story-card" href="viewer.html#006">
+      <img src="thumbs/006.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">006</div>
+        <h4>Monomi — Il detective delle espressioni</h4>
+        <p>Monomi</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#007">
+      <img src="thumbs/007.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">007</div>
+        <h4>Monomi — Una passeggiata in paese</h4>
+        <p>Monomi</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#008">
+      <img src="thumbs/008.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">008</div>
+        <h4>Il polinomio fantasma</h4>
+        <p>Polinomi</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#009">
+      <img src="thumbs/009.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">009</div>
+        <h4>Black Box — La legge nascosta</h4>
+        <p>Polinomi e differenze finite</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#010">
+      <img src="thumbs/010.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">010</div>
+        <h4>La cassaforte algebrica — Il quadrato di un binomio</h4>
+        <p>Quadrato di un binomio</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#011">
+      <img src="thumbs/011.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">011</div>
+        <h4>Il quadrato mancante</h4>
+        <p>Somma per differenza</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#012">
+      <img src="thumbs/012.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">012</div>
+        <h4>Divisione tra polinomi</h4>
+        <p>Divisione tra polinomi</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#013">
+      <img src="thumbs/013.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">013</div>
+        <h4>Il resto impossibile</h4>
+        <p>Resto nella divisione tra polinomi</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a></div></div><div class="topic"><h3>Equazioni e disequazioni</h3><div class="story-grid"><a class="story-card" href="viewer.html#014">
+      <img src="thumbs/014.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">014</div>
+        <h4>L&#x27;equilibrio perfetto</h4>
+        <p>Equazioni lineari</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#015">
+      <img src="thumbs/015.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">015</div>
+        <h4>Le equazioni lineari</h4>
+        <p>Equazioni lineari parametriche</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#018">
+      <img src="thumbs/018.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">018</div>
+        <h4>Il ponte proibito</h4>
+        <p>Disequazioni fratte</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#019">
+      <img src="thumbs/019.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">019</div>
+        <h4>Il divieto nascosto</h4>
+        <p>Disequazioni fratte e C.E.</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#020">
+      <img src="thumbs/020.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">020</div>
+        <h4>Il laboratorio dei vincoli</h4>
+        <p>Sistemi di disequazioni</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a></div></div><div class="topic"><h3>Geometria</h3><div class="story-grid"><a class="story-card" href="viewer.html#016">
+      <img src="thumbs/016.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">016</div>
+        <h4>Gli indizi della congruenza</h4>
+        <p>Criteri di congruenza dei triangoli</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#017">
+      <img src="thumbs/017.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">017</div>
+        <h4>A caccia di triangoli congruenti</h4>
+        <p>Congruenza dei triangoli</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#035">
+      <img src="thumbs/035.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">035</div>
+        <h4>Il triangolo isoscele</h4>
+        <p>Triangolo isoscele e dimostrazione</p>
+        <span class="badge">Livello 1</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#033">
+      <img src="thumbs/033.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">033</div>
+        <h4>Lo schermo storto</h4>
+        <p>Parallelogrammi e diagonali</p>
+        <span class="badge">Livello 1–2</span>
+      </div>
+    </a></div></div></div>
+    </details><details class="level" >
+      <summary><span>Livello 2</span><span class="summary-note">Contenuti disponibili</span></summary>
+      <div class="level-body"><div class="topic"><h3>Numeri e calcolo — Radicali</h3><div class="story-grid"><a class="story-card" href="viewer.html#021">
+      <img src="thumbs/021.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">021</div>
+        <h4>Il mondo dei radicali</h4>
+        <p>Radicali: definizione ed esistenza</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#022">
+      <img src="thumbs/022.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">022</div>
+        <h4>Il laboratorio dei radicali</h4>
+        <p>Proprietà dei radicali</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#023">
+      <img src="thumbs/023.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">023</div>
+        <h4>Fuori o dentro?</h4>
+        <p>Trasformazioni e razionalizzazione</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a></div></div><div class="topic"><h3>Equazioni e disequazioni</h3><div class="story-grid"><a class="story-card" href="viewer.html#024">
+      <img src="thumbs/024.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">024</div>
+        <h4>Le equazioni di secondo grado</h4>
+        <p>Equazioni di secondo grado</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#031">
+      <img src="thumbs/031.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">031</div>
+        <h4>Il salto giusto</h4>
+        <p>Disequazioni di secondo grado</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#032">
+      <img src="thumbs/032.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">032</div>
+        <h4>Il reticolo</h4>
+        <p>Disequazioni di grado superiore al secondo</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a></div></div><div class="topic"><h3>Geometria</h3><div class="story-grid"><a class="story-card" href="viewer.html#029">
+      <img src="thumbs/029.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">029</div>
+        <h4>Il sentiero delle proporzioni</h4>
+        <p>Similitudine, scale e proporzioni</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#034">
+      <img src="thumbs/034.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">034</div>
+        <h4>Gli angoli alla circonferenza</h4>
+        <p>Angoli alla circonferenza</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a></div></div><div class="topic"><h3>Geometria analitica</h3><div class="story-grid"><a class="story-card" href="viewer.html#037">
+      <img src="thumbs/037.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">037</div>
+        <h4>La distanza che non si vede</h4>
+        <p>Distanza tra due punti</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#036">
+      <img src="thumbs/036.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">036</div>
+        <h4>Il punto più vicino</h4>
+        <p>Distanza di un punto da una retta</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#026">
+      <img src="thumbs/026.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">026</div>
+        <h4>Quanto è ripida?</h4>
+        <p>Coefficiente angolare</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#025">
+      <img src="thumbs/025.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">025</div>
+        <h4>La traiettoria perfetta</h4>
+        <p>Parabola</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a></div></div><div class="topic"><h3>Funzioni e modelli</h3><div class="story-grid"><a class="story-card" href="viewer.html#027">
+      <img src="thumbs/027.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">027</div>
+        <h4>Due avventure, due rette</h4>
+        <p>Modelli lineari e intersezione</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#028">
+      <img src="thumbs/028.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">028</div>
+        <h4>Spazio, tempo, coraggio</h4>
+        <p>Proporzionalità diretta e velocità media</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a></div></div><div class="topic"><h3>Probabilità e statistica</h3><div class="story-grid"><a class="story-card" href="viewer.html#030">
+      <img src="thumbs/030.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">030</div>
+        <h4>Il tiro giusto</h4>
+        <p>Probabilità con uno e due dadi</p>
+        <span class="badge">Livello 2</span>
+      </div>
+    </a></div></div></div>
+    </details><details class="level" >
+      <summary><span>Livello 3</span><span class="summary-note">Contenuti disponibili</span></summary>
+      <div class="level-body"><div class="topic"><h3>Geometria analitica</h3><div class="story-grid"><a class="story-card" href="viewer.html#039">
+      <img src="thumbs/039.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">039</div>
+        <h4>La ruota delle coordinate</h4>
+        <p>Circonferenza nel piano cartesiano</p>
+        <span class="badge">Livello 3</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#040">
+      <img src="thumbs/040.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">040</div>
+        <h4>Quanto passa vicino?</h4>
+        <p>Posizione reciproca retta-circonferenza</p>
+        <span class="badge">Livello 3</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#038">
+      <img src="thumbs/038.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">038</div>
+        <h4>Due punti, un solo giardino</h4>
+        <p>Ellisse</p>
+        <span class="badge">Livello 3</span>
+      </div>
+    </a></div></div></div>
+    </details><details class="level" >
+      <summary><span>Livello 4</span><span class="summary-note">In preparazione</span></summary>
+      <div class="level-body"><div class="topic empty-topic">
+              <h3>Esponenziali e logaritmi</h3>
+              <div class="coming">Contenuti in preparazione</div>
+            </div><div class="topic empty-topic">
+              <h3>Goniometria e trigonometria</h3>
+              <div class="coming">Contenuti in preparazione</div>
+            </div></div>
+    </details><details class="level" >
+      <summary><span>Livello 5</span><span class="summary-note">Contenuti disponibili</span></summary>
+      <div class="level-body"><div class="topic"><h3>Analisi — Limiti</h3><div class="story-grid"><a class="story-card" href="viewer.html#042">
+      <img src="thumbs/042.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">042</div>
+        <h4>Sempre più vicino</h4>
+        <p>Introduzione al concetto di limite</p>
+        <span class="badge">Livello 5</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#043">
+      <img src="thumbs/043.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">043</div>
+        <h4>Da destra o da sinistra?</h4>
+        <p>Limiti laterali</p>
+        <span class="badge">Livello 5</span>
+      </div>
+    </a><a class="story-card" href="viewer.html#044">
+      <img src="thumbs/044.webp" alt="" loading="lazy" draggable="false">
+      <div class="story-copy">
+        <div class="story-code">044</div>
+        <h4>Il punto che manca</h4>
+        <p>Limite e discontinuità eliminabile</p>
+        <span class="badge">Livello 5</span>
+      </div>
+    </a></div></div></div>
+    </details>
+
+<section class="narrative" id="storie">
+  <h2>Storie di Chiara e Luca</h2>
+  <p>Alcune tavole hanno una funzione soprattutto narrativa e accompagnano la crescita dei personaggi senza introdurre necessariamente un nuovo contenuto matematico.</p>
+  <a class="btn btn-light" href="viewer.html#041">041 · Quello che non si misura</a>
+</section>
+
+<div class="footer">Autori: M. Prandelli · I. Castellari &nbsp; · &nbsp; Distribuito con licenza Creative Commons BY-NC-ND 4.0 &nbsp; · &nbsp; © 2026 MatematicaOro</div>
+</main>
+</body></html>

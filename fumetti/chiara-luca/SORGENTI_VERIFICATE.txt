@@ -1,0 +1,50 @@
+VIEWER COMPLETO MATEMATICAORO
+45 immagini / 44 storie. La 038 contiene 038a + 038b.
+
+001: tavola001.png | sha ba07caa5bc
+002: tavola002.png | sha a7fb435046
+003: tavola003.png | sha 322e441ec2
+004: tavola004.png | sha 4b08a6033e
+005: tavola005.png | sha e47646fc6e
+006: tavola006.png | sha 7a632c6c2d
+007: tavola007.png | sha 11a688b3fb
+008: tavola008.png | sha 61724e11bf
+009: tavola009.png | sha 62f164f802
+010: tavola010.png | sha 0e0e9e3c5b
+011: tavola011.png | sha 59ca163d76
+012: tavola012.png | sha 398da585f3
+013: tavola013.png | sha be70b36726
+014: tavola014.png | sha 31fe82237f
+015: tavola015.png | sha 2ad3c366fa
+016: tavola016.png | sha 51e57bf6d8
+017: tavola017.png | sha a70c28529b
+018: tavola018.png | sha 6682f2327f
+019: tavola019.png | sha 94f66800bc
+020: tavola020.png | sha 2401e3166b
+021: tavola021.png | sha ec1e2b8f02
+022: tavola022.png | sha 378fd4ea02
+023: tavola023.png | sha ff43757688
+024: tavola024.png | sha 8c9c4b10fa
+025: tavola025.png | sha e91a6b7d6a
+026: tavola026.png | sha 0368eb43c3
+027: tavola027.png | sha 53c073ab0a
+028: tavola028.png | sha b1cbc1dc5f
+029: tavola029.png | sha a5b940e97c
+030: tavola030.png | sha 9594934a73
+031: tavola031(4).png | sha 63ec4fb9eb
+032: tavola032(3).png | sha 5ec4f2909f
+033: tavola033.png | sha c170cbbb97
+034: tavola034.png | sha 042983fbe8
+035: tavola035.png | sha 012c0288bf
+036: tavola036.png | sha 44a898837d
+037: tavola037.png | sha 9afcf85601
+038a: tavola038a.png | sha 912ff3e7bf
+038b: tavola038b.png | sha 7a06b29dbd
+039: tavola039.png | sha dd21e95f70
+040: tavola040(4).png | sha bf1c24bc97
+041: tavola041.png | sha 2c711f49fa
+042: tavola042.png | sha 32cee0aae0
+043: tavola043.png | sha 7435277fc6
+044: tavola044.png | sha 7bd4580629
+
+031, 032 e 040 sono state materializzate direttamente dagli upload finali del turno di correzione.

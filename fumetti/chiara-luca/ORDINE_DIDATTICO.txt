@@ -1,0 +1,46 @@
+ORDINE DIDATTICO DEL VIEWER
+
+01. 001 — Introduzione: Il quattro
+02. 002 — I numeri che contano
+03. 003 — Le potenze dei numeri interi — Tre non significa moltiplicare!
+04. 004 — Le potenze dei numeri interi — Il tranello dei segni
+05. 005 — Le frazioni
+06. 021 — Il mondo dei radicali
+07. 022 — Il laboratorio dei radicali
+08. 023 — Fuori o dentro?
+09. 006 — Monomi — Il detective delle espressioni
+10. 007 — Monomi — Una passeggiata in paese
+11. 008 — Il polinomio fantasma
+12. 009 — Black Box — La legge nascosta
+13. 010 — La cassaforte algebrica — Il quadrato di un binomio
+14. 011 — Il quadrato mancante
+15. 012 — Divisione tra polinomi
+16. 013 — Il resto impossibile
+17. 014 — L’equilibrio perfetto
+18. 015 — Le equazioni lineari
+19. 018 — Il ponte proibito
+20. 019 — Il divieto nascosto
+21. 020 — Il laboratorio dei vincoli
+22. 024 — Le equazioni di secondo grado
+23. 031 — Il salto giusto
+24. 032 — Il reticolo
+25. 016 — Gli indizi della congruenza
+26. 017 — A caccia di triangoli congruenti
+27. 035 — Il triangolo isoscele
+28. 033 — Lo schermo storto
+29. 034 — Gli angoli alla circonferenza
+30. 029 — Il sentiero delle proporzioni
+31. 037 — La distanza che non si vede
+32. 036 — Il punto più vicino
+33. 026 — Quanto è ripida?
+34. 025 — La traiettoria perfetta
+35. 039 — La ruota delle coordinate
+36. 040 — Quanto passa vicino?
+37. 038 — Due punti, un solo giardino
+38. 027 — Due avventure, due rette
+39. 028 — Spazio, tempo, coraggio
+40. 030 — Il tiro giusto
+41. 041 — Quello che non si misura
+42. 042 — Sempre più vicino
+43. 043 — Da destra o da sinistra?
+44. 044 — Il punto che manca

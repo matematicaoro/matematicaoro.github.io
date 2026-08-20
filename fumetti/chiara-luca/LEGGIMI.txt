@@ -1,0 +1,14 @@
+PAGINA DEFINITIVA — CHIARA E LUCA / MATEMATICAORO
+
+index.html -> apre chiara-luca.html
+chiara-luca.html -> pagina della collana
+viewer.html -> viewer approvato, con navigazione in ordine didattico
+assets/ -> immagini WebP del viewer + copertina
+thumbs/ -> miniature leggere della pagina della collana
+
+Scelte editoriali:
+- 001 "Introduzione: Il quattro" = prologo / inizio della collana, accanto alla copertina.
+- Livello 4 predisposto con Esponenziali e logaritmi e Goniometria e trigonometria.
+- 042, 043, 044 = Livello 5 / Analisi / Limiti.
+- 041 = storia narrativa trasversale.
+- I codici 001–044 non sono stati rinumerati.

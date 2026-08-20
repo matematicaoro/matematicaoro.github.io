@@ -1,0 +1,311 @@
+[
+  {
+    "id": "001",
+    "title": "Introduzione: Il quattro",
+    "pages": [
+      "assets/tavola001_ba07caa5bc.webp"
+    ]
+  },
+  {
+    "id": "002",
+    "title": "I numeri che contano",
+    "pages": [
+      "assets/tavola002_a7fb435046.webp"
+    ]
+  },
+  {
+    "id": "003",
+    "title": "Le potenze dei numeri interi — Tre non significa moltiplicare!",
+    "pages": [
+      "assets/tavola003_322e441ec2.webp"
+    ]
+  },
+  {
+    "id": "004",
+    "title": "Le potenze dei numeri interi — Il tranello dei segni",
+    "pages": [
+      "assets/tavola004_4b08a6033e.webp"
+    ]
+  },
+  {
+    "id": "005",
+    "title": "Le frazioni",
+    "pages": [
+      "assets/tavola005_e47646fc6e.webp"
+    ]
+  },
+  {
+    "id": "006",
+    "title": "Monomi — Il detective delle espressioni",
+    "pages": [
+      "assets/tavola006_7a632c6c2d.webp"
+    ]
+  },
+  {
+    "id": "007",
+    "title": "Monomi — Una passeggiata in paese",
+    "pages": [
+      "assets/tavola007_11a688b3fb.webp"
+    ]
+  },
+  {
+    "id": "008",
+    "title": "Il polinomio fantasma",
+    "pages": [
+      "assets/tavola008_61724e11bf.webp"
+    ]
+  },
+  {
+    "id": "009",
+    "title": "Black Box — La legge nascosta",
+    "pages": [
+      "assets/tavola009_62f164f802.webp"
+    ]
+  },
+  {
+    "id": "010",
+    "title": "La cassaforte algebrica — Il quadrato di un binomio",
+    "pages": [
+      "assets/tavola010_0e0e9e3c5b.webp"
+    ]
+  },
+  {
+    "id": "011",
+    "title": "Il quadrato mancante",
+    "pages": [
+      "assets/tavola011_59ca163d76.webp"
+    ]
+  },
+  {
+    "id": "012",
+    "title": "Divisione tra polinomi",
+    "pages": [
+      "assets/tavola012_398da585f3.webp"
+    ]
+  },
+  {
+    "id": "013",
+    "title": "Il resto impossibile",
+    "pages": [
+      "assets/tavola013_be70b36726.webp"
+    ]
+  },
+  {
+    "id": "014",
+    "title": "L’equilibrio perfetto",
+    "pages": [
+      "assets/tavola014_31fe82237f.webp"
+    ]
+  },
+  {
+    "id": "015",
+    "title": "Le equazioni lineari",
+    "pages": [
+      "assets/tavola015_2ad3c366fa.webp"
+    ]
+  },
+  {
+    "id": "016",
+    "title": "Gli indizi della congruenza",
+    "pages": [
+      "assets/tavola016_51e57bf6d8.webp"
+    ]
+  },
+  {
+    "id": "017",
+    "title": "A caccia di triangoli congruenti",
+    "pages": [
+      "assets/tavola017_a70c28529b.webp"
+    ]
+  },
+  {
+    "id": "018",
+    "title": "Il ponte proibito",
+    "pages": [
+      "assets/tavola018_6682f2327f.webp"
+    ]
+  },
+  {
+    "id": "019",
+    "title": "Il divieto nascosto",
+    "pages": [
+      "assets/tavola019_94f66800bc.webp"
+    ]
+  },
+  {
+    "id": "020",
+    "title": "Il laboratorio dei vincoli",
+    "pages": [
+      "assets/tavola020_2401e3166b.webp"
+    ]
+  },
+  {
+    "id": "021",
+    "title": "Il mondo dei radicali",
+    "pages": [
+      "assets/tavola021_ec1e2b8f02.webp"
+    ]
+  },
+  {
+    "id": "022",
+    "title": "Il laboratorio dei radicali",
+    "pages": [
+      "assets/tavola022_378fd4ea02.webp"
+    ]
+  },
+  {
+    "id": "023",
+    "title": "Fuori o dentro?",
+    "pages": [
+      "assets/tavola023_ff43757688.webp"
+    ]
+  },
+  {
+    "id": "024",
+    "title": "Le equazioni di secondo grado",
+    "pages": [
+      "assets/tavola024_8c9c4b10fa.webp"
+    ]
+  },
+  {
+    "id": "025",
+    "title": "La traiettoria perfetta",
+    "pages": [
+      "assets/tavola025_e91a6b7d6a.webp"
+    ]
+  },
+  {
+    "id": "026",
+    "title": "Quanto è ripida?",
+    "pages": [
+      "assets/tavola026_0368eb43c3.webp"
+    ]
+  },
+  {
+    "id": "027",
+    "title": "Due avventure, due rette",
+    "pages": [
+      "assets/tavola027_53c073ab0a.webp"
+    ]
+  },
+  {
+    "id": "028",
+    "title": "Spazio, tempo, coraggio",
+    "pages": [
+      "assets/tavola028_b1cbc1dc5f.webp"
+    ]
+  },
+  {
+    "id": "029",
+    "title": "Il sentiero delle proporzioni",
+    "pages": [
+      "assets/tavola029_a5b940e97c.webp"
+    ]
+  },
+  {
+    "id": "030",
+    "title": "Il tiro giusto",
+    "pages": [
+      "assets/tavola030_9594934a73.webp"
+    ]
+  },
+  {
+    "id": "031",
+    "title": "Il salto giusto",
+    "pages": [
+      "assets/tavola031_63ec4fb9eb.webp"
+    ]
+  },
+  {
+    "id": "032",
+    "title": "Il reticolo",
+    "pages": [
+      "assets/tavola032_3597dd6840.webp"
+    ]
+  },
+  {
+    "id": "033",
+    "title": "Lo schermo storto",
+    "pages": [
+      "assets/tavola033_c170cbbb97.webp"
+    ]
+  },
+  {
+    "id": "034",
+    "title": "Gli angoli alla circonferenza",
+    "pages": [
+      "assets/tavola034_042983fbe8.webp"
+    ]
+  },
+  {
+    "id": "035",
+    "title": "Il triangolo isoscele",
+    "pages": [
+      "assets/tavola035_012c0288bf.webp"
+    ]
+  },
+  {
+    "id": "036",
+    "title": "Il punto più vicino",
+    "pages": [
+      "assets/tavola036_44a898837d.webp"
+    ]
+  },
+  {
+    "id": "037",
+    "title": "La distanza che non si vede",
+    "pages": [
+      "assets/tavola037_9afcf85601.webp"
+    ]
+  },
+  {
+    "id": "038",
+    "title": "Due punti, un solo giardino",
+    "pages": [
+      "assets/tavola038a_912ff3e7bf.webp",
+      "assets/tavola038b_7a06b29dbd.webp"
+    ]
+  },
+  {
+    "id": "039",
+    "title": "La ruota delle coordinate",
+    "pages": [
+      "assets/tavola039_dd21e95f70.webp"
+    ]
+  },
+  {
+    "id": "040",
+    "title": "Quanto passa vicino?",
+    "pages": [
+      "assets/tavola040_bf1c24bc97.webp"
+    ]
+  },
+  {
+    "id": "041",
+    "title": "Quello che non si misura",
+    "pages": [
+      "assets/tavola041_2c711f49fa.webp"
+    ]
+  },
+  {
+    "id": "042",
+    "title": "Sempre più vicino",
+    "pages": [
+      "assets/tavola042_32cee0aae0.webp"
+    ]
+  },
+  {
+    "id": "043",
+    "title": "Da destra o da sinistra?",
+    "pages": [
+      "assets/tavola043_7435277fc6.webp"
+    ]
+  },
+  {
+    "id": "044",
+    "title": "Il punto che manca",
+    "pages": [
+      "assets/tavola044_7bd4580629.webp"
+    ]
+  }
+]
