@@ -136,7 +136,7 @@
     "id": "020",
     "title": "Il laboratorio dei vincoli",
     "pages": [
-      "assets/tavola020_2401e3166b.webp"
+      "assets/tavola020_74cea5d793.webp"
     ]
   },
   {
@@ -306,6 +306,79 @@
     "title": "Il punto che manca",
     "pages": [
       "assets/tavola044_7bd4580629.webp"
+    ]
+  },
+  {
+    "id": "045",
+    "title": "Il numero nascosto",
+    "pages": [
+      "assets/tavola045_db55781060.webp"
+    ]
+  },
+  {
+    "id": "046",
+    "title": "La parola data",
+    "pages": [
+      "assets/tavola046a_1d96c37e9f.webp",
+      "assets/tavola046b_9904c0c5c5.webp"
+    ]
+  },
+  {
+    "id": "047",
+    "title": "Il logaritmo nascosto",
+    "pages": [
+      "assets/tavola047_e7714b216f.webp"
+    ]
+  },
+  {
+    "id": "048",
+    "title": "Gli stessi numeri",
+    "pages": [
+      "assets/tavola048_b48a6aa0e2.webp"
+    ]
+  },
+  {
+    "id": "049",
+    "title": "Cinque minuti ancora",
+    "pages": [
+      "assets/tavola049_9b9a4dcac8.webp"
+    ]
+  },
+  {
+    "id": "050",
+    "title": "Dove sarà tra un quarto di giro?",
+    "pages": [
+      "assets/tavola050a_87bded15c1.webp",
+      "assets/tavola050b_4d11dfcf44.webp"
+    ]
+  },
+  {
+    "id": "051",
+    "title": "L'istante che sfugge",
+    "pages": [
+      "assets/tavola051_6586271dce.webp"
+    ]
+  },
+  {
+    "id": "052",
+    "title": "Non devi sapere già tutto",
+    "pages": [
+      "assets/tavola052_0e46333540.webp"
+    ]
+  },
+  {
+    "id": "053",
+    "title": "Non tutto in una volta",
+    "pages": [
+      "assets/tavola053_325db48fbf.webp"
+    ]
+  },
+  {
+    "id": "054",
+    "title": "Derivare senza fare danni",
+    "pages": [
+      "assets/tavola054a_cef7862d01.webp",
+      "assets/tavola054b_2efcc3b60c.webp"
     ]
   }
 ]
