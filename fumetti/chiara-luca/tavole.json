@@ -3,7 +3,7 @@
     "id": "001",
     "title": "Introduzione: Il quattro",
     "pages": [
-      "assets/tavola001_e3515c048b.webp"
+      "assets/tavola001_ba07caa5bc.webp"
     ]
   },
   {
@@ -374,14 +374,6 @@
     ]
   },
   {
-    "id": "055",
-    "title": "NON MOLLARE!",
-    "subtitle": "Ogni caduta può essere l'inizio di un nuovo traguardo.",
-    "pages": [
-      "assets/tavola055_48ead3e448.webp"
-    ]
-  },
-  {
     "id": "054",
     "title": "Derivare senza fare danni",
     "pages": [
@@ -390,10 +382,18 @@
     ]
   },
   {
+    "id": "055",
+    "title": "NON MOLLARE!",
+    "subtitle": "Ogni caduta può essere l'inizio di un nuovo traguardo.",
+    "pages": [
+      "assets/tavola055_48ead3e448.webp"
+    ]
+  },
+  {
     "id": "056",
     "title": "Il sentiero dei segni",
     "pages": [
-      "assets/tavola056_b173c26d93.webp"
+      "assets/tavola056_95237cdc53.webp"
     ]
   }
 ]
