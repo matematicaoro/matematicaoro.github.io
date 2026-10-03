@@ -199,7 +199,7 @@
     "id": "029",
     "title": "Il sentiero delle proporzioni",
     "pages": [
-      "assets/tavola029_88b52863b7.webp"
+      "assets/tavola029_a5b940e97c.webp"
     ]
   },
   {
@@ -356,7 +356,7 @@
     "id": "051",
     "title": "L'istante che sfugge",
     "pages": [
-      "assets/tavola051_5156d93e37.webp"
+      "assets/tavola051_6586271dce.webp"
     ]
   },
   {
@@ -395,6 +395,14 @@
     "subtitle": "Quando un prodotto sembra complicato, ma ogni fattore indica la strada.",
     "pages": [
       "assets/tavola056_2e5cbdb52f.webp"
+    ]
+  },
+  {
+    "id": "058",
+    "title": "Il posto vuoto",
+    "subtitle": "A volte un piccolo gesto può fare una grande differenza.",
+    "pages": [
+      "assets/tavola058_10e72c8c38.webp"
     ]
   }
 ]
