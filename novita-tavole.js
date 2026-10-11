@@ -14,7 +14,7 @@
       dated.slice(0,3).forEach(x=>{
         const a=document.createElement('a');
         a.href=viewer+'#'+encodeURIComponent(x.id);
-        a.textContent=x.id+' · '+x.title+' →';
+        a.textContent=(x.title||('Tavola '+x.id)).replace(/^Matematica\s*Oro\s*(?:[-–—|·:]\s*)?/i,'').replace(/\s*[-–—|·:]\s*Matematica\s*Oro$/i,'').trim()+' →';
         a.title='Pubblicata il '+new Date(x.published_at.slice(0,10)+'T12:00:00').toLocaleDateString('it-IT');
         if(target.classList.contains('hero-actions'))a.className='btn btn-light';
         target.appendChild(a);

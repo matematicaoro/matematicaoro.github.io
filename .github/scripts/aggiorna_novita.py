@@ -15,7 +15,11 @@ def title_of(path):
     s=path.read_text(encoding='utf-8',errors='replace')[:40000]
     m=re.search(r'<title[^>]*>(.*?)</title>',s,re.I|re.S)
     if not m:return path.parent.name.replace('_',' ').replace('-',' ').capitalize()
-    return re.sub(r'\s+',' ',re.sub('<[^>]+>','',m.group(1))).strip()[:110]
+    title=re.sub(r'\s+',' ',re.sub('<[^>]+>','',m.group(1))).strip()
+    # Remove site branding only at the beginning or end of the page title.
+    title=re.sub(r'^(?:Matematica\s*Oro)\s*(?:[-–—|·:]\s*)?', '', title, flags=re.I)
+    title=re.sub(r'\s*(?:[-–—|·:]\s*)(?:Matematica\s*Oro)$', '', title, flags=re.I)
+    return (title.strip() or path.parent.name.replace('_',' ').capitalize())[:110]
 result={}
 for sec in sections:
     previous={x['url']:x for x in old.get(sec,[]) if 'url' in x}
