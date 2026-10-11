@@ -12,14 +12,30 @@ def first_date(path):
     dates=[x.strip()[:10] for x in r.stdout.splitlines() if x.strip()]
     return min(dates) if dates else None
 def title_of(path):
-    s=path.read_text(encoding='utf-8',errors='replace')[:40000]
-    m=re.search(r'<title[^>]*>(.*?)</title>',s,re.I|re.S)
-    if not m:return path.parent.name.replace('_',' ').replace('-',' ').capitalize()
-    title=re.sub(r'\s+',' ',re.sub('<[^>]+>','',m.group(1))).strip()
-    # Remove site branding only at the beginning or end of the page title.
-    title=re.sub(r'^(?:Matematica\s*Oro)\s*(?:[-–—|·:]\s*)?', '', title, flags=re.I)
-    title=re.sub(r'\s*(?:[-–—|·:]\s*)(?:Matematica\s*Oro)$', '', title, flags=re.I)
-    return (title.strip() or path.parent.name.replace('_',' ').capitalize())[:110]
+    from html import unescape
+    s=path.read_text(encoding='utf-8',errors='replace')[:120000]
+    def clean(value):
+        value=re.sub(r'<[^>]*>', ' ', value)
+        value=unescape(re.sub(r'\s+', ' ', value)).strip()
+        value=re.sub(r'^(?:Matematica\s*Oro)\s*(?:[-–—|·:]\s*)?', '', value, flags=re.I)
+        value=re.sub(r'\s*(?:[-–—|·:]\s*)(?:Matematica\s*Oro)$', '', value, flags=re.I)
+        return value.strip(' -–—|·:')
+    # Prefer the visible page heading: many exercise <title> tags are file codes.
+    for pattern in (r'<h1\b[^>]*>(.*?)</h1\s*>', r'<h2\b[^>]*>(.*?)</h2\s*>', r'<title\b[^>]*>(.*?)</title\s*>'):
+        for m in re.finditer(pattern,s,re.I|re.S):
+            title=clean(m.group(1))
+            if title and not re.fullmatch(r'(?:Matematica\s*Oro|Esercizi|Lezioni|Schemi|Teoria)',title,re.I):
+                # Reject generic HTML headings and short technical codes.
+                if not re.fullmatch(r'(?:ese[_ -]?)?(?:scomp|diseq|eq|fraz)[_\s-]*[0-9ivx_-]*',title,re.I):
+                    return title[:110]
+    # Fallback: expand common abbreviations rather than displaying file codes.
+    slug=path.parent.name if path.name.lower()=='index.html' else path.stem
+    slug=re.sub(r'^(?:ese|esercizi)[_-]+','',slug,flags=re.I)
+    words={'scomp':'Scomposizione di polinomi','diseq':'Disequazioni','eq':'Equazioni','fraz':'Frazioni','mcd':'MCD','mcm':'mcm','polinomi':'polinomi','algebriche':'algebriche','grado':'grado','fratte':'fratte','ripasso':'ripasso'}
+    tokens=re.split(r'[_\s-]+',slug)
+    result=' '.join(words.get(t.lower(),t) for t in tokens)
+    return result.strip().capitalize()[:110] or 'Scheda di esercizi'
+
 result={}
 for sec in sections:
     previous={x['url']:x for x in old.get(sec,[]) if 'url' in x}
