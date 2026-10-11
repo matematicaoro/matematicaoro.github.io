@@ -801,6 +801,41 @@ html{
 }
 </style>
 
+
+<style id="mo-chiara-luca-home-2026">
+/* Presentazione editoriale compatta della collana */
+.section-comics{padding:26px 28px 30px}
+.section-comics .section-header{margin-bottom:14px}
+.section-comics .fumetti-intro{margin:0 0 18px;max-width:none}
+.section-comics .collana-card-media{display:grid;grid-template-columns:minmax(190px,280px) minmax(0,1fr);align-items:stretch;overflow:hidden;padding:0}
+.section-comics .collana-card-media .collana-thumb{height:auto;min-height:290px;max-height:350px;aspect-ratio:auto!important;padding:12px;background:#f7f2e9;border-bottom:0;border-right:1px solid #dfd0c7}
+.section-comics .collana-card-media .collana-thumb img{height:100%;width:100%;object-fit:contain!important}
+.section-comics .collana-card-content{padding:24px 28px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:10px}
+.section-comics .collana-card-content h3{font-size:clamp(1.3rem,2.2vw,1.75rem);line-height:1.2;margin:0}
+.section-comics .collana-card-content p{font-size:.97rem;margin:0;max-width:550px}
+.section-comics .collana-meta{margin:2px 0 4px}
+.mo-news-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff8e9;border:1px solid #e8c77c;border-radius:12px;padding:13px 17px;margin-bottom:18px}
+.mo-news-banner strong{color:#80551a;font-size:1rem}
+.mo-news-banner p{margin:3px 0 0;color:#6e5a3d;font-size:.88rem}
+.mo-news-banner a{flex-shrink:0;text-decoration:none;background:#a87536;color:white;border-radius:22px;padding:8px 15px;font-weight:700;font-size:.82rem}
+.mo-news-banner a:hover{background:#865b2a}
+@media(max-width:700px){
+ .section-comics{padding:22px 16px}
+ .section-comics .collana-card-media{grid-template-columns:1fr}
+ .section-comics .collana-card-media .collana-thumb{height:270px;min-height:0;max-height:none;border-right:0;border-bottom:1px solid #dfd0c7}
+ .section-comics .collana-card-content{padding:19px;gap:10px}
+ .mo-news-banner{align-items:flex-start;flex-direction:column;gap:10px}
+}
+@media(min-width:701px) and (max-width:850px){.section-comics .collana-card-media{grid-template-columns:220px minmax(0,1fr)}.section-comics .collana-card-content{padding:18px}}
+</style>
+<style id="mo-news-links">
+.mo-news-links{margin-top:14px;padding:14px 17px;border:1px solid #e3d5bd;border-radius:12px;background:#fffaf1}
+.mo-news-links strong{display:block;color:#76502b;margin-bottom:8px;font-size:.91rem}
+.mo-news-links .news-items{display:flex;gap:8px;flex-wrap:wrap}
+.mo-news-links a{display:inline-block;color:#174a7b;background:#fff;border:1px solid #d9e3ef;border-radius:8px;padding:7px 11px;text-decoration:none;font-size:.85rem;font-weight:650}
+.mo-news-links a:hover{background:#eaf2fb}
+.mo-news-links .news-empty{color:#687386;font-size:.86rem}
+</style>
 </head>
 <body>
 
@@ -839,18 +874,24 @@ html{
       Storie illustrate in cui matematica, emozioni e relazioni accompagnano l'apprendimento.
     </p>
 
+    <aside class="mo-news-links" aria-label="Nuove tavole">
+      <strong>✨ Novità · Nuove tavole di Chiara e Luca</strong>
+      <div class="news-items" data-mo-latest-comics data-catalog="fumetti/chiara-luca/tavole.json" data-viewer="fumetti/chiara-luca/viewer.html">
+        <a href="fumetti/chiara-luca/viewer.html#058">058 · Il posto vuoto →</a>
+        <a href="fumetti/chiara-luca/viewer.html#056">056 · Il sentiero dei segni →</a>
+        <a href="fumetti/chiara-luca/viewer.html#055">055 · Non mollare! →</a>
+      </div>
+    </aside>
+
     <div class="collane-grid">
       <article class="collana-card collana-card-media">
         <div class="collana-thumb">
           <img src="fumetti/chiara-luca/copertina.png" alt="Chiara e Luca — Compagni di banco">
         </div>
         <div class="collana-card-content">
-          <div class="collana-kicker">Collana</div>
+          <div class="collana-kicker">Le storie di Chiara e Luca</div>
           <h3>Chiara e Luca — Compagni di banco</h3>
-          <p>Matematica, scuola, amicizia e vita quotidiana.</p>
-          <div class="collana-meta">
-            <span>Scuola superiore</span><span>Livelli 1–5</span><span>Matematica narrativa</span>
-          </div>
+          <p>Tra lezioni, sfide e momenti di vita quotidiana, Chiara e Luca scoprono la matematica attraverso storie di amicizia, curiosità e crescita.</p>
           <a class="btn-inizia" href="fumetti/chiara-luca/">▶ Esplora la collana</a>
         </div>
       </article>
@@ -869,7 +910,8 @@ html{
     <p style="margin:0 0 6px">
       <a class="btn-inizia" href="lezioni/">Tutte le lezioni →</a>
     </p>
-  </section>
+      <div class="mo-news-links" aria-label="Novità lezioni"><strong>✨ Novità</strong><div class="news-items" data-mo-section="lezioni"><span class="news-empty">Nessuna novità registrata.</span></div></div>
+</section>
 <!-- TEORIA -->
   <section id="teoria" class="section-featured">
     <div class="section-header">
@@ -880,7 +922,8 @@ html{
     <p style="margin:0 0 6px">
       <span class="btn-inizia mo-disabled-button" aria-disabled="true">Tutta la teoria →</span>
     </p>
-  </section>
+      <div class="mo-news-links"><strong>✨ Novità</strong><div class="news-items" data-mo-section="teoria"><span class="news-empty">Nessuna novità registrata.</span></div></div>
+</section>
 <!-- ESERCIZI -->
   <section id="esercizi" class="section-featured">
     <div class="section-header">
@@ -891,7 +934,8 @@ html{
     <p style="margin:0 0 6px">
       <a class="btn-inizia" href="esercizi/">Tutti gli esercizi →</a>
     </p>
-  </section>
+      <div class="mo-news-links" aria-label="Novità esercizi"><strong>✨ Novità</strong><div class="news-items" data-mo-section="esercizi"><span class="news-empty">Nessuna novità registrata.</span></div></div>
+</section>
 <!-- SCHEMI -->
   <section id="schemi" class="section-featured">
     <div class="section-header">
@@ -902,7 +946,8 @@ html{
     <p style="margin:0 0 6px">
       <span class="btn-inizia mo-disabled-button" aria-disabled="true">Tutti gli schemi →</span>
     </p>
-  </section>
+      <div class="mo-news-links"><strong>✨ Novità</strong><div class="news-items" data-mo-section="schemi"><span class="news-empty">Nessuna novità registrata.</span></div></div>
+</section>
 
 </main>
 
@@ -915,6 +960,8 @@ html{
   </div>
 </footer>
 
+<script defer src="novita-tavole.js"></script>
+<script defer src="novita-sezioni.js"></script>
 </body>
 </html>
 
