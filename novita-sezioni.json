@@ -1,1 +1,148 @@
-{"lezioni":[],"esercizi":[],"teoria":[],"schemi":[]}
+{
+  "lezioni": [
+    {
+      "title": "I Limiti - MatematicaOro",
+      "url": "lezioni/limiti/index.html",
+      "published_at": "2026-09-05"
+    },
+    {
+      "title": "La Continuità delle Funzioni - MatematicaOro",
+      "url": "lezioni/continuita/index.html",
+      "published_at": "2026-09-05"
+    },
+    {
+      "title": "Le Derivate - MatematicaOro",
+      "url": "lezioni/derivata/index.html",
+      "published_at": "2026-09-04"
+    },
+    {
+      "title": "Talete e le Similitudini - MatematicaOro",
+      "url": "lezioni/talete-similitudini/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "La Sezione Aurea - MatematicaOro",
+      "url": "lezioni/sezione-aurea/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "La Scomposizione dei Polinomi - MatematicaOro",
+      "url": "lezioni/scomposizione-polinomi/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "Rette Parallele e Perpendicolari - MatematicaOro",
+      "url": "lezioni/rette-parallele-perpendicolari/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "I Quadrilateri nella Geometria Euclidea - MatematicaOro",
+      "url": "lezioni/quadrilateri/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "I Polinomi - MatematicaOro",
+      "url": "lezioni/polinomi/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "I Monomi - MatematicaOro",
+      "url": "lezioni/monomi/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "La Goniometria - MatematicaOro",
+      "url": "lezioni/goniometria/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "Le Frazioni Algebriche - MatematicaOro",
+      "url": "lezioni/frazioni-algebriche/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "Le Equazioni Lineari - MatematicaOro",
+      "url": "lezioni/equazioni-lineari/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "Disequazioni di Secondo Grado - MatematicaOro",
+      "url": "lezioni/disequazioni-secondo-grado/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "Le Coordinate Sferiche - MatematicaOro",
+      "url": "lezioni/coordinate-sferiche/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "Le Sezioni Coniche – MatematicaOro",
+      "url": "lezioni/coniche/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "I Triangoli: Congruenza e Proprietà - MatematicaOro",
+      "url": "lezioni/congruenza-triangoli/index.html",
+      "published_at": "2026-08-20"
+    },
+    {
+      "title": "La Circonferenza nella Geometria Analitica - MatematicaOro",
+      "url": "lezioni/circonferenza/index.html",
+      "published_at": "2026-08-20"
+    }
+  ],
+  "esercizi": [
+    {
+      "title": "MatematicaOro",
+      "url": "esercizi/MCD_mcm_polinomi/index.html",
+      "published_at": "2026-09-23"
+    },
+    {
+      "title": "MatematicaOro",
+      "url": "esercizi/scomp_1/index.html",
+      "published_at": "2026-09-13"
+    },
+    {
+      "title": "MatematicaOro",
+      "url": "esercizi/fraz_algebriche_3/index.html",
+      "published_at": "2026-09-11"
+    },
+    {
+      "title": "MatematicaOro",
+      "url": "esercizi/fraz_algebriche_2/index.html",
+      "published_at": "2026-09-10"
+    },
+    {
+      "title": "MatematicaOro",
+      "url": "esercizi/fraz_algebriche_1/index.html",
+      "published_at": "2026-09-10"
+    },
+    {
+      "title": "MatematicaOro",
+      "url": "esercizi/scomp_ripasso/index.html",
+      "published_at": "2026-09-07"
+    },
+    {
+      "title": "MatematicaOro",
+      "url": "esercizi/eq_fratte_1/index.html",
+      "published_at": "2026-09-07"
+    },
+    {
+      "title": "MatematicaOro",
+      "url": "esercizi/diseq_IIgrado_3/index.html",
+      "published_at": "2026-09-06"
+    },
+    {
+      "title": "MatematicaOro",
+      "url": "esercizi/diseq_IIgrado_2/index.html",
+      "published_at": "2026-09-06"
+    },
+    {
+      "title": "MatematicaOro",
+      "url": "esercizi/diseq_IIgrado_1/index.html",
+      "published_at": "2026-09-05"
+    }
+  ],
+  "teoria": [],
+  "schemi": []
+}
