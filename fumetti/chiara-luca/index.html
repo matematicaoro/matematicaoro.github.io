@@ -45,14 +45,22 @@ h1{font-family:Georgia,"Times New Roman",serif;color:var(--blue2);font-size:2.35
 .narrative h2{font-family:Georgia,serif;color:var(--blue2);margin:0 0 6px}.narrative p{color:var(--muted);margin:0 0 12px}
 .footer{margin-top:42px;padding:22px;text-align:center;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line)}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.hero .cover-wrap{max-width:330px;margin:auto}h1{font-size:2rem}.nav{justify-content:center}.brand{width:100%;text-align:center;margin:0}}
+.start-explanation{margin:16px 0 0!important;color:var(--text)!important;max-width:620px}
+.start-explanation strong{color:var(--blue2)}
+.scroll-invitation{display:inline-flex;align-items:center;margin-top:22px;color:var(--blue);font-weight:700;text-decoration:none;font-size:.93rem;line-height:1.4}
+.scroll-invitation:hover{text-decoration:underline}
+@media(max-width:760px){.scroll-invitation{margin-top:18px}}
+/* Compensa l’altezza reale della testata sticky anche su mobile. */
+:root{--mo-header-height:64px}
+#novita,#storie,#livelli{scroll-margin-top:calc(var(--mo-header-height) + 16px)}
 </style>
 </head>
 <body>
 <header><nav class="nav">
 <a class="brand" href="../../index.html"><span class="m">Matematica</span><span class="o">Oro</span></a>
 <a href="../../index.html">Home</a>
-<a href="#livelli">Livelli</a>
 <a href="#storie">Storie</a>
+<a href="#livelli">Livelli</a>
 </nav></header>
 <main>
 <section class="hero">
@@ -60,12 +68,12 @@ h1{font-family:Georgia,"Times New Roman",serif;color:var(--blue2);font-size:2.35
   <div>
     <div class="kicker">Collana</div>
     <h1>Chiara e Luca</h1>
-    <p>Matematica, scuola, amicizia e vita quotidiana. Le tavole sono organizzate per livello e per argomento; i numeri 001–044 restano semplicemente i codici editoriali delle storie.</p>
+    <p>Matematica, scuola, amicizia e vita quotidiana. Le tavole sono organizzate per livello e per argomento; i numeri delle tavole sono codici editoriali, non indicano necessariamente l’ordine di lettura.</p>
+    <p class="start-explanation"><strong>Da dove cominciare?</strong> Parti da <em>Il quattro</em>, il prologo che racconta l'origine del rapporto tra Chiara e Luca.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="viewer.html#001">Inizia la storia</a>
-      <a class="btn btn-light" href="#livelli">Esplora i livelli</a>
+      <a class="btn btn-primary" href="viewer.html#001">Inizia la storia →</a>
     </div>
-    <div class="prologue"><strong>Prima di iniziare — Introduzione: Il quattro.</strong> È il prologo della collana e racconta l'origine del rapporto tra Chiara e Luca. <a href="viewer.html#001">Leggi il prologo →</a></div>
+    <a class="scroll-invitation" href="#novita" aria-label="Scorri verso il basso per scoprire le tavole">↓ Scorri verso il basso per scoprire e leggere le tavole</a>
   </div>
 </section>
 
@@ -504,4 +512,20 @@ h1{font-family:Georgia,"Times New Roman",serif;color:var(--blue2);font-size:2.35
 <div class="footer">Autori: M. Prandelli · I. Castellari &nbsp; · &nbsp; Distribuito con licenza Creative Commons BY-NC-ND 4.0 &nbsp; · &nbsp; © 2026 MatematicaOro</div>
 </main>
 <script defer src="../../novita-tavole.js"></script>
+<script>
+(function(){
+  const header=document.querySelector('body > header');
+  if(!header)return;
+  const update=()=>document.documentElement.style.setProperty('--mo-header-height',header.getBoundingClientRect().height+'px');
+  update();
+  window.addEventListener('resize',update,{passive:true});
+  if('ResizeObserver' in window)new ResizeObserver(update).observe(header);
+  window.addEventListener('load',()=>{
+    update();
+    if(['#novita','#storie','#livelli'].includes(location.hash)){
+      document.querySelector(location.hash)?.scrollIntoView();
+    }
+  });
+})();
+</script>
 </body></html>
