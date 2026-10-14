@@ -836,6 +836,37 @@ html{
 .mo-news-links a:hover{background:#eaf2fb}
 .mo-news-links .news-empty{color:#687386;font-size:.86rem}
 </style>
+<style id="mo-home-collana-in-evidenza">
+/* La copertina è il fulcro della sezione: grande, intera e cliccabile. */
+@media (min-width: 901px) {
+  .section-comics .collana-card-media {
+    grid-template-columns: minmax(310px, 42%) minmax(0, 1fr);
+  }
+  .section-comics .collana-card-media .collana-thumb {
+    height: 510px;
+    min-height: 510px;
+    max-height: none;
+    padding: 14px;
+  }
+  .section-comics .collana-card-content { padding: 28px 34px; }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  .section-comics .collana-card-media { grid-template-columns: minmax(245px, 40%) minmax(0, 1fr); }
+  .section-comics .collana-card-media .collana-thumb { height: 430px; min-height: 430px; max-height: none; }
+}
+@media (max-width: 700px) {
+  .section-comics .collana-card-media .collana-thumb {
+    height: 390px;
+    min-height: 0;
+    max-height: none;
+    padding: 12px;
+  }
+}
+.section-comics .mo-cover-link { display:flex; align-items:center; justify-content:center; text-decoration:none; cursor:pointer; }
+.section-comics .mo-cover-link img { object-fit:contain !important; }
+.section-comics .mo-cover-link:focus-visible { outline:3px solid #c59a34; outline-offset:-4px; }
+.section-comics .mo-cover-link:hover img { filter:brightness(1.035); }
+</style>
 </head>
 <body>
 
@@ -874,20 +905,11 @@ html{
       Storie illustrate in cui matematica, emozioni e relazioni accompagnano l'apprendimento.
     </p>
 
-    <aside class="mo-news-links" aria-label="Nuove tavole">
-      <strong>✨ Novità · Nuove tavole di Chiara e Luca</strong>
-      <div class="news-items" data-mo-latest-comics data-catalog="fumetti/chiara-luca/tavole.json" data-viewer="fumetti/chiara-luca/viewer.html">
-        <a href="fumetti/chiara-luca/viewer.html#058">058 · Il posto vuoto →</a>
-        <a href="fumetti/chiara-luca/viewer.html#056">056 · Il sentiero dei segni →</a>
-        <a href="fumetti/chiara-luca/viewer.html#055">055 · Non mollare! →</a>
-      </div>
-    </aside>
-
-    <div class="collane-grid">
+<div class="collane-grid">
       <article class="collana-card collana-card-media">
-        <div class="collana-thumb">
-          <img src="fumetti/chiara-luca/copertina.png" alt="Chiara e Luca — Compagni di banco">
-        </div>
+        <a class="collana-thumb mo-cover-link" href="fumetti/chiara-luca/" aria-label="Apri la collana Chiara e Luca">
+          <img src="fumetti/chiara-luca/copertina.png" alt="Copertina della collana Chiara e Luca">
+        </a>
         <div class="collana-card-content">
           <div class="collana-kicker">Le storie di Chiara e Luca</div>
           <h3>Chiara e Luca — Compagni di banco</h3>
@@ -910,7 +932,7 @@ html{
     <p style="margin:0 0 6px">
       <a class="btn-inizia" href="lezioni/">Tutte le lezioni →</a>
     </p>
-      <div class="mo-news-links" aria-label="Novità lezioni"><strong>✨ Novità</strong><div class="news-items" data-mo-section="lezioni"><span class="news-empty">Nessuna novità registrata.</span></div></div>
+      <div class="mo-news-links" aria-label="Novità lezioni"><strong>✨ Novità</strong><span class="news-empty">I nuovi materiali saranno segnalati qui con un collegamento diretto.</span></div>
 </section>
 <!-- TEORIA -->
   <section id="teoria" class="section-featured">
@@ -922,7 +944,7 @@ html{
     <p style="margin:0 0 6px">
       <span class="btn-inizia mo-disabled-button" aria-disabled="true">Tutta la teoria →</span>
     </p>
-      <div class="mo-news-links"><strong>✨ Novità</strong><div class="news-items" data-mo-section="teoria"><span class="news-empty">Nessuna novità registrata.</span></div></div>
+      <div class="mo-news-links"><strong>✨ Novità</strong><span class="news-empty">Nessuna novità pubblicata.</span></div>
 </section>
 <!-- ESERCIZI -->
   <section id="esercizi" class="section-featured">
@@ -934,7 +956,7 @@ html{
     <p style="margin:0 0 6px">
       <a class="btn-inizia" href="esercizi/">Tutti gli esercizi →</a>
     </p>
-      <div class="mo-news-links" aria-label="Novità esercizi"><strong>✨ Novità</strong><div class="news-items" data-mo-section="esercizi"><span class="news-empty">Nessuna novità registrata.</span></div></div>
+      <div class="mo-news-links" aria-label="Novità esercizi"><strong>✨ Novità</strong><span class="news-empty">I nuovi materiali saranno segnalati qui con un collegamento diretto.</span></div>
 </section>
 <!-- SCHEMI -->
   <section id="schemi" class="section-featured">
@@ -946,7 +968,7 @@ html{
     <p style="margin:0 0 6px">
       <span class="btn-inizia mo-disabled-button" aria-disabled="true">Tutti gli schemi →</span>
     </p>
-      <div class="mo-news-links"><strong>✨ Novità</strong><div class="news-items" data-mo-section="schemi"><span class="news-empty">Nessuna novità registrata.</span></div></div>
+      <div class="mo-news-links"><strong>✨ Novità</strong><span class="news-empty">Nessuna novità pubblicata.</span></div>
 </section>
 
 </main>
@@ -961,7 +983,6 @@ html{
 </footer>
 
 <script defer src="novita-tavole.js"></script>
-<script defer src="novita-sezioni.js"></script>
 </body>
 </html>
 
