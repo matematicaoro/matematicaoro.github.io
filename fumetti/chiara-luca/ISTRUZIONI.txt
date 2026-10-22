@@ -1,0 +1,1 @@
+Caricare il contenuto della cartella chiara-luca in fumetti/chiara-luca del repository. La tavola 050 sostituisce le vecchie 050a e 050b. Dopo verifica, eliminare da GitHub i due vecchi WEBP tavola050a_87bded15c1.webp e tavola050b_4d11dfcf44.webp, non inclusi nello ZIP. Non eliminare altri file.
