@@ -932,7 +932,7 @@ html{
     <p style="margin:0 0 6px">
       <a class="btn-inizia" href="lezioni/">Tutte le lezioni →</a>
     </p>
-      <div class="mo-news-links" aria-label="Novità lezioni"><strong>✨ Novità</strong><span class="news-empty">I nuovi materiali saranno segnalati qui con un collegamento diretto.</span></div>
+      <div class="mo-news-links" aria-label="Novità lezioni" data-mo-section="lezioni"><strong>✨ Novità</strong><span class="news-empty">I nuovi materiali saranno segnalati qui con un collegamento diretto.</span></div>
 </section>
 <!-- TEORIA -->
   <section id="teoria" class="section-featured">
@@ -944,7 +944,7 @@ html{
     <p style="margin:0 0 6px">
       <span class="btn-inizia mo-disabled-button" aria-disabled="true">Tutta la teoria →</span>
     </p>
-      <div class="mo-news-links"><strong>✨ Novità</strong><span class="news-empty">Nessuna novità pubblicata.</span></div>
+      <div class="mo-news-links" data-mo-section="teoria"><strong>✨ Novità</strong><span class="news-empty">Nessuna novità pubblicata.</span></div>
 </section>
 <!-- ESERCIZI -->
   <section id="esercizi" class="section-featured">
@@ -956,7 +956,7 @@ html{
     <p style="margin:0 0 6px">
       <a class="btn-inizia" href="esercizi/">Tutti gli esercizi →</a>
     </p>
-      <div class="mo-news-links" aria-label="Novità esercizi"><strong>✨ Novità</strong><span class="news-empty">I nuovi materiali saranno segnalati qui con un collegamento diretto.</span></div>
+      <div class="mo-news-links" aria-label="Novità esercizi" data-mo-section="esercizi"><strong>✨ Novità</strong><span class="news-empty">I nuovi materiali saranno segnalati qui con un collegamento diretto.</span></div>
 </section>
 <!-- SCHEMI -->
   <section id="schemi" class="section-featured">
@@ -968,7 +968,7 @@ html{
     <p style="margin:0 0 6px">
       <span class="btn-inizia mo-disabled-button" aria-disabled="true">Tutti gli schemi →</span>
     </p>
-      <div class="mo-news-links"><strong>✨ Novità</strong><span class="news-empty">Nessuna novità pubblicata.</span></div>
+      <div class="mo-news-links" data-mo-section="schemi"><strong>✨ Novità</strong><span class="news-empty">Nessuna novità pubblicata.</span></div>
 </section>
 
 </main>
@@ -983,6 +983,7 @@ html{
 </footer>
 
 <script defer src="novita-tavole.js"></script>
+<script defer src="novita-sezioni.js"></script>
 </body>
 </html>
 
