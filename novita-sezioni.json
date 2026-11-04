@@ -1,6 +1,11 @@
 {
   "lezioni": [
     {
+      "title": "Tavole di verità e discorso pubblico",
+      "url": "lezioni/tavole_verita_discorso_pubblico/index.html",
+      "published_at": "2026-11-03"
+    },
+    {
       "title": "I Limiti",
       "url": "lezioni/limiti/index.html",
       "published_at": "2026-09-05"
