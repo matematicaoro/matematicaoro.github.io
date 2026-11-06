@@ -441,7 +441,7 @@ body.lab-present .card img{max-width:100%;max-height:48vh;object-fit:contain}
   main header .logo-text[style*="var(--gold)"] { color:#D4A600 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
 }
 </style>
-</head>
+<style id="lab-curves-css">#labShapesMenu{max-width:min(92vw,430px);max-height:50vh;overflow-y:auto;flex-wrap:wrap}#labShapesMenu button{min-height:40px}@media(max-width:600px){#labShapesMenu{max-width:94vw}}</style></head>
 <body>
 <div id="printBranding" aria-hidden="true">
  <div class="print-side">MatematicaOro · matematicaoro.github.io　　MatematicaOro · matematicaoro.github.io　　MatematicaOro · matematicaoro.github.io</div>
@@ -1511,7 +1511,7 @@ LIMITE DI f(x) PER x → x₀
  <button type="button" data-tool="marker" aria-pressed="false" title="Evidenzia disegnando">▰ Evidenzia</button>
  <button type="button" data-tool="eraser" aria-pressed="false" title="Cancella un tratto">⌫ Gomma</button>
  <button type="button" id="labShapes" aria-expanded="false" aria-controls="labShapesMenu">◯ Forme</button>
- <div id="labShapesMenu" hidden><button type="button" data-shape="line">Linea</button><button type="button" data-shape="circle">Circonferenza</button><button type="button" data-shape="ellipse">Ellisse</button><button type="button" data-shape="rect">Rettangolo</button><button type="button" data-shape="arrow">Freccia</button><button type="button" data-shape="auto">Riconosci</button></div>
+ <div id="labShapesMenu" hidden><button type="button" data-shape="line">Linea</button><button type="button" data-shape="circle">Circonferenza</button><button type="button" data-shape="ellipse">Ellisse</button><button type="button" data-shape="rect">Rettangolo</button><button type="button" data-shape="arrow">Freccia</button><button type="button" data-shape="parabola">Parabola</button><button type="button" data-shape="exponential">Esponenziale</button><button type="button" data-shape="logarithm">Logaritmo</button><button type="button" data-shape="hyperbola">Iperbole</button><button type="button" data-shape="auto">Riconosci</button></div>
  <span id="labDrawOptions" hidden><input id="labColor" type="color" value="#2563eb" aria-label="Colore"><select id="labThickness" aria-label="Spessore"><option value="2">Fine</option><option value="4" selected>Medio</option><option value="7">Spesso</option></select></span>
  <button type="button" id="labPresentation" aria-pressed="false">▣ Presenta</button>
  <button type="button" id="labExpand" aria-expanded="false" aria-controls="labExtra">⋯ Altro</button>
@@ -1542,6 +1542,96 @@ const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const bounds=pts=>({minX:Math.min(...pts.map(p=>p.x)),maxX:Math.max(...pts.map(p=>p.x)),minY:Math.min(...pts.map(p=>p.y)),maxY:Math.max(...pts.map(p=>p.y))});
 function point(svg,e){const r=svg.getBoundingClientRect();return {x:Math.max(0,Math.min(1000,(e.clientX-r.left)/r.width*1000)),y:Math.max(0,Math.min(1000,(e.clientY-r.top)/r.height*1000))}}
 function smooth(pts){if(pts.length<2)return `M ${pts[0].x} ${pts[0].y} l .01 0`;return 'M '+pts.map(p=>`${p.x} ${p.y}`).join(' L ')}
+// Curve matematiche: fitting nel piano normalizzato dello schermo.
+// La forma è un tracciato SVG, non modifica i grafici preesistenti.
+function solve3(A,B){
+ const a=A.map((r,i)=>[...r,B[i]]);
+ for(let k=0;k<3;k++){
+  let q=k;for(let j=k+1;j<3;j++)if(Math.abs(a[j][k])>Math.abs(a[q][k]))q=j;
+  if(Math.abs(a[q][k])<1e-9){a[k][k]+=1e-8;q=k;}
+  [a[k],a[q]]=[a[q],a[k]];
+  const d=a[k][k];for(let j=k;j<4;j++)a[k][j]/=d;
+  for(let i=0;i<3;i++)if(i!==k){const t=a[i][k];for(let j=k;j<4;j++)a[i][j]-=t*a[k][j]}
+ }
+ return a.map(r=>r[3]);
+}
+function regress3(rows){
+ const A=Array.from({length:3},()=>[0,0,0]),B=[0,0,0];
+ for(const [features,y] of rows)for(let i=0;i<3;i++){
+  B[i]+=features[i]*y;
+  for(let j=0;j<3;j++)A[i][j]+=features[i]*features[j];
+ }
+ return solve3(A,B);
+}
+function fitCurve(pts,kind){
+ if(pts.length<5)return null;
+ const b=bounds(pts),w=b.maxX-b.minX,h=b.maxY-b.minY;
+ if(w<12||h<12)return null;
+ const xnorm=p=>(p.x-b.minX)/w,ynorm=p=>(p.y-b.minY)/h;
+ // Parabola with vertical or horizontal axis.
+ const vertical=w>=h*.6;
+ const orient=kind==='parabola'&&h>w*1.5?'horizontal':'vertical';
+ const axes=orient==='horizontal'?{getX:ynorm,getY:xnorm,from:(x,y)=>({x:b.minX+y*w,y:b.minY+x*h})}:{getX:xnorm,getY:ynorm,from:(x,y)=>({x:b.minX+x*w,y:b.minY+y*h})};
+ const choices=[];
+ const add=(name,feature,valid,fn)=>{
+  const samples=pts.filter(p=>valid(axes.getX(p))).map(p=>[[1,...feature(axes.getX(p))],axes.getY(p)]);
+  if(samples.length<Math.max(5,pts.length*.72))return;
+  const coef=regress3(samples);if(!coef)return;
+  const err=Math.sqrt(samples.reduce((acc,[f,y])=>acc+(y-f.reduce((v,z,i)=>v+z*coef[i],0))**2,0)/samples.length);
+  choices.push({name,err,fn:x=>fn(coef,x),from:axes.from});
+ };
+ if(kind==='parabola'||kind==='auto')add('parabola',x=>[x,x*x],()=>true,(c,x)=>c[0]+c[1]*x+c[2]*x*x);
+ if(kind==='exponential'||kind==='auto'){
+  // y = a + b exp(kx), using a small grid of exponents and linear least squares.
+  for(const k of [-5,-3,-2,2,3,5])add('exponential',x=>[Math.exp(k*x),x*0],()=>true,(c,x)=>c[0]+c[1]*Math.exp(k*x));
+ }
+ if(kind==='logarithm'||kind==='auto'){
+  for(const shift of [-.45,-.2,-.05])add('logarithm',x=>[Math.log(x-shift),x*0],x=>x>shift,(c,x)=>c[0]+c[1]*Math.log(x-shift));
+  for(const shift of [1.05,1.2,1.45])add('logarithm',x=>[Math.log(shift-x),x*0],x=>x<shift,(c,x)=>c[0]+c[1]*Math.log(shift-x));
+ }
+ if(kind==='hyperbola'||kind==='auto'){
+  for(const shift of [-.45,-.2,-.05,1.05,1.2,1.45])add('hyperbola',x=>[1/(x-shift),x*0],x=>Math.abs(x-shift)>.025,(c,x)=>c[0]+c[1]/(x-shift));
+ }
+ choices.sort((a,b)=>a.err-b.err);
+ if(!choices.length)return null;
+ let best=choices[0];
+ if(kind==='auto'){
+  // Recognition is deliberately conservative: no correction on ambiguous strokes.
+  if(best.err>.055)return null;
+  const distinct=choices.filter(c=>c.name!==best.name);
+  if(distinct.length&&distinct[0].err<best.err*1.4+.012)return null;
+ }else if(best.err>.27)return null;
+ return best;
+}
+function curvePath(pts,kind){
+ const b=bounds(pts),w=b.maxX-b.minX,h=b.maxY-b.minY;
+ let fit=fitCurve(pts,kind);
+ if(!fit){
+  // Guided mode: build a clean representative curve within the drawn bounds.
+  if(kind==='auto')return null;
+  const from=kind==='parabola'&&h>w*1.5?(x,y)=>({x:b.minX+y*w,y:b.minY+x*h}):(x,y)=>({x:b.minX+x*w,y:b.minY+y*h});
+  const up=pts[pts.length-1].y<pts[0].y;
+  let fn;
+  if(kind==='parabola')fn=x=>up? .95-3.4*(x-.5)**2:.05+3.4*(x-.5)**2;
+  else if(kind==='exponential')fn=x=>up?.95-.9*(Math.exp(3*x)-1)/(Math.exp(3)-1):.05+.9*(Math.exp(3*x)-1)/(Math.exp(3)-1);
+  else if(kind==='logarithm')fn=x=>up?.95-.9*Math.log(1+15*x)/Math.log(16):.05+.9*Math.log(1+15*x)/Math.log(16);
+  else fn=x=>.5+(up?1:-1)*(.35/(x+.15)-.35/(1.15));
+  fit={fn,from};
+ }
+ const chunks=[];
+ for(let i=0;i<=100;i++){
+  const x=i/100,y=fit.fn(x);
+  if(!Number.isFinite(y)||y<-.25||y>1.25){chunks.push(null);continue}
+  const p=fit.from(x,y);chunks.push(p);
+ }
+ let d='',start=true;
+ for(const p of chunks){if(!p){start=true;continue}d+=(start?'M ':' L ')+p.x.toFixed(2)+' '+p.y.toFixed(2);start=false}
+ return d||null;
+}
+function recognizedCurve(pts){
+ const b=bounds(pts);if(pts.length<20||b.maxX-b.minX<65||b.maxY-b.minY<35)return null;
+ const fit=fitCurve(pts,'auto');return fit?fit.name:null;
+}
 function drawShape(el,kind,pts){
  const first=pts[0],last=pts[pts.length-1],b=bounds(pts),cx=(b.minX+b.maxX)/2,cy=(b.minY+b.maxY)/2;
  const w=b.maxX-b.minX,h=b.maxY-b.minY;
@@ -1555,6 +1645,8 @@ function drawShape(el,kind,pts){
    let rx=Math.max(2,w/2),ry=Math.max(2,h/2);
    if(kind==='circle'){const rr=(rx+ry)/2;rx=rr;ry=rr}
    el.setAttribute('d',`M ${cx+rx} ${cy} A ${rx} ${ry} 0 1 0 ${cx-rx} ${cy} A ${rx} ${ry} 0 1 0 ${cx+rx} ${cy} Z`);
+ }else if(['parabola','exponential','logarithm','hyperbola'].includes(kind)){
+   const d=curvePath(pts,kind);el.setAttribute('d',d||smooth(pts));
  }else el.setAttribute('d',smooth(pts));
 }
 function recognized(pts,svg){
@@ -1576,7 +1668,7 @@ function recognized(pts,svg){
  // Straightness based on maximum deviation from the endpoint line in screen pixels.
  const a=pts[0],z=pts[pts.length-1],vx=(z.x-a.x)*r.width/1000,vy=(z.y-a.y)*r.height/1000,len=Math.hypot(vx,vy);
  if(len>32){const maxDev=Math.max(...pts.map(p=>Math.abs(vx*(p.y-a.y)*r.height/1000-vy*(p.x-a.x)*r.width/1000)/len));if(maxDev<Math.max(12,len*.08))return 'line'}
- return null;
+ return recognizedCurve(pts);
 }
 function nearPath(p,pt,svg){
  const a=JSON.parse(p.dataset.points||'[]'),r=svg.getBoundingClientRect(),dx=r.width/1000,dy=r.height/1000;
@@ -1630,7 +1722,7 @@ cards.forEach(card=>{
    e.preventDefault();const pt=point(svg,e);active.pts.push(pt);
    active.lastMove=performance.now();active.p.dataset.points=JSON.stringify(active.pts);
    if(active.mode==='marker')drawShape(active.p,'line',[active.pts[0],pt]);
-   else if(active.mode==='shape'&&shape!=='auto')drawShape(active.p,shape,[active.pts[0],pt]);
+   else if(active.mode==='shape'&&shape!=='auto'&&!['parabola','exponential','logarithm','hyperbola'].includes(shape))drawShape(active.p,shape,[active.pts[0],pt]);
    else active.p.setAttribute('d',smooth(active.pts));
  });
  svg.addEventListener('pointerup',e=>{
