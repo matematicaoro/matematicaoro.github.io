@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>I Limiti - MatematicaOro</title>
+    
+    <!-- MathJax per la resa delle formule matematiche -->
+    <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+          --primary: #2563eb;
+          --primary-light: #3b82f6;
+          --gold: #D4AF37;
+          --success: #16a34a;
+          --warning: #d97706;
+          --danger: #dc2626;
+          --info: #0891b2;
+          --bg-page: #e0e7ff;
+          --bg-card: #ffffff;
+          --text: #0f172a;
+          --text-muted: #475569;
+          --border: #e2e8f0;
+          --shadow: 0 12px 32px rgba(0,0,0,0.15);
+          --radius: 16px;
+          --font-main: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          --font-mono: "Courier New", Consolas, monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { 
+          scroll-behavior: smooth; 
+          scroll-padding-top: 0;
+        }
+        body {
+          font-family: var(--font-main);
+          font-size: clamp(16px, 1.8vw, 19px);
+          line-height: 1.7;
+          color: var(--text);
+          background: linear-gradient(135deg, #eaf4ff 0%, #f4f9ff 55%, #edf7ff 100%);
+          background-attachment: fixed;
+          min-height: 100vh;
+          padding-top: 4rem;
+        }
+
+        .progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); width: 0%; z-index: 101; transition: width 0.15s linear; }
+
+        nav {
+          position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95);
+          backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+          padding: 0.7rem 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;
+          justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        nav a {
+          text-decoration: none; color: var(--text-muted); font-weight: 600;
+          font-size: 0.85rem; padding: 0.4rem 0.8rem; border-radius: 8px;
+          transition: all 0.2s;
+        }
+        nav a:hover { color: var(--primary); background: #eff6ff; transform: translateY(-1px); }
+        nav a.active { color: #fff; background: var(--primary); box-shadow: 0 2px 6px rgba(37,99,235,0.2); }
+
+        main { max-width: 980px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+        
+        .card {
+          background: var(--bg-card); border-radius: var(--radius);
+          padding: 2rem; margin-bottom: 2.5rem; box-shadow: var(--shadow);
+          border: 1px solid rgba(255,255,255,0.5); position: relative;
+          overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;
+          opacity: 0; transform: translateY(25px);
+        }
+        .card.visible { opacity: 1; transform: translateY(0); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
+        
+        .card::before {
+          content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+          background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+        .card[data-type="graph"]::before { background: linear-gradient(90deg, var(--success), #22c55e); }
+        .card[data-type="warning"]::before { background: linear-gradient(90deg, var(--warning), #f59e0b); }
+        .card[data-type="exercise"]::before { background: linear-gradient(90deg, var(--danger), #f87171); }
+        .card[data-type="summary"]::before { background: linear-gradient(90deg, var(--info), #22d3ee); }
+
+        .card-header {
+          font-size: 1.45rem; font-weight: 700; margin-bottom: 1.2rem;
+          padding-bottom: 0.5rem; border-bottom: 2px solid var(--border);
+          display: flex; align-items: center; gap: 0.6rem; color: var(--text);
+        }
+        .card-body { padding-top: 0.5rem; }
+
+        h3 { margin-top: 1.4rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 1.1rem; }
+        p, li { margin-bottom: 0.9rem; }
+        ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+        code { background: #e2e8f0; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.95em; }
+
+        .box {
+          border-left: 4px solid var(--primary); background: #f8fafc;
+          padding: 1rem 1.2rem; margin: 1.2rem 0; border-radius: 0 10px 10px 0;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .box:hover { transform: translateX(4px); box-shadow: 0 4px 10px rgba(37,99,235,0.15); }
+        .box.warning { border-color: var(--warning); background: #fffbeb; }
+        .box.example { border-color: var(--success); background: #f0fdf4; }
+        .box.info { border-color: var(--text-muted); background: #f1f5f9; }
+        .box p:last-child { margin-bottom: 0; }
+
+        .math-step {
+          display: flex; align-items: baseline; gap: 0.6rem; margin: 0.6rem 0;
+          background: #f8fafc; padding: 0.7rem 0.8rem; border-radius: 8px;
+          border: 1px solid var(--border); font-size: 0.95rem;
+          flex-wrap: wrap;
+        }
+        .step-num { font-weight: bold; color: var(--primary); min-width: 2.5rem; }
+        .step-comment { color: var(--text-muted); margin-left: auto; font-style: italic; }
+
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2rem 0; border-radius: 10px; }
+        table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: 0.95rem; background: #fff; }
+        th, td { border: 1px solid var(--border); padding: 0.7rem 0.5rem; text-align: center; vertical-align: middle; }
+        th { background: linear-gradient(to bottom, #f1f5f9, #e2e8f0); font-weight: 600; }
+        tr:hover td { background: #f8fafc; transition: background 0.2s; }
+
+        details {
+          background: #f8fafc; border: 1px solid var(--border); border-radius: 10px;
+          margin: 1rem 0; overflow: hidden; transition: all 0.2s;
+        }
+        summary {
+          padding: 0.9rem 1rem; cursor: pointer; font-weight: 600; color: var(--primary);
+          user-select: none; list-style: none; display: flex; justify-content: space-between; align-items: center;
+        }
+        summary::after { content: "▼"; transition: transform 0.25s; }
+        details[open] summary::after { transform: rotate(180deg); }
+        details[open] summary { border-bottom: 1px solid var(--border); background: #eff6ff; }
+        details > div { padding: 1rem; }
+        details:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+
+        .mappa { background-color: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: 8px; font-family: var(--font-mono); line-height: 1.4; white-space: pre-wrap; font-size: 0.85rem; color: var(--text); }
+
+        .svg-container {
+            width: 100%;
+            max-width: 480px;
+            display: block;
+            margin: 1.2rem auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        @media print {
+          nav, .no-print, .progress-bar { display: none !important; }
+          body { background: #fff; font-size: 12pt; line-height: 1.4; padding-top: 0; }
+          .card { box-shadow: none; border: 1px solid #999; break-inside: avoid; margin-bottom: 1.5rem; }
+          .box, details, table { border: 1px solid #888; box-shadow: none; }
+          a { color: #000; text-decoration: none; }
+        }
+
+        @media (max-width: 768px) {
+          body { padding-top: 0; }
+          nav {
+            overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start;
+            padding: 0.5rem; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+          }
+          nav::-webkit-scrollbar { display: none; }
+          nav a { font-size: 0.8rem; padding: 0.3rem 0.6rem; flex-shrink: 0; }
+          
+          .card { padding: 1.2rem; margin-bottom: 1.5rem; }
+          .card-header { font-size: 1.2rem; flex-wrap: wrap; }
+          
+          .math-step { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+          .step-comment { margin-left: 0; font-size: 0.85rem; }
+          
+          #fsBtn { bottom: 1rem; right: 1rem; padding: 0.6rem 0.9rem; font-size: 0.85rem; }
+        }
+
+        .text-center { text-align: center; }
+        .text-muted { color: var(--text-muted); }
+        
+        footer { border-top: 1px solid var(--border); margin-top: 3rem; padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-size: 0.72rem; position: relative; z-index: 1; }
+        footer .footer-brand { font-weight: 700; white-space: nowrap; }
+        footer .footer-brand .brand-mat { color: #1e3a8a; }
+        footer .footer-brand .brand-viva { color: #C8972A; }
+        footer .footer-center { color: var(--text-muted); text-align: center; flex: 1; }
+        footer .footer-center small { display: block; font-size: 0.67rem; color: var(--text-muted); margin-top: 0.15rem; }
+        footer .footer-copy { color: var(--text-muted); white-space: nowrap; text-align: right; }
+        @media (max-width: 650px) { footer { flex-direction: column; text-align: center; padding: 1rem; } }
+        
+        .logo-text { font-weight: 800; letter-spacing: -0.5px; }
+    
+/* MatematicaOro · strumenti didattici */
+:root{--lesson-scale:1}
+body{font-size:calc(clamp(16px,1.8vw,19px)*var(--lesson-scale));padding-top:0}
+.card{opacity:1;transform:none;scroll-margin-top:95px}
+.card:hover{transform:none;box-shadow:var(--shadow)}
+.card-header{line-height:1.35}
+.card p,.card li{max-width:82ch}
+.card svg{max-width:100%;height:auto}
+.card .box, .card details{overflow-wrap:break-word}
+mjx-container[display="true"]{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:4px 0}
+nav{top:0;max-height:74px;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;scrollbar-width:thin}
+nav a{white-space:nowrap;flex-shrink:0}
+#teachingToolbar{position:fixed;left:12px;bottom:14px;z-index:1000;background:#fff;
+ border:1px solid #cbd5e1;border-radius:14px;padding:9px;box-shadow:0 6px 26px #0f172a38;
+ display:flex;align-items:center;gap:5px;flex-wrap:wrap;max-width:min(96vw,970px)}
+#teachingToolbar button{border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;
+ color:#172554;padding:8px 10px;font-weight:650;cursor:pointer;font-size:13px}
+#teachingToolbar button.active{background:#1d4ed8;color:white}
+#teachingToolbar .swatch{width:28px;height:30px;padding:0;border:2px solid #64748b}
+#teachingToolbar .swatch.active{outline:2px solid #1d4ed8;outline-offset:2px}
+#teachingToolbar .divider{height:25px;width:1px;background:#cbd5e1;margin:0 3px}
+.lesson-highlight{border-radius:3px;padding:0 1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+body.presentation main{max-width:1200px;padding:1.2rem 1.2rem 7rem}
+body.presentation main>section.card{display:none}
+body.presentation main>section.card.present-current{display:block;padding:clamp(1.2rem,3vw,3rem);font-size:1.12em}
+body.presentation nav{display:none}
+body.presentation .card-header{font-size:1.65em}
+body.presentation .card:not(.present-current){display:none}
+body.presentation .present-current .box,.present-current .math-step{transition:opacity .2s}
+body.presentation.progressive .present-current .box.progress-hidden,
+body.presentation.progressive .present-current .math-step.progress-hidden{display:none}
+#presentNav{display:none;position:fixed;right:14px;top:12px;z-index:1001;background:#fff;
+ padding:7px;border-radius:12px;box-shadow:0 3px 16px #0003;gap:6px;align-items:center}
+body.presentation #presentNav{display:flex}
+#presentNav button{padding:8px 12px;border:1px solid #cbd5e1;border-radius:8px;background:white;cursor:pointer}
+#presentCount{font-weight:700;font-size:13px;min-width:65px;text-align:center}
+body.presentation header{display:none}
+#teachingToolbar .hint{font-size:11px;color:#475569}
+#fsBtn{bottom:82px!important;right:14px!important}
+@media(max-width:720px){#teachingToolbar{left:6px;right:6px;bottom:6px;padding:6px;gap:3px}
+#teachingToolbar button{padding:7px;font-size:12px}#teachingToolbar .hint{display:none}
+#fsBtn{bottom:112px!important;font-size:12px!important;padding:8px!important}
+body.presentation .card-header{font-size:1.3em}}
+@media print{
+ #teachingToolbar,#presentNav,#fsBtn{display:none!important}
+ body.presentation main>section.card{display:block!important}
+ body.presentation .progress-hidden{display:block!important}
+ .lesson-highlight{background:transparent!important}
+ .card{opacity:1!important;transform:none!important}
+}
+
+</style>
+
+<style id="lab-final-style">
+body{padding-bottom:90px}
+.card{position:relative;isolation:isolate}
+.lab-layer{position:absolute;inset:0;width:100%;height:100%;z-index:25;pointer-events:none;overflow:visible}
+body.lab-draw .lab-layer{pointer-events:auto;touch-action:none;cursor:crosshair}
+body.lab-erase .lab-layer{pointer-events:auto;touch-action:none;cursor:crosshair}
+.lab-layer path{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.lab-toolbar{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:1100;
+ display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:center;
+ width:max-content;max-width:calc(100vw - 16px);padding:8px;background:#fff;border:1px solid #cbd5e1;
+ border-radius:14px;box-shadow:0 4px 25px #0003}
+.lab-toolbar button,.lab-toolbar select{background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:8px 9px;
+ font-size:13px;color:#1e3a8a;cursor:pointer;min-height:36px}
+.lab-toolbar button[aria-pressed="true"]{background:#1d4ed8;color:white}
+.lab-toolbar input[type=color]{width:35px;height:35px;border:0;padding:2px;background:transparent}
+.lab-toolbar .lab-sep{width:1px;height:26px;background:#cbd5e1}
+.lab-toolbar .lab-mobile-toggle{display:none}
+.lab-toolbar .lab-extra{display:contents}
+.lab-status{font-size:12px;color:#475569;white-space:nowrap}
+.lab-present-nav{display:none;position:fixed;top:10px;right:12px;z-index:1100;background:white;
+ padding:6px;gap:6px;align-items:center;border-radius:10px;box-shadow:0 3px 14px #0003}
+.lab-present-nav button{padding:8px;border:1px solid #cbd5e1;background:white;border-radius:7px;cursor:pointer}
+body.lab-present .lab-present-nav{display:flex}
+body.lab-present main>section.card{display:none}
+body.lab-present main>section.card.lab-current{display:block!important;opacity:1!important}
+body.lab-present main>header{display:none}
+body.lab-present nav{display:none}
+body.lab-present main{max-width:1150px}
+body.lab-present .card-header{font-size:1.35em}
+body.lab-present.lab-progress .lab-current .lab-step-hidden{display:none!important}
+body.lab-present .card{transform:none}
+#fsBtn{bottom:85px!important;right:12px!important}
+@media(max-width:780px){
+ body{padding-bottom:100px}
+ .lab-toolbar{bottom:6px;max-width:calc(100vw - 12px);width:calc(100vw - 12px);justify-content:space-between;gap:4px}
+ .lab-toolbar button{padding:7px 8px;font-size:12px}
+ .lab-toolbar .lab-mobile-toggle{display:block}
+ .lab-toolbar .lab-extra{display:none;width:100%;order:5}
+ .lab-toolbar.lab-expanded .lab-extra{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+ .lab-status{display:none}
+ #fsBtn{bottom:120px!important;font-size:12px!important;padding:8px!important}
+ .lab-present-nav{top:5px;right:5px}
+ .lab-present-nav button{font-size:12px;padding:7px}
+}
+@media print{
+ .lab-toolbar,.lab-present-nav,#fsBtn{display:none!important}
+ body{padding-bottom:0!important}
+ body.lab-present main>section.card{display:block!important}
+ body.lab-present .lab-step-hidden{display:block!important}
+ .lab-layer{display:none!important}
+ body.lab-print-annotations .lab-layer{display:block!important}
+ .lesson-highlight{background:transparent!important}
+ body.lab-print-annotations .lesson-highlight{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .card{break-inside:avoid-page}
+}
+</style>
+<style id="lab-full-width-layout">
+/* Impaginazione estesa, senza richiesta automatica di fullscreen al browser. */
+main { max-width: min(100%, 1600px) !important; width: 100%; margin-inline: auto; }
+body.lab-present main { max-width: 100% !important; width: 100%; }
+body.lab-present main > section.card.lab-current { width: 100%; }
+@media (min-width: 1000px) { main { padding-inline: clamp(18px, 3vw, 54px); } }
+</style><style id="lab-fixes">
+body.lab-progress .card.lab-current .lab-step-hidden{display:none!important}
+#labNextStepInline{background:#1e40af;color:#fff;border-color:#1e40af}
+.lesson-highlight{background:#fde68a!important;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+@media print{body.lab-progress .lab-step-hidden{display:block!important}}
+</style><style id="lab-simplified-style">
+.lab-toolbar{flex-wrap:nowrap;gap:6px;width:auto;max-width:calc(100vw - 14px);padding:7px 9px}
+.lab-toolbar button{white-space:nowrap}.lab-toolbar #labDrawOptions{display:flex;align-items:center;gap:4px}
+.lab-toolbar #labDrawOptions[hidden],.lab-toolbar .lab-extra[hidden]{display:none!important}
+.lab-toolbar .lab-extra{display:flex;position:absolute;bottom:calc(100% + 8px);right:0;width:min(360px,calc(100vw - 20px));padding:10px;gap:6px;flex-wrap:wrap;justify-content:center;background:white;border:1px solid #cbd5e1;border-radius:12px;box-shadow:0 4px 24px #0003}
+.lab-toolbar #labExpand{display:block}.lab-toolbar #labColor{width:30px;height:34px}.lab-toolbar #labThickness{max-width:80px}
+body.lab-present .lab-present-nav{display:flex}.lab-present-nav{gap:5px}.lab-present-nav #labCount{font-size:12px;white-space:nowrap}
+@media(max-width:780px){.lab-toolbar{width:auto;max-width:calc(100vw - 8px);justify-content:center;gap:3px;padding:6px}.lab-toolbar button{font-size:11px;padding:7px 5px}.lab-toolbar #labDrawOptions{position:absolute;bottom:calc(100% + 8px);left:0;background:white;padding:5px;border-radius:9px;box-shadow:0 2px 12px #0002}.lab-present-nav{top:6px;right:6px}.lab-present-nav button{font-size:11px}}
+@media(max-width:380px){.lab-toolbar button{font-size:10px;padding:7px 4px}}
+@media print{.lab-toolbar,.lab-present-nav{display:none!important}}
+</style>
+<style id="lab-graph-fit">
+/* Grafici SVG proporzionati allo spazio disponibile, senza deformazioni. */
+main section.card svg.svg-container,
+main section.card svg#epsDeltaSvg {
+  display:block !important;
+  width:auto !important;
+  height:auto !important;
+  max-width:min(100%, 430px) !important;
+  max-height:min(42vh, 310px) !important;
+  margin:0.65rem auto !important;
+  object-fit:contain;
+}
+body.lab-present main section.card svg.svg-container,
+body.lab-present main section.card svg#epsDeltaSvg {
+  max-height:min(44dvh, 330px) !important;
+  max-width:min(100%, 460px) !important;
+}
+@media(max-width:780px){
+  main section.card svg.svg-container,
+  main section.card svg#epsDeltaSvg {max-height:min(38dvh, 260px) !important;max-width:100% !important}
+  body.lab-present main section.card svg.svg-container,
+  body.lab-present main section.card svg#epsDeltaSvg {max-height:min(38dvh, 270px) !important}
+}
+@media print{
+  main section.card svg.svg-container,
+  main section.card svg#epsDeltaSvg {max-height:230px !important;max-width:350px !important}
+}
+</style>
+<style id="lab-shapes-css">
+#labShapesMenu[hidden]{display:none!important}
+#labShapesMenu{display:flex;gap:5px;flex-wrap:wrap;position:absolute;bottom:calc(100% + 8px);left:20%;width:min(410px,90vw);padding:9px;background:#fff;border:1px solid #cbd5e1;border-radius:12px;box-shadow:0 4px 20px #0003}
+#labShapesMenu button[aria-pressed="true"],#labShapes[aria-pressed="true"]{background:#1d4ed8;color:white}
+body.lab-draw .lab-layer,body.lab-erase .lab-layer{pointer-events:auto;touch-action:none}
+.lab-layer path,.lab-layer ellipse,.lab-layer rect,.lab-layer line,.lab-layer polyline{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+@media(max-width:780px){#labShapesMenu{left:0;width:min(350px,calc(100vw - 20px))}}
+</style><style id="lab-responsive-navigation">
+.lab-present-nav{position:fixed!important;top:12px!important;right:12px!important;left:auto!important;bottom:auto!important;display:none;align-items:center;gap:5px!important;padding:7px!important;max-width:calc(100vw - 24px);background:#fffefb;border:1px solid #cbd5e1;border-radius:12px;box-shadow:0 3px 18px #0003;z-index:1500}
+body.lab-present .lab-present-nav{display:flex!important}
+.lab-present-nav button{min-width:44px;min-height:44px;font-size:21px!important;font-weight:700;border-radius:9px;touch-action:manipulation}
+.lab-present-nav button:disabled{opacity:.3;cursor:default}
+.lab-present-nav #labCount{font-size:12px!important;min-width:115px;text-align:center;white-space:normal!important;line-height:1.3}
+.lab-toolbar button,.lab-toolbar select{touch-action:manipulation;min-height:40px}
+body.lab-present .card{scroll-margin-top:80px}
+body.lab-present main{padding-top:65px!important;padding-bottom:90px!important}
+body.lab-present .card svg:not(.lab-layer),body.lab-present .card canvas{max-width:100%;max-height:min(48vh,430px)}
+body.lab-present .card img{max-width:100%;max-height:48vh;object-fit:contain}
+@media(max-width:780px){
+ .lab-present-nav{top:6px!important;right:6px!important;padding:4px!important;gap:3px!important;max-width:calc(100vw - 12px)}
+ .lab-present-nav button{min-width:42px;min-height:44px;padding:5px!important}
+ .lab-present-nav #labCount{font-size:10px!important;min-width:76px;max-width:95px}
+ .lab-toolbar{max-width:calc(100vw - 12px)!important;flex-wrap:wrap;bottom:max(5px,env(safe-area-inset-bottom))!important}
+ .lab-toolbar button{min-height:42px}
+ body.lab-present main{padding-top:64px!important}
+ body.lab-present .card svg:not(.lab-layer),body.lab-present .card canvas{max-height:42vh}
+}
+@media(max-width:390px){.lab-present-nav #labCount{min-width:60px;max-width:72px;font-size:9px!important}.lab-present-nav button{min-width:40px}}
+@media print{.lab-present-nav{display:none!important}}
+</style>
+<style id="matematicaoro-print-branding">
+/* Solo filigrana laterale e due diagonali nella stampa/PDF. */
+#printBranding{display:none}
+@media print{
+ @page{size:A4; margin:15mm 13mm 15mm 23mm}
+ html,body{overflow:visible!important;background:#fff!important}
+ body{padding:0!important;margin:0!important}
+ main{max-width:none!important;width:100%!important;padding:0!important;margin:0!important}
+ footer{display:none!important}
+ #printBranding{display:block!important;position:fixed;inset:0;pointer-events:none;z-index:9999;font-family:Arial,sans-serif}
+ #printBranding .print-side{position:fixed;left:-17mm;top:7mm;bottom:8mm;width:12mm;writing-mode:vertical-rl;transform:rotate(180deg);font-size:7px;letter-spacing:1.2px;color:rgba(30,58,138,.38);text-align:center;overflow:hidden;white-space:nowrap}
+ #printBranding .print-diagonal{position:fixed;left:12%;top:35%;width:75%;text-align:center;white-space:nowrap;transform:rotate(-35deg);transform-origin:center;font-size:25px;font-weight:600;letter-spacing:2px;color:rgba(30,58,138,.065)}
+ #printBranding .print-diagonal.second{top:68%;left:12%}
+ .card{break-inside:avoid-page;page-break-inside:avoid;box-shadow:none!important}
+ .lab-toolbar,.lab-present-nav,.no-print{display:none!important}
+}
+</style>
+<style id="print-final-fix">
+@media print {
+ @page { size:A4; margin: 13mm 12mm 14mm 22mm; }
+ html,body { width:auto!important; min-height:0!important; height:auto!important; overflow:visible!important; }
+ body { margin:0!important; padding:0!important; display:block!important; }
+ main { display:block!important; margin:0!important; padding:0!important; max-width:none!important; width:auto!important; }
+ main > header { display:block!important; margin:0 0 7mm!important; padding:0!important; break-before:auto!important; page-break-before:auto!important; }
+ main > header h1 { font-size:22pt!important; }
+ main > section.card { display:block!important; position:relative!important; break-before:auto!important; page-break-before:auto!important; break-inside:auto!important; page-break-inside:auto!important; margin:0 0 6mm!important; padding:4mm!important; }
+ .card .box, .card table, .card svg { break-inside:avoid!important; }
+ .card .box { overflow:visible!important; }
+ footer, .lab-toolbar,.lab-present-nav, .no-print { display:none!important; }
+ #printBranding { position:static!important; display:block!important; width:0!important; height:0!important; overflow:visible!important; }
+ #printBranding .print-side { position:fixed!important; left:-16mm!important; top:4mm!important; bottom:4mm!important; width:12mm!important; height:auto!important; display:block!important; overflow:visible!important; white-space:nowrap!important; font-size:8px!important; letter-spacing:.7px!important; color:#8292b4!important; writing-mode:vertical-rl!important; transform:rotate(180deg)!important; z-index:9999!important; }
+ #printBranding .print-diagonal { display:block!important; position:fixed!important; left:5%!important; top:35%!important; width:85%!important; font-size:24px!important; color:rgba(30,58,138,.075)!important; transform:rotate(-34deg)!important; z-index:9999!important; }
+ #printBranding .print-diagonal.second { top:69%!important; }
+ body.lab-present main>section.card,body.presentation main>section.card {display:block!important;}
+ body.lab-progress .lab-step-hidden {display:block!important;}
+}
+</style>
+<style id="print-left-margin-final">
+@media print {
+ @page { size:A4; margin:13mm 12mm 14mm 12mm; }
+ main { box-sizing:border-box!important; padding-left:13mm!important; }
+ #printBranding .print-side {
+   position:fixed!important; left:0mm!important; top:6mm!important;
+   bottom:auto!important; width:9mm!important; height:245mm!important;
+   writing-mode:vertical-rl!important; transform:rotate(180deg)!important;
+   text-align:center!important; overflow:hidden!important; white-space:nowrap!important;
+   color:#8292b4!important; font-size:8px!important; letter-spacing:.7px!important;
+ }
+}
+</style>
+<style id="oro-solo-pdf">
+@media print {
+  main header .logo-text[style*="var(--gold)"] { color:#D4A600 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+</style>
+</head>
+<body>
+<div id="printBranding" aria-hidden="true">
+ <div class="print-side">MatematicaOro · matematicaoro.github.io　　MatematicaOro · matematicaoro.github.io　　MatematicaOro · matematicaoro.github.io</div>
+ <div class="print-diagonal">matematicaoro.github.io</div>
+ <div class="print-diagonal second">matematicaoro.github.io</div>
+</div>
+    <div class="progress-bar no-print" id="progressBar"></div>
+    <nav aria-label="Navigazione lezione" class="no-print">
+        <a href="#intro">🧠 Motivazione</a>
+        <a href="#topologia">🗺️ Topologia</a>
+        <a href="#definizione">📐 Definizione ε-δ</a>
+        <a href="#unicita">🎯 Unicità</a>
+        <a href="#unilateri">↔️ Limiti Unilateri</a>
+        <a href="#algebra">➕ Algebra dei Limiti</a>
+        <a href="#finiti-infinito">📏 Finiti all'Infinito</a>
+        <a href="#infiniti-x0">📈 Infiniti in x₀</a>
+        <a href="#infiniti-infinito">🚀 Infiniti all'Infinito</a>
+        <a href="#forme-indeterminate">❓ Forme Indeterminate</a>
+        <a href="#polinomi">🧮 Polinomi e Razionali</a>
+        <a href="#confronti">⚖️ Confronti Asintotici</a>
+        <a href="#teoremi">🥪 Due Carabinieri</a>
+        <a href="#mappa">🗺️ Mappa</a>
+        <a href="#esercizi">📝 Esercizi</a>
+        <a href="#verifica">🏁 Verifica</a>
+    </nav>
+
+    <main>
+
+        <header class="text-center" style="margin-bottom: 2.5rem;">
+            <h1 style="font-size: 2.6rem; margin-bottom: 0.3rem;">
+                <span class="logo-text" style="color: #1e3a8a">Matematica</span><span class="logo-text" style="color: var(--gold)">Oro</span>
+            </h1>
+            <p style="font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">I Limiti: il comportamento "vicino" a un punto</p>
+        </header>
+
+        <!-- 01 INTRODUZIONE -->
+        <section class="card" data-type="info" id="intro">
+            <div class="card-header">01 — Due Esempi per Introdurre il Limite</div>
+            <div class="card-body">
+                <p>Iniziamo da due semplici esempi per capire cosa significa studiare il comportamento di una funzione "vicino" a un punto.</p>
+
+                <div class="box example">
+                    <strong>📝 Esempio 1</strong><br>
+                    Consideriamo la funzione $f(x) = \frac{x^2 - 1}{x - 1}$ per $x \neq 1$. Semplificando la frazione:
+                    $$f(x) = \frac{(x+1)(x-1)}{x-1} = x + 1 \quad \forall x \neq 1$$
+                    Il grafico di $f$ coincide con la retta $y = x + 1$ privata del punto $(1, 2)$, dove la funzione non è definita. Osservando il grafico, si nota chiaramente che per $x$ "sufficientemente vicino" a $1$, il valore $f(x)$ si trova "arbitrariamente vicino" a $2$.
+                    Diremo che $f(x)$ tende al limite $2$ per $x$ che tende a $1$ e scriveremo:
+                    $$\lim_{x \to 1} f(x) = 2$$
+
+                    <!-- GRAFICO ESEMPIO 1 (CORRETTO) -->
+                    <svg viewBox="0 0 400 250" class="svg-container">
+                        <!-- Griglia di sfondo -->
+                        <path d="M 50 0 V 220 M 100 0 V 220 M 150 0 V 220 M 200 0 V 220 M 250 0 V 220 M 300 0 V 220 M 350 0 V 220" stroke="#f1f5f9" stroke-width="1"/>
+                        <path d="M 0 40 H 400 M 0 80 H 400 M 0 120 H 400 M 0 160 H 400 M 0 200 H 400" stroke="#f1f5f9" stroke-width="1"/>
+                        <!-- Assi Cartesiani -->
+                        <line x1="40" y1="200" x2="360" y2="200" stroke="#475569" stroke-width="1.5"/>
+                        <line x1="120" y1="20" x2="120" y2="230" stroke="#475569" stroke-width="1.5"/>
+                        <text x="350" y="190" font-size="12" fill="#475569">x</text>
+                        <text x="130" y="30" font-size="12" fill="#475569">y</text>
+                        <!-- Tacche x=1, y=2 -->
+                        <line x1="220" y1="195" x2="220" y2="205" stroke="#475569" stroke-width="1.5"/>
+                        <text x="217" y="220" font-size="11" fill="#0f172a">1</text>
+                        <line x1="115" y1="100" x2="125" y2="100" stroke="#475569" stroke-width="1.5"/>
+                        <text x="100" y="104" font-size="11" fill="#0f172a">2</text>
+                        <!-- Linee tratteggiate verso (1,2) -->
+                        <line x1="220" y1="200" x2="220" y2="100" stroke="var(--primary-light)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <line x1="120" y1="100" x2="220" y2="100" stroke="var(--primary-light)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <!-- Retta y = x + 1 -->
+                        <line x1="60" y1="260" x2="320" y2="0" stroke="var(--primary)" stroke-width="2.5"/>
+                        <!-- Punto bucato in (1,2) -->
+                        <circle cx="220" cy="100" r="5" fill="#ffffff" stroke="var(--danger)" stroke-width="2.5"/>
+                        <text x="235" y="104" font-size="11" fill="var(--danger)" font-weight="600">Punto non definito (1,2)</text>
+                    </svg>
+                    <p class="text-center text-muted" style="font-size:0.85rem;">La funzione $f(x)=\frac{x^2-1}{x-1}$ presenta un "buco" in $x=1$, ma il suo limite vale 2.</p>
+                </div>
+
+                <div class="box example">
+                    <strong>📝 Esempio 2</strong><br>
+                    Consideriamo la funzione $g(x) = \frac{\sin x}{x}$ definita per ogni $x \neq 0$ (funzione pari). Con l'ausilio di una calcolatrice o calcolando i valori vicini all'origine, si nota che quando $x$ tende a $0$, la funzione $g(x)$ si avvicina sempre più al valore $1$:
+                    <div class="table-wrapper">
+                        <table>
+                            <thead><tr><th>$x$</th><th>$\pm 0{,}1250$</th><th>$\pm 0{,}0625$</th><th>$\pm 0{,}0312$</th><th>$\pm 0{,}0156$</th></tr></thead>
+                            <tbody><tr><td>$g(x)$</td><td>$0{,}9974$</td><td>$0{,}9993$</td><td>$0{,}9998$</td><td>$1{,}0000$</td></tr></tbody>
+                        </table>
+                    </div>
+                    In forma matematica scriveremo:
+                    $$\lim_{x \to 0} \frac{\sin x}{x} = 1$$
+
+                    <!-- GRAFICO ESEMPIO 2: CORRETTO SINC(X) CON ACCURATEZZA RIGOROSA -->
+                    <svg viewBox="0 0 400 220" class="svg-container">
+                        <!-- Griglia leggera -->
+                        <path d="M 0 60 H 400 M 0 140 H 400 M 0 180 H 400" stroke="#f1f5f9" stroke-width="1"/>
+                        <path d="M 80 0 V 220 M 140 0 V 220 M 260 0 V 220 M 320 0 V 220" stroke="#f1f5f9" stroke-width="1"/>
+                        <!-- Assi Cartesiani -->
+                        <line x1="20" y1="140" x2="380" y2="140" stroke="#475569" stroke-width="1.5"/>
+                        <line x1="200" y1="20" x2="200" y2="200" stroke="#475569" stroke-width="1.5"/>
+                        <text x="370" y="130" font-size="12" fill="#475569">x</text>
+                        <text x="210" y="30" font-size="12" fill="#475569">y</text>
+                        <!-- Etichette per zeri ±π (140, 260) e ±2π (80, 320) -->
+                        <text x="254" y="156" font-size="10" fill="#475569">π</text>
+                        <text x="135" y="156" font-size="10" fill="#475569">-π</text>
+                        <text x="312" y="156" font-size="10" fill="#475569">2π</text>
+                        <text x="70" y="156" font-size="10" fill="#475569">-2π</text>
+                        <!-- Tacca y=1 -->
+                        <line x1="195" y1="60" x2="205" y2="60" stroke="#475569" stroke-width="1.5"/>
+                        <text x="182" y="64" font-size="11" fill="#0f172a">1</text>
+                        <!-- Curva Sinc accurata con inviluppo smorzato -->
+                        <path d="M 30 140 
+                                 C 50 135, 60 128, 80 140 
+                                 C 105 156, 120 156, 140 140 
+                                 C 165 118, 175 60, 200 60 
+                                 C 225 60, 235 118, 260 140 
+                                 C 280 156, 295 156, 320 140 
+                                 C 340 128, 350 135, 370 140" 
+                              fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+                        <!-- Punto bucato in (0,1) -->
+                        <circle cx="200" cy="60" r="5" fill="#ffffff" stroke="var(--danger)" stroke-width="2.5"/>
+                    </svg>
+                    <p class="text-center text-muted" style="font-size:0.85rem;">Grafico di $g(x)=\frac{\sin x}{x}$: pur non essendo definita in $x=0$, tende a $1$.</p>
+                </div>
+
+                <div class="box info">
+                    <strong>💡 L'osservazione fondamentale</strong><br>
+                    Consideriamo le varianti $f_1(x) = x + 1$ (definita su tutto $\mathbb{R}$) e $f_2(x)$:
+                    $$f_2(x) = \begin{cases} x+1 & \text{se } x \neq 1 \\ 0 & \text{se } x = 1 \end{cases}$$
+                    Vicino al punto $x_0 = 1$, sia $f_1$ che $f_2$ assumono valori vicini a $2$, anche se $f_1(1) \neq f_2(1)$! Questo suggerisce che nella nozione di limite <strong>non conta il comportamento puntuale di $f$ in $x_0$</strong>, né il fatto che $f$ sia definita o meno in quel punto.
+
+                    <!-- GRAFICO FUNZIONE F2(X) -->
+                    <svg viewBox="0 0 400 250" class="svg-container">
+                        <!-- Griglia di sfondo -->
+                        <path d="M 50 0 V 220 M 100 0 V 220 M 150 0 V 220 M 200 0 V 220 M 250 0 V 220 M 300 0 V 220 M 350 0 V 220" stroke="#f1f5f9" stroke-width="1"/>
+                        <path d="M 0 40 H 400 M 0 80 H 400 M 0 120 H 400 M 0 160 H 400 M 0 200 H 400" stroke="#f1f5f9" stroke-width="1"/>
+                        <!-- Assi Cartesiani -->
+                        <line x1="40" y1="200" x2="360" y2="200" stroke="#475569" stroke-width="1.5"/>
+                        <line x1="120" y1="20" x2="120" y2="230" stroke="#475569" stroke-width="1.5"/>
+                        <text x="350" y="190" font-size="12" fill="#475569">x</text>
+                        <text x="130" y="30" font-size="12" fill="#475569">y</text>
+                        <!-- Tacche x=1, y=2 -->
+                        <line x1="220" y1="195" x2="220" y2="205" stroke="#475569" stroke-width="1.5"/>
+                        <text x="217" y="220" font-size="11" fill="#0f172a">1</text>
+                        <line x1="115" y1="100" x2="125" y2="100" stroke="#475569" stroke-width="1.5"/>
+                        <text x="100" y="104" font-size="11" fill="#0f172a">2</text>
+                        <!-- Linee tratteggiate verso (1,2) -->
+                        <line x1="220" y1="200" x2="220" y2="100" stroke="var(--primary-light)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <line x1="120" y1="100" x2="220" y2="100" stroke="var(--primary-light)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <!-- Retta y = x + 1 -->
+                        <line x1="60" y1="260" x2="320" y2="0" stroke="var(--primary)" stroke-width="2.5"/>
+                        <!-- Punto bucato in (1,2) -->
+                        <circle cx="220" cy="100" r="5" fill="#ffffff" stroke="var(--danger)" stroke-width="2.5"/>
+                        <!-- Punto pieno ridefinito in (1,0) -->
+                        <circle cx="220" cy="200" r="5" fill="var(--danger)" stroke="#0f172a" stroke-width="1"/>
+                        <text x="235" y="104" font-size="11" fill="var(--danger)" font-weight="600">f₂(1) = 0</text>
+                    </svg>
+                    <p class="text-center text-muted" style="font-size:0.85rem;">Grafico di $f_2(x)$: il punto in $x=1$ è spostato sull'asse $x$ ($y=0$), ma $\lim_{x \to 1} f_2(x) = 2$.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 TOPOLOGIA -->
+        <section class="card" id="topologia">
+            <div class="card-header">02 — Punti di Accumulazione e Cenni di Topologia</div>
+            <div class="card-body">
+                <p>Per dare la definizione rigorosa di limite serve prima la nozione di <strong>punto di accumulazione</strong>. Dati $x_0 \in \mathbb{R}$ e $r > 0$, definiamo <strong>intorno aperto</strong> di $x_0$ di raggio $r$ l'intervallo:
+                $$I(x_0, r) = (x_0 - r, x_0 + r)$$</p>
+
+                <!-- GRAFICO INTORNO -->
+                <svg viewBox="0 0 400 100" class="svg-container" style="max-width:420px;">
+                    <line x1="30" y1="50" x2="370" y2="50" stroke="#475569" stroke-width="2"/>
+                    <!-- Punto centrale x0 -->
+                    <circle cx="200" cy="50" r="5" fill="var(--primary)"/>
+                    <text x="193" y="80" font-size="12" font-weight="bold" fill="var(--primary)">x₀</text>
+                    <!-- Estremi x0-r e x0+r -->
+                    <line x1="100" y1="40" x2="100" y2="60" stroke="var(--danger)" stroke-width="2"/>
+                    <text x="75" y="80" font-size="11" fill="var(--danger)">x₀ - r</text>
+                    <line x1="300" y1="40" x2="300" y2="60" stroke="var(--danger)" stroke-width="2"/>
+                    <text x="280" y="80" font-size="11" fill="var(--danger)">x₀ + r</text>
+                    <!-- Evidenziazione intervallo -->
+                    <line x1="100" y1="50" x2="300" y2="50" stroke="var(--primary-light)" stroke-width="6" opacity="0.4"/>
+                </svg>
+                <p class="text-center text-muted" style="font-size:0.85rem;">Rappresentazione di un intorno unidimensionale $I(x_0, r)$.</p>
+
+                <div class="box info">
+                    <strong>Definizione — Punto interno</strong><br>
+                    Un punto $x_0 \in A$ è <strong>interno</strong> ad $A$ se esiste $r > 0$ tale che $I(x_0, r) \subset A$.
+                </div>
+
+                <div class="box info">
+                    <strong>Definizione — Punto di accumulazione</strong><br>
+                    Un punto $x_0 \in \mathbb{R}$ è di <strong>accumulazione</strong> per un insieme $A$ se per ogni $r > 0$ l'intorno $I(x_0, r)$ contiene almeno un punto di $A$ diverso da $x_0$:
+                    $$\forall r > 0 \quad \left( I(x_0, r) \setminus \{x_0\} \right) \cap A \neq \emptyset$$
+                </div>
+
+                <div class="box warning">
+                    <strong>⚠️ Attenzione</strong><br>
+                    Il fatto che $x_0$ sia un punto di accumulazione per $A$ <strong>non implica</strong> che $x_0 \in A$!
+                </div>
+
+                <div class="box example">
+                    <strong>📝 Esempio </strong><br>
+                   
+                    1. $A = \mathbb{Z}$: nessun $x_0 \in \mathbb{R}$ è punto di accumulazione per $\mathbb{Z}$.<br>
+                    2. Sia $A = \mathbb{R} \setminus \{0\}$ il dominio della funzione $f(x)=\frac{1}{x}$, allora $0 \notin A$, ma $0$ è punto di accumulazione per $A$.
+                </div>
+
+                <div class="box info">
+                    <strong>Definizione — Punto isolato</strong><br>
+                    Un punto $x_0 \in A$ è <strong>isolato</strong> se existe $r > 0$ tale che $A \cap I(x_0, r) = \{x_0\}$.
+                </div>
+
+                <p>Perché ha senso richiedere che $x_0$ sia di accumulazione per il dominio $D_f$? Se non lo fosse, la definizione di limite sarebbe verificata per <em>qualsiasi</em> valore $L$.</p>
+                <p>Per esempio, data la funzione $f(x) = \sqrt{x^2(x-2)}$ definita per $x \ge 2 \cup \{0\}$, il punto $x_0=0$ è isolato: non ha senso calcolare $\lim_{x \to 0} f(x)$.</p>
+
+                <!-- GRAFICO PUNTO ISOLATO E FUNZIONE CON TANGENTE VERTICALE IN x=2 -->
+                <svg viewBox="0 0 400 240" class="svg-container">
+                    <!-- Griglia leggera -->
+                    <path d="M 0 60 H 400 M 0 120 H 400 M 0 180 H 400" stroke="#f1f5f9" stroke-width="1"/>
+                    <path d="M 100 0 V 240 M 180 0 V 240 M 260 0 V 240 M 340 0 V 240" stroke="#f1f5f9" stroke-width="1"/>
+                    
+                    <!-- Assi Cartesiani (Origine reale in x=100, y=200) -->
+                    <line x1="20" y1="200" x2="380" y2="200" stroke="#475569" stroke-width="1.5"/>
+                    <line x1="100" y1="20" x2="100" y2="230" stroke="#475569" stroke-width="1.5"/>
+                    <text x="370" y="193" font-size="11" fill="#475569">x</text>
+                    <text x="110" y="30" font-size="11" fill="#475569">y</text>
+                    
+                    <!-- Tacche e valori sugli assi -->
+                    <text x="85" y="218" font-size="11" fill="#0f172a">0</text>
+                    <line x1="260" y1="195" x2="260" y2="205" stroke="#475569" stroke-width="1.5"/>
+                    <text x="256" y="218" font-size="11" fill="#0f172a">2</text>
+                    
+                    <!-- 1. PUNTO ISOLATO DELLA FUNZIONE: f(0) = 0 -->
+                    <circle cx="100" cy="200" r="5" fill="var(--danger)" stroke="#0f172a" stroke-width="1"/>
+                    <text x="35" y="190" font-size="10.5" font-weight="bold" fill="var(--danger)">f(0) = 0</text>
+                    
+                    <!-- 2. CURVA CON TANGENTE VERTICALE IN x = 2 (x=260) -->
+                    <path d="M 260 200 C 260 100, 290 50, 360 20" fill="none" stroke="var(--danger)" stroke-width="2.5"/>
+                    
+                    <!-- Punto di attacco in (2,0) -->
+                    <circle cx="260" cy="200" r="4" fill="var(--danger)"/>
+                    
+                    <!-- Etichetta della funzione -->
+                    <text x="270" y="70" font-size="11" font-weight="bold" fill="var(--danger)">y = √(x²(x - 2))</text>
+                    
+                    <!-- Didascalia del dominio -->
+                    <text x="115" y="140" font-size="10.5" fill="var(--text-muted)">Dominio: {0} ∪ [2, +∞)</text>
+                </svg>
+
+                <p class="text-center text-muted" style="font-size:0.85rem;">Il punto $x_0 = 0$ è isolato nel dominio: non ha senso studiare il limite per $x \to 0$.</p>
+            </div>
+        </section>
+
+        <!-- 03 DEFINIZIONE EPSILON-DELTA -->
+        <section class="card" data-type="summary" id="definizione">
+            <div class="card-header">03 — Definizione Rigorosa di Limite ($\varepsilon-\delta$)</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>Definizione</strong><br>
+                    Sia $f : D_f \to \mathbb{R}$, con $x_0$ punto di accumulazione per $D_f$. Diciamo che $\lim_{x \to x_0} f(x) = L$ se:
+                    $$\forall \varepsilon > 0 \quad \exists \delta > 0 : \forall x \in D_f, \ 0 < |x - x_0| < \delta \implies |f(x) - L| < \varepsilon$$
+                </div>
+
+                <h3>🎮 Grafico interattivo: la "sfida" $\varepsilon-\delta$</h3>
+                <p>Consideriamo $f(x) = x + 1$ vicino a $x_0 = 1$, per cui $L = 2$. Muovi lo slider per restringere $\varepsilon$: osserva come la striscia $\delta$ attorno a $x_0$ (verticale, verde) si adatti di conseguenza affinché la curva resti confinata nella striscia orizzontale (arancione).</p>
+
+                <!-- GRAFICO INTERATTIVO EPSILON-DELTA -->
+                <div class="box info" style="padding: 1rem; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+                    <svg id="epsDeltaSvg" viewBox="0 0 360 280" style="width: 100%; max-width: 440px; height: auto; display: block; margin: 0 auto; background: #ffffff;">
+                        <!-- Griglia di sfondo -->
+                        <path d="M 60 40 H 340 M 60 100 H 340 M 60 160 H 340 M 60 220 H 340" stroke="#f1f5f9" stroke-width="1"/>
+                        <path d="M 60 40 V 240 M 120 40 V 240 M 180 40 V 240 M 240 40 V 240 M 300 40 V 240" stroke="#f1f5f9" stroke-width="1"/>
+
+                        <!-- 1. STRISCIA GIALLA: Intorno di L=2 (Asse Y) -->
+                        <rect id="epsBand" x="60" y="64" width="280" height="72" fill="#facc15" opacity="0.35"/>
+                        <line id="epsTop" x1="60" y1="64" x2="340" y2="64" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="4,4"/>
+                        <line id="epsBottom" x1="60" y1="136" x2="340" y2="136" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+                        <!-- 2. STRISCIA VERDE: Intorno di x0=1 (Asse X) -->
+                        <rect id="deltaBand" x="84" y="40" width="72" height="180" fill="#10b981" opacity="0.25"/>
+                        <line id="deltaLeft" x1="84" y1="40" x2="84" y2="220" stroke="#059669" stroke-width="1.5" stroke-dasharray="4,4"/>
+                        <line id="deltaRight" x1="156" y1="40" x2="156" y2="220" stroke="#059669" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+                        <!-- Assi Cartesiani (Origine reale: X=60, Y=220) -->
+                        <line x1="40" y1="220" x2="340" y2="220" stroke="#475569" stroke-width="1.5"/>
+                        <line x1="60" y1="30" x2="60" y2="240" stroke="#475569" stroke-width="1.5"/>
+                        <text x="330" y="212" font-size="11" fill="#475569">x</text>
+                        <text x="68" y="42" font-size="11" fill="#475569">y</text>
+
+                        <!-- TACCHE ASSE X -->
+                        <line x1="120" y1="216" x2="120" y2="224" stroke="#0f172a" stroke-width="2"/>
+                        <text x="108" y="240" font-size="11" fill="#0f172a" font-weight="bold">x₀ = 1</text>
+                        
+                        <line x1="180" y1="216" x2="180" y2="224" stroke="#475569" stroke-width="1"/>
+                        <text x="177" y="238" font-size="10" fill="#475569">2</text>
+
+                        <!-- TACCHE ASSE Y -->
+                        <line x1="56" y1="160" x2="64" y2="160" stroke="#475569" stroke-width="1"/>
+                        <text x="46" y="164" font-size="10" fill="#475569">1</text>
+                        
+                        <line x1="54" y1="100" x2="66" y2="100" stroke="#0f172a" stroke-width="2"/>
+                        <text x="24" y="104" font-size="11" fill="#0f172a" font-weight="bold">L = 2</text>
+                        
+                        <line x1="56" y1="40" x2="64" y2="40" stroke="#475569" stroke-width="1"/>
+                        <text x="46" y="44" font-size="10" fill="#475569">3</text>
+
+                        <!-- Retta f(x) = x + 1 -->
+                        <g clip-path="url(#svgClip)">
+                            <line x1="40" y1="180" x2="340" y2="-120" stroke="#0f172a" stroke-width="2.5"/>
+                        </g>
+                        <clipPath id="svgClip">
+                            <rect x="60" y="40" width="280" height="180"/>
+                        </clipPath>
+
+                        <!-- Punto limite (1, 2) -->
+                        <circle cx="120" cy="100" r="4.5" fill="#ca8a04" stroke="#0f172a" stroke-width="1.5"/>
+                    </svg>
+
+                    <!-- Controlli Slider -->
+                    <div style="max-width: 440px; margin: 0.8rem auto 0; text-align: center; color: #0f172a;">
+                        <label for="epsSlider" style="font-weight: 600; font-size: 0.9rem;">
+                            Ampiezza intorno &epsilon; = <span id="epsValue">0.60</span>
+                        </label><br>
+                        <input type="range" id="epsSlider" min="0.20" max="0.80" step="0.05" value="0.60" style="width: 85%; margin-top: 0.4rem; cursor: pointer;">
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #334155;">
+                            <span style="background-color: #fef08a; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Intorno di L=2 (asse y):</span> $[2-\varepsilon, 2+\varepsilon]$<br>
+                            <span style="background-color: #a7f3d0; padding: 2px 6px; border-radius: 4px; font-weight: 600; margin-top: 4px; display: inline-block;">Intorno di x₀=1 (asse x):</span> $[1-\delta, 1+\delta]$ con <strong id="deltaValue" style="color: #059669;">&delta; = 0.60</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <script>
+                (function () {
+                  const slider = document.getElementById('epsSlider');
+                  const epsValueEl = document.getElementById('epsValue');
+                  const deltaValueEl = document.getElementById('deltaValue');
+                  
+                  const epsBand = document.getElementById('epsBand');
+                  const epsTop = document.getElementById('epsTop');
+                  const epsBottom = document.getElementById('epsBottom');
+
+                  const deltaBand = document.getElementById('deltaBand');
+                  const deltaLeft = document.getElementById('deltaLeft');
+                  const deltaRight = document.getElementById('deltaRight');
+
+                  if (!slider || !epsBand) return;
+
+                  const X0_PX = 120;
+                  const L_PX = 100; 
+                  const SCALE = 60;
+
+                  function update(val) {
+                    const eps = parseFloat(val);
+                    const delta = eps;
+
+                    const rEps = eps * SCALE;
+                    const rDelta = delta * SCALE;
+
+                    const yTop = L_PX - rEps;
+                    const yBottom = L_PX + rEps;
+
+                    epsBand.setAttribute('y', yTop);
+                    epsBand.setAttribute('height', 2 * rEps);
+                    epsTop.setAttribute('y1', yTop);
+                    epsTop.setAttribute('y2', yTop);
+                    epsBottom.setAttribute('y1', yBottom);
+                    epsBottom.setAttribute('y2', yBottom);
+
+                    const xLeft = X0_PX - rDelta;
+                    const xRight = X0_PX + rDelta;
+
+                    deltaBand.setAttribute('x', xLeft);
+                    deltaBand.setAttribute('width', 2 * rDelta);
+                    deltaLeft.setAttribute('x1', xLeft);
+                    deltaLeft.setAttribute('x2', xLeft);
+                    deltaRight.setAttribute('x1', xRight);
+                    deltaRight.setAttribute('x2', xRight);
+
+                    epsValueEl.textContent = eps.toFixed(2);
+                    deltaValueEl.textContent = `δ = ${delta.toFixed(2)}`;
+                  }
+
+                  slider.addEventListener('input', (e) => update(e.target.value));
+                  update(slider.value);
+                })();
+                </script>
+
+                <div class="box example">
+                    <strong>📝 Esempio — Verifiche con la definizione</strong><br>
+                    1. Funzione costante $f(x) = c$: $\lim_{x \to x_0} c = c$ per ogni $x_0$. Poiché per ogni $\varepsilon >0$, $|f(x)-c| = 0 < \varepsilon$, la definizione di limite è verificata per un valore qualsiasi $\delta > 0$.<br>
+                    2. Funzione identità $f(x) = x$: $\lim_{x \to x_0} x = x_0$, è sufficiente scegliere $\delta = \varepsilon$.<br>
+                    3. Dimostrare che $\lim_{x \to 2} (3x - 1) = 5$: impostando $|(3x-1) - 5| < \varepsilon$, si ottiene $|3x-6| < \varepsilon \iff 3|x-2| < \varepsilon \iff |x-2| < \frac{\varepsilon}{3}$. Basta dunque scegliere $\delta = \frac{\varepsilon}{3}$.
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 UNICITÀ -->
+        <section class="card" id="unicita">
+            <div class="card-header">04 — Teorema di Unicità del Limite</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>🎯 Teorema (Unicità del Limite)</strong><br>
+                    Sia $f : D_f \to \mathbb{R}$, con $x_0$ punto di accumulazione per $D_f$. Se esistono $L, L' \in \mathbb{R}$ tali che:
+                    $$\lim_{x \to x_0} f(x) = L \quad \text{e} \quad \lim_{x \to x_0} f(x) = L'$$
+                    allora necessariamente $L = L'$.
+                </div>
+                <p>La dimostrazione procede per assurdo: se fosse $L \neq L'$, posta la distanza $\varepsilon = \frac{|L - L'|}{3} > 0$, esisterebbero due intorni di $x_0$ con raggi $\delta_1$ e $\delta_2$, tale che per ogni $x$ nel loro intervallo di intersezione di raggio $\delta = \min(\delta_1, \delta_2)$, si avrebbe $|f(x)-L|<\varepsilon$ e $|f(x)-L'|<\varepsilon$. Da cui $|L-L'| \le |L-f(x)|+|f(x)-L'|< 2 \varepsilon < \frac{2}{3} |L-L'|$. La disuguaglianza $|L - L'| < \frac{2}{3}|L - L'|$, rappresenta un evidente assurdo.</p>
+                <div class="box warning">
+                    <strong>♣ Estensione</strong><br>
+                    Il teorema di unicità vale anche per limiti infiniti ($L =\pm \infty$) e per $x \to \pm\infty$.
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 LIMITI UNILATERI -->
+        <section class="card" data-type="graph" id="unilateri">
+            <div class="card-header">05 — Limiti Unilateri (Destro e Sinistro)</div>
+            <div class="card-body">
+                <p>La definizione generale richiede che $x$ si avvicini a $x_0$ da entrambe le direzioni. Quando una funzione presenta un salto o è definita a tratti, è utile valutare i due lati separatamente.</p>
+
+                <div class="box info">
+                    <strong>Definizione</strong><br>
+                    <ul>
+                        <li><strong>Limite destro:</strong> $\lim_{x \to x_0^+} f(x) = L \iff \forall \varepsilon > 0 \ \exists \delta > 0 : \forall x \in D_f, \ 0 < x - x_0 < \delta \implies |f(x) - L| < \varepsilon$</li>
+                        <li><strong>Limite sinistro:</strong> $\lim_{x \to x_0^-} f(x) = L \iff \forall \varepsilon > 0 \ \exists \delta > 0 : \forall x \in D_f, \ -\delta < x - x_0 < 0 \implies |f(x) - L| < \varepsilon$</li>
+                    </ul>
+                </div>
+
+                <div class="box example">
+                    <strong>📝 Esempio — La funzione segno</strong><br>
+                    Sia $\text{sgn}(x) = \frac{x}{|x|}$ per $x \neq 0$. Si trova che:
+                    $$\lim_{x \to 0^+} \text{sgn}(x) = 1 \quad \text{e} \quad \lim_{x \to 0^-} \text{sgn}(x) = -1$$
+                    Poiché i due limiti unilateri non coincidono, <strong>non esiste</strong> il limite completo $\lim_{x \to 0} \text{sgn}(x)$.
+
+                    <!-- GRAFICO FUNZIONE SEGNO -->
+                    <svg viewBox="0 0 400 240" class="svg-container" style="max-width:380px;">
+                        <line x1="30" y1="120" x2="370" y2="120" stroke="#475569" stroke-width="1.5"/>
+                        <line x1="200" y1="20" x2="200" y2="220" stroke="#475569" stroke-width="1.5"/>
+                        <text x="365" y="115" font-size="11" fill="#475569">x</text>
+                        <text x="205" y="28" font-size="11" fill="#475569">y</text>
+                        <!-- Ramo Destro y = 1 -->
+                        <line x1="200" y1="60" x2="360" y2="60" stroke="var(--success)" stroke-width="3"/>
+                        <circle cx="200" cy="60" r="5" fill="#ffffff" stroke="var(--success)" stroke-width="2.5"/>
+                        <!-- Ramo Sinistro y = -1 -->
+                        <line x1="40" y1="180" x2="200" y2="180" stroke="var(--danger)" stroke-width="3"/>
+                        <circle cx="200" cy="180" r="5" fill="#ffffff" stroke="var(--danger)" stroke-width="2.5"/>
+                        <text x="320" y="50" font-size="11" fill="var(--success)" font-weight="600">y = 1</text>
+                        <text x="50" y="195" font-size="11" fill="var(--danger)" font-weight="600">y = -1</text>
+                    </svg>
+                </div>
+
+                <div class="box example">
+                    <strong>🎯 Teorema (Condizione necessaria e sufficiente)</strong><br>
+                    $$\exists \lim_{x \to x_0} f(x) = L \iff \lim_{x \to x_0^+} f(x) = \lim_{x \to x_0^-} f(x) = L$$
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 ALGEBRA DEI LIMITI -->
+        <section class="card" data-type="graph" id="algebra">
+            <div class="card-header">06 — L'Algebra dei Limiti</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>🎯 Teorema (Operazioni con i limiti)</strong><br>
+                    Siano $f, g$ due funzioni tali che $\lim_{x \to x_0} f(x) = L$ e $\lim_{x \to x_0} g(x) = M$ con $L, M \in \mathbb{R}$. Allora:
+                    <ul>
+                        <li><strong>Somma e Differenza:</strong> $\lim_{x \to x_0} [f(x) \pm g(x)] = L \pm M$</li>
+                        <li><strong>Prodotto:</strong> $\lim_{x \to x_0} [f(x) \cdot g(x)] = L \cdot M$</li>
+                        <li><strong>Moltiplicazione per una costante:</strong> $\lim_{x \to x_0} [c \cdot f(x)] = c \cdot L \quad (\forall c \in \mathbb{R})$</li>
+                        <li><strong>Quoziente:</strong> $\lim_{x \to x_0} \frac{f(x)}{g(x)} = \frac{L}{M} \quad (\text{se } M \neq 0)$</li>
+                        <li><strong>Potenza:</strong> $\lim_{x \to x_0} [f(x)]^{\frac{m}{n}} = L^{\frac{m}{n}}$</li>
+                    </ul>
+                </div>
+
+                <h3>Limiti delle funzioni elementari</h3>
+                <p>Per le seguenti funzioni (potenze, esponenziali, logaritmi, trigonometriche), il limite per x che tende a $x_0 \in \mathbb{R}$ coincide semplicemente con il valore assunto dalla funzione nel punto stesso:</p>
+                <div class="box example">
+                    $$\lim_{x \to x_0} x^r = x_0^r \qquad \lim_{x \to x_0} a^x = a^{x_0} \qquad \lim_{x \to x_0} \sin x = \sin x_0 \qquad \lim_{x \to x_0} \log_a x = \log_a x_0$$
+                </div>
+
+                <div class="box example">
+                    <strong>📝 Esempio — Polinomi e Funzioni Razionali</strong><br>
+                    Per un polinomio $P(x)$: $\lim_{x \to x_0} P(x) = P(x_0)$.<br>
+                    Per una frazione razionale $R(x) = \frac{P(x)}{Q(x)}$ con $Q(x_0) \neq 0$:
+                    $$\lim_{x \to x_0} \frac{P(x)}{Q(x)} = \frac{P(x_0)}{Q(x_0)}$$
+                    Esempi: $\lim_{x \to 2} (x^4 - 2x + \pi) = 12 + \pi, \quad \lim_{x \to 1} \frac{x}{x^2 + 1} = \frac{1}{2}$.
+                </div>
+            </div>
+        </section>
+
+        <!-- 07 LIMITI FINITI ALL'INFINITO -->
+        <section class="card" id="finiti-infinito">
+            <div class="card-header">07 — Limiti Finiti all'Infinito e Asintoti Orizzontali</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>Definizione</strong><br>
+                    $$\lim_{x \to +\infty} f(x) = L \iff \forall \varepsilon > 0 \ \exists K \in \mathbb{R} : \forall x \in D_f, \ x > K \implies |f(x) - L| < \varepsilon$$
+                </div>
+
+                <div class="box example">
+                    <strong>📝 Limiti notevoli all'infinito</strong><br>
+                    $$\lim_{x \to \pm\infty} \frac{1}{x} = 0 \qquad \lim_{x \to +\infty} \arctan x = \frac{\pi}{2} \qquad \lim_{x \to -\infty} \arctan x = -\frac{\pi}{2}$$
+                </div>
+
+                <div class="box info">
+                    <strong>📏 Asintoto orizzontale</strong><br>
+                    Se $\lim_{x \to +\infty} f(x) = L$, la retta $y = L$ è un <strong>asintoto orizzontale</strong> per il grafico di $f$ per $x \to +\infty$.
+                </div>
+
+                <!-- GRAFICO ASINTOTO ORIZZONTALE -->
+                <svg viewBox="0 0 400 240" class="svg-container">
+                    <!-- Griglia leggera -->
+                    <path d="M 0 60 H 400 M 0 120 H 400 M 0 180 H 400" stroke="#f1f5f9" stroke-width="1"/>
+                    <path d="M 100 0 V 240 M 200 0 V 240 M 300 0 V 240" stroke="#f1f5f9" stroke-width="1"/>
+
+                    <!-- Assi Cartesiani (Origine in x=60, y=180) -->
+                    <line x1="20" y1="180" x2="380" y2="180" stroke="#475569" stroke-width="1.5"/>
+                    <line x1="60" y1="20" x2="60" y2="220" stroke="#475569" stroke-width="1.5"/>
+                    <text x="370" y="173" font-size="11" fill="#475569">x</text>
+                    <text x="68" y="32" font-size="11" fill="#475569">y</text>
+                    <text x="48" y="195" font-size="10" fill="#475569">0</text>
+
+                    <!-- Asintoto orizzontale y=L, con L=2 nella scala del disegno -->
+                    <line x1="20" y1="100" x2="380" y2="100" stroke="var(--warning)" stroke-width="2" stroke-dasharray="6,4"/>
+                    <!-- Tacca L sull'asse y -->
+                    <line x1="55" y1="100" x2="65" y2="100" stroke="var(--warning)" stroke-width="1.5"/>
+                    <text x="42" y="104" font-size="11" fill="var(--warning)" font-weight="bold">L</text>
+                    <text x="270" y="112" font-size="11" fill="var(--warning)" font-weight="600">y = L (asintoto)</text>
+
+                    <!-- f(x)=L+2/(x+1), x>=0: curva calcolata via JavaScript -->
+                    <path id="asintoto-orizzontale-curva" fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+                    <text x="212" y="70" font-size="10.5" fill="var(--primary)" font-weight="600">f(x) = L + 2/(x+1)</text>
+                </svg>
+                <p class="text-center text-muted" style="font-size:0.85rem;">La curva si avvicina a $y=L$ dall'alto senza incontrarla: $f(x)-L=\frac{2}{x+1}>0$ e tende a $0$ per $x\to+\infty$.</p>
+            </div>
+        </section>
+
+        <!-- 08 INFINITI IN X0 -->
+        <section class="card" data-type="graph" id="infiniti-x0">
+            <div class="card-header">08 — Limiti Infiniti per $x \to x_0$ e Asintoti Verticali</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>Definizione</strong><br>
+                    $$\lim_{x \to x_0} f(x) = +\infty \iff \forall M > 0 \ \exists \delta > 0 : \forall x \in D_f, \ 0 < |x - x_0| < \delta \implies f(x) > M$$
+                </div>
+
+                <div class="box example">
+                    <strong>📝 Esempio: $f(x) = \frac{1}{x}$</strong><br>
+                    $$\lim_{x \to 0^+} \frac{1}{x} = +\infty \qquad \text{e} \qquad \lim_{x \to 0^-} \frac{1}{x} = -\infty$$
+                    Essendo i limiti unilateri discordi, il limite completo per $x \to 0$ <strong>non esiste</strong>.
+
+                    <!-- GRAFICO IPERBOLE 1/X -->
+                    <svg viewBox="0 0 400 250" class="svg-container">
+                        <line x1="30" y1="125" x2="370" y2="125" stroke="#475569" stroke-width="1.5"/>
+                        <!-- Asintoto Verticale x = 0 -->
+                        <line x1="200" y1="20" x2="200" y2="230" stroke="var(--warning)" stroke-width="2" stroke-dasharray="6,4"/>
+                        <text x="365" y="120" font-size="11" fill="#475569">x</text>
+                        <text x="205" y="28" font-size="11" fill="#475569">y</text>
+                        <!-- Ramo Iperbole +infty -->
+                        <path d="M 210 25 Q 215 110, 360 120" fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+                        <!-- Ramo Iperbole -infty -->
+                        <path d="M 190 225 Q 185 140, 40 130" fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+                        <text x="210" y="45" font-size="10.5" fill="var(--warning)" font-weight="600">x = 0 (asintoto v.)</text>
+                    </svg>
+                </div>
+
+                <div class="box info">
+                    <strong>📈 Asintoto verticale</strong><br>
+                    Se $\lim_{x \to x_0^\pm} f(x) = \pm\infty$, la retta verticale $x = x_0$ è un <strong>asintoto verticale</strong> per la funzione.
+                </div>
+            </div>
+        </section>
+
+        <!-- 09 INFINITI ALL'INFINITO E ASINTOTI OBLIQUI -->
+        <section class="card" data-type="graph" id="infiniti-infinito">
+            <div class="card-header">09 — Limiti Infiniti all'Infinito e Asintoti Obliqui</div>
+            <div class="card-body">
+                <p>Consideriamo ora una funzione $f(x)$ che cresce indefinitamente in modulo quando $x \to \pm\infty$. Per esempio, per ogni $n$ pari $\lim_{x \to \pm\infty} x^n = +\infty$.</p>
+
+                <div class="box info">
+                    <strong>📐 Definizione — Asintoto obliquo</strong><br>
+                    La retta $y = mx + q$ (con $m \neq 0$) è un <strong>asintoto obliquo</strong> per $f(x)$ per $x \to +\infty$ se:
+                    $$\lim_{x \to +\infty} [f(x) - (mx + q)] = 0$$
+                </div>
+
+                <div class="box example">
+                    <strong>🎯 Teorema — Ricerca dei coefficienti $m$ e $q$</strong><br>
+                    Un asintoto obliquo esiste se e solo se i seguenti due limiti esistono e sono finiti:
+                    $$m = \lim_{x \to +\infty} \frac{f(x)}{x} \quad (m \neq 0) \qquad \text{e} \qquad q = \lim_{x \to +\infty} [f(x) - mx]$$
+                </div>
+
+                <!-- GRAFICO ASINTOTO OBLIQUO -->
+                <svg viewBox="0 0 400 240" class="svg-container">
+                    <!-- Griglia di sfondo -->
+                    <path d="M 0 60 H 400 M 0 120 H 400 M 0 180 H 400" stroke="#f1f5f9" stroke-width="1"/>
+                    <path d="M 100 0 V 240 M 200 0 V 240 M 300 0 V 240" stroke="#f1f5f9" stroke-width="1"/>
+
+                    <defs>
+                        <clipPath id="clip-asintoto-obliquo">
+                            <rect x="20" y="20" width="360" height="200"/>
+                        </clipPath>
+                    </defs>
+
+                    <!-- Assi: origine (200,120), 40 px per unità su x e 20 px su y -->
+                    <line x1="20" y1="120" x2="380" y2="120" stroke="#475569" stroke-width="1.5"/>
+                    <line x1="200" y1="20" x2="200" y2="220" stroke="#475569" stroke-width="1.5"/>
+                    <text x="370" y="112" font-size="11" fill="#475569">x</text>
+                    <text x="208" y="32" font-size="11" fill="#475569">y</text>
+                    <text x="188" y="135" font-size="10" fill="#475569">0</text>
+
+                    <!-- Tacche e valori di riferimento -->
+                    <path d="M 120 116 V 124 M 280 116 V 124 M 196 80 H 204 M 196 160 H 204"
+                          stroke="#475569" stroke-width="1"/>
+                    <text x="112" y="137" font-size="9" fill="#475569">−2</text>
+                    <text x="277" y="137" font-size="9" fill="#475569">2</text>
+                    <text x="207" y="84" font-size="9" fill="#475569">2</text>
+                    <text x="207" y="164" font-size="9" fill="#475569">−2</text>
+
+                    <g clip-path="url(#clip-asintoto-obliquo)">
+                        <!-- Retta y=x e rami di f(x)=x+1/x calcolati via JavaScript -->
+                        <path id="asintoto-obliquo-retta" fill="none" stroke="var(--warning)" stroke-width="2" stroke-dasharray="6,4"/>
+                        <path id="asintoto-obliquo-sinistro" fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+                        <path id="asintoto-obliquo-destro" fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+                    </g>
+
+                    <text x="300" y="62" font-size="11" fill="var(--warning)" font-weight="600">y = x</text>
+                    <text x="270" y="90" font-size="11" fill="var(--primary)" font-weight="600">f(x) = x + 1/x</text>
+                </svg>
+                <p class="text-center text-muted" style="font-size:0.85rem;">Per $x \to \pm\infty$, la distanza verticale $f(x)-x=\frac1x$ tende a $0$: la retta $y=x$ è l'asintoto obliquo.</p>
+            </div>
+        </section>
+
+        <!-- 10 FORME INDETERMINATE -->
+        <section class="card" data-type="warning" id="forme-indeterminate">
+            <div class="card-header">10 — Algebra dei Limiti Estesa e Forme Indeterminate</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>🎯 Schema esteso delle operazioni con $+\infty$ e $-\infty$</strong>
+                    $$L \pm \infty = \pm\infty \qquad (+ \infty) + (+ \infty) = + \infty \qquad (- \infty) + (- \infty) = - \infty$$
+                    $$\text{Se } L > 0: \ L \cdot (\pm\infty) = \pm\infty \qquad \frac{L}{\pm\infty} = 0 \qquad \frac{L}{0^\pm} = \pm\infty \quad (L \neq 0)$$
+                </div>
+
+                <div class="box warning">
+                    <strong>❓ Le 7 Forme Indeterminate</strong><br>
+                    Nei seguenti casi il limite <strong>non si può calcolare direttamente</strong>, ma richiede una manipolazione algebrica:
+                    $$[+\infty - \infty] \qquad [0 \cdot \pm\infty] \qquad \left[\frac{\pm\infty}{\pm\infty}\right] \qquad \left[\frac{0}{0}\right] \qquad [1^\infty] \qquad [0^0] \qquad [(+\infty)^0]$$
+                </div>
+
+                <div class="box info">
+                    <strong>💡 Trasformazione standard per le forme esponenziali</strong><br>
+                    Sfruttando l'identità fondamentale $f(x)^{g(x)} = \exp\Big(g(x) \cdot \ln f(x)\Big)$, le forme $1^\infty$, $0^0$, $\infty^0$ si riconducono al prodotto $0 \cdot \infty$ nell'esponente, che a sua volta può essere riscritto come frazione $\frac{0}{0}$ o $\frac{\infty}{\infty}$.
+                </div>
+            </div>
+        </section>
+
+        <!-- 11 POLINOMI E RAZIONALI -->
+        <section class="card" data-type="graph" id="polinomi">
+            <div class="card-header">11 — Limiti di Polinomi e Funzioni Razionali</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>📐 Regola per $x \to \pm\infty$: domina il termine di grado massimo</strong><br>
+                    Per un generico polinomio $P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_0$:
+                    $$\lim_{x \to \pm\infty} P(x) = \lim_{x \to \pm\infty} a_n x^n$$
+                </div>
+
+                <div class="box example">
+                    <strong>📝 Esempio</strong><br>
+                    $$\lim_{x \to +\infty} (-2x^7 + 5x^6 - 4x^3 + 3) = \lim_{x \to +\infty} (-2x^7) = -\infty$$
+                </div>
+
+                <div class="box info">
+                    <strong>📐 Rapporto di polinomi per $x \to \pm\infty$</strong><br>
+                    Siano $P(x)$ di grado $n$ e $Q(x)$ di grado $m$:
+                    $$\lim_{x \to \pm\infty} \frac{P(x)}{Q(x)} = \begin{cases} 0 & \text{se } n < m \\ \frac{a_n}{b_m} & \text{se } n = m \\ \pm\infty & \text{se } n > m \end{cases}$$
+                </div>
+
+                
+            </div>
+        </section>
+
+        <!-- 12 CONFRONTI ASINTOTICI -->
+        <section class="card" id="confronti">
+            <div class="card-header">12 — Confronti Asintotici: Simboli di "o-piccolo" e Equivalenza Asintotica ($\sim$)</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>Definizione — Notazione di "o-piccolo"</strong><br>
+                    Diremo che $f(x) = o(g(x))$ per $x \to x_0$ se:
+                    $$\lim_{x \to x_0} \frac{f(x)}{g(x)} = 0$$
+                    Ovvero $f$ è un infinitesimo di ordine superiore (oppure un infinito di ordine inferiore) rispetto a $g$.
+                </div>
+
+                <div class="box info">
+                    <strong>Definizione — Equivalenza Asintotica ($\sim$)</strong><br>
+                    Diremo che $f(x) \sim g(x)$ per $x \to x_0$ se:
+                    $$\lim_{x \to x_0} \frac{f(x)}{g(x)} = 1$$
+                </div>
+
+                <!-- GRAFICO GERARCHIA DEGLI INFINITI -->
+                <svg viewBox="0 0 400 230" class="svg-container">
+                    <!-- Griglia di sfondo -->
+                    <path d="M 30 50 H 380 M 30 120 H 380 M 30 190 H 380" stroke="#f1f5f9" stroke-width="1"/>
+                    <path d="M 105 15 V 230 M 155 15 V 230 M 205 15 V 230 M 255 15 V 230 M 305 15 V 230 M 355 15 V 230" stroke="#f1f5f9" stroke-width="1"/>
+
+                    <defs>
+                        <clipPath id="clip-gerarchia">
+                            <rect x="55" y="15" width="325" height="215"/>
+                        </clipPath>
+                    </defs>
+
+                    <!-- Assi Cartesiani: origine (55,190), 50 px per unità su x e 14 px su y -->
+                    <line x1="30" y1="190" x2="380" y2="190" stroke="#475569" stroke-width="1.5"/>
+                    <line x1="55" y1="15" x2="55" y2="230" stroke="#475569" stroke-width="1.5"/>
+                    <text x="370" y="182" font-size="11" fill="#475569">x</text>
+                    <text x="63" y="28" font-size="11" fill="#475569">y</text>
+                    <text x="43" y="205" font-size="10" fill="#475569">0</text>
+                    <path d="M 105 186 V 194 M 155 186 V 194 M 305 186 V 194 M 51 120 H 59 M 51 50 H 59"
+                          stroke="#475569" stroke-width="1"/>
+                    <text x="102" y="205" font-size="9" fill="#475569">1</text>
+                    <text x="152" y="205" font-size="9" fill="#475569">2</text>
+                    <text x="302" y="205" font-size="9" fill="#475569">5</text>
+                    <text x="63" y="124" font-size="9" fill="#475569">5</text>
+                    <text x="63" y="54" font-size="9" fill="#475569">10</text>
+
+                    <g clip-path="url(#clip-gerarchia)">
+                        <!-- Curve calcolate via JavaScript nelle scale dichiarate -->
+                        <path id="gerarchia-ln" fill="none" stroke="var(--info)" stroke-width="2.5"/>
+                        <path id="gerarchia-quadrato" fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+                        <path id="gerarchia-esponenziale" fill="none" stroke="var(--danger)" stroke-width="2.5"/>
+                    </g>
+
+                    <text x="310" y="158" font-size="11" fill="var(--info)" font-weight="600">ln(x)</text>
+                    <text x="205" y="35" font-size="11" fill="var(--primary)" font-weight="600">x²</text>
+                    <text x="151" y="35" font-size="11" fill="var(--danger)" font-weight="600">eˣ</text>
+                </svg>
+                <p class="text-center text-muted" style="font-size:0.85rem;">Gerarchia degli infiniti per $x \to +\infty$: $\ln x \ll x^\alpha \ll e^x$.</p>
+
+                <div class="box example">
+                    <strong>📝 Limiti Notevoli Fondamentali per $x \to 0$</strong>
+                    $$\sin x \sim x \qquad 1 - \cos x \sim \frac{x^2}{2} \qquad e^x - 1 \sim x \qquad \ln(1+x) \sim x \qquad \arctan x \sim x$$
+                </div>
+            </div>
+        </section>
+
+        <!-- 13 TEOREMI FONDAMENTALI E DUE CARABINIERI -->
+        <section class="card" data-type="graph" id="teoremi">
+            <div class="card-header">13 — Teorema dei Due Carabinieri e Altri Risultati</div>
+            <div class="card-body">
+                <div class="box info">
+                    <strong>Teorema — Limitatezza locale</strong><br>
+                    Se $\lim_{x \to x_0} f(x) = L \in \mathbb{R}$, allora la funzione $f$ è limitata in un opportuno intorno di $x_0$.
+                </div>
+
+                <div class="box info">
+                    <strong>Teorema — Permanenza del segno</strong><br>
+                    Se $\lim_{x \to x_0} f(x) = L > 0$, esiste un intorno di $x_0$ in cui la funzione $f(x)$ si mantiene strettamente positiva ($f(x) > 0$).
+                </div>
+
+                <div class="box example">
+                    <strong>🥪 Teorema — Teorema dei Due Carabinieri (del Confronto)</strong><br>
+                    Siano $f(x) \le g(x) \le h(x)$ tre funzioni definite in un intorno di $x_0$ (eccetto al più $x_0$). Se:
+                    $$\lim_{x \to x_0} f(x) = \lim_{x \to x_0} h(x) = L$$
+                    allora anche la funzione $g(x)$ ammette limite per $x \to x_0$ e risulta:
+                    $$\lim_{x \to x_0} g(x) = L$$
+                </div>
+
+                <h3>Applicazione: $\lim_{x \to 0} x^2 \sin\left(\frac{1}{x}\right) = 0$</h3>
+                <p>Poiché $-1 \le \sin\left(\frac{1}{x}\right) \le 1$, moltiplicando tutti i membri per $x^2 \ge 0$ otteniamo:
+                $$-x^2 \le x^2 \sin\left(\frac{1}{x}\right) \le x^2$$
+                Poiché $\lim_{x \to 0} (-x^2) = \lim_{x \to 0} x^2 = 0$, per il teorema dei due carabinieri il limite centrale vale $0$.</p>
+
+                <!-- GRAFICO DUE CARABINIERI -->
+                <svg viewBox="0 0 400 280" class="svg-container">
+                    <!-- Griglia di sfondo -->
+                    <path d="M 0 60 H 400 M 0 120 H 400 M 0 180 H 400" stroke="#f1f5f9" stroke-width="1"/>
+                    <path d="M 100 0 V 240 M 200 0 V 240 M 300 0 V 240" stroke="#f1f5f9" stroke-width="1"/>
+
+                    <!-- Assi Cartesiani (Origine al centro: x=200, y=120) -->
+                    <line x1="20" y1="120" x2="380" y2="120" stroke="#475569" stroke-width="1.5"/>
+                    <line x1="200" y1="20" x2="200" y2="220" stroke="#475569" stroke-width="1.5"/>
+                    <text x="370" y="112" font-size="11" fill="#475569">x</text>
+                    <text x="208" y="32" font-size="11" fill="#475569">y</text>
+                    <text x="188" y="135" font-size="10" fill="#475569">0</text>
+
+                    <!-- Tacche: scala x = 100 px, scala y = 40 px -->
+                    <path d="M 100 116 V 124 M 300 116 V 124 M 196 80 H 204 M 196 160 H 204"
+                          stroke="#475569" stroke-width="1"/>
+                    <text x="94" y="138" font-size="9" fill="#475569">−1</text>
+                    <text x="297" y="138" font-size="9" fill="#475569">1</text>
+                    <text x="208" y="84" font-size="9" fill="#475569">1</text>
+                    <text x="208" y="164" font-size="9" fill="#475569">−1</text>
+
+                    <!-- Parabola Superiore h(x) = x^2 -->
+                    <path id="carabinieri-superiore" fill="none" stroke="var(--warning)" stroke-width="2" stroke-dasharray="5,4"/>
+                    <!-- Parabola Inferiore f(x) = -x^2 -->
+                    <path id="carabinieri-inferiore" fill="none" stroke="var(--info)" stroke-width="2" stroke-dasharray="5,4"/>
+
+                    <!-- Curva calcolata via JavaScript: g(x) = x^2 sin(1/x), x diverso da 0 -->
+                    <path id="carabinieri-oscillante" fill="none" stroke="var(--danger)" stroke-width="2"/>
+                    <circle cx="200" cy="120" r="3.2" fill="white" stroke="var(--danger)" stroke-width="1.8"/>
+
+                    <!-- Legenda separata dall'area del grafico -->
+                    <line x1="20" y1="232" x2="380" y2="232" stroke="#e2e8f0" stroke-width="1"/>
+                    <line x1="32" y1="248" x2="58" y2="248" stroke="var(--warning)" stroke-width="2" stroke-dasharray="5,4"/>
+                    <text x="64" y="252" font-size="10" fill="var(--warning)" font-weight="600">y = x²</text>
+                    <line x1="214" y1="248" x2="240" y2="248" stroke="var(--info)" stroke-width="2" stroke-dasharray="5,4"/>
+                    <text x="246" y="252" font-size="10" fill="var(--info)" font-weight="600">y = −x²</text>
+                    <line x1="92" y1="269" x2="118" y2="269" stroke="var(--danger)" stroke-width="2"/>
+                    <text x="124" y="273" font-size="10" fill="var(--danger)" font-weight="600">y = x² sin(1/x), x ≠ 0</text>
+                </svg>
+                <p class="text-center text-muted" style="font-size:0.85rem;">Le parabole tratteggiate delimitano la funzione oscillante. Il punto vuoto indica che $x^2\sin(1/x)$ non è definita in $x=0$.</p>
+            </div>
+        </section>
+
+        <!-- 15 MAPPA CONCETTUALE -->
+        <section class="card" data-type="summary" id="mappa">
+            <div class="card-header">14 — Mappa Concettuale Finale</div>
+            <div class="card-body">
+                <div class="mappa">
+LIMITE DI f(x) PER x → x₀
+ │
+ ├── PREREQUISITO ─────► x₀ deve essere punto di accumulazione per Df
+ │
+ ├── DEFINIZIONE ε-δ ──► ∀ε>0 ∃δ>0: 0<|x−x₀|<δ ⇒ |f(x)−L|<ε
+ │                      ► Unicità del limite (se esiste, è unico)
+ │
+ ├── LIMITI ───────────► Sinistro e Destro: il limite esiste se e solo se coincidono
+ │  UNILATERI
+ │
+ ├── ALGEBRA ──────────► Somma, prodotto, quoziente, potenze
+ │  DEI LIMITI           ► Estensione a ±∞ (schema delle operazioni)
+ │
+ ├── TIPI DI LIMITE ───► Finito in x₀ finito (limite ordinario)
+ │                      ► Finito all'infinito → Asintoto Orizzontale
+ │                      ► Infinito in x₀ finito → Asintoto Verticale
+ │                      ► Infinito all'infinito → Eventuale Asintoto Obliquo
+ │
+ ├── FORME ────────────► [∞−∞], [0·∞], [∞/∞], [0/0], [1^∞], [0⁰], [∞⁰]
+ │  INDETERMINATE        ► Risoluzione tramite fattorizzazione o limiti notevoli
+ │
+ ├── CONFRONTI ────────► o-piccolo: f=o(g) se f/g → 0
+ │  ASINTOTICI           ► Equivalenza: f ~ g se f/g → 1
+ │                      ► Limiti notevoli: sin(x)~x, e^x-1~x, ln(1+x)~x...
+ │
+ └── TEOREMI ──────────► Due Carabinieri, Permanenza del segno
+                </div>
+            </div>
+        </section>
+
+        <!-- 16 ESERCIZI GUIDATI -->
+        <section class="card" data-type="exercise" id="esercizi">
+            <div class="card-header">15 — Esercizi Guidati e Svolti</div>
+            <div class="card-body">
+                <p>Esercitati con queste applicazioni sui limiti. Apri i dettagli per verificare le soluzioni passo-passo.</p>
+                
+                <div class="exercise">
+                    <h3>1. Livello Base: Verifica con la definizione che $\lim_{x \to 3} (2x - 1) = 5$</h3>
+                    <details>
+                        <summary>💡 Svolgimento</summary>
+                        <div>
+                            <div class="math-step"><span class="step-num">1.</span> <span>Fissiamo $\varepsilon > 0$ arbitrario e impostiamo la disuguaglianza $|(2x-1) - 5| < \varepsilon$.</span></div>
+                            <div class="math-step"><span class="step-num">2.</span> <span>Semplificando l'argomento del modulo: $|2x - 6| < \varepsilon \iff 2|x - 3| < \varepsilon$.</span></div>
+                            <div class="math-step"><span class="step-num">3.</span> <span>Dividendo per 2: $|x - 3| < \frac{\varepsilon}{2}$.</span></div>
+                            <div class="math-step"><span class="step-num">4.</span> <span>Scegliendo $\delta = \frac{\varepsilon}{2}$, la condizione della definizione è verificata.</span></div>
+                            <strong>✅ Verificato: la scelta $\delta = \frac{\varepsilon}{2}$ soddisfa la definizione.</strong>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="exercise">
+                    <h3>2. Livello Base: Calcola $\lim_{x \to +\infty} \frac{2x^3 - 5x + 1}{4x^3 + x^2 - 7}$</h3>
+                    <details>
+                        <summary>💡 Svolgimento</summary>
+                        <div>
+                            <div class="math-step"><span class="step-num">1.</span> <span>Si presenta la forma indeterminata $\left[\frac{+\infty}{+\infty}\right]$.</span></div>
+                            <div class="math-step"><span class="step-num">2.</span> <span>Raccogliamo il termine di grado massimo $x^3$ a numeratore e denominatore:
+                            $$\lim_{x \to +\infty} \frac{x^3 \left(2 - \frac{5}{x^2} + \frac{1}{x^3}\right)}{x^3 \left(4 + \frac{1}{x} - \frac{7}{x^3}\right)}$$</span></div>
+                            <div class="math-step"><span class="step-num">3.</span> <span>Poiché tutti i termini del tipo $\frac{1}{x^k} \to 0$, rimaniamo con la frazione dei coefficienti dei gradi massimi: $\frac{2}{4} = \frac{1}{2}$.</span></div>
+                            <strong>✅ Risultato: $\frac{1}{2}$</strong>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="exercise">
+                    <h3>3. Livello Base: Trova gli asintoti di $f(x) = \frac{x^2 + 2x + 3}{x}$ per $x \to +\infty$</h3>
+                    <details>
+                        <summary>💡 Svolgimento</summary>
+                        <div>
+                            <div class="math-step"><span class="step-num">1.</span> <span>Dividendo termine a termine: $f(x) = x + 2 + \frac{3}{x}$.</span></div>
+                            <div class="math-step"><span class="step-num">2.</span> <span>Per $x \to +\infty$, la frazione $\frac{3}{x} \to 0$, quindi il grafico tende alla retta $y = x + 2$.</span></div>
+                            <div class="math-step"><span class="step-num">3.</span> <span>Verifica rigorosa dei coefficienti dell'asintoto obliquo:
+                            $$m = \lim_{x \to +\infty} \frac{f(x)}{x} = \lim_{x \to +\infty} \left(1 + \frac{2}{x} + \frac{3}{x^2}\right) = 1$$
+                            $$q = \lim_{x \to +\infty} [f(x) - x] = \lim_{x \to +\infty} \left(2 + \frac{3}{x}\right) = 2$$</span></div>
+                            <strong>✅ Risultato: Asintoto obliquo $y = x + 2$</strong>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="exercise">
+                    <h3>4. Livello Base: Calcola $\lim_{x \to 0} x^4 \cos\left(\frac{1}{x^2}\right)$</h3>
+                    <details>
+                        <summary>💡 Svolgimento</summary>
+                        <div>
+                            <div class="math-step"><span class="step-num">1.</span> <span>La funzione coseno è limitata: $-1 \le \cos\left(\frac{1}{x^2}\right) \le 1$ per ogni $x \neq 0$.</span></div>
+                            <div class="math-step"><span class="step-num">2.</span> <span>Moltiplicando per $x^4 \ge 0$: $-x^4 \le x^4 \cos\left(\frac{1}{x^2}\right) \le x^4$.</span></div>
+                            <div class="math-step"><span class="step-num">3.</span> <span>Poiché $\lim_{x \to 0} (-x^4) = \lim_{x \to 0} x^4 = 0$, applicando il Teorema dei Due Carabinieri otteniamo $0$.</span></div>
+                            <strong>✅ Risultato: $0$</strong>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- 17 VERIFICA FINALE -->
+        <section class="card" data-type="exercise" id="verifica">
+            <div class="card-header">16 — Verifica Finale (5 Minuti)</div>
+            <div class="card-body">
+                <p>Controlla la tua preparazione prima di concludere il modulo.</p>
+                <h3>Parte 1: Quesiti Teorici</h3>
+                <ol>
+                    <li>Perché è indispensabile che $x_0$ sia un punto di accumulazione per il dominio $D_f$ affinché sia possibile definire $\lim_{x \to x_0} f(x)$?</li>
+                    <li>Enuncia con precisione il Teorema dei Due Carabinieri.</li>
+                </ol>
+                <h3>Parte 2: Esercizi di Calcolo</h3>
+                <ol>
+                    <li>Calcola $\lim_{x \to 0} \frac{\sin(3x)}{x}$ facendo uso dei limiti notevoli.</li>
+                    <li>Calcola $\lim_{x \to -\infty} \frac{5x^4 - 2x}{x^3 + 1}$.</li>
+                    <li>Stabilisci se existe $\lim_{x \to 0} \frac{x}{|x|}$.</li>
+                </ol>
+                <details>
+                    <summary>🔍 Mostra Soluzioni di Controllo</summary>
+                    <div>
+                        <p><strong>Teoria 1:</strong> Se $x_0$ fosse isolato, esisterebbe un intorno contenente il solo punto $x_0$. Di conseguenza la condizione $0 < |x - x_0| < \delta$ non verrebbe mai soddisfatta da alcun elemento del dominio e la definizione di limite risulterebbe vera per qualunque valore $L$, rendendo il limite privo di senso.</p>
+                        <p><strong>Teoria 2:</strong> Siano $f, g, h$ tali che $f(x) \le g(x) \le h(x)$ in un intorno di $x_0$. Se $\lim_{x \to x_0} f(x) = \lim_{x \to x_0} h(x) = L$, allora ammette limite anche $g(x)$ e risulta $\lim_{x \to x_0} g(x) = L$.</p>
+                        <p><strong>Es. 1:</strong> Risoluzione: $\lim_{x \to 0} \frac{\sin(3x)}{x} = \lim_{x \to 0} 3 \cdot \frac{\sin(3x)}{3x} = 3 \cdot 1 = 3$.</p>
+                        <p><strong>Es. 2:</strong> Il grado del numeratore ($4$) supera il grado del denominatore ($3$). Raccogliendo i termini dominanti: $\lim_{x \to -\infty} \frac{5x^4}{x^3} = \lim_{x \to -\infty} 5x = -\infty$.</p>
+                        <p><strong>Es. 3:</strong> Sviluppando i limiti unilateri: $\lim_{x \to 0^+} \frac{x}{x} = 1$ e $\lim_{x \to 0^-} \frac{x}{-x} = -1$. Poiché i limiti unilateri sono discordi, <strong>il limite non esiste</strong>.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <footer>
+            <span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+            <span class="footer-center">
+                    Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+                    <small>Prof.ssa M. Prandelli</small>
+            </span>
+            <span class="footer-copy">© 2026 MatematicaOro</span>
+        </footer>
+    </main>
+
+    <script>
+        const progressBar = document.getElementById('progressBar');
+        const navLinks = document.querySelectorAll('nav a');
+
+        navLinks.forEach(link => {
+          link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href');
+            if (!href || !href.startsWith('#')) return;
+            const target = document.querySelector(href);
+            if (!target) return;
+            event.preventDefault();
+            const nav = link.closest('nav');
+            const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+            const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+            window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+            history.replaceState(null, '', href);
+          });
+        });
+
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+          const h = document.documentElement.scrollHeight - window.innerHeight;
+          progressBar.style.width = `${(window.scrollY / h) * 100}%`;
+          let current = '';
+          sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 100) current = sec.id; });
+          navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + current); });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+        // Asintoto orizzontale: esempio f(x)=L+2/(x+1), con L=2 e x>=0.
+        (() => {
+          const xSvg = x => 60 + 35 * x;
+          const ySvg = y => 180 - 40 * y;
+          const points = [];
+          for (let i = 0; i <= 600; i++) {
+            const x = 9 * i / 600;
+            const y = 2 + 2 / (x + 1);
+            points.push(`${i === 0 ? 'M' : 'L'} ${xSvg(x).toFixed(2)} ${ySvg(y).toFixed(2)}`);
+          }
+          document.getElementById('asintoto-orizzontale-curva').setAttribute('d', points.join(' '));
+        })();
+
+        // Asintoto obliquo: f(x)=x+1/x e y=x nelle scale indicate nel grafico.
+        (() => {
+          const xSvg = x => 200 + 40 * x;
+          const ySvg = y => 120 - 20 * y;
+          const makePath = (fn, start, end, steps) => {
+            const points = [];
+            for (let i = 0; i <= steps; i++) {
+              const x = start + (end - start) * i / steps;
+              points.push(`${i === 0 ? 'M' : 'L'} ${xSvg(x).toFixed(2)} ${ySvg(fn(x)).toFixed(2)}`);
+            }
+            return points.join(' ');
+          };
+          document.getElementById('asintoto-obliquo-retta').setAttribute('d', makePath(x => x, -4.5, 4.5, 300));
+          document.getElementById('asintoto-obliquo-sinistro').setAttribute('d', makePath(x => x + 1 / x, -4.5, -0.1, 700));
+          document.getElementById('asintoto-obliquo-destro').setAttribute('d', makePath(x => x + 1 / x, 0.1, 4.5, 700));
+        })();
+
+        // Gerarchia degli infiniti: grafici ottenuti dalle funzioni, non da curve a mano libera.
+        (() => {
+          const xSvg = x => 55 + 50 * x;
+          const ySvg = y => 190 - 14 * y;
+          const makePath = (fn, start, end, steps) => {
+            const points = [];
+            for (let i = 0; i <= steps; i++) {
+              const x = start + (end - start) * i / steps;
+              points.push(`${i === 0 ? 'M' : 'L'} ${xSvg(x).toFixed(2)} ${ySvg(fn(x)).toFixed(2)}`);
+            }
+            return points.join(' ');
+          };
+          document.getElementById('gerarchia-ln').setAttribute('d', makePath(Math.log, 0.07, 6.4, 900));
+          document.getElementById('gerarchia-quadrato').setAttribute('d', makePath(x => x * x, 0, 3.6, 500));
+          document.getElementById('gerarchia-esponenziale').setAttribute('d', makePath(Math.exp, 0, 2.6, 500));
+        })();
+
+        // Grafico esatto dell'applicazione del teorema dei due carabinieri.
+        (() => {
+          const xSvg = x => 200 + 100 * x;
+          const ySvg = y => 120 - 40 * y;
+          const curvePath = fn => {
+            const points = [];
+            for (let i = 0; i <= 800; i++) {
+              const x = -1.4 + (2.8 * i / 800);
+              points.push(`${i === 0 ? 'M' : 'L'} ${xSvg(x).toFixed(2)} ${ySvg(fn(x)).toFixed(2)}`);
+            }
+            return points.join(' ');
+          };
+          document.getElementById('carabinieri-superiore').setAttribute('d', curvePath(x => x * x));
+          document.getElementById('carabinieri-inferiore').setAttribute('d', curvePath(x => -x * x));
+
+          const oscillante = [];
+          const faseMinima = 1 / 1.4;
+          const faseMassima = 18 * Math.PI;
+          const addBranchByPhase = (negative, steps) => {
+            for (let i = 0; i <= steps; i++) {
+              const phase = negative
+                ? faseMinima + (faseMassima - faseMinima) * i / steps
+                : faseMassima - (faseMassima - faseMinima) * i / steps;
+              const x = (negative ? -1 : 1) / phase;
+              const y = x * x * Math.sin(1 / x);
+              oscillante.push(`${i === 0 ? 'M' : 'L'} ${xSvg(x).toFixed(2)} ${ySvg(y).toFixed(2)}`);
+            }
+          };
+          addBranchByPhase(true, 1800);
+          addBranchByPhase(false, 1800);
+          document.getElementById('carabinieri-oscillante').setAttribute('d', oscillante.join(' '));
+        })();
+    </script>
+
+
+<div class="lab-toolbar no-print" id="labToolbar" role="toolbar" aria-label="Strumenti laboratorio">
+ <button type="button" data-tool="navigate" aria-pressed="true" title="Naviga e usa i grafici">☞ Naviga</button>
+ <button type="button" data-tool="pen" aria-pressed="false" title="Scrivi sulla scheda">✎ Penna</button>
+ <button type="button" data-tool="marker" aria-pressed="false" title="Evidenzia disegnando">▰ Evidenzia</button>
+ <button type="button" data-tool="eraser" aria-pressed="false" title="Cancella un tratto">⌫ Gomma</button>
+ <button type="button" id="labShapes" aria-expanded="false" aria-controls="labShapesMenu">◯ Forme</button>
+ <div id="labShapesMenu" hidden><button type="button" data-shape="line">Linea</button><button type="button" data-shape="circle">Circonferenza</button><button type="button" data-shape="ellipse">Ellisse</button><button type="button" data-shape="rect">Rettangolo</button><button type="button" data-shape="arrow">Freccia</button><button type="button" data-shape="auto">Riconosci</button></div>
+ <span id="labDrawOptions" hidden><input id="labColor" type="color" value="#2563eb" aria-label="Colore"><select id="labThickness" aria-label="Spessore"><option value="2">Fine</option><option value="4" selected>Medio</option><option value="7">Spesso</option></select></span>
+ <button type="button" id="labPresentation" aria-pressed="false">▣ Presenta</button>
+ <button type="button" id="labExpand" aria-expanded="false" aria-controls="labExtra">⋯ Altro</button>
+ <div class="lab-extra" id="labExtra" hidden>
+ <button type="button" id="labUndo">↶ Annulla</button><button type="button" id="labClear">✕ Cancella scheda</button>
+ <button type="button" id="labSmaller">A−</button><button type="button" id="labLarger">A+</button>
+ <select id="labPrintMode" aria-label="Modalità PDF"><option value="clean">PDF pulito</option><option value="annotated">PDF annotato</option></select>
+ <button type="button" id="labPrint">▣ Salva PDF</button><button type="button" id="labFullscreen" aria-pressed="false">⛶ Schermo intero</button>
+ <button type="button" id="labHome">⌂ Home</button><button type="button" id="labLessons">☰ Lezioni</button>
+ </div>
+</div>
+<div class="lab-present-nav no-print" aria-label="Navigazione presentazione">
+<button id="labPrev" type="button" title="Scheda precedente" aria-label="Scheda precedente">↑</button>
+<button id="labStepBack" type="button" title="Passaggio precedente" aria-label="Passaggio precedente">←</button>
+<span id="labCount" aria-live="polite"></span>
+<button id="labNextStep" type="button" title="Passaggio successivo" aria-label="Passaggio successivo">→</button>
+<button id="labNext" type="button" title="Scheda successiva" aria-label="Scheda successiva">↓</button></div>
+<script id="lab-interaction-script">
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const cards=[...document.querySelectorAll('main > section.card')];
+const NS='http://www.w3.org/2000/svg';
+const paths=new Map(), layers=new Map(), stepIndex=new WeakMap();
+let tool='navigate',shape='auto',index=0,progressive=false,scale=1,active=null;
+const svgEl=tag=>document.createElementNS(NS,tag);
+const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+const bounds=pts=>({minX:Math.min(...pts.map(p=>p.x)),maxX:Math.max(...pts.map(p=>p.x)),minY:Math.min(...pts.map(p=>p.y)),maxY:Math.max(...pts.map(p=>p.y))});
+function point(svg,e){const r=svg.getBoundingClientRect();return {x:Math.max(0,Math.min(1000,(e.clientX-r.left)/r.width*1000)),y:Math.max(0,Math.min(1000,(e.clientY-r.top)/r.height*1000))}}
+function smooth(pts){if(pts.length<2)return `M ${pts[0].x} ${pts[0].y} l .01 0`;return 'M '+pts.map(p=>`${p.x} ${p.y}`).join(' L ')}
+function drawShape(el,kind,pts){
+ const first=pts[0],last=pts[pts.length-1],b=bounds(pts),cx=(b.minX+b.maxX)/2,cy=(b.minY+b.maxY)/2;
+ const w=b.maxX-b.minX,h=b.maxY-b.minY;
+ if(kind==='line'||kind==='arrow'){
+   const dx=last.x-first.x,dy=last.y-first.y;
+   if(kind==='line')el.setAttribute('d',`M ${first.x} ${first.y} L ${last.x} ${last.y}`);
+   else {const len=Math.hypot(dx,dy)||1,ux=dx/len,uy=dy/len,sz=Math.min(32,Math.max(12,len*.18));
+    el.setAttribute('d',`M ${first.x} ${first.y} L ${last.x} ${last.y} M ${last.x-ux*sz-uy*sz*.45} ${last.y-uy*sz+ux*sz*.45} L ${last.x} ${last.y} L ${last.x-ux*sz+uy*sz*.45} ${last.y-uy*sz-ux*sz*.45}`)}
+ }else if(kind==='rect')el.setAttribute('d',`M ${b.minX} ${b.minY} H ${b.maxX} V ${b.maxY} H ${b.minX} Z`);
+ else if(kind==='circle'||kind==='ellipse'){
+   let rx=Math.max(2,w/2),ry=Math.max(2,h/2);
+   if(kind==='circle'){const rr=(rx+ry)/2;rx=rr;ry=rr}
+   el.setAttribute('d',`M ${cx+rx} ${cy} A ${rx} ${ry} 0 1 0 ${cx-rx} ${cy} A ${rx} ${ry} 0 1 0 ${cx+rx} ${cy} Z`);
+ }else el.setAttribute('d',smooth(pts));
+}
+function recognized(pts,svg){
+ if(pts.length<7)return null;
+ const b=bounds(pts),w=b.maxX-b.minX,h=b.maxY-b.minY;
+ const r=svg.getBoundingClientRect(),px=w*r.width/1000,py=h*r.height/1000;
+ if(Math.max(px,py)<28)return null;
+ const close=distance(pts[0],pts[pts.length-1])*Math.min(r.width,r.height)/1000;
+ const closed=close<Math.max(22,Math.min(px,py)*.25);
+ if(closed&&Math.min(px,py)>18){
+   const center={x:(b.minX+b.maxX)/2,y:(b.minY+b.maxY)/2};
+   const radii=pts.map(p=>Math.hypot((p.x-center.x)*r.width/1000,(p.y-center.y)*r.height/1000));
+   const mean=radii.reduce((x,y)=>x+y,0)/radii.length;
+   const variance=Math.sqrt(radii.reduce((x,y)=>x+(y-mean)**2,0)/radii.length)/mean;
+   const ratio=px/py;
+   if(variance<.24&&ratio>.82&&ratio<1.22)return 'circle';
+   return 'ellipse';
+ }
+ // Straightness based on maximum deviation from the endpoint line in screen pixels.
+ const a=pts[0],z=pts[pts.length-1],vx=(z.x-a.x)*r.width/1000,vy=(z.y-a.y)*r.height/1000,len=Math.hypot(vx,vy);
+ if(len>32){const maxDev=Math.max(...pts.map(p=>Math.abs(vx*(p.y-a.y)*r.height/1000-vy*(p.x-a.x)*r.width/1000)/len));if(maxDev<Math.max(12,len*.08))return 'line'}
+ return null;
+}
+function nearPath(p,pt,svg){
+ const a=JSON.parse(p.dataset.points||'[]'),r=svg.getBoundingClientRect(),dx=r.width/1000,dy=r.height/1000;
+ if(p.dataset.kind&&p.dataset.kind!=='free'&&p.dataset.kind!=='marker'){
+  const b=p.getBBox(),x=pt.x,y=pt.y;
+  if(x>=b.x-20&&x<=b.x+b.width+20&&y>=b.y-20&&y<=b.y+b.height+20)return true;
+ }
+ for(let i=0;i<a.length;i++){const q=a[i];if(Math.hypot((pt.x-q.x)*dx,(pt.y-q.y)*dy)<15)return true;
+ if(i){const prev=a[i-1],vx=(q.x-prev.x)*dx,vy=(q.y-prev.y)*dy,wx=(pt.x-prev.x)*dx,wy=(pt.y-prev.y)*dy;
+ const t=Math.max(0,Math.min(1,(wx*vx+wy*vy)/(vx*vx+vy*vy||1)));
+ if(Math.hypot(wx-t*vx,wy-t*vy)<15)return true;}}
+ return false;
+}
+function finish(e){
+ if(!active||active.id!==e.pointerId)return;
+ const {svg,p,pts,mode,held}=active;
+ if(mode==='marker'){
+   // Keep a single straight, translucent stroke between the start and end points.
+   drawShape(p,'line',[pts[0],pts[pts.length-1]]);p.dataset.kind='marker';
+ }else if(mode==='shape'){
+   const chosen=shape==='auto'?(recognized(pts,svg)||'free'):shape;
+   drawShape(p,chosen,pts);p.dataset.kind=chosen;
+ }else if(mode==='pen'&&held){
+   const chosen=recognized(pts,svg);
+   if(chosen){drawShape(p,chosen,pts);p.dataset.kind=chosen}
+ }
+ active=null;
+}
+cards.forEach(card=>{
+ const svg=svgEl('svg');svg.classList.add('lab-layer');svg.setAttribute('aria-label','Annotazioni temporanee');
+ svg.setAttribute('preserveAspectRatio','none');svg.setAttribute('viewBox','0 0 1000 1000');
+ card.appendChild(svg);layers.set(card,svg);paths.set(card,[]);
+ svg.addEventListener('pointerdown',e=>{
+   if(tool==='navigate'||e.button>0)return;
+   e.preventDefault();const pt=point(svg,e);
+   if(tool==='eraser'){
+     const hit=[...svg.querySelectorAll('path')].reverse().find(p=>nearPath(p,pt,svg));
+     if(hit){hit.remove();paths.set(card,paths.get(card).filter(x=>x!==hit))}return;
+   }
+   const p=svgEl('path');p.setAttribute('stroke',$('labColor').value);
+   p.setAttribute('stroke-width',tool==='marker'?String(Math.max(14,Number($('labThickness').value)*5)):$('labThickness').value);
+   p.setAttribute('opacity',tool==='marker'?'0.32':'1');
+   p.dataset.points=JSON.stringify([pt]);p.dataset.kind='free';
+   p.setAttribute('d',`M ${pt.x} ${pt.y} l .01 0`);
+   svg.appendChild(p);paths.get(card).push(p);
+   active={svg,p,pts:[pt],id:e.pointerId,mode:tool,held:false,started:performance.now(),lastMove:performance.now()};
+   svg.setPointerCapture(e.pointerId);
+ });
+ svg.addEventListener('pointermove',e=>{
+   if(!active||active.svg!==svg||active.id!==e.pointerId)return;
+   e.preventDefault();const pt=point(svg,e);active.pts.push(pt);
+   active.lastMove=performance.now();active.p.dataset.points=JSON.stringify(active.pts);
+   if(active.mode==='marker')drawShape(active.p,'line',[active.pts[0],pt]);
+   else if(active.mode==='shape'&&shape!=='auto')drawShape(active.p,shape,[active.pts[0],pt]);
+   else active.p.setAttribute('d',smooth(active.pts));
+ });
+ svg.addEventListener('pointerup',e=>{
+   if(active&&active.svg===svg){
+    // Hold the stylus still for at least ~450ms at the end of a drawn shape to correct it.
+    active.held=performance.now()-active.lastMove>=450;
+    finish(e);
+   }
+ });
+ svg.addEventListener('pointercancel',e=>{if(active&&active.svg===svg)active=null});
+});
+function setTool(t){
+ tool=t;document.body.classList.toggle('lab-draw',t==='pen'||t==='marker'||t==='shape');
+ document.body.classList.toggle('lab-erase',t==='eraser');
+ document.querySelectorAll('[data-tool]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tool===t)));
+ $('labShapes').setAttribute('aria-pressed',String(t==='shape'));
+ $('labDrawOptions').hidden=!(t==='pen'||t==='marker'||t==='shape');
+ if(t!=='shape'){$('labShapesMenu').hidden=true;$('labShapes').setAttribute('aria-expanded','false')}
+}
+document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>setTool(b.dataset.tool));
+$('labShapes').onclick=()=>{
+ setTool('shape');const menu=$('labShapesMenu');menu.hidden=!menu.hidden;
+ $('labShapes').setAttribute('aria-expanded',String(!menu.hidden));
+};
+document.querySelectorAll('[data-shape]').forEach(b=>b.onclick=()=>{
+ shape=b.dataset.shape;setTool('shape');$('labShapesMenu').hidden=true;
+ $('labShapes').setAttribute('aria-expanded','false');
+ document.querySelectorAll('[data-shape]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+});
+$('labExpand').onclick=()=>{const panel=$('labExtra');panel.hidden=!panel.hidden;$('labExpand').setAttribute('aria-expanded',String(!panel.hidden))};
+function currentCard(){
+ if(document.body.classList.contains('lab-present'))return cards[index];
+ const center=innerHeight*.42;
+ return cards.find(c=>{const r=c.getBoundingClientRect();return r.top<=center&&r.bottom>=center})||cards.find(c=>c.getBoundingClientRect().bottom>0)||cards[0];
+}
+$('labUndo').onclick=()=>{const c=currentCard(),p=paths.get(c).pop();if(p)p.remove()};
+$('labClear').onclick=()=>{const c=currentCard();paths.get(c).forEach(p=>p.remove());paths.set(c,[])};
+function revealables(card){
+ const body=card.querySelector('.card-body');
+ if(!body)return [];
+ return [...body.children].filter(el=>!el.classList.contains('lab-layer')&&!el.matches('script,style'));
+}
+function applySteps(){
+ cards.forEach((card,i)=>{
+   const shown=stepIndex.get(card)??1;
+   revealables(card).forEach((el,j)=>el.classList.toggle('lab-step-hidden',progressive&&i===index&&j>=shown));
+ });
+}
+function nextStep(){
+ const c=cards[index],n=stepIndex.get(c)??1,all=revealables(c);
+ if(n<all.length){stepIndex.set(c,n+1);applySteps();updateCount()}
+}
+function previousStep(){
+ const c=cards[index],n=stepIndex.get(c)??1;
+ if(n>1){stepIndex.set(c,n-1);applySteps();updateCount()}
+}
+function updateCount(){
+ const count=revealables(cards[index]).length;
+ $('labCount').textContent=`Scheda ${index+1}/${cards.length} · ${Math.min(stepIndex.get(cards[index])??1,count)}/${count} passaggi`;
+ $('labStepBack').disabled=(stepIndex.get(cards[index])??1)<=1;
+ $('labNextStep').disabled=(stepIndex.get(cards[index])??1)>=count;
+ $('labPrev').disabled=index===0;
+ $('labNext').disabled=index===cards.length-1;
+}
+function update(){
+ cards.forEach((c,i)=>c.classList.toggle('lab-current',i===index));
+ if(!stepIndex.has(cards[index]))stepIndex.set(cards[index],1);
+ applySteps();updateCount();
+ if(document.body.classList.contains('lab-present'))window.scrollTo(0,0);
+}
+$('labPresentation').onclick=()=>{
+ const target=currentCard();const on=document.body.classList.toggle('lab-present');$('labPresentation').setAttribute('aria-pressed',String(on));
+ if(on){index=Math.max(0,cards.indexOf(target));setTool('navigate');progressive=true;document.body.classList.add('lab-progress')}
+ else {progressive=false;document.body.classList.remove('lab-progress');cards.forEach(c=>c.querySelectorAll('.lab-step-hidden').forEach(x=>x.classList.remove('lab-step-hidden')))}
+ update();
+};
+$('labPrev').onclick=()=>{index=Math.max(0,index-1);update()};
+$('labNext').onclick=()=>{index=Math.min(cards.length-1,index+1);update()};
+$('labStepBack').onclick=previousStep;
+$('labNextStep').onclick=nextStep;
+document.addEventListener('keydown',e=>{
+ if(!document.body.classList.contains('lab-present')||e.altKey||e.ctrlKey||e.metaKey||['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName))return;
+ const actions={ArrowRight:nextStep,ArrowLeft:previousStep,ArrowDown:()=>$('labNext').click(),ArrowUp:()=>$('labPrev').click()};
+ if(actions[e.key]){actions[e.key]();e.preventDefault()}
+ if(e.key==='Escape')$('labPresentation').click();
+});
+$('labFullscreen').onclick=async()=>{
+ try{if(document.fullscreenElement){await document.exitFullscreen()}else{await document.documentElement.requestFullscreen()}}
+ catch(e){alert('Il browser non consente lo schermo intero in questa modalità. Su PC puoi usare F11.')}
+};
+document.addEventListener('fullscreenchange',()=>{
+ const on=!!document.fullscreenElement;$('labFullscreen').setAttribute('aria-pressed',String(on));
+ $('labFullscreen').textContent=on?'⛶ Esci da schermo intero':'⛶ Schermo intero';
+});
+$('labLarger').onclick=()=>{scale=Math.min(1.6,scale+.1);document.documentElement.style.setProperty('--lesson-scale',scale)};
+$('labSmaller').onclick=()=>{scale=Math.max(.8,scale-.1);document.documentElement.style.setProperty('--lesson-scale',scale)};
+$('labPrint').onclick=()=>{
+ const annotated=$('labPrintMode').value==='annotated';
+ document.body.classList.toggle('lab-print-annotations',annotated);
+ // La stampa include tutte le schede anche dalla modalità Presentazione.
+ window.print();
+};
+$('labHome').onclick=()=>location.href='https://matematicaoro.github.io/';
+$('labLessons').onclick=()=>location.href='https://matematicaoro.github.io/lezioni/';
+window.addEventListener('beforeprint',()=>document.body.classList.add('lab-printing'));
+window.addEventListener('afterprint',()=>document.body.classList.remove('lab-printing'));
+update();
+})();
+</script>
+
+
+</body>
+</html>
