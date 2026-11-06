@@ -1520,7 +1520,7 @@ LIMITE DI f(x) PER x → x₀
  <button type="button" id="labSmaller">A−</button><button type="button" id="labLarger">A+</button>
  <select id="labPrintMode" aria-label="Modalità PDF"><option value="clean">PDF pulito</option><option value="annotated">PDF annotato</option></select>
  <button type="button" id="labPrint">▣ Salva PDF</button><button type="button" id="labFullscreen" aria-pressed="false">⛶ Schermo intero</button>
- <button type="button" id="labHome">⌂ Home</button><button type="button" id="labLessons">☰ Lezioni</button>
+ <button type="button" id="labHome">⌂ Home</button><button type="button" id="labLessons">▦ Laboratorio</button>
  </div>
 </div>
 <div class="lab-present-nav no-print" aria-label="Navigazione presentazione">
@@ -1826,7 +1826,7 @@ $('labPrint').onclick=()=>{
  window.print();
 };
 $('labHome').onclick=()=>location.href='https://matematicaoro.github.io/';
-$('labLessons').onclick=()=>location.href='https://matematicaoro.github.io/lezioni/';
+$('labLessons').onclick=()=>location.href='https://matematicaoro.github.io/laboratorio/';
 window.addEventListener('beforeprint',()=>document.body.classList.add('lab-printing'));
 window.addEventListener('afterprint',()=>document.body.classList.remove('lab-printing'));
 update();
