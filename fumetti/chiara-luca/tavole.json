@@ -486,5 +486,15 @@
       "assets/tavola062_f67794d0b5.webp"
     ],
     "published_at": "2026-10-31"
+  },
+  {
+    "id": "064",
+    "title": "Un’Italia da costruire",
+    "subtitle": "Il percorso storico verso l’Unità d’Italia.",
+    "pages": [
+      "assets/064a.webp",
+      "assets/064b.webp"
+    ],
+    "published_at": "2026-11-18"
   }
 ]
