@@ -1,6 +1,11 @@
 {
   "lezioni": [
     {
+      "title": "Il prezzo dell’attenzione",
+      "url": "lezioni/prezzo-attenzione/index.html",
+      "published_at": "2026-11-19"
+    },
+    {
       "title": "Tavole di verità e discorso pubblico",
       "url": "lezioni/tavole_verita_discorso_pubblico/index.html",
       "published_at": "2026-11-03"
