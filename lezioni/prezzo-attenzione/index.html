@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Il prezzo dell’attenzione · Lezione di Educazione civica</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f4f6f8;--surface:#fff;--ink:#17212b;--muted:#53606d;--line:#d5dce3;--accent:#0d6a87;--tint:#e3f0f5;--free:#b3382c;--light:#0d6a87;--prem:#5a49a0;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f161d;--surface:#17212b;--ink:#e8edf2;--muted:#9fadba;--line:#2c3947;--accent:#5ec0dd;--tint:#16303b;--free:#ee7d6f;--light:#5ec0dd;--prem:#a898ee;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f161d;--surface:#17212b;--ink:#e8edf2;--muted:#9fadba;--line:#2c3947;--accent:#5ec0dd;--tint:#16303b;--free:#ee7d6f;--light:#5ec0dd;--prem:#a898ee;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:48rem;margin:0 auto;padding:0 1.25rem 4rem}
+h1,h2,h3{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;line-height:1.2;margin:0}
+p{margin:.6rem 0}ul{padding-left:1.2rem;margin:.4rem 0}li{margin:.3rem 0}
+.hero{background:linear-gradient(135deg,#082c3b,#0d6a87 65%,#2a93ad);color:#fff;padding:3.5rem 1.25rem 3.2rem}
+.hero-in{max-width:48rem;margin:0 auto}
+.hero h1{font-size:clamp(2.6rem,10vw,4.6rem);letter-spacing:-.02em}
+.hero p{color:#d3e9f0;font-size:1.25rem;margin:.9rem 0 0}
+.tags{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem}
+.tag{background:#fff;color:#17212b;border-radius:4px 16px 16px 4px;padding:.5rem 1rem .5rem 1.6rem;font-weight:600;font-size:.95rem;position:relative}
+.tag::before{content:"";position:absolute;left:.6rem;top:50%;width:.5rem;height:.5rem;margin-top:-.25rem;border-radius:50%;background:#0d6a87}
+.tag s{opacity:.55}.tag i{font-weight:400;font-style:normal;color:#53606d}
+.bar-top{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1.2rem 0 .4rem}
+.bar-top a{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.3rem .8rem;font-size:.85rem;color:var(--ink);text-decoration:none}
+.bar-top button{margin-left:auto}
+button{font:inherit}
+.btn{border:1px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:999px;padding:.4rem .95rem;font-size:.9rem;font-weight:600;cursor:pointer}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+h2{font-size:1.9rem;margin:2.8rem 0 .4rem}
+.badge{display:inline-block;background:var(--accent);color:var(--bg);font:700 .85rem/1 system-ui,sans-serif;padding:.4rem .8rem;border-radius:999px;margin-right:.7rem;vertical-align:middle}
+.mom{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.4rem 1.2rem;margin:1.1rem 0}
+.min{display:inline-block;background:var(--tint);color:var(--accent);font-weight:700;font-size:.85rem;border-radius:999px;padding:.2rem .75rem}
+.mom h3{font-size:1.7rem;margin:.4rem 0 .7rem}
+.big{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-size:clamp(1.6rem,7vw,2.5rem);line-height:1.15;font-weight:700;margin:.8rem 0}
+.q{background:linear-gradient(135deg,#082c3b,#0d6a87);color:#fff;border-radius:10px;padding:1.4rem 1.3rem;margin:1rem 0}
+.q small{display:block;color:#bfe0ea;margin-bottom:.3rem}.q .big{margin:0}
+.scroll{overflow-x:auto;margin:.8rem 0;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line)}
+th{background:var(--tint)}tr:last-child td{border-bottom:0}.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.free{color:var(--free);font-weight:600}.light{color:var(--light);font-weight:600}.prem{color:var(--prem);font-weight:600}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.7rem;margin:.8rem 0}
+.g3>div{border:2px solid var(--line);border-radius:10px;padding:.8rem 1rem}.g3 b{display:block;font-size:1.05rem;margin-bottom:.3rem}
+.callout{background:var(--tint);border-left:5px solid var(--accent);padding:.9rem 1.1rem;border-radius:0 8px 8px 0;margin:1rem 0}
+.mq{font-family:Georgia,serif;font-size:1.35rem;line-height:1.3;font-weight:700;border-left:5px solid var(--accent);padding-left:1rem;margin:.8rem 0}
+.dq p{font-family:Georgia,serif;font-size:1.35rem;line-height:1.3;font-weight:700;border-left:5px solid var(--accent);padding-left:1rem;margin:.9rem 0}
+details.ans{border:1px solid var(--line);border-radius:8px;padding:.55rem 1rem;margin:.5rem 0;background:var(--bg)}
+details.ans summary{cursor:pointer;font-weight:600}details.ans p{color:var(--muted);margin:.5rem 0 .1rem}
+details.doc{margin-top:1rem}
+details.doc summary{display:inline-block;list-style:none;cursor:pointer;border:1px dashed var(--accent);color:var(--accent);border-radius:999px;padding:.3rem .9rem;font-size:.85rem;font-weight:600}
+details.doc summary::-webkit-details-marker{display:none}
+details.doc>div{margin-top:.6rem;background:var(--tint);border-radius:8px;padding:.7rem 1rem;font-size:.95rem}
+details.doc>div p{margin:.4rem 0}
+figure{margin:1rem 0;border:1px solid var(--line);border-radius:8px;padding:.75rem;background:var(--bg)}
+figure svg{display:block;width:100%;height:auto}
+.try{margin:.5rem .2rem 0}.try h4{margin:.2rem 0 .5rem;font-size:1.05rem}.try label{display:block;margin-bottom:.3rem}
+.try output{font-weight:700;color:var(--accent)}.try input{width:100%;accent-color:var(--accent)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:.8rem 0 .4rem}
+.pc{border:2px solid var(--line);border-radius:8px;padding:.6rem .3rem;text-align:center;transition:background .2s,border-color .2s}
+.pc b{display:block;font-size:.9rem}.pc span{font-size:1.15rem;font-weight:700;font-variant-numeric:tabular-nums}
+.pc.best{border-color:var(--accent);background:var(--tint)}#verdict{font-weight:600;margin:.3rem 0}
+.poll{margin:.8rem 0;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.5rem .9rem .8rem}
+.poll .pt{margin:.2rem 0;font-weight:600}
+.fr{display:grid;grid-template-columns:1fr auto 2.4rem auto;gap:.35rem .5rem;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--line)}
+.fr output{text-align:center;font-weight:700;font-size:1.15rem}
+.b{width:2.75rem;height:2.75rem;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer}
+.bar{grid-column:1/-1;height:.45rem;background:var(--tint);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.pf{display:flex;justify-content:space-between;align-items:center;margin-top:.7rem}
+.rs{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:.5rem .9rem;cursor:pointer;font-size:.9rem}
+@media (max-width:30rem){.hero{padding-top:2.5rem}.bar-top button{margin-left:0}}
+.docrow{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.8rem}
+.docrow .btn,.doc-toggle{font-size:.85rem;padding:.3rem .9rem}
+.doc-toggle{border:1px dashed var(--accent);background:transparent;color:var(--accent);border-radius:999px;font-weight:600;cursor:pointer}
+.docbody{margin-top:.6rem;background:var(--tint);border-radius:8px;padding:.7rem 1rem;font-size:.95rem}
+.docbody p{margin:.4rem 0}.docbody[hidden]{display:none}
+.how{background:var(--tint);border-radius:10px;padding:.7rem 1.1rem;margin:.9rem 0}
+.how h4{margin:0 0 .2rem;font-size:1rem;color:var(--accent)}.how ol{margin:.3rem 0;padding-left:1.3rem}
+.eq{font-family:Georgia,serif;margin:.15rem 0 .15rem 1rem}
+.hi{background:var(--tint);font-weight:700}
+.rd{background:#ffe66d!important;color:#17212b!important;box-shadow:0 0 0 .3rem #ffe66d;border-radius:4px}
+.rd *{color:#17212b!important}tr.rd>*{background:#ffe66d!important;color:#17212b!important}
+body.hl main :is(li,tr,p,.callout){cursor:pointer}
+#hltool{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:20;display:flex;gap:.4rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.35rem;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+#hltool .btn[aria-pressed="true"]{background:#ffe66d;color:#17212b;border-color:#c9a800}
+#hltool .btn[hidden]{display:none}
+@media print{#hltool{display:none}}
+@media print{
+@page{margin:14mm}
+:root:not([data-theme="light"]),:root[data-theme="dark"]{--bg:#fff;--surface:#fff;--ink:#17212b;--muted:#53606d;--line:#d5dce3;--accent:#0d6a87;--tint:#e3f0f5;--free:#b3382c;--light:#0d6a87;--prem:#5a49a0;color-scheme:light}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{height:auto!important;overflow:visible!important;background:#fff;scroll-behavior:auto}
+body{font-size:11pt;line-height:1.45}
+:root{padding:0}
+main{max-width:none;padding:0 0 1rem}
+.hero{padding:1.2rem 1rem}.hero h1{font-size:2.2rem}
+.bar-top,.docrow,#hltool,.b,.rs,.try{display:none!important}
+.scroll{overflow:visible!important}
+.how,.callout,.q,figure,.g3>div,.fr,.pc,tr,details,.poll{break-inside:avoid}
+h2,h3,.min{break-after:avoid}
+h2{margin-top:1.4rem}
+.mom{padding:.9rem 1rem}
+}
+
+
+        :root {
+          --primary: #2563eb;
+          --primary-light: #3b82f6;
+          --gold: #D4AF37;
+          --success: #16a34a;
+          --warning: #d97706;
+          --danger: #dc2626;
+          --info: #0891b2;
+          --bg-page: #e0e7ff;
+          --bg-card: #ffffff;
+          --text: #0f172a;
+          --text-muted: #475569;
+          --border: #e2e8f0;
+          --shadow: 0 12px 32px rgba(0,0,0,0.15);
+          --radius: 16px;
+          --font-main: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          --font-mono: "Courier New", Consolas, monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { 
+          scroll-behavior: smooth; 
+          scroll-padding-top: 0;
+        }
+        body {
+          font-family: var(--font-main);
+          font-size: clamp(16px, 1.8vw, 19px);
+          line-height: 1.7;
+          color: var(--text);
+          background: linear-gradient(135deg, #eaf4ff 0%, #f4f9ff 55%, #edf7ff 100%);
+          background-attachment: fixed;
+          min-height: 100vh;
+          padding-top: 4rem;
+        }
+
+        .progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); width: 0%; z-index: 101; transition: width 0.15s linear; }
+
+        nav {
+          position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95);
+          backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+          padding: 0.7rem 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;
+          justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        nav a {
+          text-decoration: none; color: var(--text-muted); font-weight: 600;
+          font-size: 0.85rem; padding: 0.4rem 0.8rem; border-radius: 8px;
+          transition: all 0.2s;
+        }
+        nav a:hover { color: var(--primary); background: #eff6ff; transform: translateY(-1px); }
+        nav a.active { color: #fff; background: var(--primary); box-shadow: 0 2px 6px rgba(37,99,235,0.2); }
+
+        main { max-width: 980px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+        
+        .card {
+          background: var(--bg-card); border-radius: var(--radius);
+          padding: 2rem; margin-bottom: 2.5rem; box-shadow: var(--shadow);
+          border: 1px solid rgba(255,255,255,0.5); position: relative;
+          overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;
+          opacity: 0; transform: translateY(25px);
+        }
+        .card.visible { opacity: 1; transform: translateY(0); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
+        
+        .card::before {
+          content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+          background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+        .card[data-type="graph"]::before { background: linear-gradient(90deg, var(--success), #22c55e); }
+        .card[data-type="warning"]::before { background: linear-gradient(90deg, var(--warning), #f59e0b); }
+        .card[data-type="exercise"]::before { background: linear-gradient(90deg, var(--danger), #f87171); }
+        .card[data-type="summary"]::before { background: linear-gradient(90deg, var(--info), #22d3ee); }
+
+        .card-header {
+          font-size: 1.45rem; font-weight: 700; margin-bottom: 1.2rem;
+          padding-bottom: 0.5rem; border-bottom: 2px solid var(--border);
+          display: flex; align-items: center; gap: 0.6rem; color: var(--text);
+        }
+        .card-body { padding-top: 0.5rem; }
+
+        h3 { margin-top: 1.4rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 1.1rem; }
+        p, li { margin-bottom: 0.9rem; }
+        ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+        code { background: #e2e8f0; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.95em; }
+
+        .box {
+          border-left: 4px solid var(--primary); background: #f8fafc;
+          padding: 1rem 1.2rem; margin: 1.2rem 0; border-radius: 0 10px 10px 0;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .box:hover { transform: translateX(4px); box-shadow: 0 4px 10px rgba(37,99,235,0.15); }
+        .box.warning { border-color: var(--warning); background: #fffbeb; }
+        .box.example { border-color: var(--success); background: #f0fdf4; }
+        .box.info { border-color: var(--text-muted); background: #f1f5f9; }
+        .box p:last-child { margin-bottom: 0; }
+
+        .math-step {
+          display: flex; align-items: baseline; gap: 0.6rem; margin: 0.6rem 0;
+          background: #f8fafc; padding: 0.7rem 0.8rem; border-radius: 8px;
+          border: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.95rem;
+          flex-wrap: wrap;
+        }
+        .step-num { font-weight: bold; color: var(--primary); min-width: 2.5rem; }
+        .step-comment { color: var(--text-muted); margin-left: auto; font-style: italic; }
+
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2rem 0; border-radius: 10px; }
+        table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: 0.95rem; background: #fff; }
+        th, td { border: 1px solid var(--border); padding: 0.7rem 0.5rem; text-align: center; vertical-align: middle; }
+        th { background: linear-gradient(to bottom, #f1f5f9, #e2e8f0); font-weight: 600; }
+        tr:hover td { background: #f8fafc; transition: background 0.2s; }
+
+        details {
+          background: #f8fafc; border: 1px solid var(--border); border-radius: 10px;
+          margin: 1rem 0; overflow: hidden; transition: all 0.2s;
+        }
+        summary {
+          padding: 0.9rem 1rem; cursor: pointer; font-weight: 600; color: var(--primary);
+          user-select: none; list-style: none; display: flex; justify-content: space-between; align-items: center;
+        }
+        summary::after { content: "▼"; transition: transform 0.25s; }
+        details[open] summary::after { transform: rotate(180deg); }
+        details[open] summary { border-bottom: 1px solid var(--border); background: #eff6ff; }
+        details > div { padding: 1rem; }
+        details:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+
+        .mappa { background-color: #f8fafc; border: 1px solid var(--border); padding: 20px; border-radius: 8px; font-family: var(--font-mono); line-height: 1.4; white-space: pre-wrap; font-size: 0.85rem; color: var(--text); }
+
+
+footer { border-top: 1px solid var(--border); margin-top: 3rem; padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-size: 0.72rem; position: relative; z-index: 1; }
+        footer .footer-brand { font-weight: 700; white-space: nowrap; }
+        footer .footer-brand .brand-mat { color: #1e3a8a; }
+        footer .footer-brand .brand-viva { color: #C8972A; }
+        footer .footer-center { color: var(--text-muted); text-align: center; flex: 1; }
+        footer .footer-center small { display: block; font-size: 0.67rem; color: var(--text-muted); margin-top: 0.15rem; }
+        footer .footer-copy { color: var(--text-muted); white-space: nowrap; text-align: right; }
+        @media (max-width: 650px) { footer { flex-direction: column; text-align: center; padding: 1rem; } }
+        
+        
+:root{--bg:#f4f9ff;--surface:#fff;--ink:#0f172a;--muted:#475569;--line:#e2e8f0;--accent:#2563eb;--tint:#eff6ff;--primary:#2563eb;--gold:#D4AF37;color-scheme:light}
+body{padding-top:0;background:linear-gradient(135deg,#eaf4ff 0%,#f4f9ff 55%,#edf7ff 100%);background-attachment:fixed;color:var(--text);font:clamp(16px,1.8vw,19px)/1.7 var(--font-main)}
+main{max-width:760px;padding:2rem 1rem 4rem}h1,h2,h3{font-family:var(--font-main)}
+header.lesson-heading{text-align:center;margin-bottom:2.5rem}header.lesson-heading h1{font-size:2.6rem;margin-bottom:.3rem;line-height:1.2}header.lesson-heading p{font-size:1.25rem;font-weight:700;margin-bottom:.25rem}
+nav.lesson-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.7rem 1rem;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.05);margin:0}
+nav.lesson-nav a{background:transparent;border:0;border-radius:8px;padding:.4rem .8rem;color:var(--text-muted);font-size:.85rem;font-weight:600;text-decoration:none}nav.lesson-nav a:hover{color:var(--primary);background:#eff6ff}nav.lesson-nav a.active{color:#fff;background:var(--primary)}
+.mom{background:#fff;border:1px solid rgba(255,255,255,.5);border-radius:16px;padding:2rem;margin-bottom:2.5rem;box-shadow:0 12px 32px rgba(0,0,0,.15);position:relative;overflow:hidden}
+.mom::before{content:'';position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,#2563eb,#3b82f6)}
+.mom h3{font-size:1.45rem;color:#0f172a;padding-bottom:.5rem;border-bottom:2px solid #e2e8f0;margin:0 0 1.2rem;font-weight:700}
+.mom p,.mom li{margin-bottom:.9rem}.mom .q p{margin:0}.mom .mq{font-family:Georgia,serif}.mom .big{font-family:Georgia,serif}
+.mom .how,.mom .callout{background:#f8fafc;border-left:4px solid #2563eb;border-radius:0 10px 10px 0;padding:1rem 1.2rem}
+.mom details.ans{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;padding:0}.mom details.ans summary{padding:.9rem 1rem;color:#2563eb}.mom details.ans>p,.mom details.ans>.eq{padding:0 1rem}.mom details.ans[open] summary{background:#eff6ff}
+.scroll{max-width:100%;overflow-x:auto}.scroll table{min-width:0;width:100%;font-size:.95rem}.scroll th,.scroll td{text-align:left;border:1px solid #e2e8f0;padding:.7rem .5rem}.scroll th{background:#f1f5f9}
+#hltool{z-index:110}.lesson-heading .logo-text{font-weight:800;letter-spacing:-.5px}.progress-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#2563eb,#3b82f6);width:0;z-index:101}
+@media(max-width:768px){nav.lesson-nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:.5rem}nav.lesson-nav a{white-space:nowrap;flex-shrink:0}.mom{padding:1.2rem;margin-bottom:1.5rem}header.lesson-heading h1{font-size:2.1rem}}
+@media print{@page{margin:14mm}body{padding:0;background:#fff!important;color:#0f172a;font-size:11pt}nav.lesson-nav,.progress-bar,#hltool{display:none!important}main{max-width:none;padding:0}.mom{box-shadow:none;border:1px solid #999;break-inside:auto;margin-bottom:1rem}.mom::before{print-color-adjust:exact}.mom h3{break-after:avoid}footer{break-inside:avoid;margin-top:1.5rem}.try,.poll{display:none!important}.scroll{overflow:visible}.scroll table{font-size:9pt}header.lesson-heading{margin-bottom:1rem}}
+
+/* Allineamento coerente delle etichette orarie e delle schede */
+main > h2 {display:flex;align-items:center;flex-wrap:wrap;column-gap:.75rem;row-gap:.5rem;line-height:1.3;margin:2.2rem 0 1.1rem;clear:both}
+main > h2 .badge {display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;margin:0;vertical-align:baseline;line-height:1.2;white-space:nowrap;padding:.45rem .85rem;background:#2563eb;color:#fff}
+.mom.card-lesson {margin:0 0 1.65rem;padding:2rem;clear:both}
+.mom.card-lesson > h3:first-child {margin-top:0;line-height:1.35}
+@media(max-width:768px){main > h2{font-size:1.5rem;margin:1.8rem 0 1rem}.mom.card-lesson{padding:1.2rem;margin-bottom:1.3rem}}
+@media print{main > h2{break-after:avoid;margin:1.2rem 0 .6rem}.mom.card-lesson{margin-bottom:1rem;box-shadow:none}}
+
+/* Mantiene il titolo della card visibile sotto la barra di navigazione. */
+html { scroll-padding-top: calc(var(--lesson-nav-height, 68px) + 18px); }
+section.card-lesson { scroll-margin-top: calc(var(--lesson-nav-height, 68px) + 18px); }
+@media print { html { scroll-padding-top: 0; } section.card-lesson { scroll-margin-top: 0; } }
+
+/* Barra strumenti conforme alla lezione di riferimento MatematicaOro. */
+@media screen {
+.publish-tools{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:99999;display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:6px;background:rgba(255,255,255,.96);border:1px solid #d6e0ea;border-radius:11px;box-shadow:0 3px 14px rgba(20,50,90,.16);font-family:Arial,sans-serif;max-width:calc(100vw - 28px)}
+.publish-tools a,.publish-tools button,.publish-tools .publish-pdf{font:700 12px/1.2 Arial,sans-serif;text-decoration:none;color:#173f78;background:#fff;border:1px solid #d6e0ea;border-radius:7px;padding:7px 9px;box-shadow:none;cursor:pointer}
+.publish-tools a:hover,.publish-tools button:hover{background:#eff6ff}
+}
+@media(max-width:420px){.publish-tools{left:6px;bottom:calc(6px + env(safe-area-inset-bottom,0px));gap:3px;padding:4px}.publish-tools a,.publish-tools button,.publish-tools .publish-pdf{font-size:11px;padding:6px}}
+@media print{.publish-tools{display:none!important}}
+</style>
+<style>
+/* Larghezza effettiva del contenitore: prevale sulle regole responsive successive. */
+@media screen and (min-width: 769px){
+  body > main{width:720px!important;max-width:calc(100vw - 48px)!important;margin-left:auto!important;margin-right:auto!important;padding-left:12px!important;padding-right:12px!important}
+  body > main > section.card-lesson{width:100%!important;max-width:100%!important}
+}
+@media screen and (min-width: 601px) and (max-width: 768px){
+  body > main{width:680px!important;max-width:calc(100vw - 32px)!important;margin-left:auto!important;margin-right:auto!important}
+}
+/* Adattamento pubblicazione */
+html,body{max-width:100%;overflow-x:clip}main,.mom,.card-lesson,.scroll,figure,.how,.callout,.g3>div{min-width:0;max-width:100%}
+.mom,.card-lesson,.how,.callout,.q,.g3>div{overflow-wrap:anywhere}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.scroll table{width:100%;table-layout:auto}.scroll th,.scroll td{white-space:normal;overflow-wrap:break-word;word-break:normal}
+figure svg{display:block;max-width:100%;height:auto} .g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr))}
+.eq{margin-left:0;overflow-wrap:anywhere}.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.pc{min-width:0}
+.publish-tools{position:fixed;bottom:calc(12px + env(safe-area-inset-bottom,0px));left:12px;z-index:130;display:flex;flex-wrap:wrap;gap:7px;align-items:center;max-width:calc(100vw - 24px)}
+.publish-tools a,.publish-tools button{appearance:none;text-decoration:none;background:#fff;border:1px solid #2563eb;color:#1e40af;border-radius:999px;padding:9px 13px;font:600 13px/1.2 system-ui,sans-serif;box-shadow:0 3px 12px #0002;cursor:pointer}
+.publish-tools .publish-pdf{background:#2563eb;color:white}.publish-tools a:focus-visible,.publish-tools button:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
+body{padding-bottom:70px}#hltool{bottom:calc(65px + env(safe-area-inset-bottom,0px))}
+.pdf-watermarks{display:none}
+@media(max-width:600px){main{padding:1rem .65rem 3rem}.mom.card-lesson{padding:1rem}.scroll table{font-size:.78rem}.scroll th,.scroll td{padding:.4rem .3rem}.fr{grid-template-columns:minmax(0,1fr) auto 2rem auto;gap:.2rem}.fr .b{width:2rem;height:2rem}.cards{gap:.25rem}.pc{padding:.4rem .1rem}.pc b{font-size:.72rem}.pc span{font-size:.85rem}.publish-tools a,.publish-tools button{font-size:12px;padding:8px 10px}#hltool{right:.5rem;max-width:calc(100vw - 1rem);flex-wrap:wrap}}
+@media print{
+@page{size:A4;margin:13mm 12mm 13mm 21mm}
+html,body{overflow:visible!important;width:auto!important;max-width:none!important;background:#fff!important;padding:0!important}
+main{width:100%!important;max-width:none!important;padding:0!important;margin:0!important}
+nav,.lesson-nav,.no-print,.progress-bar,#hltool,.publish-tools,footer,.try,.poll{display:none!important}
+.mom,.card-lesson{box-shadow:none!important;transform:none!important;opacity:1!important;overflow:visible!important;break-inside:auto!important;border:1px solid #cbd5e1!important;margin:0 0 10mm!important;padding:4mm!important}
+.mom::before{height:2px!important}
+.scroll{overflow:visible!important;max-width:100%!important}.scroll table{width:100%!important;min-width:0!important;table-layout:fixed!important;font-size:8pt!important}
+th,td{overflow-wrap:anywhere!important;white-space:normal!important;padding:3px 4px!important}
+figure,figure svg{max-width:100%!important;overflow:visible!important}figure svg{width:100%!important;height:auto!important}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:3mm!important}
+.g3>div{padding:2mm!important;overflow-wrap:anywhere!important;font-size:9pt!important}
+.how,.callout,.q,.g3>div,figure,table tr,details,li{break-inside:avoid-page}
+h2,h3,h4,summary{break-after:avoid-page}p{orphans:3;widows:3}
+.pdf-watermarks{display:block!important;position:fixed;inset:0;pointer-events:none;z-index:999;overflow:visible;color:rgba(55,82,119,.12)!important}
+.pdf-side{position:fixed;left:-16mm;top:48%;width:240mm;text-align:center;transform:translate(-50%,-50%) rotate(-90deg);transform-origin:center;white-space:nowrap;font:8pt system-ui,sans-serif;letter-spacing:1px;color:rgba(30,58,138,.24)!important}
+.pdf-diag{position:fixed;left:18%;font:15pt system-ui,sans-serif;letter-spacing:1px;white-space:nowrap;color:rgba(30,58,138,.075)!important;transform:rotate(-28deg);transform-origin:center}
+.pdf-diag-one{top:31%}.pdf-diag-two{top:73%}
+}
+</style><style id="mo-fullscreen-style">#moFullscreen{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:99998;background:#2563eb;color:white;border:0;border-radius:999px;padding:11px 17px;font:600 14px system-ui,Arial,sans-serif;box-shadow:0 5px 15px rgba(37,99,235,.3);cursor:pointer}#moFullscreen:focus-visible{outline:3px solid #d4af37;outline-offset:3px}@media(max-width:600px){#moFullscreen{right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:9px 12px;font-size:12px}}@media print{#moFullscreen{display:none!important}}</style><style id="mo-reference-match">
+/* Dimensioni e comandi uguali alla lezione Circonferenza allegata */
+@media screen {
+ main{max-width:980px!important;width:100%!important;margin-left:auto!important;margin-right:auto!important;padding:2rem 1rem 4rem!important}
+ .mom.card-lesson{padding:2rem!important}
+ .publish-tools{position:fixed!important;left:14px!important;bottom:14px!important;z-index:99999!important;display:flex!important;flex-wrap:wrap!important;gap:6px!important;padding:6px!important;background:rgba(255,255,255,.96)!important;border:1px solid #d6e0ea!important;border-radius:11px!important;box-shadow:0 3px 14px rgba(20,50,90,.16)!important;max-width:calc(100vw - 28px)!important}
+ .publish-tools a,.publish-tools button{font:700 12px Arial,sans-serif!important;text-decoration:none!important;color:#173f78!important;background:#fff!important;border:1px solid #d6e0ea!important;border-radius:7px!important;padding:7px 9px!important;box-shadow:none!important;white-space:nowrap!important}
+ #moFullscreen{right:1.5rem!important;bottom:1.5rem!important;background:#2563eb!important;color:white!important;border:0!important;border-radius:50px!important;padding:.8rem 1.2rem!important;font:600 14px system-ui,sans-serif!important;box-shadow:0 6px 16px rgba(37,99,235,.35)!important}
+}
+@media screen and (max-width:768px){main{padding:1.2rem 1rem 4rem!important}.mom.card-lesson{padding:1.2rem!important}#moFullscreen{right:1rem!important;bottom:1rem!important;padding:.6rem .9rem!important;font-size:.85rem!important}}
+@media screen and (max-width:480px){main{padding:1rem .65rem 4rem!important}.mom.card-lesson{padding:1rem!important}.publish-tools{left:8px!important;bottom:8px!important;gap:4px!important;padding:4px!important}.publish-tools a,.publish-tools button{padding:6px 7px!important;font-size:11px!important}#moFullscreen{right:8px!important;bottom:66px!important}}
+@media print{.publish-tools,#moFullscreen{display:none!important}}
+</style><style id="mo-width-responsive-final">
+/* Unica regola finale per il layout a schermo: prevale sulle versioni precedenti. */
+@media screen and (min-width: 769px) {
+  body main { width: min(1120px, calc(100% - 32px)) !important; max-width: 1120px !important; margin-inline: auto !important; padding: 2rem 1rem 4rem !important; }
+}
+@media screen and (max-width: 768px) {
+  body main { width: calc(100% - 20px) !important; max-width: none !important; margin-inline: auto !important; padding: 1rem .5rem 5rem !important; }
+  body main .mom.card-lesson { padding: clamp(12px, 3vw, 22px) !important; }
+  body main .card, body main .box { max-width: 100%; }
+  body main img, body main svg, body main canvas { max-width: 100%; height: auto; }
+  body main .table-wrapper { max-width: 100%; overflow-x: auto; }
+}
+@media screen and (max-width: 480px) {
+  body main { width: calc(100% - 12px) !important; padding: .6rem .25rem 5.5rem !important; }
+  body main .mom.card-lesson { padding: 12px !important; }
+  .publish-tools { max-width: calc(100vw - 16px) !important; }
+}
+</style><style id="mo-print-corrections-20261119">
+/* Filigrana laterale nel margine di stampa, a sinistra delle card. */
+@media print {
+  .pdf-watermarks { z-index: 0 !important; }
+  .pdf-side {
+    position: fixed !important;
+    left: -14mm !important;
+    top: 9mm !important;
+    width: auto !important;
+    height: calc(100% - 18mm) !important;
+    transform: rotate(180deg) !important;
+    transform-origin: center center !important;
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    font-size: 7.5pt !important;
+    letter-spacing: .35px !important;
+    color: rgba(30,58,138,.19) !important;
+  }
+  /* La domanda introduttiva non deve apparire su fondo blu scuro nel PDF. */
+  .q, .mom .q {
+    background: #f0f7fb !important;
+    background-image: none !important;
+    color: #173f58 !important;
+    border: 1px solid #a9c9d8 !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .q small, .q .big, .q p, .q strong, .q b {
+    color: #173f58 !important;
+    text-shadow: none !important;
+  }
+}
+</style>
+<style id="mo-watermark-print-definitive">
+/* Filigrane sempre visibili in stampa: elementi fissi sopra il fondo delle card. */
+@media print {
+ @page { size:A4; margin:13mm 12mm 13mm 23mm; }
+ .pdf-watermarks { display:block!important; position:fixed!important; inset:0!important; overflow:visible!important; z-index:2147483000!important; pointer-events:none!important; opacity:1!important; visibility:visible!important; }
+ .pdf-watermarks .pdf-side { display:block!important; position:fixed!important; left:-17mm!important; top:50%!important; width:240mm!important; height:auto!important; margin:0!important; padding:0!important; writing-mode:horizontal-tb!important; text-orientation:mixed!important; transform:translate(-50%,-50%) rotate(-90deg)!important; transform-origin:center!important; text-align:center!important; white-space:nowrap!important; font:7.5pt/1.2 Arial,sans-serif!important; letter-spacing:.3px!important; color:#9aabc0!important; opacity:1!important; }
+ .pdf-watermarks .pdf-diag { display:block!important; position:fixed!important; left:12%!important; width:auto!important; margin:0!important; padding:0!important; transform:rotate(-29deg)!important; transform-origin:center!important; font:16pt/1.2 Arial,sans-serif!important; letter-spacing:.3px!important; white-space:nowrap!important; color:#d0d9e5!important; opacity:1!important; }
+ .pdf-watermarks .pdf-diag-one {top:30%!important}
+ .pdf-watermarks .pdf-diag-two {top:70%!important}
+ .mom,.card-lesson,main{position:relative!important;z-index:auto!important}
+}
+</style>
+<style id="mo-watermark-reference-20261119">
+/* Filigrana riprodotta dal file di riferimento allegato. */
+#printWatermark {display:none!important}
+@media print {
+ @page {size:A4 portrait; margin:13mm 12mm 13mm 23mm}
+ #printWatermark {display:block!important;visibility:visible!important;position:fixed!important;inset:0!important;z-index:99999!important;pointer-events:none!important;color:#64748b!important;font-size:8pt!important;font-weight:700!important;line-height:1!important;letter-spacing:.15px!important;background:transparent!important;overflow:visible!important}
+ #printWatermark .watermark-side {position:absolute!important;top:18mm!important;bottom:18mm!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:space-around!important;opacity:.20!important}
+ #printWatermark .watermark-left {left:-16mm!important}
+ #printWatermark .watermark-side span {display:block!important;white-space:nowrap!important;writing-mode:vertical-rl!important;color:#64748b!important}
+ #printWatermark .watermark-left span {transform:rotate(0deg)!important}
+ #printWatermark .watermark-diagonal {position:absolute!important;left:50%!important;transform:translate(-50%,-50%) rotate(-55deg)!important;transform-origin:center!important;color:#64748b!important;opacity:.07!important;font-size:28pt!important;font-weight:700!important;letter-spacing:.5px!important;white-space:nowrap!important}
+ #printWatermark .watermark-diagonal-first {top:34%!important}
+ #printWatermark .watermark-diagonal-second {top:68%!important}
+ main {position:relative!important;z-index:auto!important}
+ .mom,.card-lesson {position:relative!important;z-index:auto!important}
+}
+</style><style id="mo-left-watermark-visible-fix">
+/* La filigrana non deve uscire dall'area stampabile: left negativo viene tagliato dal browser. */
+@media print {
+  @page { size: A4 portrait; margin: 13mm 12mm 13mm 25mm; }
+  #printWatermark .watermark-side.watermark-left {
+    position: fixed !important;
+    left: -1mm !important;
+    top: 8mm !important;
+    bottom: 8mm !important;
+    width: 3mm !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    overflow: visible !important;
+    opacity: .30 !important;
+    z-index: 2147483640 !important;
+  }
+  #printWatermark .watermark-left span {
+    display: block !important;
+    writing-mode: vertical-rl !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    color: #64748b !important;
+    font: 700 7pt/1 Arial,sans-serif !important;
+  }
+}
+</style></head>
+<body><div aria-hidden="true" id="printWatermark">
+<div class="watermark-side watermark-left">
+<span>MatematicaOro · matematicaoro.github.io</span><span>MatematicaOro · matematicaoro.github.io</span><span>MatematicaOro · matematicaoro.github.io</span>
+</div>
+<div class="watermark-diagonal watermark-diagonal-first">matematicaoro.github.io</div>
+<div class="watermark-diagonal watermark-diagonal-second">matematicaoro.github.io</div>
+</div><div class="progress-bar no-print" id="progressBar"></div><nav aria-label="Navigazione lezione" class="lesson-nav no-print">
+<a href="#aggancio">Aggancio</a><a href="#modellizzazione">Modellizzazione</a><a href="#gruppi">Gruppi</a><a href="#messa-in-comune">Messa in comune</a><a href="#grafico">Grafico</a><a href="#discussione">Discussione</a><a href="#sintesi">Sintesi</a>
+</nav>
+<main><header class="lesson-heading"><h1><span class="logo-text" style="color:#1e3a8a">Matematica</span><span class="logo-text" style="color:#D4AF37">Oro</span></h1><p>Il prezzo dell’attenzione</p><p style="font-size:1rem;font-weight:400;color:#475569">Educazione civica · Tre piani di una piattaforma. Cosa significa «gratis»?</p></header>
+<div class="callout">Lezione di educazione civica: attività, esercizi, domande e discussioni. Apri i riquadri «Mostra» per consultare aiuti, spunti e soluzioni. I valori dei piani sono ipotetici.</div>
+<h2><span class="badge">Ora 1</span>Dal problema al sistema</h2>
+<section class="mom card-lesson" id="aggancio"><h3>Aggancio</h3>
+<p>Sondaggio: «Quante ore al giorno stai su social o video?»</p>
+<div class="how"><h4>Attività</h4><ol><li>Rispondi al sondaggio (è anonimo): scegli la tua fascia.</li><li>Guarda le barre: in quale fascia c’è più gente? Che cosa ti sorprende?</li><li>In coppia, 1 minuto: scrivete la vostra ipotesi sulla domanda qui sotto.</li><li>Solo dopo, apri la risposta.</li></ol></div>
+<div class="poll"><p class="pt">Tocca + a ogni risposta.</p><div id="poll"></div></div>
+<div class="q"><small>Domanda per la classe</small><p class="big">Se l’app è gratis, chi paga?</p></div>
+<details class="ans"><summary>Mostra la risposta</summary><p>Pagano gli inserzionisti, che versano una somma alla piattaforma per mostrare pubblicità agli utenti. E noi paghiamo in un’altra moneta: il nostro tempo e i nostri dati. Più ore passiamo sull’app, più pubblicità vediamo e più la piattaforma guadagna. Nel modello che ora analizzeremo questo costo è tradotto in euro: 0,40 € per ogni ora che noi trascorriamo sull’app nel piano Gratuito, cioè quanto la piattaforma ricava dalla pubblicità. «Gratis» non significa senza costo.</p></details>
+</section>
+<section class="mom card-lesson" id="modellizzazione"><h3>Modellizzazione</h3>
+<p class="mq">Quanto guadagna la piattaforma dal tempo che io trascorro sull’app?</p>
+<p>Sia <i>t</i> il numero di ore al mese che trascorro sull’app e <i>G</i> il guadagno mensile della piattaforma, in euro.</p>
+<div class="scroll"><table>
+<tr><th>Piano</th><th>Canone fisso sottoscritto dall’utente</th><th class="n">Pubblicità per ora</th><th>Guadagno della piattaforma</th></tr>
+<tr><td class="free">Gratuito</td><td class="n">0 €</td><td class="n">0,40 €</td><td>G = 0,40·t</td></tr>
+<tr><td class="light">Misto</td><td class="n">4 €</td><td class="n">0,15 €</td><td>G = 4 + 0,15·t</td></tr>
+<tr><td class="prem">Completo</td><td class="n">10 €</td><td class="n">0 €</td><td>G = 10</td></tr>
+</table></div>
+<div class="how"><h4>Come si costruisce la regola</h4>
+<p>Ogni regola ha la stessa forma:</p>
+<p class="eq"><b>G = parte fissa + (euro per ogni ora) · t</b></p>
+<ol><li>Leggi il <b>canone</b>: è la parte fissa, la paghi (o incassa la piattaforma) anche con 0 ore.</li><li>Leggi la <b>pubblicità per ora</b>: va moltiplicata per le ore <i>t</i>.</li><li>Somma le due parti. Se una manca, vale 0.</li><li><b>Controllo:</b> con <i>t</i> = 0 la regola deve dare il canone. Piano Misto con 10 ore: 4 + 0,15·10 = 5,5 €.</li></ol></div>
+<div class="callout"><b>Perché G ci riguarda.</b> G è ciò che la piattaforma incassa da te. Nel piano Gratuito non paghi euro, ma la tua attenzione vale 0,40 € ogni ora: G è il «prezzo» che paghi davvero, in soldi o in attenzione. Più G è alto, più per te è costoso.</div>
+</section>
+<section class="mom card-lesson" id="gruppi"><h3>Lavoro a gruppi</h3>
+<p>Ogni gruppo risolve il sistema formato dalle due equazioni e scrive la soluzione <b>a parole</b>.</p>
+<div class="g3">
+<div><b>Gruppo 1 · Gratuito e Misto</b>G = 0,40·t<br/>G = 4 + 0,15·t</div>
+<div><b>Gruppo 2 · Misto e Completo</b>G = 4 + 0,15·t<br/>G = 10</div>
+<div><b>Gruppo 3 · Gratuito e Completo</b>G = 0,40·t<br/>G = 10</div>
+</div>
+<div class="how"><h4>Attività</h4><ol><li>Dividetevi i ruoli: chi legge, chi calcola, chi controlla, chi scrive la frase finale.</li><li>Scrivete l’equazione: i due guadagni devono essere <b>uguali</b>.</li><li>Risolvetela per trovare <i>t</i>, poi calcolate G.</li><li>Controllate sostituendo <i>t</i> in <b>entrambe</b> le regole: devono dare lo stesso G.</li><li>Scrivete la frase: «Con … ore al mese la piattaforma guadagna … € con entrambi i piani».</li></ol></div>
+</section>
+<section class="mom card-lesson" id="messa-in-comune"><h3>Messa in comune</h3>
+<div class="scroll"><table>
+<tr><th>Confronto</th><th>Equazione risolutiva</th><th class="n">Punto di indifferenza</th></tr>
+<tr><td>Gratuito / Misto</td><td>0,40t = 4 + 0,15t</td><td class="n">16 h · 6,40 €</td></tr>
+<tr><td>Misto / Completo</td><td>4 + 0,15t = 10</td><td class="n">40 h · 10 €</td></tr>
+<tr><td>Gratuito / Completo</td><td>0,40t = 10</td><td class="n">25 h · 10 €</td></tr>
+</table></div>
+<div class="callout"><b>Punto di indifferenza:</b> numero di ore per cui i due piani generano lo stesso guadagno per la piattaforma.</div>
+<details class="ans"><summary>Svolgimento passo per passo</summary>
+<p><b>Gratuito / Misto</b></p><p class="eq">0,40t = 4 + 0,15t → 0,40t − 0,15t = 4 → 0,25t = 4 → t = 16</p><p class="eq">G = 0,40·16 = 6,40 € (controllo: 4 + 0,15·16 = 6,40 ✓)</p>
+<p><b>Misto / Completo</b></p><p class="eq">4 + 0,15t = 10 → 0,15t = 6 → t = 40</p><p class="eq">G = 10 € (controllo: 4 + 0,15·40 = 10 ✓)</p>
+<p><b>Gratuito / Completo</b></p><p class="eq">0,40t = 10 → t = 25</p><p class="eq">G = 10 € (controllo: 0,40·25 = 10 ✓)</p></details>
+<div class="callout"><b>Attenzione: «uguale» non vuol dire «di più».</b> A 16 h Gratuito e Misto fanno guadagnare alla piattaforma la stessa cifra, ma succede in un solo punto: prima e dopo 16 h uno dei due guadagna di più. Il punto di indifferenza è dove i due piani si scambiano di posto. Guarda tre momenti (G = guadagno in €):</div>
+<div class="scroll"><table>
+<tr><th>Ore al mese</th><th class="n">Gratuito</th><th class="n">Misto</th><th>Chi guadagna di più</th></tr>
+<tr><td class="n">10 h (prima di 16)</td><td class="n">0,40·10 = 4</td><td class="n">4 + 0,15·10 = 5,50</td><td class="light">il piano Misto</td></tr>
+<tr class="hi"><td class="n">16 h</td><td class="n">0,40·16 = 6,40</td><td class="n">4 + 0,15·16 = 6,40</td><td>nessuno: sono pari</td></tr>
+<tr><td class="n">20 h (dopo 16)</td><td class="n">0,40·20 = 8</td><td class="n">4 + 0,15·20 = 7</td><td class="free">il piano Gratuito</td></tr>
+</table></div>
+<div class="how"><h4>Perché si scambiano di posto</h4><ol>
+<li><b>All’inizio</b> il piano Misto è in vantaggio: con 0 ore incassa già il canone di 4 €, il Gratuito 0 €.</li>
+<li>Ma il Gratuito <b>sale più in fretta</b>: 0,40 € per ogni ora, contro 0,15 € del Misto. Ogni ora in più recupera 0,25 € (0,40 − 0,15).</li>
+<li>Per recuperare i 4 € di distacco servono 4 : 0,25 = <b>16 ore</b>: lì i due piani sono pari.</li>
+<li>Dopo 16 h il Gratuito continua a salire più in fretta, passa avanti e resta avanti.</li></ol>
+<p>Sul grafico: la linea del Gratuito parte più in basso ma è più ripida, quindi a 16 h incrocia quella del Misto e da lì in poi resta sopra.</p></div>
+<p class="mq">Da quale piano guadagna di più la piattaforma?</p>
+</section>
+<h2><span class="badge">Ora 2</span>Dal sistema al significato</h2>
+<section class="mom card-lesson" id="grafico"><h3>Grafico</h3>
+<p>Ogni regola produce una linea: la linea più in alto è il piano da cui la piattaforma guadagna di più. I punti di indifferenza sono i punti in cui le linee si incontrano.</p>
+<div class="how"><h4>Attività</h4><ol><li>Asse orizzontale: le ore <i>t</i> (0–50). Asse verticale: il guadagno G in € (0–20).</li><li>Per ogni piano determina due punti, poi uniscili con una retta: ogni equazione, nel piano cartesiano, è rappresentata da una retta.</li><li>Cerchia i punti dove due rette si incontrano e leggi le loro coordinate.</li></ol>
+<details class="ans"><summary>Punti da segnare (t, G)</summary><p>Gratuito: (0; 0) e (20; 8) · Misto: (0; 4) e (40; 10) · Completo: (0; 10) e (40; 10). La retta del piano Completo è orizzontale: il guadagno non cambia con le ore.</p></details></div>
+<figure>
+<svg aria-label="Grafico del guadagno della piattaforma in funzione delle ore per i tre piani, con i punti di indifferenza a 16, 25 e 40 ore" role="img" viewbox="0 0 600 320">
+<g stroke="var(--line)"><line x1="50" x2="570" y1="280" y2="280"></line><line x1="50" x2="570" y1="187" y2="187"></line><line x1="50" x2="570" y1="94" y2="94"></line><line x1="50" x2="50" y1="20" y2="280"></line></g>
+<g fill="var(--muted)" font-family="system-ui,sans-serif" font-size="12">
+<text text-anchor="end" x="44" y="284">0</text><text text-anchor="end" x="44" y="191">5</text><text text-anchor="end" x="44" y="98">10</text>
+<text text-anchor="middle" x="50" y="298">0</text><text text-anchor="middle" x="154" y="298">10</text><text text-anchor="middle" x="258" y="298">20</text><text text-anchor="middle" x="362" y="298">30</text><text text-anchor="middle" x="466" y="298">40</text><text text-anchor="middle" x="570" y="298">50</text>
+<text text-anchor="middle" x="310" y="315">ore al mese (t)</text><text x="50" y="12">guadagno in € (G)</text></g>
+<g fill="none" stroke-linecap="round" stroke-width="3"><line stroke="var(--free)" x1="50" x2="414" y1="280" y2="20"></line><line stroke="var(--light)" x1="50" x2="570" y1="206" y2="66"></line><line stroke="var(--prem)" x1="50" x2="570" y1="94" y2="94"></line></g>
+<g font-family="system-ui,sans-serif" font-size="13" font-weight="700"><text fill="var(--free)" x="420" y="34">Gratuito</text><text fill="var(--light)" x="520" y="56">Misto</text><text fill="var(--prem)" x="506" y="86">Completo</text></g>
+<line id="cur" stroke="var(--ink)" stroke-dasharray="4 3" stroke-width="1.5" x1="50" x2="50" y1="20" y2="280"></line>
+<circle cx="216" cy="161" fill="var(--surface)" r="6" stroke="var(--ink)" stroke-width="2.5"></circle><circle cx="466" cy="94" fill="var(--surface)" r="6" stroke="var(--ink)" stroke-width="2.5"></circle><circle cx="310" cy="94" fill="var(--surface)" r="6" stroke="var(--ink)" stroke-width="2.5"></circle>
+<g fill="var(--ink)" font-family="system-ui,sans-serif" font-size="12"><text x="224" y="181">16 h · 6,40 €</text><text x="400" y="124">40 h · 10 €</text><text text-anchor="middle" x="310" y="80">25 h · 10 €</text></g>
+</svg>
+<div class="try"><h4>Prova tu: quante ore trascorri sull’app?</h4><p>Muovi il cursore e osserva quale riquadro si colora: è il piano che rende di più alla piattaforma.</p><label for="hrs">Ore al mese: <output id="hv">20</output></label><input id="hrs" max="50" min="0" type="range" value="20"/><div class="cards"><div class="pc"><b class="free">Gratuito</b><span></span></div><div class="pc"><b class="light">Misto</b><span></span></div><div class="pc"><b class="prem">Completo</b><span></span></div></div><p aria-live="polite" id="verdict"></p></div>
+</figure>
+<div class="callout"><b>Cosa osserviamo.</b> La piattaforma guadagna di più con il piano Completo sotto le 25 h e con il piano Gratuito sopra le 25 h: più tempo passiamo sull’app, più il piano «gratis» rende. Il piano Misto è quello da cui guadagna meno tra 16 h e 40 h.</div>
+<div class="scroll"><table>
+<tr><th>Ore al mese</th><th>Guadagna di più</th><th>Poi</th><th>Guadagna meno</th></tr>
+<tr><td class="n">meno di 16</td><td class="prem">Completo</td><td class="light">Misto</td><td class="free">Gratuito</td></tr>
+<tr><td class="n">tra 16 e 25</td><td class="prem">Completo</td><td class="free">Gratuito</td><td class="light">Misto</td></tr>
+<tr><td class="n">tra 25 e 40</td><td class="free">Gratuito</td><td class="prem">Completo</td><td class="light">Misto</td></tr>
+<tr><td class="n">oltre 40</td><td class="free">Gratuito</td><td class="light">Misto</td><td class="prem">Completo</td></tr>
+</table></div>
+<p>Ai punti di indifferenza (16, 25, 40 ore) la classifica cambia: è il significato del grafico.</p>
+</section>
+<section class="mom card-lesson" id="discussione"><h3>Discussione civica - Lavoro di gruppo</h3>
+<div class="dq"><p>Cosa lascia fuori il modello?</p>
+<details class="ans"><summary>Spunti</summary><p>I dati personali che la piattaforma raccoglie, il tempo sottratto ad altro, gli effetti su sonno e umore,...</p></details>
+<p>Il tempo che trascorriamo sull’app lo decidiamo davvero noi?</p>
+<details class="ans"><summary>Spunti</summary><p>Scroll infinito, notifiche e riproduzione automatica aumentano <i>t</i> proprio dove conviene alla piattaforma: nel modello, nel piano Gratuito ogni ora in più fa salire G.</p></details>
+<p>Chi decide i parametri?</p>
+<details class="ans"><summary>Spunti</summary><p>Non l’utente: canone e pubblicità per ora li fissa la piattaforma. Per questo contano il consenso informato, la trasparenza dei piani e la tutela dei minori.</p></details></div>
+</section>
+<section class="mom card-lesson" id="sintesi"><h3>Sintesi</h3>
+<div class="callout"><b>Cosa portiamo a casa</b><ul><li>«Gratis» non significa senza costo: nel piano Gratuito paghiamo con tempo e dati.</li><li>Ogni piano è una equazione G = parte fissa + (euro per ora)·t.</li><li>Il punto di indifferenza si trova uguagliando due equazioni.</li><li>Il canone sposta la retta in alto in corrispondenza di t=0; la "pubblicità per ora" rende tale retta più ripida.</li><li>Un modello matematico aiuta a ragionare, ma lascia fuori diversi aspetti.</li></ul></div>
+</section><footer>
+<span class="footer-brand"><span class="brand-mat">Matematica</span><span class="brand-viva">Oro</span></span>
+<span class="footer-center">
+                    Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io
+                    <small>Prof.ssa M. Prandelli</small>
+</span>
+<span class="footer-copy">© 2026 MatematicaOro</span>
+</footer></main>
+<div aria-label="Evidenziatore di lettura" id="hltool" role="toolbar"><button aria-pressed="false" class="btn" id="hlon" title="Clicca un paragrafo, una riga o un punto elenco per evidenziarlo" type="button">🖍 Evidenzia</button><button aria-label="Blocco precedente" class="btn" hidden="" id="hlprev" type="button">↑</button><button aria-label="Blocco successivo" class="btn" hidden="" id="hlnext" type="button">↓</button><button class="btn" hidden="" id="hlclr" type="button">Cancella</button></div>
+<script>(function(){const x='CihmdW5jdGlvbigpewp2YXIgUz0nbGksdHIscCwuY2FsbG91dCcsb249ZmFsc2UsY3VyPW51bGwsYj1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnaGxvbicpLHB2PWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdobHByZXYnKSxueD1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnaGxuZXh0JyksY2w9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2hsY2xyJyk7CmZ1bmN0aW9uIGJsb2Nrcygpe3JldHVybiBbXS5maWx0ZXIuY2FsbChkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCdtYWluIDppcyhsaSx0cixwLC5jYWxsb3V0KScpLGZ1bmN0aW9uKGUpe3JldHVybiAhZS5jbG9zZXN0KCcucG9sbCwudHJ5LC5kb2Nyb3cnKSYmIWUucXVlcnlTZWxlY3RvcignbGksdHIscCcpJiZlLmdldENsaWVudFJlY3RzKCkubGVuZ3RoPjB9KX0KZnVuY3Rpb24gc2V0KGUsc2Mpe2lmKGN1ciljdXIuY2xhc3NMaXN0LnJlbW92ZSgncmQnKTtjdXI9KGUmJmUhPT1jdXIpfHxzYz9lOm51bGw7aWYoY3VyKXtjdXIuY2xhc3NMaXN0LmFkZCgncmQnKTtpZihzYyljdXIuc2Nyb2xsSW50b1ZpZXcoe2Jsb2NrOidjZW50ZXInLGJlaGF2aW9yOidzbW9vdGgnfSl9fQpmdW5jdGlvbiBnbyhkKXt2YXIgbD1ibG9ja3MoKSxpPWwuaW5kZXhPZihjdXIpLG47aWYoaTwwKXtuPWwuZmlsdGVyKGZ1bmN0aW9uKGUpe3JldHVybiBlLmdldEJvdW5kaW5nQ2xpZW50UmVjdCgpLnRvcD49NzB9KVswXXx8bFswXX1lbHNlIG49bFtNYXRoLm1heCgwLE1hdGgubWluKGwubGVuZ3RoLTEsaStkKSldO2lmKG4pc2V0KG4sdHJ1ZSl9CmZ1bmN0aW9uIG1vZGUodil7b249djtiLnNldEF0dHJpYnV0ZSgnYXJpYS1wcmVzc2VkJyx2KTtkb2N1bWVudC5ib2R5LmNsYXNzTGlzdC50b2dnbGUoJ2hsJyx2KTtbcHYsbngsY2xdLmZvckVhY2goZnVuY3Rpb24oeCl7eC5oaWRkZW49IXZ9KTtpZighdilzZXQobnVsbCl9CmIub25jbGljaz1mdW5jdGlvbigpe21vZGUoIW9uKX07cHYub25jbGljaz1mdW5jdGlvbigpe2dvKC0xKX07bngub25jbGljaz1mdW5jdGlvbigpe2dvKDEpfTtjbC5vbmNsaWNrPWZ1bmN0aW9uKCl7c2V0KG51bGwpfTsKZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLGZ1bmN0aW9uKGV2KXtpZighb24pcmV0dXJuO3ZhciB0PWV2LnRhcmdldDtpZih0LmNsb3Nlc3QoJ2J1dHRvbixpbnB1dCxzdW1tYXJ5LGEsbGFiZWwsI2hsdG9vbCcpfHxTdHJpbmcod2luZG93LmdldFNlbGVjdGlvbigpKS5sZW5ndGgpcmV0dXJuO3ZhciBlPXQuY2xvc2VzdChTKTtpZihlJiZlLmNsb3Nlc3QoJ21haW4nKSYmIWUuY2xvc2VzdCgnLnBvbGwsLnRyeSwuZG9jcm93Jykpe3NldChlKX19KTsKZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcigna2V5ZG93bicsZnVuY3Rpb24oZXYpe2lmKCFvbilyZXR1cm47aWYoZXYua2V5PT09J0VzY2FwZScpe3NldChudWxsKTtyZXR1cm59aWYoL14oSU5QVVR8VEVYVEFSRUF8U0VMRUNUKSQvLnRlc3QoZXYudGFyZ2V0LnRhZ05hbWUpKXJldHVybjtpZihldi5rZXk9PT0nQXJyb3dEb3duJyl7ZXYucHJldmVudERlZmF1bHQoKTtnbygxKX1lbHNlIGlmKGV2LmtleT09PSdBcnJvd1VwJyl7ZXYucHJldmVudERlZmF1bHQoKTtnbygtMSl9fSk7Cn0pKCk7Cg==';const b=atob(x);const u=Uint8Array.from(b,c=>c.charCodeAt(0));const t=document.createElement('script');t.text=new TextDecoder().decode(u);document.head.appendChild(t);t.remove()})();</script>
+<script>(function(){const x='CihmdW5jdGlvbigpewp2YXIgcj1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnaHJzJyksbz1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnaHYnKSxjdXI9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2N1cicpLHY9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3ZlcmRpY3QnKSxlbD1bXS5zbGljZS5jYWxsKGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy5wYycpKSxuYW1lcz1bJ0dyYXR1aXRvJywnTWlzdG8nLCdDb21wbGV0byddOwpmdW5jdGlvbiBmbXQoeCl7cmV0dXJuIHgudG9Mb2NhbGVTdHJpbmcoJ2l0LUlUJyx7bWluaW11bUZyYWN0aW9uRGlnaXRzOjIsbWF4aW11bUZyYWN0aW9uRGlnaXRzOjJ9KSsnIOKCrCd9CmZ1bmN0aW9uIHVwKCl7dmFyIHQ9K3IudmFsdWUsYz1bMC40KnQsNCswLjE1KnQsMTBdLG09TWF0aC5tYXguYXBwbHkobnVsbCxjKSx4PTUwK3QqMTAuNDtvLnRleHRDb250ZW50PXQ7Y3VyLnNldEF0dHJpYnV0ZSgneDEnLHgpO2N1ci5zZXRBdHRyaWJ1dGUoJ3gyJyx4KTsKZWwuZm9yRWFjaChmdW5jdGlvbihlLGkpe2UucXVlcnlTZWxlY3Rvcignc3BhbicpLnRleHRDb250ZW50PWZtdChjW2ldKTtlLmNsYXNzTGlzdC50b2dnbGUoJ2Jlc3QnLE1hdGguYWJzKGNbaV0tbSk8MWUtOSl9KTsKdmFyIGI9bmFtZXMuZmlsdGVyKGZ1bmN0aW9uKG4saSl7cmV0dXJuIE1hdGguYWJzKGNbaV0tbSk8MWUtOX0pOwp2LnRleHRDb250ZW50PWIubGVuZ3RoPjE/KCdBICcrdCsnIG9yZSBsYSBwaWF0dGFmb3JtYSBndWFkYWduYSB1Z3VhbGUgY29uICcrYi5qb2luKCcgZSAnKSsnICgnK2ZtdChtKSsnKTogw6ggdW4gcHVudG8gZGkgaW5kaWZmZXJlbnphLicpOignQSAnK3QrJyBvcmUgbGEgcGlhdHRhZm9ybWEgZ3VhZGFnbmEgZGkgcGnDuSBjb24gaWwgcGlhbm8gJytiWzBdKyc6ICcrZm10KG0pKycgYWwgbWVzZS4nKTt9CnIuYWRkRXZlbnRMaXN0ZW5lcignaW5wdXQnLHVwKTt1cCgpOwp2YXIgRj1bJ01lbm8gZGkgMzAgbWludXRpJywnRGEgMzAgbWludXRpIGEgMSBvcmEnLCdEYSAxIGEgMiBvcmUnLCdEYSAyIGEgMyBvcmUnLCdQacO5IGRpIDMgb3JlJ10sSz0ncHJlenpvLWF0dGVuemlvbmUtZmFzY2UnLG49WzAsMCwwLDAsMF0sYm94PWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdwb2xsJyk7CnRyeXt2YXIgcz1KU09OLnBhcnNlKGxvY2FsU3RvcmFnZS5nZXRJdGVtKEspKTtpZihBcnJheS5pc0FycmF5KHMpJiZzLmxlbmd0aD09PTUpbj1zLm1hcChmdW5jdGlvbih4KXtyZXR1cm4gK3h8fDB9KX1jYXRjaChlKXt9CmZ1bmN0aW9uIHVwcCgpe3ZhciB0b3Q9bi5yZWR1Y2UoZnVuY3Rpb24oYSxiKXtyZXR1cm4gYStifSwwKSxteD1NYXRoLm1heC5hcHBseShudWxsLG4uY29uY2F0KDEpKTsKcm93cy5mb3JFYWNoKGZ1bmN0aW9uKGQsaSl7ZC5xdWVyeVNlbGVjdG9yKCdvdXRwdXQnKS50ZXh0Q29udGVudD1uW2ldO2QucXVlcnlTZWxlY3RvcignLmJhciBpJykuc3R5bGUud2lkdGg9KG5baV0vbXgqMTAwKSsnJSd9KTsKZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3B0b3QnKS50ZXh0Q29udGVudD10b3Q7dHJ5e2xvY2FsU3RvcmFnZS5zZXRJdGVtKEssSlNPTi5zdHJpbmdpZnkobikpfWNhdGNoKGUpe319CnZhciByb3dzPUYubWFwKGZ1bmN0aW9uKGYsaSl7dmFyIGQ9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7ZC5jbGFzc05hbWU9J2ZyJzsKZC5pbm5lckhUTUw9JzxzcGFuPicrZisnPC9zcGFuPjxidXR0b24gdHlwZT0iYnV0dG9uIiBjbGFzcz0iYiIgYXJpYS1sYWJlbD0iVG9nbGkgdW5hIHJpc3Bvc3RhOiAnK2YrJyI+4oiSPC9idXR0b24+PG91dHB1dD4wPC9vdXRwdXQ+PGJ1dHRvbiB0eXBlPSJidXR0b24iIGNsYXNzPSJiIiBhcmlhLWxhYmVsPSJBZ2dpdW5naSB1bmEgcmlzcG9zdGE6ICcrZisnIj4rPC9idXR0b24+PHNwYW4gY2xhc3M9ImJhciI+PGk+PC9pPjwvc3Bhbj4nOwp2YXIgYnM9ZC5xdWVyeVNlbGVjdG9yQWxsKCdidXR0b24nKTtic1swXS5vbmNsaWNrPWZ1bmN0aW9uKCl7aWYobltpXT4wKXtuW2ldLS07dXBwKCl9fTtic1sxXS5vbmNsaWNrPWZ1bmN0aW9uKCl7bltpXSsrO3VwcCgpfTtib3guYXBwZW5kQ2hpbGQoZCk7cmV0dXJuIGR9KTsKdmFyIGZvb3Q9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7Zm9vdC5jbGFzc05hbWU9J3BmJztmb290LmlubmVySFRNTD0nPHNwYW4+UmlzcG9zdGU6IDxiIGlkPSJwdG90Ij4wPC9iPjwvc3Bhbj48YnV0dG9uIHR5cGU9ImJ1dHRvbiIgY2xhc3M9InJzIj5BenplcmE8L2J1dHRvbj4nO2JveC5hcHBlbmRDaGlsZChmb290KTsKdmFyIHJzPWZvb3QucXVlcnlTZWxlY3RvcignLnJzJyksdG07cnMub25jbGljaz1mdW5jdGlvbigpe2lmKHJzLmRhdGFzZXQuYyl7bj1bMCwwLDAsMCwwXTtycy50ZXh0Q29udGVudD0nQXp6ZXJhJztkZWxldGUgcnMuZGF0YXNldC5jO2NsZWFyVGltZW91dCh0bSk7dXBwKCl9ZWxzZXtycy5kYXRhc2V0LmM9JzEnO3JzLnRleHRDb250ZW50PSdDb25mZXJtYSBhenplcmFtZW50byc7dG09c2V0VGltZW91dChmdW5jdGlvbigpe3JzLnRleHRDb250ZW50PSdBenplcmEnO2RlbGV0ZSBycy5kYXRhc2V0LmN9LDMwMDApfX07CnVwcCgpOwp9KSgpOwo=';const b=atob(x);const u=Uint8Array.from(b,c=>c.charCodeAt(0));const t=document.createElement('script');t.text=new TextDecoder().decode(u);document.head.appendChild(t);t.remove()})();</script>
+<script>(function(){const x='KGZ1bmN0aW9uKCl7Y29uc3QgbmF2PWRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ25hdi5sZXNzb24tbmF2Jyk7aWYoIW5hdilyZXR1cm47ZnVuY3Rpb24gc3luY05hdkhlaWdodCgpe2RvY3VtZW50LmRvY3VtZW50RWxlbWVudC5zdHlsZS5zZXRQcm9wZXJ0eSgnLS1sZXNzb24tbmF2LWhlaWdodCcsbmF2LmdldEJvdW5kaW5nQ2xpZW50UmVjdCgpLmhlaWdodCsncHgnKX1zeW5jTmF2SGVpZ2h0KCk7YWRkRXZlbnRMaXN0ZW5lcigncmVzaXplJyxzeW5jTmF2SGVpZ2h0KTtpZignUmVzaXplT2JzZXJ2ZXInIGluIHdpbmRvdyluZXcgUmVzaXplT2JzZXJ2ZXIoc3luY05hdkhlaWdodCkub2JzZXJ2ZShuYXYpO30pKCk7';const b=atob(x);const u=Uint8Array.from(b,c=>c.charCodeAt(0));const t=document.createElement('script');t.text=new TextDecoder().decode(u);document.head.appendChild(t);t.remove()})();</script>
+<script>(function(){const x='Ci8qIE5hdmlnYXppb25lOiBiYWRnZSBhdHRpdm8gc2luY3Jvbml6emF0byBjb24gbGEgY2FyZCByZWFsbWVudGUgdmlzdWFsaXp6YXRhLiAqLwooZnVuY3Rpb24oKXsKICBjb25zdCBuYXY9ZG9jdW1lbnQucXVlcnlTZWxlY3RvcignbmF2Lmxlc3Nvbi1uYXYnKTsKICBjb25zdCBiYXI9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Byb2dyZXNzQmFyJyk7CiAgaWYoIW5hdilyZXR1cm47CiAgY29uc3QgbGlua3M9QXJyYXkuZnJvbShuYXYucXVlcnlTZWxlY3RvckFsbCgnYVtocmVmXj0iIyJdJykpOwogIGNvbnN0IGVudHJpZXM9bGlua3MubWFwKGxpbms9Pih7bGluayxzZWN0aW9uOmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGRlY29kZVVSSUNvbXBvbmVudChsaW5rLmhhc2guc2xpY2UoMSkpKX0pKS5maWx0ZXIoZT0+ZS5zZWN0aW9uKTsKICBmdW5jdGlvbiBvZmZzZXQoKXtyZXR1cm4gbmF2LmdldEJvdW5kaW5nQ2xpZW50UmVjdCgpLmhlaWdodCsxODt9CiAgZnVuY3Rpb24gYWN0aXZhdGUobGluayl7bGlua3MuZm9yRWFjaChhPT57Y29uc3QgYWN0aXZlPWE9PT1saW5rO2EuY2xhc3NMaXN0LnRvZ2dsZSgnYWN0aXZlJyxhY3RpdmUpO2lmKGFjdGl2ZSlhLnNldEF0dHJpYnV0ZSgnYXJpYS1jdXJyZW50JywnbG9jYXRpb24nKTtlbHNlIGEucmVtb3ZlQXR0cmlidXRlKCdhcmlhLWN1cnJlbnQnKTt9KTt9CiAgZnVuY3Rpb24gdXBkYXRlKCl7CiAgICBpZihiYXIpe2NvbnN0IG1heD1kb2N1bWVudC5kb2N1bWVudEVsZW1lbnQuc2Nyb2xsSGVpZ2h0LWlubmVySGVpZ2h0O2Jhci5zdHlsZS53aWR0aD0obWF4PjA/TWF0aC5taW4oMTAwLHNjcm9sbFkvbWF4KjEwMCk6MCkrJyUnO30KICAgIGNvbnN0IHRocmVzaG9sZD1vZmZzZXQoKSs0OwogICAgY29uc3QgYXRCb3R0b209d2luZG93LmlubmVySGVpZ2h0K3dpbmRvdy5zY3JvbGxZPj1kb2N1bWVudC5kb2N1bWVudEVsZW1lbnQuc2Nyb2xsSGVpZ2h0LTM7CiAgICBpZihhdEJvdHRvbSl7YWN0aXZhdGUoZW50cmllc1tlbnRyaWVzLmxlbmd0aC0xXS5saW5rKTtyZXR1cm47fQogICAgbGV0IGN1cnJlbnQ9ZW50cmllc1swXTsKICAgIGZvcihjb25zdCBlbnRyeSBvZiBlbnRyaWVzKXtpZihlbnRyeS5zZWN0aW9uLmdldEJvdW5kaW5nQ2xpZW50UmVjdCgpLnRvcDw9dGhyZXNob2xkKWN1cnJlbnQ9ZW50cnk7fQogICAgaWYoY3VycmVudClhY3RpdmF0ZShjdXJyZW50LmxpbmspOwogIH0KICBmb3IoY29uc3QgZW50cnkgb2YgZW50cmllcyl7ZW50cnkubGluay5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsZnVuY3Rpb24oZXZlbnQpewogICAgZXZlbnQucHJldmVudERlZmF1bHQoKTsKICAgIGNvbnN0IHRhcmdldFk9TWF0aC5tYXgoMCx3aW5kb3cuc2Nyb2xsWStlbnRyeS5zZWN0aW9uLmdldEJvdW5kaW5nQ2xpZW50UmVjdCgpLnRvcC1vZmZzZXQoKSk7CiAgICAvKiBTY29ycmltZW50byBpbW1lZGlhdG8gcGVyIGV2aXRhcmUgY2hlIGlsIGJhZGdlIHByZWNlZGVudGUgcmVzdGkgYXR0aXZvIGR1cmFudGUgbCdhbmltYXppb25lLiAqLwogICAgd2luZG93LnNjcm9sbFRvKHt0b3A6dGFyZ2V0WSxiZWhhdmlvcjonaW5zdGFudCd9KTsKICAgIGFjdGl2YXRlKGVudHJ5LmxpbmspOwogICAgaWYoaGlzdG9yeS5yZXBsYWNlU3RhdGUpaGlzdG9yeS5yZXBsYWNlU3RhdGUobnVsbCwnJyxlbnRyeS5saW5rLmhhc2gpOwogICAgcmVxdWVzdEFuaW1hdGlvbkZyYW1lKHVwZGF0ZSk7CiAgfSk7fQogIGFkZEV2ZW50TGlzdGVuZXIoJ3Njcm9sbCcsdXBkYXRlLHtwYXNzaXZlOnRydWV9KTsKICBhZGRFdmVudExpc3RlbmVyKCdyZXNpemUnLHVwZGF0ZSk7CiAgYWRkRXZlbnRMaXN0ZW5lcignbG9hZCcsdXBkYXRlKTsKICB1cGRhdGUoKTsKfSkoKTsK';const b=atob(x);const u=Uint8Array.from(b,c=>c.charCodeAt(0));const t=document.createElement('script');t.text=new TextDecoder().decode(u);document.head.appendChild(t);t.remove()})();</script><div aria-label="Collegamenti MatematicaOro" class="publish-tools no-print"><a href="https://matematicaoro.github.io/">⌂ Home</a><a href="https://matematicaoro.github.io/lezioni/">☰ Lezioni</a><button class="publish-pdf" id="savePdf" type="button">▣ Salva PDF</button></div><script>(function(){const x='KGZ1bmN0aW9uKCl7CmNvbnN0IGJ0bj1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc2F2ZVBkZicpO2lmKCFidG4pcmV0dXJuOwpidG4uYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLGFzeW5jKCk9PnsKYnRuLmRpc2FibGVkPXRydWU7Y29uc3Qgb3JpZ2luYWw9YnRuLnRleHRDb250ZW50O2J0bi50ZXh0Q29udGVudD0nUHJlcGFyYXppb25lIFBERuKApic7CnRyeXsKaWYod2luZG93Lk1hdGhKYXgpe2lmKE1hdGhKYXguc3RhcnR1cCYmTWF0aEpheC5zdGFydHVwLnByb21pc2UpYXdhaXQgTWF0aEpheC5zdGFydHVwLnByb21pc2U7aWYoTWF0aEpheC50eXBlc2V0UHJvbWlzZSlhd2FpdCBNYXRoSmF4LnR5cGVzZXRQcm9taXNlKCk7fQppZihkb2N1bWVudC5mb250cyYmZG9jdW1lbnQuZm9udHMucmVhZHkpYXdhaXQgZG9jdW1lbnQuZm9udHMucmVhZHk7CmF3YWl0IFByb21pc2UuYWxsKEFycmF5LmZyb20oZG9jdW1lbnQuaW1hZ2VzKS5tYXAoaW09PmltLmNvbXBsZXRlP1Byb21pc2UucmVzb2x2ZSgpOm5ldyBQcm9taXNlKHJlc29sdmU9PntpbS5hZGRFdmVudExpc3RlbmVyKCdsb2FkJyxyZXNvbHZlLHtvbmNlOnRydWV9KTtpbS5hZGRFdmVudExpc3RlbmVyKCdlcnJvcicscmVzb2x2ZSx7b25jZTp0cnVlfSl9KSkpOwpjb25zdCBkZXRhaWxzPUFycmF5LmZyb20oZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnZGV0YWlscycpKTtjb25zdCB3YXM9ZGV0YWlscy5tYXAoZD0+ZC5vcGVuKTtkZXRhaWxzLmZvckVhY2goZD0+ZC5vcGVuPXRydWUpOwphd2FpdCBuZXcgUHJvbWlzZShyZXNvbHZlPT5yZXF1ZXN0QW5pbWF0aW9uRnJhbWUoKCk9PnJlcXVlc3RBbmltYXRpb25GcmFtZShyZXNvbHZlKSkpOwpjb25zdCByZXN0b3JlPSgpPT57ZGV0YWlscy5mb3JFYWNoKChkLGkpPT5kLm9wZW49d2FzW2ldKTt3aW5kb3cucmVtb3ZlRXZlbnRMaXN0ZW5lcignYWZ0ZXJwcmludCcscmVzdG9yZSl9Owp3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcignYWZ0ZXJwcmludCcscmVzdG9yZSx7b25jZTp0cnVlfSk7d2luZG93LnByaW50KCk7Ci8vIFJpcHJpc3Rpbm8gYW5jaGUgZG92ZSBhZnRlcnByaW50IG5vbiB2aWVuZSBlbWVzc28uCnNldFRpbWVvdXQocmVzdG9yZSwxNTAwKTsKfWNhdGNoKGUpe2NvbnNvbGUuZXJyb3IoJ0Vycm9yZSBuZWxsYSBwcmVwYXJhemlvbmUgZGVsbGEgc3RhbXBhJyxlKTthbGVydCgnSW1wb3NzaWJpbGUgcHJlcGFyYXJlIGlsIFBERi4gUmlwcm92YS4nKTt9CmZpbmFsbHl7YnRuLmRpc2FibGVkPWZhbHNlO2J0bi50ZXh0Q29udGVudD1vcmlnaW5hbDt9Cn0pO30pKCk7';const u=Uint8Array.from(atob(x),c=>c.charCodeAt(0));const t=document.createElement('script');t.text=new TextDecoder().decode(u);document.head.appendChild(t);t.remove()})();</script><script>(function(){var d=document;d.addEventListener('contextmenu',function(e){e.preventDefault()},true);d.addEventListener('dragstart',function(e){e.preventDefault()},true);d.addEventListener('keydown',function(e){var k=(e.key||'').toLowerCase();if(((e.ctrlKey||e.metaKey)&&(k==='u'||k==='s'))||e.key==='F12'){e.preventDefault();e.stopPropagation()}},true)})();</script><button aria-label="Attiva schermo intero" id="moFullscreen" type="button">🖥️ Schermo Intero</button><script id="mo-fullscreen-script">(function(){const b=document.getElementById('moFullscreen');if(!b)return;b.addEventListener('click',async function(){try{if(document.fullscreenElement){await document.exitFullscreen()}else{await document.documentElement.requestFullscreen()}}catch(e){console.warn('Schermo intero non disponibile:',e)}});document.addEventListener('fullscreenchange',function(){const on=!!document.fullscreenElement;b.textContent=on?'🖥️ Esci Schermo Intero':'🖥️ Schermo Intero';b.setAttribute('aria-label',on?'Esci da schermo intero':'Attiva schermo intero')})})();</script></body>
+</html>
