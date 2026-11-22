@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratorio · MatematicaOro</title>
+<style>
+:root{--blue:#012053;--gold:#d99a18;--text:#24374f;--muted:#53657c}*{box-sizing:border-box}body{margin:0;background:#f7f8fc;color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+header{background:var(--blue);color:white;padding:17px max(20px,calc((100vw - 1060px)/2));display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-family:Georgia,serif;font-size:1.35rem;text-decoration:none;color:white}.brand span{color:#f0c06e}
+nav{display:flex;gap:10px;flex-wrap:wrap}nav a{color:white;text-decoration:none;padding:7px 13px;border-radius:20px;background:#ffffff1a}nav a:hover{background:#ffffff33}
+main{max-width:1060px;margin:auto;padding:42px 22px 75px}h1{font-family:Georgia,serif;color:#1a3a5c;font-size:clamp(2rem,5vw,3rem);margin:0 0 8px}h2{font-family:Georgia,serif;color:#1a3a5c;margin:0 0 10px}
+.intro{color:var(--muted);max-width:730px;margin:0 0 30px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
+.card{background:white;border:1px solid #d9e2ef;border-radius:17px;overflow:hidden;box-shadow:0 7px 24px #19385b13}
+.art{height:205px;background:radial-gradient(ellipse at 70% 20%,#264c7c,#08182f 78%);position:relative;overflow:hidden}
+.earth{position:absolute;left:9%;bottom:-55px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 33% 28%,#77e3e7,#1b80b2 42%,#0b345e 73%);box-shadow:0 0 30px #75b8ff55}
+.moon{position:absolute;right:12%;top:27px;width:75px;height:75px;border-radius:50%;background:radial-gradient(circle at 30% 28%,#fffdf2,#b0b9c8 64%,#5e718d);box-shadow:0 0 24px #fff7}
+.line{position:absolute;left:33%;right:25%;top:54%;border-top:2px dashed #e9b95a}
+.card-content{padding:23px}.tag{font-size:.75rem;color:#99620c;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.card h2{font-size:1.55rem;margin:5px 0 8px}.card p{color:var(--muted);margin:0 0 18px}
+.btn{display:inline-block;background:#d4882b;color:white;text-decoration:none;padding:9px 19px;border-radius:22px;font-weight:700}.btn:hover{background:#b8711f}
+footer{text-align:center;padding:25px;border-top:1px solid #cddaec;background:#e8f0f8;font-size:.82rem;color:#52647a}
+@media(max-width:600px){main{padding:28px 15px 55px}.art{height:180px}}
+</style></head><body>
+<header><a class="brand" href="../index.html">Matematica<span>Oro</span></a><nav aria-label="Navigazione"><a href="../index.html">⌂ Home</a><a href="./" aria-current="page">🔬 Laboratorio</a></nav></header>
+<main><h1>🔬 Laboratorio</h1><p class="intro">Esplora la matematica attraverso esperimenti, simulazioni e attività interattive. Ogni laboratorio invita a formulare ipotesi, osservare e scoprire.</p>
+<div class="grid"><article class="card"><div class="art" role="img" aria-label="Terra e Luna nello spazio"><div class="line"></div><div class="earth"></div><div class="moon"></div></div>
+<div class="card-content"><span class="tag">Esperimento interattivo · Novità</span><h2>Missione Luna</h2><p><strong>Il mistero del foglio impossibile.</strong> Quante volte bisogna piegare un foglio perché il suo spessore teorico raggiunga la Luna? Scoprilo in sette fasi interattive.</p>
+<a class="btn" href="missione-luna/index.html">▶ Avvia il laboratorio</a></div></article></div></main>
+<footer><strong>Matematica<span style="color:#ad7814">Oro</span></strong> · Distribuito con licenza Creative Commons BY-NC-ND 4.0 · matematicaoro.github.io<br>© 2026 MatematicaOro</footer>
+</body></html>
