@@ -1,7 +1,7 @@
 {
   "lezioni": [
     {
-      "title": "Ora 1 Dal problema al sistema",
+      "title": "Il prezzo dell'attenzione",
       "url": "lezioni/prezzo-attenzione/index.html",
       "published_at": "2026-11-19"
     },
@@ -153,6 +153,11 @@
       "published_at": "2026-09-05"
     }
   ],
-  "teoria": [],
-  "schemi": []
+  "laboratorio": [
+    {
+      "title": "Missione Luna — Il mistero del foglio impossibile",
+      "url": "laboratorio/missione_luna/index.html",
+      "published_at": "2026-11-22"
+    }
+  ]
 }
